@@ -13,6 +13,26 @@
 		D1BAFB5B291D3FBD007194C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB59291D3FBD007194C5 /* Main.storyboard */; };
 		D1BAFB5D291D3FBF007194C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB5C291D3FBF007194C5 /* Assets.xcassets */; };
 		D1BAFB60291D3FBF007194C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB5E291D3FBF007194C5 /* LaunchScreen.storyboard */; };
+		D1BAFB81291D48A0007194C5 /* Urbanist-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB6A291D48A0007194C5 /* Urbanist-VariableFont_wght.ttf */; };
+		D1BAFB82291D48A0007194C5 /* Urbanist-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB6C291D48A0007194C5 /* Urbanist-Bold.ttf */; };
+		D1BAFB83291D48A0007194C5 /* Urbanist-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB6D291D48A0007194C5 /* Urbanist-Regular.ttf */; };
+		D1BAFB84291D48A0007194C5 /* Urbanist-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB6E291D48A0007194C5 /* Urbanist-LightItalic.ttf */; };
+		D1BAFB85291D48A0007194C5 /* Urbanist-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB6F291D48A0007194C5 /* Urbanist-ExtraLightItalic.ttf */; };
+		D1BAFB86291D48A0007194C5 /* Urbanist-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB70291D48A0007194C5 /* Urbanist-ExtraBoldItalic.ttf */; };
+		D1BAFB87291D48A0007194C5 /* Urbanist-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB71291D48A0007194C5 /* Urbanist-Thin.ttf */; };
+		D1BAFB88291D48A0007194C5 /* Urbanist-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB72291D48A0007194C5 /* Urbanist-MediumItalic.ttf */; };
+		D1BAFB89291D48A0007194C5 /* Urbanist-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB73291D48A0007194C5 /* Urbanist-SemiBold.ttf */; };
+		D1BAFB8A291D48A0007194C5 /* Urbanist-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB74291D48A0007194C5 /* Urbanist-Italic.ttf */; };
+		D1BAFB8B291D48A0007194C5 /* Urbanist-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB75291D48A0007194C5 /* Urbanist-Black.ttf */; };
+		D1BAFB8C291D48A0007194C5 /* Urbanist-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB76291D48A0007194C5 /* Urbanist-BlackItalic.ttf */; };
+		D1BAFB8D291D48A0007194C5 /* Urbanist-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB77291D48A0007194C5 /* Urbanist-Light.ttf */; };
+		D1BAFB8E291D48A0007194C5 /* Urbanist-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB78291D48A0007194C5 /* Urbanist-SemiBoldItalic.ttf */; };
+		D1BAFB8F291D48A0007194C5 /* Urbanist-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB79291D48A0007194C5 /* Urbanist-BoldItalic.ttf */; };
+		D1BAFB90291D48A0007194C5 /* Urbanist-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB7A291D48A0007194C5 /* Urbanist-ExtraBold.ttf */; };
+		D1BAFB91291D48A0007194C5 /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB7B291D48A0007194C5 /* Urbanist-Medium.ttf */; };
+		D1BAFB92291D48A0007194C5 /* Urbanist-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB7C291D48A0007194C5 /* Urbanist-ExtraLight.ttf */; };
+		D1BAFB93291D48A0007194C5 /* Urbanist-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB7D291D48A0007194C5 /* Urbanist-ThinItalic.ttf */; };
+		D1BAFB96291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +44,26 @@
 		D1BAFB5C291D3FBF007194C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1BAFB5F291D3FBF007194C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1BAFB61291D3FBF007194C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1BAFB6A291D48A0007194C5 /* Urbanist-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		D1BAFB6C291D48A0007194C5 /* Urbanist-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Bold.ttf"; sourceTree = "<group>"; };
+		D1BAFB6D291D48A0007194C5 /* Urbanist-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Regular.ttf"; sourceTree = "<group>"; };
+		D1BAFB6E291D48A0007194C5 /* Urbanist-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-LightItalic.ttf"; sourceTree = "<group>"; };
+		D1BAFB6F291D48A0007194C5 /* Urbanist-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		D1BAFB70291D48A0007194C5 /* Urbanist-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		D1BAFB71291D48A0007194C5 /* Urbanist-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Thin.ttf"; sourceTree = "<group>"; };
+		D1BAFB72291D48A0007194C5 /* Urbanist-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-MediumItalic.ttf"; sourceTree = "<group>"; };
+		D1BAFB73291D48A0007194C5 /* Urbanist-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-SemiBold.ttf"; sourceTree = "<group>"; };
+		D1BAFB74291D48A0007194C5 /* Urbanist-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic.ttf"; sourceTree = "<group>"; };
+		D1BAFB75291D48A0007194C5 /* Urbanist-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Black.ttf"; sourceTree = "<group>"; };
+		D1BAFB76291D48A0007194C5 /* Urbanist-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-BlackItalic.ttf"; sourceTree = "<group>"; };
+		D1BAFB77291D48A0007194C5 /* Urbanist-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Light.ttf"; sourceTree = "<group>"; };
+		D1BAFB78291D48A0007194C5 /* Urbanist-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		D1BAFB79291D48A0007194C5 /* Urbanist-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-BoldItalic.ttf"; sourceTree = "<group>"; };
+		D1BAFB7A291D48A0007194C5 /* Urbanist-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D1BAFB7B291D48A0007194C5 /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Medium.ttf"; sourceTree = "<group>"; };
+		D1BAFB7C291D48A0007194C5 /* Urbanist-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraLight.ttf"; sourceTree = "<group>"; };
+		D1BAFB7D291D48A0007194C5 /* Urbanist-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ThinItalic.ttf"; sourceTree = "<group>"; };
+		D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +102,45 @@
 				D1BAFB59291D3FBD007194C5 /* Main.storyboard */,
 				D1BAFB5C291D3FBF007194C5 /* Assets.xcassets */,
 				D1BAFB5E291D3FBF007194C5 /* LaunchScreen.storyboard */,
+				D1BAFB69291D48A0007194C5 /* Urbanist */,
 				D1BAFB61291D3FBF007194C5 /* Info.plist */,
 			);
 			path = vamosPraOndeApp;
+			sourceTree = "<group>";
+		};
+		D1BAFB69291D48A0007194C5 /* Urbanist */ = {
+			isa = PBXGroup;
+			children = (
+				D1BAFB6B291D48A0007194C5 /* static */,
+				D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */,
+				D1BAFB6A291D48A0007194C5 /* Urbanist-VariableFont_wght.ttf */,
+			);
+			path = Urbanist;
+			sourceTree = "<group>";
+		};
+		D1BAFB6B291D48A0007194C5 /* static */ = {
+			isa = PBXGroup;
+			children = (
+				D1BAFB6C291D48A0007194C5 /* Urbanist-Bold.ttf */,
+				D1BAFB6D291D48A0007194C5 /* Urbanist-Regular.ttf */,
+				D1BAFB6E291D48A0007194C5 /* Urbanist-LightItalic.ttf */,
+				D1BAFB6F291D48A0007194C5 /* Urbanist-ExtraLightItalic.ttf */,
+				D1BAFB70291D48A0007194C5 /* Urbanist-ExtraBoldItalic.ttf */,
+				D1BAFB71291D48A0007194C5 /* Urbanist-Thin.ttf */,
+				D1BAFB72291D48A0007194C5 /* Urbanist-MediumItalic.ttf */,
+				D1BAFB73291D48A0007194C5 /* Urbanist-SemiBold.ttf */,
+				D1BAFB74291D48A0007194C5 /* Urbanist-Italic.ttf */,
+				D1BAFB75291D48A0007194C5 /* Urbanist-Black.ttf */,
+				D1BAFB76291D48A0007194C5 /* Urbanist-BlackItalic.ttf */,
+				D1BAFB77291D48A0007194C5 /* Urbanist-Light.ttf */,
+				D1BAFB78291D48A0007194C5 /* Urbanist-SemiBoldItalic.ttf */,
+				D1BAFB79291D48A0007194C5 /* Urbanist-BoldItalic.ttf */,
+				D1BAFB7A291D48A0007194C5 /* Urbanist-ExtraBold.ttf */,
+				D1BAFB7B291D48A0007194C5 /* Urbanist-Medium.ttf */,
+				D1BAFB7C291D48A0007194C5 /* Urbanist-ExtraLight.ttf */,
+				D1BAFB7D291D48A0007194C5 /* Urbanist-ThinItalic.ttf */,
+			);
+			path = static;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +201,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1BAFB85291D48A0007194C5 /* Urbanist-ExtraLightItalic.ttf in Resources */,
+				D1BAFB84291D48A0007194C5 /* Urbanist-LightItalic.ttf in Resources */,
+				D1BAFB88291D48A0007194C5 /* Urbanist-MediumItalic.ttf in Resources */,
+				D1BAFB8F291D48A0007194C5 /* Urbanist-BoldItalic.ttf in Resources */,
 				D1BAFB60291D3FBF007194C5 /* LaunchScreen.storyboard in Resources */,
+				D1BAFB93291D48A0007194C5 /* Urbanist-ThinItalic.ttf in Resources */,
+				D1BAFB8B291D48A0007194C5 /* Urbanist-Black.ttf in Resources */,
+				D1BAFB82291D48A0007194C5 /* Urbanist-Bold.ttf in Resources */,
+				D1BAFB81291D48A0007194C5 /* Urbanist-VariableFont_wght.ttf in Resources */,
+				D1BAFB8A291D48A0007194C5 /* Urbanist-Italic.ttf in Resources */,
+				D1BAFB92291D48A0007194C5 /* Urbanist-ExtraLight.ttf in Resources */,
 				D1BAFB5D291D3FBF007194C5 /* Assets.xcassets in Resources */,
+				D1BAFB8C291D48A0007194C5 /* Urbanist-BlackItalic.ttf in Resources */,
+				D1BAFB86291D48A0007194C5 /* Urbanist-ExtraBoldItalic.ttf in Resources */,
+				D1BAFB8D291D48A0007194C5 /* Urbanist-Light.ttf in Resources */,
+				D1BAFB96291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf in Resources */,
+				D1BAFB91291D48A0007194C5 /* Urbanist-Medium.ttf in Resources */,
 				D1BAFB5B291D3FBD007194C5 /* Main.storyboard in Resources */,
+				D1BAFB90291D48A0007194C5 /* Urbanist-ExtraBold.ttf in Resources */,
+				D1BAFB8E291D48A0007194C5 /* Urbanist-SemiBoldItalic.ttf in Resources */,
+				D1BAFB89291D48A0007194C5 /* Urbanist-SemiBold.ttf in Resources */,
+				D1BAFB83291D48A0007194C5 /* Urbanist-Regular.ttf in Resources */,
+				D1BAFB87291D48A0007194C5 /* Urbanist-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,8 +386,10 @@
 				DEVELOPMENT_TEAM = YUJ28KYKT3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vamosPraOndeApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "vamos pra onde?";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -318,8 +416,10 @@
 				DEVELOPMENT_TEAM = YUJ28KYKT3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vamosPraOndeApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "vamos pra onde?";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
