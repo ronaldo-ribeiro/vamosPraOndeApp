@@ -28,9 +28,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        loginButton.layer.cornerRadius = 10.0
+        emailTextField.layer.cornerRadius = 10.0
+        passwordTextLabel.layer.cornerRadius = 10.0
     }
 
+    @IBAction func tappedForgotPasswordButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func tappedLoginButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func tappedRegisterButton(_ sender: UIButton) {
+    }
+    
+    
+    
 
 }
 

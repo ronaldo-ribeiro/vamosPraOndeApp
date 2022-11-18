@@ -37,7 +37,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ronaldo@gmail.com" borderStyle="roundedRect" placeholder="ronaldo@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rKe-Ir-CVl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ronaldo@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rKe-Ir-CVl">
                                 <rect key="frame" x="20" y="259.33333333333331" width="353" height="56"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
@@ -64,11 +64,14 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Entrar">
-                                    <fontDescription key="titleFontDescription" name="Urbanist-ThinItalic" family="Urbanist" pointSize="16"/>
+                                    <fontDescription key="titleFontDescription" name="Urbanist-ThinItalic" family="Urbanist" pointSize="26"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X8p-WX-RXA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Não tem uma conta?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoQ-kC-tN9">
-                                <rect key="frame" x="20" y="567.33333333333337" width="148" height="35"/>
+                                <rect key="frame" x="20" y="567.33333333333337" width="150.33333333333334" height="35"/>
                                 <color key="tintColor" red="0.49019607843137253" green="0.51764705882352935" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="97F-aO-g5Y"/>
@@ -84,9 +87,12 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Esqueceu a senha?">
                                     <fontDescription key="titleFontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="16"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedForgotPasswordButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A3E-64-Aqu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISg-xf-Fkf">
-                                <rect key="frame" x="260.33333333333331" y="567.33333333333337" width="112.66666666666669" height="35"/>
+                                <rect key="frame" x="190.33333333333337" y="567.33333333333337" width="182.66666666666663" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="ZuL-XL-HJj"/>
                                 </constraints>
@@ -95,6 +101,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Cadastre-se">
                                     <fontDescription key="titleFontDescription" name="Urbanist-Medium" family="Urbanist" pointSize="16"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedRegisterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kbn-cu-DUq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -116,6 +125,7 @@
                             <constraint firstItem="qGv-nq-bOQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Y61-Qz-LjE"/>
                             <constraint firstItem="dt6-uJ-DT5" firstAttribute="top" secondItem="5ga-Fq-kqV" secondAttribute="bottom" constant="25" id="apQ-7u-Qoo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dt6-uJ-DT5" secondAttribute="trailing" constant="20" id="arM-g8-8Ok"/>
+                            <constraint firstItem="ISg-xf-Fkf" firstAttribute="leading" secondItem="BoQ-kC-tN9" secondAttribute="trailing" constant="20" id="b9s-ZJ-sfn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5ga-Fq-kqV" secondAttribute="trailing" constant="20" id="dnO-XC-ebW"/>
                             <constraint firstItem="rKe-Ir-CVl" firstAttribute="top" secondItem="dt6-uJ-DT5" secondAttribute="bottom" constant="40" id="fRP-M2-s21"/>
                             <constraint firstItem="aSp-2q-CSt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hUY-TZ-j0p"/>
