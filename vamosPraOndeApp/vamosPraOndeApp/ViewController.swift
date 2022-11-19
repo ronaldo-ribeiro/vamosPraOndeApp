@@ -40,6 +40,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "SignUpViewController", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController
+        
+        // o pushViewController ele exibe a tela da controladora
+        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
     }
     
     

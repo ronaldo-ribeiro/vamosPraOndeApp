@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D14228ED2928670000784508 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14228EC2928670000784508 /* SignUpViewController.swift */; };
+		D14228EF2928672600784508 /* SignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D14228EE2928672600784508 /* SignUpViewController.storyboard */; };
 		D1BAFB54291D3FBD007194C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */; };
 		D1BAFB56291D3FBD007194C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB55291D3FBD007194C5 /* SceneDelegate.swift */; };
 		D1BAFB58291D3FBD007194C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB57291D3FBD007194C5 /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D14228EC2928670000784508 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D14228EE2928672600784508 /* SignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpViewController.storyboard; sourceTree = "<group>"; };
 		D1BAFB50291D3FBD007194C5 /* vamosPraOndeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vamosPraOndeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1BAFB55291D3FBD007194C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D14228EB292866A700784508 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				D14228EC2928670000784508 /* SignUpViewController.swift */,
+				D14228EE2928672600784508 /* SignUpViewController.storyboard */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		D1BAFB47291D3FBD007194C5 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +109,7 @@
 		D1BAFB52291D3FBD007194C5 /* vamosPraOndeApp */ = {
 			isa = PBXGroup;
 			children = (
+				D14228EB292866A700784508 /* SignUp */,
 				D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */,
 				D1BAFB55291D3FBD007194C5 /* SceneDelegate.swift */,
 				D1BAFB57291D3FBD007194C5 /* ViewController.swift */,
@@ -212,6 +226,7 @@
 				D1BAFB81291D48A0007194C5 /* Urbanist-VariableFont_wght.ttf in Resources */,
 				D1BAFB8A291D48A0007194C5 /* Urbanist-Italic.ttf in Resources */,
 				D1BAFB92291D48A0007194C5 /* Urbanist-ExtraLight.ttf in Resources */,
+				D14228EF2928672600784508 /* SignUpViewController.storyboard in Resources */,
 				D1BAFB5D291D3FBF007194C5 /* Assets.xcassets in Resources */,
 				D1BAFB8C291D48A0007194C5 /* Urbanist-BlackItalic.ttf in Resources */,
 				D1BAFB86291D48A0007194C5 /* Urbanist-ExtraBoldItalic.ttf in Resources */,
@@ -236,6 +251,7 @@
 			files = (
 				D1BAFB58291D3FBD007194C5 /* ViewController.swift in Sources */,
 				D1BAFB54291D3FBD007194C5 /* AppDelegate.swift in Sources */,
+				D14228ED2928670000784508 /* SignUpViewController.swift in Sources */,
 				D1BAFB56291D3FBD007194C5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
