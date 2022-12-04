@@ -43,9 +43,8 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func tappedLoginButton(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Main") as? ViewController
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController
         
-        // o pushViewController ele exibe a tela da controladora
         navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
     }
     
