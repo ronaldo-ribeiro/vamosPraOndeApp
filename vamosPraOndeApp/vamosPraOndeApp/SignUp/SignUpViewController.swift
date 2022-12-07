@@ -37,16 +37,61 @@ class SignUpViewController: UIViewController {
         passwordTextField.layer.cornerRadius = 10.0
         confirmPasswordTextField.layer.cornerRadius = 10.0
         registerButton.layer.cornerRadius = 10.0
+        
+        emailTextField.keyboardType = .emailAddress
+        
+        fullNameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+        
+        registerButton.isEnabled = false
+        registerButton.setTitleColor(.white.withAlphaComponent(0.4), for: .disabled)
+        registerButton.setTitleColor(.white, for: .normal)
+        
+        hideKeyboardGesture()
+    }
+    
+    func hideKeyboardGesture() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
     }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
     }
     
     @IBAction func tappedLoginButton(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController
-        
-        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
+        for aViewController in viewControllers {
+            if aViewController is ViewController {
+                self.navigationController!.popToViewController(aViewController, animated: true)
+            }
+        }
     }
     
+    func validateTextField() {
+        if fullNameTextField.text != "" && emailTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != "" {
+            registerButton.isEnabled = true
+        } else {
+            registerButton.isEnabled = false
+        }
+    }
+     
+}
 
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderColor = UIColor.blue.cgColor
+        textField.layer.borderWidth = 1
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 0
+        validateTextField()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
