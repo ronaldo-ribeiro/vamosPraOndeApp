@@ -7,6 +7,10 @@
 
 import UIKit
 
+//class CustonTextField: UITextField {
+//
+//}
+
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var registerTitleLabel: UILabel!
@@ -52,10 +56,6 @@ class SignUpViewController: UIViewController {
         hideKeyboardGesture()
     }
     
-    func hideKeyboardGesture() {
-        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tapGesture)
-    }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
     }

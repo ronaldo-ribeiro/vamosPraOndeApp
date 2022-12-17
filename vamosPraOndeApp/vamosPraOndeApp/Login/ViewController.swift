@@ -46,10 +46,7 @@ class ViewController: UIViewController {
         
     }
     
-    func hideKeyboardGesture() {
-        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tapGesture)
-    }
+    
 
     @IBAction func tappedForgotPasswordButton(_ sender: UIButton) {
         let vc = UIStoryboard(name: "ResetPasswordViewController", bundle: nil).instantiateViewController(withIdentifier: "ResetPasswordViewController") as? ResetPasswordViewController
