@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xs2-Nb-YHL">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Urbanist-LightItalic.ttf">
+            <string>Urbanist-LightItalic</string>
+        </array>
+        <array key="Urbanist-ThinItalic.ttf">
+            <string>Urbanist-ThinItalic</string>
+        </array>
+        <array key="Urbanist-VariableFont_wght.ttf">
+            <string>Urbanist-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Perfil-->
+        <scene sceneID="8KH-oR-O93">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rjl-Cw-qmZ" customClass="ProfileViewController" customModule="vamosPraOndeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7id-DJ-H0J">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6e5-rT-2qR">
+                                <rect key="frame" x="136" y="131" width="121" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121.33333333333333" id="rEg-g2-AL7"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ronaldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kh-Ao-8Kl">
+                                <rect key="frame" x="160.66666666666666" y="261.33333333333331" width="72" height="24"/>
+                                <fontDescription key="fontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@email.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZo-1Q-P7t">
+                                <rect key="frame" x="118.66666666666669" y="291.33333333333331" width="156" height="24"/>
+                                <fontDescription key="fontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QoA-ix-h0W">
+                                <rect key="frame" x="20" y="696" width="353" height="56"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="P7W-90-Lal"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sair da Conta">
+                                    <fontDescription key="titleFontDescription" name="Urbanist-ThinItalic" family="Urbanist" pointSize="24"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Perfil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Geb-3n-V0d">
+                                <rect key="frame" x="170.66666666666666" y="94" width="52" height="32"/>
+                                <fontDescription key="fontDescription" name="Urbanist-ThinItalic" family="Urbanist" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3PX-7m-6RS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QoA-ix-h0W" firstAttribute="leading" secondItem="3PX-7m-6RS" secondAttribute="leading" constant="20" id="3Mg-Ra-xRp"/>
+                            <constraint firstItem="6e5-rT-2qR" firstAttribute="leading" secondItem="3PX-7m-6RS" secondAttribute="leading" constant="136" id="IVi-qQ-GjQ"/>
+                            <constraint firstItem="6e5-rT-2qR" firstAttribute="top" secondItem="Geb-3n-V0d" secondAttribute="bottom" constant="4" id="KZH-Vx-JKl"/>
+                            <constraint firstItem="0Kh-Ao-8Kl" firstAttribute="top" secondItem="6e5-rT-2qR" secondAttribute="bottom" constant="10" id="Wtk-CO-bwN"/>
+                            <constraint firstItem="3PX-7m-6RS" firstAttribute="trailing" secondItem="QoA-ix-h0W" secondAttribute="trailing" constant="20" id="Xp1-Vn-eiw"/>
+                            <constraint firstItem="TZo-1Q-P7t" firstAttribute="top" secondItem="0Kh-Ao-8Kl" secondAttribute="bottom" constant="6" id="ZuA-m0-lru"/>
+                            <constraint firstItem="Geb-3n-V0d" firstAttribute="centerX" secondItem="7id-DJ-H0J" secondAttribute="centerX" id="fXI-fC-XuY"/>
+                            <constraint firstItem="0Kh-Ao-8Kl" firstAttribute="centerX" secondItem="7id-DJ-H0J" secondAttribute="centerX" id="hk3-oG-esq"/>
+                            <constraint firstAttribute="bottom" secondItem="QoA-ix-h0W" secondAttribute="bottom" constant="100" id="oZo-SB-0dM"/>
+                            <constraint firstItem="6e5-rT-2qR" firstAttribute="centerX" secondItem="0Kh-Ao-8Kl" secondAttribute="centerX" id="vO6-s4-3Qz"/>
+                            <constraint firstItem="TZo-1Q-P7t" firstAttribute="centerX" secondItem="7id-DJ-H0J" secondAttribute="centerX" id="vOs-97-3Wk"/>
+                            <constraint firstItem="Geb-3n-V0d" firstAttribute="top" secondItem="3PX-7m-6RS" secondAttribute="top" constant="35" id="x4C-3c-2p7"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Perfil" image="person" catalog="system" id="yh7-S0-aIu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ow4-Mt-Uyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="626.71755725190837" y="285.91549295774649"/>
+        </scene>
+        <!--Destinos-->
+        <scene sceneID="axe-Nx-0Pj">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ODJ-hD-VOu" customClass="HomeViewController" customModule="vamosPraOndeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Flz-ka-DwS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 meses, 21 dias e 2 horas" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p81-1S-q1A">
+                                <rect key="frame" x="153" y="224.66666666666666" width="220" height="24"/>
+                                <fontDescription key="fontDescription" name="Urbanist-LightItalic" family="Urbanist" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <color key="highlightedColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-h7-a56">
+                                <rect key="frame" x="20" y="162" width="128" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="São Paulo">
+                                    <fontDescription key="titleFontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedSaoPauloButton:" destination="ODJ-hD-VOu" eventType="touchUpInside" id="UYQ-TY-XLS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ub3-y2-vz3">
+                                <rect key="frame" x="20" y="215" width="88" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Recife">
+                                    <fontDescription key="titleFontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedRecifeButton:" destination="ODJ-hD-VOu" eventType="touchUpInside" id="dgg-2j-h7X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKk-nR-pfO">
+                                <rect key="frame" x="69.666666666666671" y="94" width="253.66666666666663" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title=" Adicionar Novo Destino" titleAlignment="center">
+                                    <fontDescription key="titleFontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="20"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedAddDestinationButton:" destination="ODJ-hD-VOu" eventType="touchUpInside" id="xad-op-VVd"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 meses, 15 dias e 6 horas" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfP-nx-ept">
+                                <rect key="frame" x="151" y="171.66666666666666" width="222" height="24"/>
+                                <fontDescription key="fontDescription" name="Urbanist-LightItalic" family="Urbanist" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <color key="highlightedColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="6 meses, 3 dias e 9 horas" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuS-DZ-GFP">
+                                <rect key="frame" x="158" y="277.66666666666669" width="215" height="24"/>
+                                <fontDescription key="fontDescription" name="Urbanist-LightItalic" family="Urbanist" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <color key="highlightedColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 meses, 18 dias e 17 horas" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xu3-Ge-Bl6">
+                                <rect key="frame" x="147" y="330.66666666666669" width="226" height="24"/>
+                                <fontDescription key="fontDescription" name="Urbanist-LightItalic" family="Urbanist" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <color key="highlightedColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26h-mC-MiU">
+                                <rect key="frame" x="20" y="268" width="73" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Paris">
+                                    <fontDescription key="titleFontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedParisButton:" destination="ODJ-hD-VOu" eventType="touchUpInside" id="sEu-ew-ASU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOG-RI-cBv">
+                                <rect key="frame" x="20" y="321" width="86" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Roma">
+                                    <fontDescription key="titleFontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedRomaButton:" destination="ODJ-hD-VOu" eventType="touchUpInside" id="PEx-QX-nNX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YT2-wp-fyE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ub3-y2-vz3" firstAttribute="leading" secondItem="YT2-wp-fyE" secondAttribute="leading" constant="20" id="1AB-5q-Zob"/>
+                            <constraint firstItem="vKk-nR-pfO" firstAttribute="centerX" secondItem="Flz-ka-DwS" secondAttribute="centerX" id="2Ki-rI-tEP"/>
+                            <constraint firstItem="kOG-RI-cBv" firstAttribute="top" secondItem="26h-mC-MiU" secondAttribute="bottom" constant="10" id="8XF-mi-eAI"/>
+                            <constraint firstItem="vKk-nR-pfO" firstAttribute="top" secondItem="YT2-wp-fyE" secondAttribute="top" constant="35" id="GHe-7u-beF"/>
+                            <constraint firstItem="26h-mC-MiU" firstAttribute="top" secondItem="Ub3-y2-vz3" secondAttribute="bottom" constant="10" id="GxM-i5-8YM"/>
+                            <constraint firstItem="Onw-h7-a56" firstAttribute="top" secondItem="vKk-nR-pfO" secondAttribute="bottom" constant="30" id="ISH-ue-sdz"/>
+                            <constraint firstItem="26h-mC-MiU" firstAttribute="leading" secondItem="YT2-wp-fyE" secondAttribute="leading" constant="20" id="Mg8-jH-nVc"/>
+                            <constraint firstItem="YT2-wp-fyE" firstAttribute="trailing" secondItem="DuS-DZ-GFP" secondAttribute="trailing" constant="20" id="Rcd-Hb-QXe"/>
+                            <constraint firstItem="YT2-wp-fyE" firstAttribute="trailing" secondItem="wfP-nx-ept" secondAttribute="trailing" constant="20" id="Sb9-8P-JSd"/>
+                            <constraint firstItem="Ub3-y2-vz3" firstAttribute="top" secondItem="Onw-h7-a56" secondAttribute="bottom" constant="10" id="TWv-dl-QIz"/>
+                            <constraint firstItem="Onw-h7-a56" firstAttribute="leading" secondItem="YT2-wp-fyE" secondAttribute="leading" constant="20" id="UYJ-fL-Ls6"/>
+                            <constraint firstItem="DuS-DZ-GFP" firstAttribute="centerY" secondItem="26h-mC-MiU" secondAttribute="centerY" id="blt-Wb-VJt"/>
+                            <constraint firstItem="p81-1S-q1A" firstAttribute="centerY" secondItem="Ub3-y2-vz3" secondAttribute="centerY" id="f5f-PB-aNz"/>
+                            <constraint firstItem="kOG-RI-cBv" firstAttribute="leading" secondItem="YT2-wp-fyE" secondAttribute="leading" constant="20" id="fFA-ar-gc9"/>
+                            <constraint firstItem="YT2-wp-fyE" firstAttribute="trailing" secondItem="p81-1S-q1A" secondAttribute="trailing" constant="20" id="l0R-0J-jUE"/>
+                            <constraint firstItem="Xu3-Ge-Bl6" firstAttribute="centerY" secondItem="kOG-RI-cBv" secondAttribute="centerY" id="tnK-rz-bzz"/>
+                            <constraint firstItem="YT2-wp-fyE" firstAttribute="trailing" secondItem="Xu3-Ge-Bl6" secondAttribute="trailing" constant="20" id="wAn-FQ-N8Y"/>
+                            <constraint firstItem="wfP-nx-ept" firstAttribute="centerY" secondItem="Onw-h7-a56" secondAttribute="centerY" id="xw6-LB-BWV"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Destinos" image="paperplane" catalog="system" id="uC3-yI-fkI"/>
+                    <connections>
+                        <outlet property="addDestinationButton" destination="vKk-nR-pfO" id="GCl-ai-tqm"/>
+                        <outlet property="parisButton" destination="DuS-DZ-GFP" id="prB-Rb-S8v"/>
+                        <outlet property="parisLabel" destination="DuS-DZ-GFP" id="2Tu-R2-OMr"/>
+                        <outlet property="recifeButton" destination="Ub3-y2-vz3" id="pcr-25-aLM"/>
+                        <outlet property="recifeLabel" destination="p81-1S-q1A" id="P5j-Le-oLe"/>
+                        <outlet property="romaButton" destination="kOG-RI-cBv" id="95f-jz-sDs"/>
+                        <outlet property="romaLabel" destination="Xu3-Ge-Bl6" id="CNU-eZ-q7H"/>
+                        <outlet property="saoPauloButton" destination="Onw-h7-a56" id="NX7-Hz-cox"/>
+                        <outlet property="saoPauloLabel" destination="wfP-nx-ept" id="GIa-NG-LNK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oNk-CM-gju" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="629" y="-367"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="8eH-bd-Emq">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xs2-Nb-YHL" customClass="TabBarController" customModule="vamosPraOndeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1zf-hF-rri">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ODJ-hD-VOu" kind="relationship" relationship="viewControllers" id="JJ0-6A-1cS"/>
+                        <segue destination="rjl-Cw-qmZ" kind="relationship" relationship="viewControllers" id="Ka4-wC-h0o"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zsJ-t3-IL4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-277" y="-64"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="paperplane" catalog="system" width="128" height="119"/>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
