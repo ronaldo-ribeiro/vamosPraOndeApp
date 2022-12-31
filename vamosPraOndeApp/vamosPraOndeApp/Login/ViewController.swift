@@ -58,6 +58,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedLoginButton(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarController
+        
+        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
     }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {

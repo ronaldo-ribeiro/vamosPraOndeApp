@@ -11,6 +11,13 @@
 		D14228EF2928672600784508 /* SignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D14228EE2928672600784508 /* SignUpViewController.storyboard */; };
 		D172D425293CF37500C7C068 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D172D424293CF37500C7C068 /* ResetPasswordViewController.swift */; };
 		D172D427293CF3B300C7C068 /* ResetPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D172D426293CF3B300C7C068 /* ResetPasswordViewController.storyboard */; };
+		D17548CA294E7576002E65B8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17548C9294E7576002E65B8 /* HomeViewController.swift */; };
+		D17548CC294E76E1002E65B8 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17548CB294E76E1002E65B8 /* HomeViewController.storyboard */; };
+		D17548D1294E7935002E65B8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17548D0294E7935002E65B8 /* ProfileViewController.swift */; };
+		D17548D5294E7963002E65B8 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17548D4294E7963002E65B8 /* DetailsViewController.swift */; };
+		D17548D7294E7972002E65B8 /* DetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17548D6294E7972002E65B8 /* DetailsViewController.storyboard */; };
+		D17548D9294E798C002E65B8 /* NewDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17548D8294E798C002E65B8 /* NewDestinationViewController.swift */; };
+		D17548DB294E7999002E65B8 /* NewDestinationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17548DA294E7999002E65B8 /* NewDestinationViewController.storyboard */; };
 		D1BAFB54291D3FBD007194C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */; };
 		D1BAFB56291D3FBD007194C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB55291D3FBD007194C5 /* SceneDelegate.swift */; };
 		D1BAFB58291D3FBD007194C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB57291D3FBD007194C5 /* ViewController.swift */; };
@@ -37,6 +44,7 @@
 		D1BAFB92291D48A0007194C5 /* Urbanist-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB7C291D48A0007194C5 /* Urbanist-ExtraLight.ttf */; };
 		D1BAFB93291D48A0007194C5 /* Urbanist-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB7D291D48A0007194C5 /* Urbanist-ThinItalic.ttf */; };
 		D1BAFB96291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */; };
+		D1D8090D295C9B0700B04ADA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D8090C295C9B0700B04ADA /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +52,13 @@
 		D14228EE2928672600784508 /* SignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpViewController.storyboard; sourceTree = "<group>"; };
 		D172D424293CF37500C7C068 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		D172D426293CF3B300C7C068 /* ResetPasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResetPasswordViewController.storyboard; sourceTree = "<group>"; };
+		D17548C9294E7576002E65B8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D17548CB294E76E1002E65B8 /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
+		D17548D0294E7935002E65B8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D17548D4294E7963002E65B8 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		D17548D6294E7972002E65B8 /* DetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsViewController.storyboard; sourceTree = "<group>"; };
+		D17548D8294E798C002E65B8 /* NewDestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDestinationViewController.swift; sourceTree = "<group>"; };
+		D17548DA294E7999002E65B8 /* NewDestinationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewDestinationViewController.storyboard; sourceTree = "<group>"; };
 		D1BAFB50291D3FBD007194C5 /* vamosPraOndeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vamosPraOndeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1BAFB55291D3FBD007194C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +87,7 @@
 		D1BAFB7C291D48A0007194C5 /* Urbanist-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraLight.ttf"; sourceTree = "<group>"; };
 		D1BAFB7D291D48A0007194C5 /* Urbanist-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ThinItalic.ttf"; sourceTree = "<group>"; };
 		D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		D1D8090C295C9B0700B04ADA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +117,35 @@
 				D172D426293CF3B300C7C068 /* ResetPasswordViewController.storyboard */,
 			);
 			path = RecoveryPassword;
+			sourceTree = "<group>";
+		};
+		D17548C8294E7533002E65B8 /* Home e Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D1D8090C295C9B0700B04ADA /* TabBarController.swift */,
+				D17548C9294E7576002E65B8 /* HomeViewController.swift */,
+				D17548D0294E7935002E65B8 /* ProfileViewController.swift */,
+				D17548CB294E76E1002E65B8 /* HomeViewController.storyboard */,
+			);
+			path = "Home e Profile";
+			sourceTree = "<group>";
+		};
+		D17548CE294E7802002E65B8 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				D17548D4294E7963002E65B8 /* DetailsViewController.swift */,
+				D17548D6294E7972002E65B8 /* DetailsViewController.storyboard */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		D17548CF294E780B002E65B8 /* NewDestination */ = {
+			isa = PBXGroup;
+			children = (
+				D17548D8294E798C002E65B8 /* NewDestinationViewController.swift */,
+				D17548DA294E7999002E65B8 /* NewDestinationViewController.storyboard */,
+			);
+			path = NewDestination;
 			sourceTree = "<group>";
 		};
 		D1A2F764293E3881002059AD /* Login */ = {
@@ -134,6 +179,9 @@
 				D1A2F764293E3881002059AD /* Login */,
 				D14228EB292866A700784508 /* SignUp */,
 				D172D423293CF2CC00C7C068 /* RecoveryPassword */,
+				D17548C8294E7533002E65B8 /* Home e Profile */,
+				D17548CE294E7802002E65B8 /* Details */,
+				D17548CF294E780B002E65B8 /* NewDestination */,
 				D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */,
 				D1BAFB55291D3FBD007194C5 /* SceneDelegate.swift */,
 				D1BAFB5C291D3FBF007194C5 /* Assets.xcassets */,
@@ -237,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D17548CC294E76E1002E65B8 /* HomeViewController.storyboard in Resources */,
 				D1BAFB85291D48A0007194C5 /* Urbanist-ExtraLightItalic.ttf in Resources */,
 				D1BAFB84291D48A0007194C5 /* Urbanist-LightItalic.ttf in Resources */,
 				D1BAFB88291D48A0007194C5 /* Urbanist-MediumItalic.ttf in Resources */,
@@ -245,6 +294,7 @@
 				D1BAFB93291D48A0007194C5 /* Urbanist-ThinItalic.ttf in Resources */,
 				D1BAFB8B291D48A0007194C5 /* Urbanist-Black.ttf in Resources */,
 				D1BAFB82291D48A0007194C5 /* Urbanist-Bold.ttf in Resources */,
+				D17548DB294E7999002E65B8 /* NewDestinationViewController.storyboard in Resources */,
 				D172D427293CF3B300C7C068 /* ResetPasswordViewController.storyboard in Resources */,
 				D1BAFB81291D48A0007194C5 /* Urbanist-VariableFont_wght.ttf in Resources */,
 				D1BAFB8A291D48A0007194C5 /* Urbanist-Italic.ttf in Resources */,
@@ -255,6 +305,7 @@
 				D1BAFB86291D48A0007194C5 /* Urbanist-ExtraBoldItalic.ttf in Resources */,
 				D1BAFB8D291D48A0007194C5 /* Urbanist-Light.ttf in Resources */,
 				D1BAFB96291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf in Resources */,
+				D17548D7294E7972002E65B8 /* DetailsViewController.storyboard in Resources */,
 				D1BAFB91291D48A0007194C5 /* Urbanist-Medium.ttf in Resources */,
 				D1BAFB5B291D3FBD007194C5 /* Main.storyboard in Resources */,
 				D1BAFB90291D48A0007194C5 /* Urbanist-ExtraBold.ttf in Resources */,
@@ -272,11 +323,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D17548D9294E798C002E65B8 /* NewDestinationViewController.swift in Sources */,
 				D1BAFB58291D3FBD007194C5 /* ViewController.swift in Sources */,
 				D1BAFB54291D3FBD007194C5 /* AppDelegate.swift in Sources */,
+				D1D8090D295C9B0700B04ADA /* TabBarController.swift in Sources */,
 				D172D425293CF37500C7C068 /* ResetPasswordViewController.swift in Sources */,
+				D17548D5294E7963002E65B8 /* DetailsViewController.swift in Sources */,
 				D14228ED2928670000784508 /* SignUpViewController.swift in Sources */,
+				D17548D1294E7935002E65B8 /* ProfileViewController.swift in Sources */,
 				D1BAFB56291D3FBD007194C5 /* SceneDelegate.swift in Sources */,
+				D17548CA294E7576002E65B8 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Urbanist-ThinItalic.ttf">
+            <string>Urbanist-ThinItalic</string>
+        </array>
+        <array key="Urbanist-VariableFont_wght.ttf">
+            <string>Urbanist-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--New Destination View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="NewDestinationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="NewDestinationViewController" customModule="vamosPraOndeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novo Destino" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxk-pt-bmC">
+                                <rect key="frame" x="123.66666666666667" y="94" width="145.66666666666663" height="32"/>
+                                <fontDescription key="fontDescription" name="Urbanist-ThinItalic" family="Urbanist" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Buscar..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0K-JP-IGC">
+                                <rect key="frame" x="20" y="146" width="353" height="56"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="boL-2E-IWg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="AF9-za-Dpd">
+                                <rect key="frame" x="130" y="222" width="243" height="34.333333333333314"/>
+                            </datePicker>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSD-f7-74e">
+                                <rect key="frame" x="20" y="306.33333333333331" width="353" height="45.333333333333314"/>
+                                <color key="backgroundColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Salvar">
+                                    <fontDescription key="titleFontDescription" name="Urbanist-ThinItalic" family="Urbanist" pointSize="26"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedSaveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qib-Rq-gjE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data e Hora:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6f-eC-b70">
+                                <rect key="frame" x="20" y="229.66666666666666" width="87.666666666666671" height="19.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dSD-f7-74e" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="4QQ-eG-FtE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="AF9-za-Dpd" secondAttribute="trailing" constant="20" id="EtB-O6-JBT"/>
+                            <constraint firstItem="AF9-za-Dpd" firstAttribute="top" secondItem="T0K-JP-IGC" secondAttribute="bottom" constant="20" id="JML-VE-81b"/>
+                            <constraint firstItem="rxk-pt-bmC" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Kbq-KI-0ge"/>
+                            <constraint firstItem="s6f-eC-b70" firstAttribute="centerY" secondItem="AF9-za-Dpd" secondAttribute="centerY" id="MdQ-Pz-btL"/>
+                            <constraint firstItem="T0K-JP-IGC" firstAttribute="top" secondItem="rxk-pt-bmC" secondAttribute="bottom" constant="20" id="OsO-NI-ikE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dSD-f7-74e" secondAttribute="trailing" constant="20" id="SLn-W9-DrC"/>
+                            <constraint firstItem="s6f-eC-b70" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Tjb-IU-5WK"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="T0K-JP-IGC" secondAttribute="trailing" constant="20" id="Uem-sZ-0sh"/>
+                            <constraint firstItem="rxk-pt-bmC" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="35" id="dWh-gd-evY"/>
+                            <constraint firstItem="T0K-JP-IGC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="nlU-9Z-8VS"/>
+                            <constraint firstItem="AF9-za-Dpd" firstAttribute="leading" secondItem="s6f-eC-b70" secondAttribute="trailing" constant="22.333333333333329" id="oTa-G3-0o4"/>
+                            <constraint firstItem="dSD-f7-74e" firstAttribute="top" secondItem="AF9-za-Dpd" secondAttribute="bottom" constant="50" id="taF-5O-v6R"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dateAndHourDatePicker" destination="AF9-za-Dpd" id="xei-Oy-7ZN"/>
+                        <outlet property="newDestinationTiitleLabel" destination="rxk-pt-bmC" id="Wiv-bd-R3P"/>
+                        <outlet property="saveButton" destination="dSD-f7-74e" id="kSm-Ur-Phn"/>
+                        <outlet property="searchDestinationTextField" destination="T0K-JP-IGC" id="Av6-1i-1PB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.53435114503816" y="-34.507042253521128"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
