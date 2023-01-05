@@ -5,9 +5,10 @@
 //  Created by Ronaldo Ribeiro on 17/12/22.
 //
 
+import MapKit
 import UIKit
 
-class NewDestinationViewController: UIViewController, UITextFieldDelegate {
+class NewDestinationViewController: UIViewController {
 
     @IBOutlet weak var newDestinationTiitleLabel: UILabel!
     
@@ -34,14 +35,25 @@ class NewDestinationViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tapGesture)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
     
     @IBAction func tappedSaveButton(_ sender: UIButton) {
     
     }
 
+}
+
+extension NewDestinationViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderColor = UIColor.blue.cgColor
+        textField.layer.borderWidth = 1
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

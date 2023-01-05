@@ -28,9 +28,16 @@ class DetailsViewController: UIViewController {
         localityMKMapView.layer.cornerRadius = 10.0
         weatherView.layer.cornerRadius = 10.0
         deleteDestinationButton.layer.cornerRadius = 10.0
+        configBackButton()
 
     }
     
+    func configBackButton() {
+        let yourBackImage = UIImage(systemName: "chevron.left.circle")
+        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        self.navigationController?.navigationBar.backItem?.title = ""
+    }
 
     @IBAction func tappedDeleteDestinationButton(_ sender: UIButton) {
     }
