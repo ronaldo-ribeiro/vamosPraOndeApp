@@ -30,8 +30,18 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        saoPauloButton.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 24)
+//        recifeButton.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 24)
+//        parisButton.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 24)
+//        romaButton.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 24)
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.hidesBackButton = true
+    }
+    
     
     @IBAction func tappedAddDestinationButton(_ sender: UIButton) {
         let vc = UIStoryboard(name: "NewDestinationViewController", bundle: nil).instantiateViewController(withIdentifier: "NewDestinationViewController") as? NewDestinationViewController
