@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Urbanist-Regular.ttf">
+            <string>Urbanist-Regular</string>
+        </array>
         <array key="Urbanist-ThinItalic.ttf">
             <string>Urbanist-ThinItalic</string>
-        </array>
-        <array key="Urbanist-VariableFont_wght.ttf">
-            <string>Urbanist-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -25,13 +25,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novo Destino" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxk-pt-bmC">
-                                <rect key="frame" x="117.66666666666667" y="94" width="157.66666666666663" height="30.333333333333329"/>
+                                <rect key="frame" x="123.66666666666667" y="94" width="145.66666666666663" height="31.333333333333329"/>
                                 <fontDescription key="fontDescription" name="Urbanist-ThinItalic" family="Urbanist" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Buscar..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0K-JP-IGC">
-                                <rect key="frame" x="20" y="144.33333333333334" width="353" height="56"/>
+                                <rect key="frame" x="20" y="145.33333333333334" width="353" height="56"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="boL-2E-IWg"/>
@@ -40,10 +40,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="AF9-za-Dpd">
-                                <rect key="frame" x="144" y="220.33333333333334" width="229" height="34.333333333333343"/>
+                                <rect key="frame" x="140" y="426" width="232.33333333333337" height="34.333333333333343"/>
                             </datePicker>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSD-f7-74e">
-                                <rect key="frame" x="20" y="304.66666666666669" width="353" height="45.333333333333314"/>
+                                <rect key="frame" x="20" y="510" width="353" height="45.333333333333314"/>
                                 <color key="backgroundColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
@@ -55,7 +55,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data e Hora:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6f-eC-b70">
-                                <rect key="frame" x="20.000000000000007" y="227" width="101.66666666666669" height="21"/>
+                                <rect key="frame" x="20" y="432" width="98.333333333333314" height="21"/>
                                 <fontDescription key="fontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -66,7 +66,7 @@
                         <constraints>
                             <constraint firstItem="dSD-f7-74e" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="4QQ-eG-FtE"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="AF9-za-Dpd" secondAttribute="trailing" constant="20" id="EtB-O6-JBT"/>
-                            <constraint firstItem="AF9-za-Dpd" firstAttribute="top" secondItem="T0K-JP-IGC" secondAttribute="bottom" constant="20" id="JML-VE-81b"/>
+                            <constraint firstItem="AF9-za-Dpd" firstAttribute="top" secondItem="T0K-JP-IGC" secondAttribute="bottom" constant="224.66666666666666" id="JML-VE-81b"/>
                             <constraint firstItem="rxk-pt-bmC" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Kbq-KI-0ge"/>
                             <constraint firstItem="s6f-eC-b70" firstAttribute="centerY" secondItem="AF9-za-Dpd" secondAttribute="centerY" id="MdQ-Pz-btL"/>
                             <constraint firstItem="T0K-JP-IGC" firstAttribute="top" secondItem="rxk-pt-bmC" secondAttribute="bottom" constant="20" id="OsO-NI-ikE"/>

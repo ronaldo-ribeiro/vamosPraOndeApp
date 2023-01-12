@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController: UIViewController {
 
@@ -29,9 +30,13 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
+    var auth:Auth?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.auth = Auth.auth()
+        
         fullNameTextField.layer.cornerRadius = 10.0
         emailTextField.layer.cornerRadius = 10.0
         passwordTextField.layer.cornerRadius = 10.0
@@ -58,6 +63,17 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
+        
+        let email:String = self.emailTextField.text ?? ""
+        let password:String = self.passwordTextField.text ?? ""
+        
+        self.auth?.createUser(withEmail: email, password: password, completion: { (result, error) in
+            if error != nil {
+                print("falha ao cadastrar")
+            } else {
+                print("sucesso ao cadastrar")
+            }
+        })
     }
     
     @IBAction func tappedLoginButton(_ sender: UIButton) {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 
@@ -25,9 +26,22 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var registerButton: UIButton!
     
+    var auth:Auth?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //MARK: Posterior implementação do login com Firebase
+//        Auth.auth().createUser(withEmail: "ronaldo@gmail.com", password: "123456") { authResult, error in
+//            if error == nil {
+//                print("cadastro com sucesso!")
+//            } else {
+//                print("falha ao cadastar!")
+//            }
+//        }
+//
+//        self.auth = Auth.auth()
+        
         loginButton.layer.cornerRadius = 10.0
         emailTextField.layer.cornerRadius = 10.0
         passwordTextLabel.layer.cornerRadius = 10.0
@@ -58,12 +72,32 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedLoginButton(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarController
         
+//MARK: Posterior implementação do login com Firebase
+//        let email:String = self.emailTextField.text ?? ""
+//        let password:String = self.passwordTextLabel.text ?? ""
+//
+//        self.auth?.createUser(withEmail: email, password: password, completion: { (user, error) in
+//            if error != nil {
+//                print("dados incorretos, tente novamente!")
+//
+//            } else {
+//                if user == nil {
+//                    print("tivemos um problema inesperado!")
+//
+//            } else {
+//                print("login feito com sucesso")
+//            }
+//        })
+
+        
+        let vc = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarController
+
         navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
     }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
+        
         let vc = UIStoryboard(name: "SignUpViewController", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController
         
         navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
@@ -77,9 +111,7 @@ class ViewController: UIViewController {
         }
     }
     
-
 }
-
 
 extension ViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {

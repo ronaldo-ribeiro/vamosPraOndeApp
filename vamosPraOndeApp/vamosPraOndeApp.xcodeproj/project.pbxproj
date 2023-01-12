@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D14228ED2928670000784508 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14228EC2928670000784508 /* SignUpViewController.swift */; };
 		D14228EF2928672600784508 /* SignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D14228EE2928672600784508 /* SignUpViewController.storyboard */; };
+		D14C4AF529675A8200065186 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D14C4AF429675A8200065186 /* GoogleService-Info.plist */; };
+		D14C4AF829675BC700065186 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D14C4AF729675BC700065186 /* FirebaseAuth */; };
 		D172D425293CF37500C7C068 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D172D424293CF37500C7C068 /* ResetPasswordViewController.swift */; };
 		D172D427293CF3B300C7C068 /* ResetPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D172D426293CF3B300C7C068 /* ResetPasswordViewController.storyboard */; };
 		D17548CA294E7576002E65B8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17548C9294E7576002E65B8 /* HomeViewController.swift */; };
@@ -45,11 +47,13 @@
 		D1BAFB93291D48A0007194C5 /* Urbanist-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB7D291D48A0007194C5 /* Urbanist-ThinItalic.ttf */; };
 		D1BAFB96291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */; };
 		D1D8090D295C9B0700B04ADA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D8090C295C9B0700B04ADA /* TabBarController.swift */; };
+		D1E2735E296CED5B00ED5441 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E2735D296CED5B00ED5441 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D14228EC2928670000784508 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D14228EE2928672600784508 /* SignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpViewController.storyboard; sourceTree = "<group>"; };
+		D14C4AF429675A8200065186 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D172D424293CF37500C7C068 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		D172D426293CF3B300C7C068 /* ResetPasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResetPasswordViewController.storyboard; sourceTree = "<group>"; };
 		D17548C9294E7576002E65B8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 		D1BAFB7D291D48A0007194C5 /* Urbanist-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ThinItalic.ttf"; sourceTree = "<group>"; };
 		D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		D1D8090C295C9B0700B04ADA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D1E2735D296CED5B00ED5441 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14C4AF829675BC700065186 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +148,7 @@
 		D17548CF294E780B002E65B8 /* NewDestination */ = {
 			isa = PBXGroup;
 			children = (
+				D1E2735D296CED5B00ED5441 /* LocationManager.swift */,
 				D17548D8294E798C002E65B8 /* NewDestinationViewController.swift */,
 				D17548DA294E7999002E65B8 /* NewDestinationViewController.storyboard */,
 			);
@@ -188,6 +195,7 @@
 				D1BAFB5E291D3FBF007194C5 /* LaunchScreen.storyboard */,
 				D1BAFB69291D48A0007194C5 /* Urbanist */,
 				D1BAFB61291D3FBF007194C5 /* Info.plist */,
+				D14C4AF429675A8200065186 /* GoogleService-Info.plist */,
 			);
 			path = vamosPraOndeApp;
 			sourceTree = "<group>";
@@ -243,6 +251,9 @@
 			dependencies = (
 			);
 			name = vamosPraOndeApp;
+			packageProductDependencies = (
+				D14C4AF729675BC700065186 /* FirebaseAuth */,
+			);
 			productName = vamosPraOndeApp;
 			productReference = D1BAFB50291D3FBD007194C5 /* vamosPraOndeApp.app */;
 			productType = "com.apple.product-type.application";
@@ -271,6 +282,9 @@
 				Base,
 			);
 			mainGroup = D1BAFB47291D3FBD007194C5;
+			packageReferences = (
+				D14C4AF629675BC700065186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D1BAFB51291D3FBD007194C5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -306,6 +320,7 @@
 				D1BAFB8D291D48A0007194C5 /* Urbanist-Light.ttf in Resources */,
 				D1BAFB96291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf in Resources */,
 				D17548D7294E7972002E65B8 /* DetailsViewController.storyboard in Resources */,
+				D14C4AF529675A8200065186 /* GoogleService-Info.plist in Resources */,
 				D1BAFB91291D48A0007194C5 /* Urbanist-Medium.ttf in Resources */,
 				D1BAFB5B291D3FBD007194C5 /* Main.storyboard in Resources */,
 				D1BAFB90291D48A0007194C5 /* Urbanist-ExtraBold.ttf in Resources */,
@@ -326,6 +341,7 @@
 				D17548D9294E798C002E65B8 /* NewDestinationViewController.swift in Sources */,
 				D1BAFB58291D3FBD007194C5 /* ViewController.swift in Sources */,
 				D1BAFB54291D3FBD007194C5 /* AppDelegate.swift in Sources */,
+				D1E2735E296CED5B00ED5441 /* LocationManager.swift in Sources */,
 				D1D8090D295C9B0700B04ADA /* TabBarController.swift in Sources */,
 				D172D425293CF37500C7C068 /* ResetPasswordViewController.swift in Sources */,
 				D17548D5294E7963002E65B8 /* DetailsViewController.swift in Sources */,
@@ -554,6 +570,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D14C4AF629675BC700065186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D14C4AF729675BC700065186 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D14C4AF629675BC700065186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D1BAFB48291D3FBD007194C5 /* Project object */;
 }
