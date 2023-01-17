@@ -7,21 +7,13 @@
 
 import UIKit
 import Firebase
+import FirebaseCore
+import FirebaseFirestore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-//        UIFont.familyNames.forEach({ name in
-//            for font_name in UIFont.fontNames(forFamilyName: name) {
-//                print("\n\(font_name)")
-//            }
-//
-//        })
-        FirebaseApp.configure()
         
         return true
     }

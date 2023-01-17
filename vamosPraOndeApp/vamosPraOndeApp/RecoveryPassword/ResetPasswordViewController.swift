@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ResetPasswordViewController: UIViewController {
 
@@ -39,6 +40,16 @@ class ResetPasswordViewController: UIViewController {
     }
     
     @IBAction func tappedResetButton(_ sender: UIButton) {
+        let auth = Auth.auth()
+        auth.sendPasswordReset(withEmail: emailTextField.text!) { (error) in
+            if let error = error {
+                let alert = Service.createAlertController(title: "Error", message: error.localizedDescription)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            let alert = Service.createAlertController(title: "Redefinição de Senha", message: "O e-mail para redefinir a sua senha foi enviado")
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func validateTextField() {

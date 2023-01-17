@@ -6,35 +6,22 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
 
+    var cityList: [CityModel] = [CityModel(cityName: "São Paulo", timeRemaing: "Em 2 meses e 18 dias")]
     
     @IBOutlet weak var addDestinationButton: UIButton!
     
-    @IBOutlet weak var saoPauloButton: UIButton!
-    
-    @IBOutlet weak var saoPauloLabel: UILabel!
-    
-    @IBOutlet weak var recifeButton: UIButton!
-    
-    @IBOutlet weak var recifeLabel: UILabel!
-    
-    @IBOutlet weak var parisButton: UIButton!
-    
-    @IBOutlet weak var parisLabel: UILabel!
-    
-    @IBOutlet weak var romaButton: UIButton!
-    
-    @IBOutlet weak var romaLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        saoPauloButton.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 24)
-//        recifeButton.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 24)
-//        parisButton.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 24)
-//        romaButton.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 24)
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CityTableViewCell.nib(), forCellReuseIdentifier: CityTableViewCell.identifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,27 +29,33 @@ class HomeViewController: UIViewController {
         self.tabBarController?.navigationItem.hidesBackButton = true
     }
     
-    
     @IBAction func tappedAddDestinationButton(_ sender: UIButton) {
         let vc = UIStoryboard(name: "NewDestinationViewController", bundle: nil).instantiateViewController(withIdentifier: "NewDestinationViewController") as? NewDestinationViewController
-        
-        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
-        
-    }
-    
-    @IBAction func tappedSaoPauloButton(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "DetailsViewController", bundle: nil).instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
-        
+//        vc?.delegate = self
         navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
     }
-    
-    @IBAction func tappedRecifeButton(_ sender: UIButton) {
-    }
-    
-    @IBAction func tappedParisButton(_ sender: UIButton) {
-    }
-    
-    @IBAction func tappedRomaButton(_ sender: Any) {
-    }
-    
 }
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cityList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CityTableViewCell.identifier, for: indexPath) as? CityTableViewCell
+        cell?.setupCell(city: cityList[indexPath.row])
+        return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+}
+
+//extension HomeViewController: NewDestinationViewControllerDelegate {
+//    func didSaveCity(city: String) {
+//        let newCity = CityModel(cityName: city, timeRemaing: "")
+//        cityList.append(newCity)
+//        tableView.reloadData()
+//    }
+//}
