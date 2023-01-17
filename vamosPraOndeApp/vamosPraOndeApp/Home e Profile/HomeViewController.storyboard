@@ -8,9 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Urbanist-Italic.ttf">
-            <string>Urbanist-Italic</string>
-        </array>
         <array key="Urbanist-ThinItalic.ttf">
             <string>Urbanist-ThinItalic</string>
         </array>
@@ -105,32 +102,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 meses, 21 dias e 2 horas" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p81-1S-q1A">
-                                <rect key="frame" x="151" y="224.66666666666666" width="222" height="24"/>
-                                <fontDescription key="fontDescription" name="Urbanist-Italic" family="Urbanist" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <color key="highlightedColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-h7-a56">
-                                <rect key="frame" x="20" y="162" width="129.66666666666666" height="43"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="São Paulo">
-                                    <fontDescription key="titleFontDescription" name="Urbanist-SemiBold" family="Urbanist" pointSize="24"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="tappedSaoPauloButton:" destination="ODJ-hD-VOu" eventType="touchUpInside" id="UYQ-TY-XLS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ub3-y2-vz3">
-                                <rect key="frame" x="19.999999999999993" y="215" width="89.333333333333314" height="43"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Recife">
-                                    <fontDescription key="titleFontDescription" name="Urbanist-SemiBold" family="Urbanist" pointSize="24"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="tappedRecifeButton:" destination="ODJ-hD-VOu" eventType="touchUpInside" id="dgg-2j-h7X"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKk-nR-pfO">
                                 <rect key="frame" x="67.333333333333343" y="94" width="258.33333333333326" height="38"/>
                                 <state key="normal" title="Button"/>
@@ -142,84 +113,31 @@
                                     <action selector="tappedAddDestinationButton:" destination="ODJ-hD-VOu" eventType="touchUpInside" id="xad-op-VVd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 meses, 15 dias e 6 horas" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfP-nx-ept">
-                                <rect key="frame" x="149.66666666666663" y="171.66666666666666" width="223.33333333333337" height="24"/>
-                                <fontDescription key="fontDescription" name="Urbanist-Italic" family="Urbanist" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <color key="highlightedColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="6 meses, 3 dias e 9 horas" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuS-DZ-GFP">
-                                <rect key="frame" x="156.66666666666663" y="277.66666666666669" width="216.33333333333337" height="24"/>
-                                <fontDescription key="fontDescription" name="Urbanist-Italic" family="Urbanist" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <color key="highlightedColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 meses, 18 dias e 17 horas" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xu3-Ge-Bl6">
-                                <rect key="frame" x="145.33333333333337" y="330.66666666666669" width="227.66666666666663" height="24"/>
-                                <fontDescription key="fontDescription" name="Urbanist-Italic" family="Urbanist" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <color key="highlightedColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26h-mC-MiU">
-                                <rect key="frame" x="20" y="268" width="74.666666666666671" height="43"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Paris">
-                                    <fontDescription key="titleFontDescription" name="Urbanist-SemiBold" family="Urbanist" pointSize="24"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="tappedParisButton:" destination="ODJ-hD-VOu" eventType="touchUpInside" id="sEu-ew-ASU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOG-RI-cBv">
-                                <rect key="frame" x="20" y="321" width="86" height="43"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Roma">
-                                    <fontDescription key="titleFontDescription" name="Urbanist-SemiBold" family="Urbanist" pointSize="24"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="tappedRomaButton:" destination="ODJ-hD-VOu" eventType="touchUpInside" id="PEx-QX-nNX"/>
-                                </connections>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="l6s-2Q-1FS">
+                                <rect key="frame" x="20" y="162" width="353" height="607"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YT2-wp-fyE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ub3-y2-vz3" firstAttribute="leading" secondItem="YT2-wp-fyE" secondAttribute="leading" constant="20" id="1AB-5q-Zob"/>
                             <constraint firstItem="vKk-nR-pfO" firstAttribute="centerX" secondItem="Flz-ka-DwS" secondAttribute="centerX" id="2Ki-rI-tEP"/>
-                            <constraint firstItem="kOG-RI-cBv" firstAttribute="top" secondItem="26h-mC-MiU" secondAttribute="bottom" constant="10" id="8XF-mi-eAI"/>
+                            <constraint firstItem="YT2-wp-fyE" firstAttribute="trailing" secondItem="l6s-2Q-1FS" secondAttribute="trailing" constant="20" id="Cs5-DN-aip"/>
+                            <constraint firstItem="l6s-2Q-1FS" firstAttribute="bottom" secondItem="YT2-wp-fyE" secondAttribute="bottom" id="EbV-jy-0nw"/>
                             <constraint firstItem="vKk-nR-pfO" firstAttribute="top" secondItem="YT2-wp-fyE" secondAttribute="top" constant="35" id="GHe-7u-beF"/>
-                            <constraint firstItem="26h-mC-MiU" firstAttribute="top" secondItem="Ub3-y2-vz3" secondAttribute="bottom" constant="10" id="GxM-i5-8YM"/>
-                            <constraint firstItem="Onw-h7-a56" firstAttribute="top" secondItem="vKk-nR-pfO" secondAttribute="bottom" constant="30" id="ISH-ue-sdz"/>
-                            <constraint firstItem="26h-mC-MiU" firstAttribute="leading" secondItem="YT2-wp-fyE" secondAttribute="leading" constant="20" id="Mg8-jH-nVc"/>
-                            <constraint firstItem="YT2-wp-fyE" firstAttribute="trailing" secondItem="DuS-DZ-GFP" secondAttribute="trailing" constant="20" id="Rcd-Hb-QXe"/>
-                            <constraint firstItem="YT2-wp-fyE" firstAttribute="trailing" secondItem="wfP-nx-ept" secondAttribute="trailing" constant="20" id="Sb9-8P-JSd"/>
-                            <constraint firstItem="Ub3-y2-vz3" firstAttribute="top" secondItem="Onw-h7-a56" secondAttribute="bottom" constant="10" id="TWv-dl-QIz"/>
-                            <constraint firstItem="Onw-h7-a56" firstAttribute="leading" secondItem="YT2-wp-fyE" secondAttribute="leading" constant="20" id="UYJ-fL-Ls6"/>
-                            <constraint firstItem="DuS-DZ-GFP" firstAttribute="centerY" secondItem="26h-mC-MiU" secondAttribute="centerY" id="blt-Wb-VJt"/>
-                            <constraint firstItem="p81-1S-q1A" firstAttribute="centerY" secondItem="Ub3-y2-vz3" secondAttribute="centerY" id="f5f-PB-aNz"/>
-                            <constraint firstItem="kOG-RI-cBv" firstAttribute="leading" secondItem="YT2-wp-fyE" secondAttribute="leading" constant="20" id="fFA-ar-gc9"/>
-                            <constraint firstItem="YT2-wp-fyE" firstAttribute="trailing" secondItem="p81-1S-q1A" secondAttribute="trailing" constant="20" id="l0R-0J-jUE"/>
-                            <constraint firstItem="Xu3-Ge-Bl6" firstAttribute="centerY" secondItem="kOG-RI-cBv" secondAttribute="centerY" id="tnK-rz-bzz"/>
-                            <constraint firstItem="YT2-wp-fyE" firstAttribute="trailing" secondItem="Xu3-Ge-Bl6" secondAttribute="trailing" constant="20" id="wAn-FQ-N8Y"/>
-                            <constraint firstItem="wfP-nx-ept" firstAttribute="centerY" secondItem="Onw-h7-a56" secondAttribute="centerY" id="xw6-LB-BWV"/>
+                            <constraint firstItem="l6s-2Q-1FS" firstAttribute="leading" secondItem="YT2-wp-fyE" secondAttribute="leading" constant="20" id="cj4-je-tdc"/>
+                            <constraint firstItem="l6s-2Q-1FS" firstAttribute="top" secondItem="vKk-nR-pfO" secondAttribute="bottom" constant="30" id="jex-Sj-hyf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Destinos" image="paperplane" catalog="system" id="uC3-yI-fkI"/>
                     <connections>
                         <outlet property="addDestinationButton" destination="vKk-nR-pfO" id="GCl-ai-tqm"/>
-                        <outlet property="parisButton" destination="DuS-DZ-GFP" id="prB-Rb-S8v"/>
-                        <outlet property="parisLabel" destination="DuS-DZ-GFP" id="2Tu-R2-OMr"/>
-                        <outlet property="recifeButton" destination="Ub3-y2-vz3" id="pcr-25-aLM"/>
-                        <outlet property="recifeLabel" destination="p81-1S-q1A" id="P5j-Le-oLe"/>
-                        <outlet property="romaButton" destination="kOG-RI-cBv" id="95f-jz-sDs"/>
-                        <outlet property="romaLabel" destination="Xu3-Ge-Bl6" id="CNU-eZ-q7H"/>
-                        <outlet property="saoPauloButton" destination="Onw-h7-a56" id="NX7-Hz-cox"/>
-                        <outlet property="saoPauloLabel" destination="wfP-nx-ept" id="GIa-NG-LNK"/>
+                        <outlet property="tableView" destination="l6s-2Q-1FS" id="VaY-K5-jR0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNk-CM-gju" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="629" y="-367"/>
+            <point key="canvasLocation" x="628.24427480916029" y="-367.6056338028169"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8eH-bd-Emq">

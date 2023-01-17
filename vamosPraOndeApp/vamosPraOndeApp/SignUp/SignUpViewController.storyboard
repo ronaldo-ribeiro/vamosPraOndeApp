@@ -25,13 +25,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cadastre-se" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2a-SW-gCV">
-                                <rect key="frame" x="20" y="143" width="353" height="31.333333333333343"/>
+                                <rect key="frame" x="20" y="101" width="353" height="31.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Urbanist-ThinItalic" family="Urbanist" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+<<<<<<< HEAD
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ronaldo Ribeiro" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IjX-SJ-gtR" customClass="CustonTextField" customModule="vamosPraOndeApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="282.66666666666669" width="353" height="56"/>
+=======
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome e Sobrenome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IjX-SJ-gtR">
+                                <rect key="frame" x="20" y="241" width="353" height="56"/>
+>>>>>>> feature/home
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="DhU-QV-g8P"/>
@@ -39,8 +44,8 @@
                                 <fontDescription key="fontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ronaldo@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m26-SH-Pvt">
-                                <rect key="frame" x="20" y="368.66666666666669" width="353" height="56"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m26-SH-Pvt">
+                                <rect key="frame" x="20" y="327" width="353" height="56"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="6JM-Gf-Iqg"/>
@@ -49,7 +54,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytY-tQ-Es8">
-                                <rect key="frame" x="20" y="681.66666666666663" width="353" height="56"/>
+                                <rect key="frame" x="20" y="640" width="353" height="56"/>
                                 <color key="backgroundColor" red="0.050980392159999999" green="0.43137254899999999" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="tE8-uO-Bl3"/>
@@ -64,7 +69,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Já possui uma conta?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFh-1h-M7L">
-                                <rect key="frame" x="20" y="757.66666666666663" width="150.66666666666666" height="35"/>
+                                <rect key="frame" x="20" y="716" width="150.66666666666666" height="35"/>
                                 <color key="tintColor" red="0.49019607840000001" green="0.51764705879999995" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="nYn-84-003"/>
@@ -74,7 +79,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Lg-gl-BXY">
-                                <rect key="frame" x="190.66666666666663" y="757.66666666666663" width="182.33333333333337" height="35"/>
+                                <rect key="frame" x="190" y="716" width="182.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Bhg-P2-CV7"/>
                                 </constraints>
@@ -88,7 +93,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ak8-bG-ehD">
-                                <rect key="frame" x="20" y="199.33333333333334" width="353" height="43.333333333333343"/>
+                                <rect key="frame" x="20" y="158" width="353" height="43.333333333333343"/>
                                 <color key="tintColor" red="0.49019607840000001" green="0.51764705879999995" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Por favor, insira suas informações 
 e crie sua conta</string>
@@ -96,26 +101,26 @@ e crie sua conta</string>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vN9-u8-QQn">
-                                <rect key="frame" x="20" y="454.66666666666669" width="353" height="56"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Crie uma senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vN9-u8-QQn">
+                                <rect key="frame" x="20" y="413" width="353" height="56"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="xDy-SD-L7b"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9NO-7y-XiB">
-                                <rect key="frame" x="20" y="540.66666666666663" width="353" height="56"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repita a senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9NO-7y-XiB">
+                                <rect key="frame" x="20" y="499" width="353" height="56"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="i4f-fs-eNe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Urbanist-Regular" family="Urbanist" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A senha deve ter no mínimo 5 caracteres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvw-3e-Jpa">
-                                <rect key="frame" x="20" y="626.66666666666663" width="353" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A senha deve ter no mínimo 6 caracteres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvw-3e-Jpa">
+                                <rect key="frame" x="20" y="585" width="353" height="35"/>
                                 <color key="tintColor" red="0.49019607840000001" green="0.51764705879999995" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="lk7-Uk-7I4"/>
@@ -133,7 +138,7 @@ e crie sua conta</string>
                             <constraint firstItem="Ak8-bG-ehD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="0st-yl-iWD"/>
                             <constraint firstItem="Wvw-3e-Jpa" firstAttribute="top" secondItem="9NO-7y-XiB" secondAttribute="bottom" constant="30" id="1de-4p-fv2"/>
                             <constraint firstItem="O2a-SW-gCV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="1sY-hK-V2x"/>
-                            <constraint firstItem="O2a-SW-gCV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="84" id="2E1-j4-Vt3"/>
+                            <constraint firstItem="O2a-SW-gCV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="42" id="2E1-j4-Vt3"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="IjX-SJ-gtR" secondAttribute="trailing" constant="20" id="6pm-9w-Jqq"/>
                             <constraint firstItem="m26-SH-Pvt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="8yx-wr-WjH"/>
                             <constraint firstItem="ytY-tQ-Es8" firstAttribute="top" secondItem="Wvw-3e-Jpa" secondAttribute="bottom" constant="20" id="A9l-Md-cCE"/>

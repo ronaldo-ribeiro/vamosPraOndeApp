@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController {
 
@@ -25,14 +26,17 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func tappedLogoutButton(_ sender: UIButton) {
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
-        for aViewController in viewControllers {
-            if aViewController is ViewController {
-                self.navigationController!.popToViewController(aViewController, animated: true)
-            }
+//        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
+//        for aViewController in viewControllers {
+//            if aViewController is ViewController {
+//                self.navigationController!.popToViewController(aViewController, animated: true)
+//            }
+//        }
+        
+        do {
+          try Auth.auth().signOut()
+        } catch {
+          print("Sign out error")
         }
     }
-    
-
-
 }

@@ -8,11 +8,27 @@
 import UIKit
 import Firebase
 
+<<<<<<< HEAD
 //class CustonTextField: UITextField {
 //
 //}
 
 class SignUpViewController: UIViewController {
+=======
+protocol SignUpViewControllerProtocol: AnyObject {
+    func tappedRegisterButton()
+}
+
+class SignUpViewController: UIViewController, SignUpViewModelProtocol {
+    
+    private weak var delegate: SignUpViewControllerProtocol?
+    
+    public func delegate(delegate: SignUpViewControllerProtocol?) {
+        self.delegate = delegate
+    }
+    
+    var viewModel: SignUpViewModel = SignUpViewModel()
+>>>>>>> feature/home
 
     @IBOutlet weak var registerTitleLabel: UILabel!
     
@@ -34,12 +50,10 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
-    var auth:Auth?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.auth = Auth.auth()
+        viewModel.delegate(delegate: self)
         
         fullNameTextField.layer.cornerRadius = 10.0
         emailTextField.layer.cornerRadius = 10.0
@@ -64,16 +78,8 @@ class SignUpViewController: UIViewController {
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
         
-        let email:String = self.emailTextField.text ?? ""
-        let password:String = self.passwordTextField.text ?? ""
-        
-        self.auth?.createUser(withEmail: email, password: password, completion: { (result, error) in
-            if error != nil {
-                print("falha ao cadastrar")
-            } else {
-                print("sucesso ao cadastrar")
-            }
-        })
+        viewModel.registerUser(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
+    
     }
     
     @IBAction func tappedLoginButton(_ sender: UIButton) {
@@ -92,7 +98,6 @@ class SignUpViewController: UIViewController {
             registerButton.isEnabled = false
         }
     }
-     
 }
 
 extension SignUpViewController: UITextFieldDelegate {
@@ -109,5 +114,30 @@ extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension SignUpViewController: SignUpViewControllerProtocol {
+    func tappedRegisterButton() {
+        let vc = UIStoryboard(name: "ViewController", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController
+        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
+    }
+    
+
+    func sucessRegister() {
+//        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController
+//        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
+        for aViewController in viewControllers {
+            if aViewController is ViewController {
+                self.navigationController!.popToViewController(aViewController, animated: true)
+            }
+        }
+    }
+    
+    
+    func errorRegister(errorMessage: String) {
+        print(#function)
+        Alert(controller: self).showAlertInformation(title: "Ops, error cadastro!", message: errorMessage)
     }
 }

@@ -8,7 +8,19 @@
 import UIKit
 import Firebase
 
+protocol ViewControllerProtocol: AnyObject {
+    func tappedLoginButton()
+}
+
 class ViewController: UIViewController {
+    
+    private weak var delegate: ViewControllerProtocol?
+    
+    public func delegate(delegate: ViewControllerProtocol?) {
+        self.delegate = delegate
+    }
+    
+    var viewModel: LoginViewModel = LoginViewModel()
 
     @IBOutlet weak var loginLabel: UILabel!
     
@@ -26,21 +38,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var registerButton: UIButton!
     
-    var auth:Auth?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //MARK: Posterior implementação do login com Firebase
-//        Auth.auth().createUser(withEmail: "ronaldo@gmail.com", password: "123456") { authResult, error in
-//            if error == nil {
-//                print("cadastro com sucesso!")
-//            } else {
-//                print("falha ao cadastar!")
-//            }
-//        }
-//
-//        self.auth = Auth.auth()
+        viewModel.delegate(delegate: self)
         
         loginButton.layer.cornerRadius = 10.0
         emailTextField.layer.cornerRadius = 10.0
@@ -60,6 +62,13 @@ class ViewController: UIViewController {
         
     }
     
+<<<<<<< HEAD
+=======
+    func hideKeyboardGesture() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
+    }
+>>>>>>> feature/home
     
 
     @IBAction func tappedForgotPasswordButton(_ sender: UIButton) {
@@ -69,34 +78,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedLoginButton(_ sender: UIButton) {
-        
-//MARK: Posterior implementação do login com Firebase
-//        let email:String = self.emailTextField.text ?? ""
-//        let password:String = self.passwordTextLabel.text ?? ""
-//
-//        self.auth?.createUser(withEmail: email, password: password, completion: { (user, error) in
-//            if error != nil {
-//                print("dados incorretos, tente novamente!")
-//
-//            } else {
-//                if user == nil {
-//                    print("tivemos um problema inesperado!")
-//
-//            } else {
-//                print("login feito com sucesso")
-//            }
-//        })
-
-        
-        let vc = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarController
-
-        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
+        viewModel.login(email: emailTextField.text ?? "", password: passwordTextLabel.text ?? "")
     }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
-        
         let vc = UIStoryboard(name: "SignUpViewController", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController
-        
         navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
     }
     
@@ -125,4 +111,18 @@ extension ViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+}
+
+extension ViewController: LoginViewModelProtocol {
+    func sucessLogin() {
+        let vc = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarController
+        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
+    }
+    
+    func errorLogin(errorMessage: String) {
+        print(#function)
+        Alert(controller: self).showAlertInformation(title: "Ops, error login!", message: errorMessage)
+    }
+    
+    
 }
