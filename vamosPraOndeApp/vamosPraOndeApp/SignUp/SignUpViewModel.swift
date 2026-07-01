@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 
 protocol SignUpViewModelProtocol: AnyObject {
     func sucessRegister()

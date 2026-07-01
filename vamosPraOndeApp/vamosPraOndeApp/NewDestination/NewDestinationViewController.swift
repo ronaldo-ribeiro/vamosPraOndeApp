@@ -59,7 +59,7 @@ class NewDestinationViewController: UIViewController {
         let dataToSave: [String: Any] = ["city": localization]
         docRef.setData(dataToSave) { (error) in
             if let error = error {
-                print("Nós temos um error: \(error.localizedDescription)")
+                print("Nós temos um erro: \(error.localizedDescription)")
             } else {
                 print("A informação não foi salva")
             }
