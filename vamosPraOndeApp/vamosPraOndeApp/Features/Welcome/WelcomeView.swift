@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    var onLogin: () -> Void = {}
+    var onSignUp: () -> Void = {}
+
     var body: some View {
         ZStack {
             Color.vpoSand.ignoresSafeArea()
@@ -54,9 +57,9 @@ struct WelcomeView: View {
             Spacer()
 
             VStack(spacing: Spacing.sm) {
-                Button("Entrar") {}
+                Button("Entrar", action: onLogin)
                     .buttonStyle(PrimaryButtonStyle())
-                Button("Criar conta") {}
+                Button("Criar conta", action: onSignUp)
                     .buttonStyle(OutlineButtonStyle())
             }
             .padding(.bottom, Spacing.md)

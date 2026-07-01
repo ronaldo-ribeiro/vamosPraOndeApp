@@ -11,10 +11,12 @@ import SwiftUI
 @main
 struct VamosPraOndeApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+    @StateObject private var auth = AuthService()
 
     var body: some Scene {
         WindowGroup {
             RootView()
+                .environmentObject(auth)
         }
     }
 }

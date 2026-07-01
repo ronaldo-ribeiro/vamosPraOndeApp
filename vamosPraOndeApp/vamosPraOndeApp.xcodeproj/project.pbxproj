@@ -10,8 +10,13 @@
 		0D61739A14D23989A1ED1E89 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */; };
 		441C3C4C0D4AB5F43B8C04E5 /* Pods_vamosPraOndeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */; };
 		50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25693AA1C51D6E11D17BBD3 /* RootView.swift */; };
+		64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0262E62ED903E239FE87B306 /* SignUpView.swift */; };
+		7FA281D8D93748D51DA416CE /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715796514FBEA826675FB981 /* ErrorBanner.swift */; };
+		8191779992B81C209FFFFF78 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759693CF363A15BF3D16B2D1 /* LoginView.swift */; };
 		86C5A52894E3A21E8124549D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799EFFED51CAB6C06E8D343D /* WelcomeView.swift */; };
 		8A68B0E71084E468DCA6F9D1 /* VamosPraOndeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */; };
+		90D7DE02C6D77B5BC364A986 /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34A419395F409009F3EB25 /* AuthFlowView.swift */; };
+		932282BFD16CE7A8C307F407 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475203DA568856EF307222B /* AuthHeader.swift */; };
 		B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72593CC4AC6BB5144E159D9C /* AppFont.swift */; };
 		BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36ED71B036CE1129056B2F /* AppColor.swift */; };
 		D10458FF2974B4C200261526 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10458FE2974B4C200261526 /* ProfileViewModel.swift */; };
@@ -61,19 +66,31 @@
 		D1F2F2F1297360DF004A6200 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2F2F0297360DF004A6200 /* LoginViewModel.swift */; };
 		D1F2F2F429737BC8004A6200 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2F2F329737BC8004A6200 /* Alert.swift */; };
 		D1F2F2F6297387D5004A6200 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2F2F5297387D5004A6200 /* SignUpViewModel.swift */; };
+		D9FC06C4CD5D98EEE4FFFD63 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */; };
+		DC7DF7DB1D314DFD291EEEF7 /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A741242B7F72183F80E1FCE6 /* AppTextField.swift */; };
 		DFB81499DC458A12C4BB748D /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */; };
+		E0293645CAF40591CB82BB27 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409CD1E05CA693E1110F0D03 /* AuthService.swift */; };
+		E401AFA31328E58A58C8D884 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */; };
 		FE28F4D864B00E68FCE1237A /* SunsetCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0262E62ED903E239FE87B306 /* SignUpView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3A34A419395F409009F3EB25 /* AuthFlowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
+		409CD1E05CA693E1110F0D03 /* AuthService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		49EFACD31BFE6198AE844676 /* Pods-vamosPraOndeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosPraOndeApp.swift; sourceTree = "<group>"; };
 		5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B36ED71B036CE1129056B2F /* AppColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		715796514FBEA826675FB981 /* ErrorBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
 		72593CC4AC6BB5144E159D9C /* AppFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		759693CF363A15BF3D16B2D1 /* LoginView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		799EFFED51CAB6C06E8D343D /* WelcomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunsetCover.swift; sourceTree = "<group>"; };
+		A741242B7F72183F80E1FCE6 /* AppTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
 		C25693AA1C51D6E11D17BBD3 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D10458FE2974B4C200261526 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -126,6 +143,7 @@
 		D1F2F2F329737BC8004A6200 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		D1F2F2F5297387D5004A6200 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		F475203DA568856EF307222B /* AuthHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,9 +166,24 @@
 				E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */,
 				53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */,
 				89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */,
+				A741242B7F72183F80E1FCE6 /* AppTextField.swift */,
+				715796514FBEA826675FB981 /* ErrorBanner.swift */,
 			);
 			name = DesignSystem;
 			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		5347DB574CBF304E70A1AA18 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				3A34A419395F409009F3EB25 /* AuthFlowView.swift */,
+				F475203DA568856EF307222B /* AuthHeader.swift */,
+				759693CF363A15BF3D16B2D1 /* LoginView.swift */,
+				0262E62ED903E239FE87B306 /* SignUpView.swift */,
+				1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */,
+			);
+			name = Auth;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		5E0F1E0CABD56728232D0400 /* Welcome */ = {
@@ -160,6 +193,24 @@
 			);
 			name = Welcome;
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		6083CF7F13AFB52B0FD69BC1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				409CD1E05CA693E1110F0D03 /* AuthService.swift */,
+			);
+			name = Services;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		86411F9A8D4F9BAD23DCDD76 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */,
+			);
+			name = Home;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		9F069D53D60CEB12EE8B1E7C /* App */ = {
@@ -282,6 +333,7 @@
 				13D57E05D2506696CC43A8DA /* DesignSystem */,
 				9F069D53D60CEB12EE8B1E7C /* App */,
 				F179B0EA47AE5CA349988B71 /* Features */,
+				6083CF7F13AFB52B0FD69BC1 /* Services */,
 			);
 			path = vamosPraOndeApp;
 			sourceTree = "<group>";
@@ -333,6 +385,8 @@
 			isa = PBXGroup;
 			children = (
 				5E0F1E0CABD56728232D0400 /* Welcome */,
+				5347DB574CBF304E70A1AA18 /* Auth */,
+				86411F9A8D4F9BAD23DCDD76 /* Home */,
 			);
 			name = Features;
 			path = Features;
@@ -513,6 +567,15 @@
 				8A68B0E71084E468DCA6F9D1 /* VamosPraOndeApp.swift in Sources */,
 				50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */,
 				86C5A52894E3A21E8124549D /* WelcomeView.swift in Sources */,
+				E0293645CAF40591CB82BB27 /* AuthService.swift in Sources */,
+				DC7DF7DB1D314DFD291EEEF7 /* AppTextField.swift in Sources */,
+				7FA281D8D93748D51DA416CE /* ErrorBanner.swift in Sources */,
+				90D7DE02C6D77B5BC364A986 /* AuthFlowView.swift in Sources */,
+				932282BFD16CE7A8C307F407 /* AuthHeader.swift in Sources */,
+				8191779992B81C209FFFFF78 /* LoginView.swift in Sources */,
+				64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */,
+				D9FC06C4CD5D98EEE4FFFD63 /* ResetPasswordView.swift in Sources */,
+				E401AFA31328E58A58C8D884 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

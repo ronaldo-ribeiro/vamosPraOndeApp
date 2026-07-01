@@ -2,18 +2,23 @@
 //  RootView.swift
 //  vamosPraOndeApp
 //
-//  Raiz da navegação. Na Fase 1 passa a decidir entre
-//  autenticação e app com base no estado de login.
+//  Raiz da navegação: decide entre o fluxo de autenticação
+//  e o app, conforme o estado de login.
 //
 
 import SwiftUI
 
 struct RootView: View {
-    var body: some View {
-        WelcomeView()
-    }
-}
+    @EnvironmentObject private var auth: AuthService
 
-#Preview {
-    RootView()
+    var body: some View {
+        Group {
+            if auth.isSignedIn {
+                HomeView()
+            } else {
+                AuthFlowView()
+            }
+        }
+        .animation(.easeInOut, value: auth.isSignedIn)
+    }
 }
