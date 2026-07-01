@@ -10,12 +10,25 @@ target 'vamosPraOndeApp' do
 end
 
 # Garante compatibilidade com Xcode moderno:
-# forca o deployment target minimo de todos os Pods para 13.0,
-# evitando o erro de 'libarclite' ausente em targets antigos (iOS 8-11).
+# 1) forca o deployment target minimo de todos os Pods para 13.0,
+#    evitando o erro de 'libarclite' ausente em targets antigos (iOS 8-11);
+# 2) remove a flag invalida '-GCC_WARN_INHIBIT_ALL_WARNINGS' dos fontes do
+#    BoringSSL-GRPC, que o clang moderno rejeita ('unsupported option -G').
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+    end
+
+    target.build_phases.each do |phase|
+      next unless phase.respond_to?(:files)
+      phase.files.each do |file|
+        next unless file.settings && file.settings['COMPILER_FLAGS']
+        flags = file.settings['COMPILER_FLAGS']
+        next unless flags.include?('-GCC_WARN_INHIBIT_ALL_WARNINGS')
+        file.settings['COMPILER_FLAGS'] =
+          flags.gsub('-GCC_WARN_INHIBIT_ALL_WARNINGS', '').squeeze(' ').strip
+      end
     end
   end
 end
