@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D61739A14D23989A1ED1E89 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */; };
 		441C3C4C0D4AB5F43B8C04E5 /* Pods_vamosPraOndeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */; };
+		50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25693AA1C51D6E11D17BBD3 /* RootView.swift */; };
+		86C5A52894E3A21E8124549D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799EFFED51CAB6C06E8D343D /* WelcomeView.swift */; };
+		8A68B0E71084E468DCA6F9D1 /* VamosPraOndeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */; };
+		B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72593CC4AC6BB5144E159D9C /* AppFont.swift */; };
+		BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36ED71B036CE1129056B2F /* AppColor.swift */; };
 		D10458FF2974B4C200261526 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10458FE2974B4C200261526 /* ProfileViewModel.swift */; };
 		D10459012974C75400261526 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10459002974C75400261526 /* Service.swift */; };
 		D14228ED2928670000784508 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14228EC2928670000784508 /* SignUpViewController.swift */; };
@@ -23,7 +29,6 @@
 		D17548D9294E798C002E65B8 /* NewDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17548D8294E798C002E65B8 /* NewDestinationViewController.swift */; };
 		D17548DB294E7999002E65B8 /* NewDestinationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17548DA294E7999002E65B8 /* NewDestinationViewController.storyboard */; };
 		D1BAFB54291D3FBD007194C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */; };
-		D1BAFB56291D3FBD007194C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB55291D3FBD007194C5 /* SceneDelegate.swift */; };
 		D1BAFB58291D3FBD007194C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB57291D3FBD007194C5 /* ViewController.swift */; };
 		D1BAFB5B291D3FBD007194C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB59291D3FBD007194C5 /* Main.storyboard */; };
 		D1BAFB5D291D3FBF007194C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB5C291D3FBF007194C5 /* Assets.xcassets */; };
@@ -56,12 +61,21 @@
 		D1F2F2F1297360DF004A6200 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2F2F0297360DF004A6200 /* LoginViewModel.swift */; };
 		D1F2F2F429737BC8004A6200 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2F2F329737BC8004A6200 /* Alert.swift */; };
 		D1F2F2F6297387D5004A6200 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2F2F5297387D5004A6200 /* SignUpViewModel.swift */; };
+		DFB81499DC458A12C4BB748D /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */; };
+		FE28F4D864B00E68FCE1237A /* SunsetCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		49EFACD31BFE6198AE844676 /* Pods-vamosPraOndeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosPraOndeApp.swift; sourceTree = "<group>"; };
 		5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B36ED71B036CE1129056B2F /* AppColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		72593CC4AC6BB5144E159D9C /* AppFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		799EFFED51CAB6C06E8D343D /* WelcomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunsetCover.swift; sourceTree = "<group>"; };
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
+		C25693AA1C51D6E11D17BBD3 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D10458FE2974B4C200261526 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		D10459002974C75400261526 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		D14228EC2928670000784508 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +92,6 @@
 		D17548DA294E7999002E65B8 /* NewDestinationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewDestinationViewController.storyboard; sourceTree = "<group>"; };
 		D1BAFB50291D3FBD007194C5 /* vamosPraOndeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vamosPraOndeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D1BAFB55291D3FBD007194C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D1BAFB57291D3FBD007194C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D1BAFB5A291D3FBD007194C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1BAFB5C291D3FBF007194C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +125,7 @@
 		D1F2F2F0297360DF004A6200 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D1F2F2F329737BC8004A6200 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		D1F2F2F5297387D5004A6200 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +140,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13D57E05D2506696CC43A8DA /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				6B36ED71B036CE1129056B2F /* AppColor.swift */,
+				72593CC4AC6BB5144E159D9C /* AppFont.swift */,
+				E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */,
+				53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */,
+				89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */,
+			);
+			name = DesignSystem;
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		5E0F1E0CABD56728232D0400 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				799EFFED51CAB6C06E8D343D /* WelcomeView.swift */,
+			);
+			name = Welcome;
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		9F069D53D60CEB12EE8B1E7C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */,
+				C25693AA1C51D6E11D17BBD3 /* RootView.swift */,
+			);
+			name = App;
+			path = App;
+			sourceTree = "<group>";
+		};
 		A133D876E5ABD72581A5F674 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */,
-				D1BAFB55291D3FBD007194C5 /* SceneDelegate.swift */,
 				D1F2F2F229737BB4004A6200 /* Alert */,
 				D1A2F764293E3881002059AD /* Login */,
 				D14228EB292866A700784508 /* SignUp */,
@@ -234,6 +279,9 @@
 				D1BAFB69291D48A0007194C5 /* Urbanist */,
 				D1BAFB61291D3FBF007194C5 /* Info.plist */,
 				D14C4AF429675A8200065186 /* GoogleService-Info.plist */,
+				13D57E05D2506696CC43A8DA /* DesignSystem */,
+				9F069D53D60CEB12EE8B1E7C /* App */,
+				F179B0EA47AE5CA349988B71 /* Features */,
 			);
 			path = vamosPraOndeApp;
 			sourceTree = "<group>";
@@ -281,6 +329,15 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		F179B0EA47AE5CA349988B71 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				5E0F1E0CABD56728232D0400 /* Welcome */,
+			);
+			name = Features;
+			path = Features;
+			sourceTree = "<group>";
+		};
 		F96F868701B46C1EF84ECA3E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,8 +364,6 @@
 			dependencies = (
 			);
 			name = vamosPraOndeApp;
-			packageProductDependencies = (
-			);
 			productName = vamosPraOndeApp;
 			productReference = D1BAFB50291D3FBD007194C5 /* vamosPraOndeApp.app */;
 			productType = "com.apple.product-type.application";
@@ -337,8 +392,6 @@
 				Base,
 			);
 			mainGroup = D1BAFB47291D3FBD007194C5;
-			packageReferences = (
-			);
 			productRefGroup = D1BAFB51291D3FBD007194C5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -451,8 +504,15 @@
 				D17548D5294E7963002E65B8 /* DetailsViewController.swift in Sources */,
 				D14228ED2928670000784508 /* SignUpViewController.swift in Sources */,
 				D17548D1294E7935002E65B8 /* ProfileViewController.swift in Sources */,
-				D1BAFB56291D3FBD007194C5 /* SceneDelegate.swift in Sources */,
 				D17548CA294E7576002E65B8 /* HomeViewController.swift in Sources */,
+				BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */,
+				B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */,
+				0D61739A14D23989A1ED1E89 /* Spacing.swift in Sources */,
+				DFB81499DC458A12C4BB748D /* PrimaryButtonStyle.swift in Sources */,
+				FE28F4D864B00E68FCE1237A /* SunsetCover.swift in Sources */,
+				8A68B0E71084E468DCA6F9D1 /* VamosPraOndeApp.swift in Sources */,
+				50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */,
+				86C5A52894E3A21E8124549D /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
