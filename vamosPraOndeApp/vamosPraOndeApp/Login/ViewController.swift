@@ -62,13 +62,10 @@ class ViewController: UIViewController {
         
     }
     
-<<<<<<< HEAD
-=======
     func hideKeyboardGesture() {
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
     }
->>>>>>> feature/home
     
 
     @IBAction func tappedForgotPasswordButton(_ sender: UIButton) {

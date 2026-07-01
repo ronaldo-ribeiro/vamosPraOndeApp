@@ -8,13 +8,6 @@
 import UIKit
 import FirebaseAuth
 
-<<<<<<< HEAD
-//class CustonTextField: UITextField {
-//
-//}
-
-class SignUpViewController: UIViewController {
-=======
 protocol SignUpViewControllerProtocol: AnyObject {
     func tappedRegisterButton()
 }
@@ -28,7 +21,6 @@ class SignUpViewController: UIViewController, SignUpViewModelProtocol {
     }
     
     var viewModel: SignUpViewModel = SignUpViewModel()
->>>>>>> feature/home
 
     @IBOutlet weak var registerTitleLabel: UILabel!
     
@@ -75,6 +67,10 @@ class SignUpViewController: UIViewController, SignUpViewModelProtocol {
         hideKeyboardGesture()
     }
     
+    func hideKeyboardGesture() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
+    }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {
         

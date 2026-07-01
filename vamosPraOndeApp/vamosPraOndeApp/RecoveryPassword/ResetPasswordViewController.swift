@@ -34,6 +34,11 @@ class ResetPasswordViewController: UIViewController {
         hideKeyboardGesture()
     }
     
+    func hideKeyboardGesture() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
     @IBAction func tappedResetButton(_ sender: UIButton) {
         let auth = Auth.auth()
         auth.sendPasswordReset(withEmail: emailTextField.text!) { (error) in
