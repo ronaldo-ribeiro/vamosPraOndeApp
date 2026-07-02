@@ -18,6 +18,7 @@
 		5EFA5C9F2425D9743A6BC430 /* NewDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */; };
 		64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0262E62ED903E239FE87B306 /* SignUpView.swift */; };
 		68AD0517171D23305ED97348 /* FeatureLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */; };
+		6C221049FF08F63F3B09FDA2 /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */; };
 		7FA281D8D93748D51DA416CE /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715796514FBEA826675FB981 /* ErrorBanner.swift */; };
 		8191779992B81C209FFFFF78 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759693CF363A15BF3D16B2D1 /* LoginView.swift */; };
 		832FCE1CEB653FD99FFEC49E /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6717499BB05FED71D3E7044 /* Countdown.swift */; };
@@ -143,6 +144,7 @@
 		D1E2735D296CED5B00ED5441 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E06674E2EB2E93DBD31F36A3 /* Pods-vamosPraOndeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeAppTests.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeAppTests/Pods-vamosPraOndeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
 		F475203DA568856EF307222B /* AuthHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 				46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */,
 				85EFE2BA27D6463F18CFED81 /* LocationService.swift */,
 				23AF5E5BEBEEE0DED5CAFDFE /* NotificationService.swift */,
+				EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */,
 			);
 			name = Services;
 			path = Services;
@@ -624,6 +627,7 @@
 				18249C8778EC9831FFA1C73B /* Appear.swift in Sources */,
 				FC59D41C4AD488FFD91C783C /* NotificationService.swift in Sources */,
 				A32F34C1681389662AF11E9C /* DestinationSorting.swift in Sources */,
+				6C221049FF08F63F3B09FDA2 /* WeatherProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

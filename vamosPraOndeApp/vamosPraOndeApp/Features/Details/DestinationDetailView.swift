@@ -16,6 +16,8 @@ struct DestinationDetailView: View {
     @State private var showingDeleteConfirm = false
     @State private var showingEdit = false
     @State private var isDeleting = false
+    @State private var weather: DestinationWeather?
+    @State private var weatherFailed = false
 
     init(destination: Destination, repository: DestinationsRepository) {
         self.initial = destination
@@ -41,13 +43,14 @@ struct DestinationDetailView: View {
                     if let notes = destination.notes, !notes.isEmpty {
                         notesCard(notes)
                     }
-                    weatherPlaceholder
+                    weatherCard
                     deleteButton
                 }
                 .padding(.bottom, Spacing.xl)
             }
             .ignoresSafeArea(edges: .top)
         }
+        .task(id: destination.id) { await loadWeather() }
         .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showingEdit) {
             NewDestinationView(repository: repository, editing: destination)
@@ -172,28 +175,67 @@ struct DestinationDetailView: View {
         .padding(.horizontal, Spacing.lg)
     }
 
-    private var weatherPlaceholder: some View {
+    private var weatherCard: some View {
         HStack(spacing: Spacing.md) {
-            Image(systemName: "cloud.sun.fill")
+            Image(systemName: weather?.symbolName ?? "cloud.sun.fill")
                 .font(.system(size: 26))
                 .foregroundStyle(Color.vpoOnColor)
                 .frame(width: 52, height: 52)
                 .background(Color.vpoTeal)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+
             VStack(alignment: .leading, spacing: 2) {
-                Text("Clima do destino")
+                Text("Clima agora")
                     .font(AppFont.title(16))
                     .foregroundStyle(Color.vpoInk)
-                Text("em breve por aqui")
-                    .font(AppFont.medium(13))
-                    .foregroundStyle(Color.vpoInkSoft)
+                if let weather {
+                    Text(weather.description)
+                        .font(AppFont.medium(13))
+                        .foregroundStyle(Color.vpoInkSoft)
+                } else if weatherFailed {
+                    Text("indisponível no momento")
+                        .font(AppFont.medium(13))
+                        .foregroundStyle(Color.vpoInkSoft)
+                } else {
+                    Text("carregando…")
+                        .font(AppFont.medium(13))
+                        .foregroundStyle(Color.vpoInkSoft)
+                }
             }
+
             Spacer()
+
+            if let weather {
+                Text(weather.temperature)
+                    .font(AppFont.countdown(30))
+                    .foregroundStyle(Color.vpoTeal)
+            } else if !weatherFailed {
+                ProgressView().tint(.vpoTeal)
+            }
         }
         .padding(Spacing.md)
         .background(Color.vpoCream)
         .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
         .padding(.horizontal, Spacing.lg)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(weatherAccessibilityLabel)
+    }
+
+    private var weatherAccessibilityLabel: String {
+        if let weather {
+            return "Clima agora em \(destination.cityName): \(weather.temperature), \(weather.description)."
+        }
+        return weatherFailed ? "Clima indisponível no momento." : "Carregando o clima."
+    }
+
+    private func loadWeather() async {
+        weather = nil
+        weatherFailed = false
+        do {
+            weather = try await WeatherProvider.current(for: destination.coordinate)
+        } catch {
+            weatherFailed = true
+        }
     }
 
     private var deleteButton: some View {
