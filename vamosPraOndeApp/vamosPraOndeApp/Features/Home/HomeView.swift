@@ -25,37 +25,51 @@ struct HomeView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            Color.vpoSand.ignoresSafeArea()
+        NavigationStack {
+            ZStack(alignment: .bottomTrailing) {
+                Color.vpoSand.ignoresSafeArea()
 
-            ScrollView {
-                VStack(alignment: .leading, spacing: Spacing.lg) {
-                    header
-                    if repo.destinations.isEmpty {
-                        EmptyStateView(onAdd: { showingNew = true })
-                            .padding(.top, Spacing.xxl)
-                    } else {
-                        if let hero {
-                            DestinationHeroCard(destination: hero)
-                        }
-                        if !rest.isEmpty {
-                            Text("na sequência")
-                                .font(AppFont.overline())
-                                .kerning(1.5)
-                                .textCase(.uppercase)
-                                .foregroundStyle(Color.vpoInkSoft)
-                            VStack(spacing: Spacing.sm) {
-                                ForEach(rest) { DestinationRow(destination: $0) }
+                ScrollView {
+                    VStack(alignment: .leading, spacing: Spacing.lg) {
+                        header
+                        if repo.destinations.isEmpty {
+                            EmptyStateView(onAdd: { showingNew = true })
+                                .padding(.top, Spacing.xxl)
+                        } else {
+                            if let hero {
+                                NavigationLink(value: hero) {
+                                    DestinationHeroCard(destination: hero)
+                                }
+                                .buttonStyle(.plain)
+                            }
+                            if !rest.isEmpty {
+                                Text("na sequência")
+                                    .font(AppFont.overline())
+                                    .kerning(1.5)
+                                    .textCase(.uppercase)
+                                    .foregroundStyle(Color.vpoInkSoft)
+                                VStack(spacing: Spacing.sm) {
+                                    ForEach(rest) { destination in
+                                        NavigationLink(value: destination) {
+                                            DestinationRow(destination: destination)
+                                        }
+                                        .buttonStyle(.plain)
+                                    }
+                                }
                             }
                         }
                     }
+                    .padding(Spacing.lg)
+                    .padding(.bottom, 90)
                 }
-                .padding(Spacing.lg)
-                .padding(.bottom, 90)
-            }
 
-            if !repo.destinations.isEmpty {
-                addButton
+                if !repo.destinations.isEmpty {
+                    addButton
+                }
+            }
+            .navigationBarHidden(true)
+            .navigationDestination(for: Destination.self) { destination in
+                DestinationDetailView(destination: destination, repository: repo)
             }
         }
         .task { repo.start() }
