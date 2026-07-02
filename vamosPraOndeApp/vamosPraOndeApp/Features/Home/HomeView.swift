@@ -2,65 +2,129 @@
 //  HomeView.swift
 //  vamosPraOndeApp
 //
-//  Placeholder da Home (Fase 1). Na próxima etapa passa a listar
-//  os destinos do usuário com countdown.
+//  Lista os destinos do usuário com a contagem regressiva de cada viagem.
 //
 
 import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var auth: AuthService
+    @StateObject private var repo = DestinationsRepository()
+    @State private var showingNew = false
+
+    private var upcoming: [Destination] {
+        repo.destinations.filter { !Countdown(to: $0.date).isPast }
+    }
+
+    private var hero: Destination? {
+        upcoming.first ?? repo.destinations.first
+    }
+
+    private var rest: [Destination] {
+        repo.destinations.filter { $0.id != hero?.id }
+    }
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottomTrailing) {
             Color.vpoSand.ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                SunsetCover()
-                    .frame(height: 240)
-                    .overlay(alignment: .bottomLeading) {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("bem-vindo a bordo")
+            ScrollView {
+                VStack(alignment: .leading, spacing: Spacing.lg) {
+                    header
+                    if repo.destinations.isEmpty {
+                        EmptyStateView(onAdd: { showingNew = true })
+                            .padding(.top, Spacing.xxl)
+                    } else {
+                        if let hero {
+                            DestinationHeroCard(destination: hero)
+                        }
+                        if !rest.isEmpty {
+                            Text("na sequência")
                                 .font(AppFont.overline())
                                 .kerning(1.5)
                                 .textCase(.uppercase)
-                                .foregroundStyle(Color(hex: 0xFBE9C6))
-                            Text("Vamos pra onde?")
-                                .font(AppFont.display(32))
-                                .foregroundStyle(Color.vpoCream)
+                                .foregroundStyle(Color.vpoInkSoft)
+                            VStack(spacing: Spacing.sm) {
+                                ForEach(rest) { DestinationRow(destination: $0) }
+                            }
                         }
-                        .padding(Spacing.lg)
                     }
-                    .ignoresSafeArea(edges: .top)
-
-                VStack(spacing: Spacing.md) {
-                    Text("Logado como")
-                        .font(AppFont.overline())
-                        .textCase(.uppercase)
-                        .foregroundStyle(Color.vpoInkSoft)
-                    Text(auth.displayEmail)
-                        .font(AppFont.title(18))
-                        .foregroundStyle(Color.vpoInk)
-
-                    Text("Em breve: os seus destinos e a contagem regressiva de cada viagem.")
-                        .font(AppFont.body(15))
-                        .foregroundStyle(Color.vpoInkSoft)
-                        .multilineTextAlignment(.center)
-                        .padding(.top, Spacing.sm)
-
-                    Spacer()
-
-                    Button("Sair", action: logout)
-                        .buttonStyle(OutlineButtonStyle())
-                        .padding(.bottom, Spacing.md)
                 }
-                .padding(.top, Spacing.xl)
-                .padding(.horizontal, Spacing.lg)
+                .padding(Spacing.lg)
+                .padding(.bottom, 90)
+            }
+
+            if !repo.destinations.isEmpty {
+                addButton
+            }
+        }
+        .task { repo.start() }
+        .sheet(isPresented: $showingNew) {
+            NewDestinationView(repository: repo)
+        }
+    }
+
+    private var header: some View {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("as suas viagens")
+                    .font(AppFont.overline())
+                    .kerning(1.5)
+                    .textCase(.uppercase)
+                    .foregroundStyle(Color.vpoTerracotta)
+                Text("Vamos pra onde?")
+                    .font(AppFont.display(32))
+                    .foregroundStyle(Color.vpoInk)
+            }
+            Spacer()
+            Menu {
+                Text(auth.displayEmail)
+                Button(role: .destructive) { try? auth.signOut() } label: {
+                    Label("Sair", systemImage: "rectangle.portrait.and.arrow.right")
+                }
+            } label: {
+                Image(systemName: "person.circle.fill")
+                    .font(.system(size: 30))
+                    .foregroundStyle(Color.vpoTeal)
             }
         }
     }
 
-    private func logout() {
-        try? auth.signOut()
+    private var addButton: some View {
+        Button { showingNew = true } label: {
+            Image(systemName: "plus")
+                .font(.system(size: 24, weight: .semibold))
+                .foregroundStyle(Color.vpoCream)
+                .frame(width: 60, height: 60)
+                .background(Color.vpoTerracotta)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.vpoSand, lineWidth: 4))
+                .shadow(color: Color.vpoInk.opacity(0.2), radius: 8, y: 4)
+        }
+        .padding(Spacing.lg)
+    }
+}
+
+private struct EmptyStateView: View {
+    let onAdd: () -> Void
+
+    var body: some View {
+        VStack(spacing: Spacing.md) {
+            Image(systemName: "airplane.departure")
+                .font(.system(size: 44))
+                .foregroundStyle(Color.vpoTerracotta)
+            Text("Nenhuma viagem por aqui ainda")
+                .font(AppFont.title(20))
+                .foregroundStyle(Color.vpoInk)
+                .multilineTextAlignment(.center)
+            Text("Adicione o seu primeiro destino e comece a contar os dias.")
+                .font(AppFont.body(15))
+                .foregroundStyle(Color.vpoInkSoft)
+                .multilineTextAlignment(.center)
+            Button("Adicionar destino", action: onAdd)
+                .buttonStyle(PrimaryButtonStyle())
+                .padding(.top, Spacing.sm)
+        }
+        .frame(maxWidth: .infinity)
     }
 }

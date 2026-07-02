@@ -8,15 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		0D61739A14D23989A1ED1E89 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */; };
+		181399A40625F8A5443A1AE0 /* DestinationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A2719934CFBBDAD3740235 /* DestinationCards.swift */; };
 		441C3C4C0D4AB5F43B8C04E5 /* Pods_vamosPraOndeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */; };
 		50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25693AA1C51D6E11D17BBD3 /* RootView.swift */; };
+		5EFA5C9F2425D9743A6BC430 /* NewDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */; };
 		64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0262E62ED903E239FE87B306 /* SignUpView.swift */; };
 		7FA281D8D93748D51DA416CE /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715796514FBEA826675FB981 /* ErrorBanner.swift */; };
 		8191779992B81C209FFFFF78 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759693CF363A15BF3D16B2D1 /* LoginView.swift */; };
+		832FCE1CEB653FD99FFEC49E /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6717499BB05FED71D3E7044 /* Countdown.swift */; };
 		86C5A52894E3A21E8124549D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799EFFED51CAB6C06E8D343D /* WelcomeView.swift */; };
 		8A68B0E71084E468DCA6F9D1 /* VamosPraOndeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */; };
 		90D7DE02C6D77B5BC364A986 /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34A419395F409009F3EB25 /* AuthFlowView.swift */; };
 		932282BFD16CE7A8C307F407 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475203DA568856EF307222B /* AuthHeader.swift */; };
+		95C2BCFB8EBAE03995BFC72A /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDE28040F39CCD5CCD172DF /* Destination.swift */; };
+		9BF0FDB686C01157913FBA2D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFE2BA27D6463F18CFED81 /* LocationService.swift */; };
 		B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72593CC4AC6BB5144E159D9C /* AppFont.swift */; };
 		BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36ED71B036CE1129056B2F /* AppColor.swift */; };
 		D10458FF2974B4C200261526 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10458FE2974B4C200261526 /* ProfileViewModel.swift */; };
@@ -71,15 +76,19 @@
 		DFB81499DC458A12C4BB748D /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */; };
 		E0293645CAF40591CB82BB27 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409CD1E05CA693E1110F0D03 /* AuthService.swift */; };
 		E401AFA31328E58A58C8D884 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */; };
+		FA59BE03C901B0F703E9B3FC /* DestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */; };
 		FE28F4D864B00E68FCE1237A /* SunsetCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0262E62ED903E239FE87B306 /* SignUpView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		08A2719934CFBBDAD3740235 /* DestinationCards.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationCards.swift; sourceTree = "<group>"; };
 		1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2EDE28040F39CCD5CCD172DF /* Destination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		3A34A419395F409009F3EB25 /* AuthFlowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
 		409CD1E05CA693E1110F0D03 /* AuthService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationsRepository.swift; sourceTree = "<group>"; };
 		49EFACD31BFE6198AE844676 /* Pods-vamosPraOndeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosPraOndeApp.swift; sourceTree = "<group>"; };
@@ -90,10 +99,13 @@
 		72593CC4AC6BB5144E159D9C /* AppFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		759693CF363A15BF3D16B2D1 /* LoginView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		799EFFED51CAB6C06E8D343D /* WelcomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		85EFE2BA27D6463F18CFED81 /* LocationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunsetCover.swift; sourceTree = "<group>"; };
 		A741242B7F72183F80E1FCE6 /* AppTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
+		B6717499BB05FED71D3E7044 /* Countdown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		C25693AA1C51D6E11D17BBD3 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewDestinationView.swift; sourceTree = "<group>"; };
 		D10458FE2974B4C200261526 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		D10459002974C75400261526 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		D14228EC2928670000784508 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +186,33 @@
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
+		17D537F0394F28E31C48D2A1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B6717499BB05FED71D3E7044 /* Countdown.swift */,
+			);
+			name = Utilities;
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2F248B36616962A7CFBFC394 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2EDE28040F39CCD5CCD172DF /* Destination.swift */,
+			);
+			name = Models;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		52FB553B2E7CA2FB4389F51F /* NewDestination */ = {
+			isa = PBXGroup;
+			children = (
+				CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */,
+			);
+			name = NewDestination;
+			path = NewDestination;
+			sourceTree = "<group>";
+		};
 		5347DB574CBF304E70A1AA18 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				409CD1E05CA693E1110F0D03 /* AuthService.swift */,
+				46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */,
+				85EFE2BA27D6463F18CFED81 /* LocationService.swift */,
 			);
 			name = Services;
 			path = Services;
@@ -209,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */,
+				08A2719934CFBBDAD3740235 /* DestinationCards.swift */,
 			);
 			name = Home;
 			path = Home;
@@ -336,6 +378,8 @@
 				F179B0EA47AE5CA349988B71 /* Features */,
 				6083CF7F13AFB52B0FD69BC1 /* Services */,
 				5588CBDB4A32B6D786569BFB /* vamosPraOndeApp.entitlements */,
+				2F248B36616962A7CFBFC394 /* Models */,
+				17D537F0394F28E31C48D2A1 /* Utilities */,
 			);
 			path = vamosPraOndeApp;
 			sourceTree = "<group>";
@@ -389,6 +433,7 @@
 				5E0F1E0CABD56728232D0400 /* Welcome */,
 				5347DB574CBF304E70A1AA18 /* Auth */,
 				86411F9A8D4F9BAD23DCDD76 /* Home */,
+				52FB553B2E7CA2FB4389F51F /* NewDestination */,
 			);
 			name = Features;
 			path = Features;
@@ -578,6 +623,12 @@
 				64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */,
 				D9FC06C4CD5D98EEE4FFFD63 /* ResetPasswordView.swift in Sources */,
 				E401AFA31328E58A58C8D884 /* HomeView.swift in Sources */,
+				95C2BCFB8EBAE03995BFC72A /* Destination.swift in Sources */,
+				FA59BE03C901B0F703E9B3FC /* DestinationsRepository.swift in Sources */,
+				9BF0FDB686C01157913FBA2D /* LocationService.swift in Sources */,
+				832FCE1CEB653FD99FFEC49E /* Countdown.swift in Sources */,
+				181399A40625F8A5443A1AE0 /* DestinationCards.swift in Sources */,
+				5EFA5C9F2425D9743A6BC430 /* NewDestinationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

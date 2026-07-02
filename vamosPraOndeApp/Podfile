@@ -7,6 +7,7 @@ target 'vamosPraOndeApp' do
   # Pods for vamosPraOndeApp
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'FirebaseFirestoreSwift', '10.3.0'
 end
 
 # Garante compatibilidade com Xcode moderno:
