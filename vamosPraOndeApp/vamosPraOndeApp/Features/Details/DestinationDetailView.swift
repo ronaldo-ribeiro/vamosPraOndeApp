@@ -9,12 +9,23 @@ import SwiftUI
 import MapKit
 
 struct DestinationDetailView: View {
-    let destination: Destination
+    private let initial: Destination
     @ObservedObject var repository: DestinationsRepository
 
     @Environment(\.dismiss) private var dismiss
     @State private var showingDeleteConfirm = false
+    @State private var showingEdit = false
     @State private var isDeleting = false
+
+    init(destination: Destination, repository: DestinationsRepository) {
+        self.initial = destination
+        _repository = ObservedObject(wrappedValue: repository)
+    }
+
+    /// Destino "vivo": reflete edições feitas em tempo real (via listener).
+    private var destination: Destination {
+        repository.destinations.first { $0.id == initial.id } ?? initial
+    }
 
     private var countdown: Countdown { Countdown(to: destination.date) }
 
@@ -27,6 +38,9 @@ struct DestinationDetailView: View {
                     cover
                     countdownBlock
                     mapCard
+                    if let notes = destination.notes, !notes.isEmpty {
+                        notesCard(notes)
+                    }
                     weatherPlaceholder
                     deleteButton
                 }
@@ -35,6 +49,9 @@ struct DestinationDetailView: View {
             .ignoresSafeArea(edges: .top)
         }
         .toolbar(.hidden, for: .navigationBar)
+        .sheet(isPresented: $showingEdit) {
+            NewDestinationView(repository: repository, editing: destination)
+        }
         .confirmationDialog(
             "Excluir este destino?",
             isPresented: $showingDeleteConfirm,
@@ -80,6 +97,34 @@ struct DestinationDetailView: View {
                 .padding(.leading, Spacing.lg)
                 .padding(.top, 56)
             }
+            .overlay(alignment: .topTrailing) {
+                Button { showingEdit = true } label: {
+                    Image(systemName: "pencil")
+                        .font(.system(size: 17, weight: .semibold))
+                        .foregroundStyle(Color.vpoOnColor)
+                        .frame(width: 40, height: 40)
+                        .background(.ultraThinMaterial, in: Circle())
+                }
+                .accessibilityLabel("Editar destino")
+                .padding(.trailing, Spacing.lg)
+                .padding(.top, 56)
+            }
+    }
+
+    private func notesCard(_ notes: String) -> some View {
+        VStack(alignment: .leading, spacing: Spacing.sm) {
+            Label("Anotações", systemImage: "note.text")
+                .font(AppFont.title(16))
+                .foregroundStyle(Color.vpoInk)
+            Text(notes)
+                .font(AppFont.body(15))
+                .foregroundStyle(Color.vpoInkSoft)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(Spacing.md)
+        .background(Color.vpoCream)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+        .padding(.horizontal, Spacing.lg)
     }
 
     private var countdownBlock: some View {
@@ -168,8 +213,10 @@ struct DestinationDetailView: View {
 
     private func delete() {
         isDeleting = true
+        let id = destination.id
         Task {
             try? await repository.delete(destination)
+            if let id { NotificationService.cancel(for: id) }
             dismiss()
         }
     }

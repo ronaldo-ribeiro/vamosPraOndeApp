@@ -2,22 +2,39 @@
 //  NewDestinationView.swift
 //  vamosPraOndeApp
 //
-//  Cadastro de um novo destino: busca a cidade e escolhe a data da viagem.
+//  Cadastro ou edição de um destino: cidade, data e anotações.
 //
 
 import SwiftUI
 
 struct NewDestinationView: View {
     @ObservedObject var repository: DestinationsRepository
+    let editing: Destination?
+
     @Environment(\.dismiss) private var dismiss
 
-    @State private var query = ""
+    @State private var query: String
     @State private var suggestions: [CitySuggestion] = []
     @State private var selected: CitySuggestion?
-    @State private var date = Calendar.current.date(byAdding: .day, value: 30, to: Date()) ?? Date()
+    @State private var date: Date
+    @State private var notes: String
     @State private var isSearching = false
     @State private var isSaving = false
     @State private var errorMessage: String?
+
+    init(repository: DestinationsRepository, editing: Destination? = nil) {
+        _repository = ObservedObject(wrappedValue: repository)
+        self.editing = editing
+        _query = State(initialValue: editing?.title ?? "")
+        _selected = State(initialValue: editing.map {
+            CitySuggestion(title: $0.title, latitude: $0.latitude, longitude: $0.longitude)
+        })
+        _date = State(initialValue: editing?.date
+            ?? Calendar.current.date(byAdding: .day, value: 30, to: Date()) ?? Date())
+        _notes = State(initialValue: editing?.notes ?? "")
+    }
+
+    private var isEditing: Bool { editing != nil }
 
     var body: some View {
         NavigationStack {
@@ -29,6 +46,7 @@ struct NewDestinationView: View {
                         citySection
                         if selected != nil {
                             dateSection
+                            notesSection
                         }
                         if let errorMessage {
                             ErrorBanner(message: errorMessage)
@@ -37,7 +55,7 @@ struct NewDestinationView: View {
                     .padding(Spacing.lg)
                 }
             }
-            .navigationTitle("Novo destino")
+            .navigationTitle(isEditing ? "Editar destino" : "Novo destino")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -113,6 +131,7 @@ struct NewDestinationView: View {
             } label: {
                 Image(systemName: "xmark.circle.fill").foregroundStyle(Color.vpoInkSoft)
             }
+            .accessibilityLabel("Trocar cidade")
         }
         .padding(Spacing.md)
         .background(Color.vpoTeal.opacity(0.1))
@@ -141,6 +160,29 @@ struct NewDestinationView: View {
         }
     }
 
+    private var notesSection: some View {
+        VStack(alignment: .leading, spacing: Spacing.sm) {
+            Text("anotações")
+                .font(AppFont.overline())
+                .kerning(1.5)
+                .textCase(.uppercase)
+                .foregroundStyle(Color.vpoInkSoft)
+
+            TextField(
+                "",
+                text: $notes,
+                prompt: Text("O que levar, planos, ideias…").foregroundColor(.vpoInkSoft),
+                axis: .vertical
+            )
+            .font(AppFont.medium(16))
+            .foregroundStyle(Color.vpoInk)
+            .lineLimit(3...8)
+            .padding(Spacing.md)
+            .background(Color.vpoCream)
+            .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
+        }
+    }
+
     private func runSearch() {
         let text = query.trimmingCharacters(in: .whitespaces)
         guard !text.isEmpty else { return }
@@ -163,17 +205,35 @@ struct NewDestinationView: View {
         errorMessage = nil
     }
 
+    private var trimmedNotes: String? {
+        let text = notes.trimmingCharacters(in: .whitespacesAndNewlines)
+        return text.isEmpty ? nil : text
+    }
+
     private func save() {
         guard let selected else { return }
         isSaving = true
         errorMessage = nil
         Task {
             do {
-                try await repository.add(
-                    title: selected.title,
-                    coordinate: selected.coordinate,
-                    date: date
-                )
+                await NotificationService.requestAuthorization()
+                if var existing = editing {
+                    existing.title = selected.title
+                    existing.latitude = selected.coordinate.latitude
+                    existing.longitude = selected.coordinate.longitude
+                    existing.date = date
+                    existing.notes = trimmedNotes
+                    try await repository.update(existing)
+                    await NotificationService.reschedule(for: existing)
+                } else {
+                    let saved = try await repository.add(
+                        title: selected.title,
+                        coordinate: selected.coordinate,
+                        date: date,
+                        notes: trimmedNotes
+                    )
+                    await NotificationService.reschedule(for: saved)
+                }
                 dismiss()
             } catch {
                 errorMessage = "Não foi possível salvar. Tente novamente."

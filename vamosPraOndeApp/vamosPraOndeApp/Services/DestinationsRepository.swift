@@ -51,17 +51,28 @@ final class DestinationsRepository: ObservableObject {
         listener = nil
     }
 
-    func add(title: String, coordinate: CLLocationCoordinate2D, date: Date) async throws {
-        guard let collection else { return }
-        let destination = Destination(
+    @discardableResult
+    func add(title: String, coordinate: CLLocationCoordinate2D, date: Date, notes: String?) async throws -> Destination {
+        guard let collection else {
+            throw NSError(domain: "vpo", code: 0)
+        }
+        var destination = Destination(
             id: nil,
             title: title,
             latitude: coordinate.latitude,
             longitude: coordinate.longitude,
             date: date,
-            createdAt: Date()
+            createdAt: Date(),
+            notes: notes
         )
-        _ = try collection.addDocument(from: destination)
+        let ref = try collection.addDocument(from: destination)
+        destination.id = ref.documentID
+        return destination
+    }
+
+    func update(_ destination: Destination) async throws {
+        guard let collection, let id = destination.id else { return }
+        try collection.document(id).setData(from: destination, merge: true)
     }
 
     func delete(_ destination: Destination) async throws {

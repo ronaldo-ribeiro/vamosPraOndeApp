@@ -16,6 +16,8 @@ struct Destination: Identifiable, Codable, Hashable {
     var longitude: Double
     var date: Date
     var createdAt: Date
+    /// Anotações da viagem (opcional — destinos antigos podem não ter).
+    var notes: String? = nil
 
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
