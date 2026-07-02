@@ -33,6 +33,7 @@
 		B7D7480FD5B256D9538F70FC /* DestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BCC5913B450ADADCE7182 /* DestinationTests.swift */; };
 		B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72593CC4AC6BB5144E159D9C /* AppFont.swift */; };
 		BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36ED71B036CE1129056B2F /* AppColor.swift */; };
+		CBBE7460309BFA630AF41684 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */; };
 		D14C4AF529675A8200065186 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D14C4AF429675A8200065186 /* GoogleService-Info.plist */; };
 		D1BAFB54291D3FBD007194C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */; };
 		D1BAFB5D291D3FBF007194C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB5C291D3FBF007194C5 /* Assets.xcassets */; };
@@ -109,6 +110,7 @@
 		8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeatureLogicTests.swift; sourceTree = "<group>"; };
 		85EFE2BA27D6463F18CFED81 /* LocationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunsetCover.swift; sourceTree = "<group>"; };
+		97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vamosPraOndeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A741242B7F72183F80E1FCE6 /* AppTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				5588CBDB4A32B6D786569BFB /* vamosPraOndeApp.entitlements */,
 				2F248B36616962A7CFBFC394 /* Models */,
 				17D537F0394F28E31C48D2A1 /* Utilities */,
+				97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */,
 			);
 			path = vamosPraOndeApp;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				D1BAFB89291D48A0007194C5 /* Urbanist-SemiBold.ttf in Resources */,
 				D1BAFB83291D48A0007194C5 /* Urbanist-Regular.ttf in Resources */,
 				D1BAFB87291D48A0007194C5 /* Urbanist-Thin.ttf in Resources */,
+				CBBE7460309BFA630AF41684 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
