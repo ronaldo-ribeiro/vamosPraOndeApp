@@ -49,10 +49,12 @@ struct WelcomeView: View {
                 .font(AppFont.medium(18))
                 .foregroundStyle(Color.vpoInk)
                 .padding(.top, Spacing.xl)
+                .appear(delay: 0.15)
 
             Text("Guarde os destinos dos seus sonhos e acompanhe quanto falta para embarcar.")
                 .font(AppFont.body(15))
                 .foregroundStyle(Color.vpoInkSoft)
+                .appear(delay: 0.25)
 
             Spacer()
 
@@ -63,6 +65,7 @@ struct WelcomeView: View {
                     .buttonStyle(OutlineButtonStyle())
             }
             .padding(.bottom, Spacing.md)
+            .appear(delay: 0.35)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, Spacing.lg)

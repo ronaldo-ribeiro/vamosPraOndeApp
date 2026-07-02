@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D61739A14D23989A1ED1E89 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */; };
 		181399A40625F8A5443A1AE0 /* DestinationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A2719934CFBBDAD3740235 /* DestinationCards.swift */; };
+		18249C8778EC9831FFA1C73B /* Appear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA303ED50DFD784E0DA6FD /* Appear.swift */; };
 		19A98A04E593BCE739B3FF7A /* DestinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */; };
 		441C3C4C0D4AB5F43B8C04E5 /* Pods_vamosPraOndeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */; };
 		50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25693AA1C51D6E11D17BBD3 /* RootView.swift */; };
@@ -93,6 +94,7 @@
 		46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationsRepository.swift; sourceTree = "<group>"; };
 		49EFACD31BFE6198AE844676 /* Pods-vamosPraOndeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		53EA303ED50DFD784E0DA6FD /* Appear.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Appear.swift; sourceTree = "<group>"; };
 		55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosPraOndeApp.swift; sourceTree = "<group>"; };
 		5588CBDB4A32B6D786569BFB /* vamosPraOndeApp.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = vamosPraOndeApp.entitlements; sourceTree = "<group>"; };
 		5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,7 @@
 				89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */,
 				A741242B7F72183F80E1FCE6 /* AppTextField.swift */,
 				715796514FBEA826675FB981 /* ErrorBanner.swift */,
+				53EA303ED50DFD784E0DA6FD /* Appear.swift */,
 			);
 			name = DesignSystem;
 			path = DesignSystem;
@@ -642,6 +645,7 @@
 				181399A40625F8A5443A1AE0 /* DestinationCards.swift in Sources */,
 				5EFA5C9F2425D9743A6BC430 /* NewDestinationView.swift in Sources */,
 				19A98A04E593BCE739B3FF7A /* DestinationDetailView.swift in Sources */,
+				18249C8778EC9831FFA1C73B /* Appear.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

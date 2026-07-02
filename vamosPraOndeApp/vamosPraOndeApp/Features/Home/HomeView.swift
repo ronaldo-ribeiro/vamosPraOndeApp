@@ -41,6 +41,7 @@ struct HomeView: View {
                                     DestinationHeroCard(destination: hero)
                                 }
                                 .buttonStyle(.plain)
+                                .appear(delay: 0.05)
                             }
                             if !rest.isEmpty {
                                 Text("na sequência")
@@ -48,12 +49,15 @@ struct HomeView: View {
                                     .kerning(1.5)
                                     .textCase(.uppercase)
                                     .foregroundStyle(Color.vpoInkSoft)
+                                    .appear(delay: 0.1)
                                 VStack(spacing: Spacing.sm) {
-                                    ForEach(rest) { destination in
+                                    ForEach(Array(rest.enumerated()), id: \.element.id) { index, destination in
                                         NavigationLink(value: destination) {
                                             DestinationRow(destination: destination)
                                         }
                                         .buttonStyle(.plain)
+                                        .appear(delay: 0.14 + Double(index) * 0.06)
+                                        .transition(.move(edge: .trailing).combined(with: .opacity))
                                     }
                                 }
                             }
@@ -61,6 +65,7 @@ struct HomeView: View {
                     }
                     .padding(Spacing.lg)
                     .padding(.bottom, 90)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.85), value: repo.destinations)
                 }
 
                 if !repo.destinations.isEmpty {
