@@ -189,7 +189,6 @@
 				715796514FBEA826675FB981 /* ErrorBanner.swift */,
 				53EA303ED50DFD784E0DA6FD /* Appear.swift */,
 			);
-			name = DesignSystem;
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
@@ -199,7 +198,6 @@
 				B6717499BB05FED71D3E7044 /* Countdown.swift */,
 				1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */,
 			);
-			name = Utilities;
 			path = Utilities;
 			sourceTree = "<group>";
 		};
@@ -210,7 +208,6 @@
 				451BCC5913B450ADADCE7182 /* DestinationTests.swift */,
 				8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */,
 			);
-			name = vamosPraOndeAppTests;
 			path = vamosPraOndeAppTests;
 			sourceTree = "<group>";
 		};
@@ -219,7 +216,6 @@
 			children = (
 				2EDE28040F39CCD5CCD172DF /* Destination.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -228,7 +224,6 @@
 			children = (
 				0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */,
 			);
-			name = Details;
 			path = Details;
 			sourceTree = "<group>";
 		};
@@ -237,7 +232,6 @@
 			children = (
 				CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */,
 			);
-			name = NewDestination;
 			path = NewDestination;
 			sourceTree = "<group>";
 		};
@@ -250,7 +244,6 @@
 				0262E62ED903E239FE87B306 /* SignUpView.swift */,
 				1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */,
 			);
-			name = Auth;
 			path = Auth;
 			sourceTree = "<group>";
 		};
@@ -259,7 +252,6 @@
 			children = (
 				799EFFED51CAB6C06E8D343D /* WelcomeView.swift */,
 			);
-			name = Welcome;
 			path = Welcome;
 			sourceTree = "<group>";
 		};
@@ -272,7 +264,6 @@
 				23AF5E5BEBEEE0DED5CAFDFE /* NotificationService.swift */,
 				EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */,
 			);
-			name = Services;
 			path = Services;
 			sourceTree = "<group>";
 		};
@@ -282,7 +273,6 @@
 				210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */,
 				08A2719934CFBBDAD3740235 /* DestinationCards.swift */,
 			);
-			name = Home;
 			path = Home;
 			sourceTree = "<group>";
 		};
@@ -292,7 +282,6 @@
 				55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */,
 				C25693AA1C51D6E11D17BBD3 /* RootView.swift */,
 			);
-			name = App;
 			path = App;
 			sourceTree = "<group>";
 		};
@@ -400,7 +389,6 @@
 				52FB553B2E7CA2FB4389F51F /* NewDestination */,
 				522F8F43118F066E151C3C57 /* Details */,
 			);
-			name = Features;
 			path = Features;
 			sourceTree = "<group>";
 		};
@@ -538,9 +526,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
