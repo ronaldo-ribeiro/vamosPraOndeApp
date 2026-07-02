@@ -108,7 +108,7 @@ struct HomeView: View {
         Button { showingNew = true } label: {
             Image(systemName: "plus")
                 .font(.system(size: 24, weight: .semibold))
-                .foregroundStyle(Color.vpoCream)
+                .foregroundStyle(Color.vpoOnColor)
                 .frame(width: 60, height: 60)
                 .background(Color.vpoTerracotta)
                 .clipShape(Circle())

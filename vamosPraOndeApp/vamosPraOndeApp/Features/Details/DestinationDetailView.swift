@@ -59,11 +59,11 @@ struct DestinationDetailView: View {
                         .foregroundStyle(Color(hex: 0xFBE9C6))
                     Text(destination.cityName)
                         .font(AppFont.display(44))
-                        .foregroundStyle(Color.vpoCream)
+                        .foregroundStyle(Color.vpoOnColor)
                     if !destination.subtitle.isEmpty {
                         Text(destination.subtitle)
                             .font(AppFont.medium(14))
-                            .foregroundStyle(Color.vpoCream.opacity(0.9))
+                            .foregroundStyle(Color.vpoOnColor.opacity(0.9))
                     }
                 }
                 .padding(Spacing.lg)
@@ -72,7 +72,7 @@ struct DestinationDetailView: View {
                 Button { dismiss() } label: {
                     Image(systemName: "chevron.left")
                         .font(.system(size: 18, weight: .semibold))
-                        .foregroundStyle(Color.vpoCream)
+                        .foregroundStyle(Color.vpoOnColor)
                         .frame(width: 40, height: 40)
                         .background(.ultraThinMaterial, in: Circle())
                 }
@@ -126,7 +126,7 @@ struct DestinationDetailView: View {
         HStack(spacing: Spacing.md) {
             Image(systemName: "cloud.sun.fill")
                 .font(.system(size: 26))
-                .foregroundStyle(Color.vpoCream)
+                .foregroundStyle(Color.vpoOnColor)
                 .frame(width: 52, height: 52)
                 .background(Color.vpoTeal)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))

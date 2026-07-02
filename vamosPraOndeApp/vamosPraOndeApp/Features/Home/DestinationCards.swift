@@ -25,25 +25,25 @@ struct DestinationHeroCard: View {
 
                 Text(destination.cityName)
                     .font(AppFont.display(38))
-                    .foregroundStyle(Color.vpoCream)
+                    .foregroundStyle(Color.vpoOnColor)
 
                 if !destination.subtitle.isEmpty {
                     Text(destination.subtitle)
                         .font(AppFont.medium(13))
-                        .foregroundStyle(Color.vpoCream.opacity(0.9))
+                        .foregroundStyle(Color.vpoOnColor.opacity(0.9))
                 }
 
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Text(countdown.value)
                         .font(AppFont.countdown(52))
-                        .foregroundStyle(Color.vpoCream)
+                        .foregroundStyle(Color.vpoOnColor)
                     Text(countdown.unit)
                         .font(AppFont.semibold(17))
-                        .foregroundStyle(Color.vpoCream)
+                        .foregroundStyle(Color.vpoOnColor)
                     Spacer()
                     Text(DateStyle.short.string(from: destination.date))
                         .font(AppFont.medium(13))
-                        .foregroundStyle(Color.vpoCream.opacity(0.9))
+                        .foregroundStyle(Color.vpoOnColor.opacity(0.9))
                 }
                 .padding(.top, 8)
             }
@@ -67,7 +67,7 @@ struct DestinationRow: View {
                 .overlay(
                     Image(systemName: "mappin.and.ellipse")
                         .font(.system(size: 18))
-                        .foregroundStyle(Color.vpoCream)
+                        .foregroundStyle(Color.vpoOnColor)
                 )
 
             VStack(alignment: .leading, spacing: 2) {

@@ -64,7 +64,7 @@ struct SignUpView: View {
 
                 Button(action: signUp) {
                     if isLoading {
-                        ProgressView().tint(.vpoCream)
+                        ProgressView().tint(.vpoOnColor)
                     } else {
                         Text("Criar conta")
                     }

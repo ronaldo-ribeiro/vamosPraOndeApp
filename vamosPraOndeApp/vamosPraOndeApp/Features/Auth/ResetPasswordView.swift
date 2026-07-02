@@ -56,7 +56,7 @@ struct ResetPasswordView: View {
 
                     Button(action: sendReset) {
                         if isLoading {
-                            ProgressView().tint(.vpoCream)
+                            ProgressView().tint(.vpoOnColor)
                         } else {
                             Text("Enviar link")
                         }

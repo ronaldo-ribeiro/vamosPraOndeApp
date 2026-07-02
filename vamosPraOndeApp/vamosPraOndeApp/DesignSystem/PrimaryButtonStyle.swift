@@ -11,7 +11,7 @@ struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(AppFont.title(17))
-            .foregroundStyle(Color.vpoCream)
+            .foregroundStyle(Color.vpoOnColor)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
             .background(Color.vpoTerracotta)

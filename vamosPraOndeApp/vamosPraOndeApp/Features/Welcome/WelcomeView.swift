@@ -35,7 +35,7 @@ struct WelcomeView: View {
                         .foregroundStyle(Color(hex: 0xFBE9C6))
                     Text("Vamos\npra onde?")
                         .font(AppFont.display(44))
-                        .foregroundStyle(Color.vpoCream)
+                        .foregroundStyle(Color.vpoOnColor)
                         .lineSpacing(-4)
                 }
                 .padding(24)

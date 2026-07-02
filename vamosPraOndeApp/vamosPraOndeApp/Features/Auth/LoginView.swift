@@ -56,7 +56,7 @@ struct LoginView: View {
 
                 Button(action: login) {
                     if isLoading {
-                        ProgressView().tint(.vpoCream)
+                        ProgressView().tint(.vpoOnColor)
                     } else {
                         Text("Entrar")
                     }
