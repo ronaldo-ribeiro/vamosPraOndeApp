@@ -8,6 +8,10 @@ target 'vamosPraOndeApp' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'FirebaseFirestoreSwift', '10.3.0'
+
+  target 'vamosPraOndeAppTests' do
+    inherit! :search_paths
+  end
 end
 
 # Garante compatibilidade com Xcode moderno:

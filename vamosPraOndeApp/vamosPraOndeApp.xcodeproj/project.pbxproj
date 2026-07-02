@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0D61739A14D23989A1ED1E89 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */; };
+		0DFA3B1CE31E388262FD7EE9 /* Pods_vamosPraOndeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4839A72F988E52DBEA7FF9C4 /* Pods_vamosPraOndeAppTests.framework */; };
 		181399A40625F8A5443A1AE0 /* DestinationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A2719934CFBBDAD3740235 /* DestinationCards.swift */; };
 		18249C8778EC9831FFA1C73B /* Appear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA303ED50DFD784E0DA6FD /* Appear.swift */; };
 		19A98A04E593BCE739B3FF7A /* DestinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */; };
 		441C3C4C0D4AB5F43B8C04E5 /* Pods_vamosPraOndeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */; };
+		4CEE741F83281B677D5917AB /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D78C807CB5AE97714742A01 /* CountdownTests.swift */; };
 		50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25693AA1C51D6E11D17BBD3 /* RootView.swift */; };
 		5EFA5C9F2425D9743A6BC430 /* NewDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */; };
 		64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0262E62ED903E239FE87B306 /* SignUpView.swift */; };
@@ -24,6 +26,8 @@
 		932282BFD16CE7A8C307F407 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475203DA568856EF307222B /* AuthHeader.swift */; };
 		95C2BCFB8EBAE03995BFC72A /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDE28040F39CCD5CCD172DF /* Destination.swift */; };
 		9BF0FDB686C01157913FBA2D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFE2BA27D6463F18CFED81 /* LocationService.swift */; };
+		A1CDFCEACA11332F58FA93C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5801109F556166FCE44A0C84 /* Foundation.framework */; };
+		B7D7480FD5B256D9538F70FC /* DestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BCC5913B450ADADCE7182 /* DestinationTests.swift */; };
 		B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72593CC4AC6BB5144E159D9C /* AppFont.swift */; };
 		BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36ED71B036CE1129056B2F /* AppColor.swift */; };
 		D14C4AF529675A8200065186 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D14C4AF429675A8200065186 /* GoogleService-Info.plist */; };
@@ -60,6 +64,16 @@
 		FE28F4D864B00E68FCE1237A /* SunsetCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3494EA2C8681FFF24FD68CAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1BAFB48291D3FBD007194C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1BAFB4F291D3FBD007194C5;
+			remoteInfo = vamosPraOndeApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0262E62ED903E239FE87B306 /* SignUpView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		08A2719934CFBBDAD3740235 /* DestinationCards.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationCards.swift; sourceTree = "<group>"; };
@@ -69,20 +83,26 @@
 		2EDE28040F39CCD5CCD172DF /* Destination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		3A34A419395F409009F3EB25 /* AuthFlowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
 		409CD1E05CA693E1110F0D03 /* AuthService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		451BCC5913B450ADADCE7182 /* DestinationTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationTests.swift; sourceTree = "<group>"; };
 		46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationsRepository.swift; sourceTree = "<group>"; };
+		4839A72F988E52DBEA7FF9C4 /* Pods_vamosPraOndeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EFACD31BFE6198AE844676 /* Pods-vamosPraOndeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		53D75C8C213204040912F463 /* Pods-vamosPraOndeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeAppTests.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeAppTests/Pods-vamosPraOndeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		53EA303ED50DFD784E0DA6FD /* Appear.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Appear.swift; sourceTree = "<group>"; };
 		55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosPraOndeApp.swift; sourceTree = "<group>"; };
 		5588CBDB4A32B6D786569BFB /* vamosPraOndeApp.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = vamosPraOndeApp.entitlements; sourceTree = "<group>"; };
+		5801109F556166FCE44A0C84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B36ED71B036CE1129056B2F /* AppColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		715796514FBEA826675FB981 /* ErrorBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
 		72593CC4AC6BB5144E159D9C /* AppFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		759693CF363A15BF3D16B2D1 /* LoginView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		799EFFED51CAB6C06E8D343D /* WelcomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		7D78C807CB5AE97714742A01 /* CountdownTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountdownTests.swift; sourceTree = "<group>"; };
 		85EFE2BA27D6463F18CFED81 /* LocationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunsetCover.swift; sourceTree = "<group>"; };
+		9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vamosPraOndeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A741242B7F72183F80E1FCE6 /* AppTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
 		B6717499BB05FED71D3E7044 /* Countdown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
@@ -115,6 +135,7 @@
 		D1BAFB7D291D48A0007194C5 /* Urbanist-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ThinItalic.ttf"; sourceTree = "<group>"; };
 		D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		D1E2735D296CED5B00ED5441 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E06674E2EB2E93DBD31F36A3 /* Pods-vamosPraOndeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeAppTests.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeAppTests/Pods-vamosPraOndeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		F475203DA568856EF307222B /* AuthHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,9 +149,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD2DA4085A8D4CA9D4ABA443 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1CDFCEACA11332F58FA93C5 /* Foundation.framework in Frameworks */,
+				0DFA3B1CE31E388262FD7EE9 /* Pods_vamosPraOndeAppTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01B40AA05028869F94E18736 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5801109F556166FCE44A0C84 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		13D57E05D2506696CC43A8DA /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +192,16 @@
 			);
 			name = Utilities;
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2D465C378E421E505E0C7725 /* vamosPraOndeAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				7D78C807CB5AE97714742A01 /* CountdownTests.swift */,
+				451BCC5913B450ADADCE7182 /* DestinationTests.swift */,
+			);
+			name = vamosPraOndeAppTests;
+			path = vamosPraOndeAppTests;
 			sourceTree = "<group>";
 		};
 		2F248B36616962A7CFBFC394 /* Models */ = {
@@ -241,6 +289,8 @@
 			children = (
 				49EFACD31BFE6198AE844676 /* Pods-vamosPraOndeApp.debug.xcconfig */,
 				B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */,
+				53D75C8C213204040912F463 /* Pods-vamosPraOndeAppTests.release.xcconfig */,
+				E06674E2EB2E93DBD31F36A3 /* Pods-vamosPraOndeAppTests.debug.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -260,6 +310,7 @@
 				D1BAFB51291D3FBD007194C5 /* Products */,
 				A133D876E5ABD72581A5F674 /* Pods */,
 				F96F868701B46C1EF84ECA3E /* Frameworks */,
+				2D465C378E421E505E0C7725 /* vamosPraOndeAppTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -267,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				D1BAFB50291D3FBD007194C5 /* vamosPraOndeApp.app */,
+				9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,6 +396,8 @@
 			isa = PBXGroup;
 			children = (
 				5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */,
+				01B40AA05028869F94E18736 /* iOS */,
+				4839A72F988E52DBEA7FF9C4 /* Pods_vamosPraOndeAppTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -351,6 +405,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A196202C8F2A77858F2CB830 /* vamosPraOndeAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0D275BE9608C981744BA941 /* Build configuration list for PBXNativeTarget "vamosPraOndeAppTests" */;
+			buildPhases = (
+				9067CCAE592A4DF9FD5A2653 /* [CP] Check Pods Manifest.lock */,
+				F6523D91ED4E20BF30F12C81 /* Sources */,
+				DD2DA4085A8D4CA9D4ABA443 /* Frameworks */,
+				02EA3235B93FB29387F50DB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6F1E61A97A2A220FA2A104B /* PBXTargetDependency */,
+			);
+			name = vamosPraOndeAppTests;
+			productName = vamosPraOndeAppTests;
+			productReference = 9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D1BAFB4F291D3FBD007194C5 /* vamosPraOndeApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1BAFB64291D3FBF007194C5 /* Build configuration list for PBXNativeTarget "vamosPraOndeApp" */;
@@ -399,11 +472,19 @@
 			projectRoot = "";
 			targets = (
 				D1BAFB4F291D3FBD007194C5 /* vamosPraOndeApp */,
+				A196202C8F2A77858F2CB830 /* vamosPraOndeAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		02EA3235B93FB29387F50DB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1BAFB4E291D3FBD007194C5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -452,6 +533,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9067CCAE592A4DF9FD5A2653 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-vamosPraOndeAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9514D7F86C2ED8923F029A1F /* [CP] Check Pods Manifest.lock */ = {
@@ -513,7 +616,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F6523D91ED4E20BF30F12C81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEE741F83281B677D5917AB /* CountdownTests.swift in Sources */,
+				B7D7480FD5B256D9538F70FC /* DestinationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A6F1E61A97A2A220FA2A104B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = vamosPraOndeApp;
+			target = D1BAFB4F291D3FBD007194C5 /* vamosPraOndeApp */;
+			targetProxy = 3494EA2C8681FFF24FD68CAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D1BAFB5E291D3FBF007194C5 /* LaunchScreen.storyboard */ = {
@@ -527,6 +648,43 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6E3BE41FEC088F3DC54522EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53D75C8C213204040912F463 /* Pods-vamosPraOndeAppTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YUJ28KYKT3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ronaldoribeiro.vamosPraOndeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vamosPraOndeApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/vamosPraOndeApp";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A725113224C0DBD987F8B951 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E06674E2EB2E93DBD31F36A3 /* Pods-vamosPraOndeAppTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YUJ28KYKT3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ronaldoribeiro.vamosPraOndeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vamosPraOndeApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/vamosPraOndeApp";
+			};
+			name = Debug;
+		};
 		D1BAFB62291D3FBF007194C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -722,6 +880,15 @@
 			buildConfigurations = (
 				D1BAFB65291D3FBF007194C5 /* Debug */,
 				D1BAFB66291D3FBF007194C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0D275BE9608C981744BA941 /* Build configuration list for PBXNativeTarget "vamosPraOndeAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E3BE41FEC088F3DC54522EE /* Release */,
+				A725113224C0DBD987F8B951 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
