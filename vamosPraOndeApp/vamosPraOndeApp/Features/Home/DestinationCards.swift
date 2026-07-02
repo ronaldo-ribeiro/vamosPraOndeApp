@@ -51,6 +51,8 @@ struct DestinationHeroCard: View {
         }
         .frame(height: 250)
         .clipShape(RoundedRectangle(cornerRadius: Radius.cover, style: .continuous))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Próxima viagem: \(destination.cityName). \(countdown.phrase), em \(DateStyle.long.string(from: destination.date)).")
     }
 }
 
@@ -96,5 +98,7 @@ struct DestinationRow: View {
         .padding(Spacing.md)
         .background(Color.vpoCream)
         .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(destination.cityName). \(countdown.phrase).")
     }
 }

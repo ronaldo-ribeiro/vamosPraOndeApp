@@ -76,6 +76,7 @@ struct DestinationDetailView: View {
                         .frame(width: 40, height: 40)
                         .background(.ultraThinMaterial, in: Circle())
                 }
+                .accessibilityLabel("Voltar")
                 .padding(.leading, Spacing.lg)
                 .padding(.top, 56)
             }
@@ -103,6 +104,8 @@ struct DestinationDetailView: View {
                 .foregroundStyle(Color.vpoInkSoft)
         }
         .padding(.horizontal, Spacing.lg)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(countdown.phrase), em \(DateStyle.long.string(from: destination.date)).")
     }
 
     private var mapCard: some View {
@@ -119,6 +122,8 @@ struct DestinationDetailView: View {
         .frame(height: 220)
         .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
         .allowsHitTesting(false)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Mapa de \(destination.cityName)")
         .padding(.horizontal, Spacing.lg)
     }
 

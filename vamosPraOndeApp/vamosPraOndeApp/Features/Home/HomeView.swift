@@ -106,6 +106,7 @@ struct HomeView: View {
                     .font(.system(size: 30))
                     .foregroundStyle(Color.vpoTeal)
             }
+            .accessibilityLabel("Conta e perfil")
         }
     }
 
@@ -120,6 +121,7 @@ struct HomeView: View {
                 .overlay(Circle().stroke(Color.vpoSand, lineWidth: 4))
                 .shadow(color: Color.vpoInk.opacity(0.2), radius: 8, y: 4)
         }
+        .accessibilityLabel("Adicionar destino")
         .padding(Spacing.lg)
     }
 }
