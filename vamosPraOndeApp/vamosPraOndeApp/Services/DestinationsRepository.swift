@@ -79,4 +79,13 @@ final class DestinationsRepository: ObservableObject {
         guard let collection, let id = destination.id else { return }
         try await collection.document(id).delete()
     }
+
+    /// Apaga todos os destinos do usuário (usado ao excluir a conta).
+    func deleteAll() async throws {
+        guard let collection else { return }
+        let snapshot = try await collection.getDocuments()
+        for document in snapshot.documents {
+            try await document.reference.delete()
+        }
+    }
 }

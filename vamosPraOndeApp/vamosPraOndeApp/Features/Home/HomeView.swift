@@ -13,6 +13,9 @@ struct HomeView: View {
     @State private var showingNew = false
     @State private var sort: DestinationSort = .dateAsc
     @State private var filter: DestinationFilter = .all
+    @State private var showingDeleteAccount = false
+    @State private var accountError: String?
+    @State private var showingAccountError = false
 
     private var displayed: [Destination] {
         DestinationSorting.apply(repo.destinations, sort: sort, filter: filter)
@@ -81,6 +84,35 @@ struct HomeView: View {
         .sheet(isPresented: $showingNew) {
             NewDestinationView(repository: repo)
         }
+        .confirmationDialog(
+            "Excluir a sua conta?",
+            isPresented: $showingDeleteAccount,
+            titleVisibility: .visible
+        ) {
+            Button("Excluir conta", role: .destructive) { deleteAccount() }
+            Button("Cancelar", role: .cancel) {}
+        } message: {
+            Text("Isso apaga todos os seus destinos e a sua conta permanentemente. Não dá para desfazer.")
+        }
+        .alert("Não foi possível excluir", isPresented: $showingAccountError) {
+            Button("OK") {}
+        } message: {
+            Text(accountError ?? "")
+        }
+    }
+
+    private func deleteAccount() {
+        Task {
+            do {
+                try await repo.deleteAll()
+                NotificationService.cancelAll()
+                try await auth.deleteAccount()
+                // Sucesso: o listener de auth zera o usuário e o RootView volta ao login.
+            } catch {
+                accountError = AuthErrorMessage.of(error)
+                showingAccountError = true
+            }
+        }
     }
 
     private var header: some View {
@@ -122,8 +154,12 @@ struct HomeView: View {
     private var profileMenu: some View {
         Menu {
             Text(auth.displayEmail)
-            Button(role: .destructive) { try? auth.signOut() } label: {
+            Button { try? auth.signOut() } label: {
                 Label("Sair", systemImage: "rectangle.portrait.and.arrow.right")
+            }
+            Divider()
+            Button(role: .destructive) { showingDeleteAccount = true } label: {
+                Label("Excluir conta", systemImage: "trash")
             }
         } label: {
             Image(systemName: "person.circle.fill")

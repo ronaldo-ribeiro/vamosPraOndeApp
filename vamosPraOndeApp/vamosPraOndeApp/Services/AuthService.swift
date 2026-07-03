@@ -47,6 +47,13 @@ final class AuthService: ObservableObject {
     func signOut() throws {
         try Auth.auth().signOut()
     }
+
+    /// Exclui a conta do usuário autenticado no Firebase Auth.
+    /// Pode lançar `requiresRecentLogin` se o login for antigo.
+    func deleteAccount() async throws {
+        guard let user = Auth.auth().currentUser else { return }
+        try await user.delete()
+    }
 }
 
 enum AuthErrorMessage {
@@ -70,6 +77,8 @@ enum AuthErrorMessage {
             return "Sem conexão. Tente novamente."
         case .tooManyRequests:
             return "Muitas tentativas. Aguarde um momento."
+        case .requiresRecentLogin:
+            return "Por segurança, saia e entre novamente antes de excluir a conta."
         default:
             return "Algo deu errado. Tente novamente."
         }

@@ -70,6 +70,11 @@ enum NotificationService {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ids)
     }
 
+    /// Cancela todos os lembretes (usado ao excluir a conta).
+    static func cancelAll() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
+
     private static func identifier(_ id: String, _ days: Int) -> String {
         "\(id)-\(days)d"
     }

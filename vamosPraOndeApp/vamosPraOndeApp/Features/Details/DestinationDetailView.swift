@@ -234,6 +234,7 @@ struct DestinationDetailView: View {
         do {
             weather = try await WeatherProvider.current(for: destination.coordinate)
         } catch {
+            print("⚠️ WeatherKit falhou: \(error.localizedDescription) — \(error)")
             weatherFailed = true
         }
     }
