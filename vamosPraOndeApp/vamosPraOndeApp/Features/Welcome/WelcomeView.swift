@@ -44,31 +44,37 @@ struct WelcomeView: View {
     }
 
     private var content: some View {
-        VStack(alignment: .leading, spacing: Spacing.lg) {
-            Text("Conte os dias até a sua próxima aventura.")
-                .font(AppFont.medium(18))
-                .foregroundStyle(Color.vpoInk)
-                .padding(.top, Spacing.xl)
-                .appear(delay: 0.15)
+        GeometryReader { geo in
+            ScrollView {
+                VStack(alignment: .leading, spacing: Spacing.lg) {
+                    Text("Conte os dias até a sua próxima aventura.")
+                        .font(AppFont.medium(18))
+                        .foregroundStyle(Color.vpoInk)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.top, Spacing.xl)
+                        .appear(delay: 0.15)
 
-            Text("Guarde os destinos dos seus sonhos e acompanhe quanto falta para embarcar.")
-                .font(AppFont.body(15))
-                .foregroundStyle(Color.vpoInkSoft)
-                .appear(delay: 0.25)
+                    Text("Guarde os destinos dos seus sonhos e acompanhe quanto falta para embarcar.")
+                        .font(AppFont.body(15))
+                        .foregroundStyle(Color.vpoInkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .appear(delay: 0.25)
 
-            Spacer()
+                    Spacer(minLength: Spacing.xl)
 
-            VStack(spacing: Spacing.sm) {
-                Button("Entrar", action: onLogin)
-                    .buttonStyle(PrimaryButtonStyle())
-                Button("Criar conta", action: onSignUp)
-                    .buttonStyle(OutlineButtonStyle())
+                    VStack(spacing: Spacing.sm) {
+                        Button("Entrar", action: onLogin)
+                            .buttonStyle(PrimaryButtonStyle())
+                        Button("Criar conta", action: onSignUp)
+                            .buttonStyle(OutlineButtonStyle())
+                    }
+                    .padding(.bottom, Spacing.md)
+                    .appear(delay: 0.35)
+                }
+                .frame(maxWidth: .infinity, minHeight: geo.size.height, alignment: .leading)
+                .padding(.horizontal, Spacing.lg)
             }
-            .padding(.bottom, Spacing.md)
-            .appear(delay: 0.35)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, Spacing.lg)
     }
 }
 
