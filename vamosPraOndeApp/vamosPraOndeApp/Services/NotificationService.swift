@@ -43,8 +43,11 @@ enum NotificationService {
         let center = UNUserNotificationCenter.current()
         cancel(for: id)
 
+        // Sem data (lista de desejos) → nada a lembrar.
+        guard let tripDate = destination.date else { return }
+
         for days in reminders {
-            guard let fire = fireDate(tripDate: destination.date, daysBefore: days) else { continue }
+            guard let fire = fireDate(tripDate: tripDate, daysBefore: days) else { continue }
             let content = UNMutableNotificationContent()
             content.title = "Vamos pra onde? ✈️"
             content.body = days == 1

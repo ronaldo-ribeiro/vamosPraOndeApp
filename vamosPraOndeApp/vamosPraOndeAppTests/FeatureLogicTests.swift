@@ -20,6 +20,10 @@ struct DestinationSortingTests {
         Destination(id: name, title: name, latitude: 0, longitude: 0, date: day(y, m, d), createdAt: now)
     }
 
+    private func wish(_ name: String) -> Destination {
+        Destination(id: name, title: name, latitude: 0, longitude: 0, date: nil, createdAt: now)
+    }
+
     private var sample: [Destination] {
         [dest("Tóquio", 2026, 12, 1), dest("Lisboa", 2026, 9, 18), dest("Belém", 2026, 6, 1)]
     }
@@ -42,6 +46,25 @@ struct DestinationSortingTests {
     @Test func filtraPassadas() {
         let r = DestinationSorting.apply(sample, sort: .dateAsc, filter: .past, now: now)
         #expect(r.map(\.cityName) == ["Belém"])
+    }
+
+    @Test func desejosPorUltimoNaOrdemPorData() {
+        let mix = sample + [wish("Bali"), wish("Aruba")]
+        let r = DestinationSorting.apply(mix, sort: .dateAsc, filter: .all, now: now)
+        // Datados em ordem; desejos por último em ordem alfabética.
+        #expect(r.map(\.cityName) == ["Belém", "Lisboa", "Tóquio", "Aruba", "Bali"])
+    }
+
+    @Test func filtraSomenteDesejos() {
+        let mix = sample + [wish("Bali")]
+        let r = DestinationSorting.apply(mix, sort: .dateAsc, filter: .wishlist, now: now)
+        #expect(r.map(\.cityName) == ["Bali"])
+    }
+
+    @Test func categoriaClassificaCorretamente() {
+        #expect(dest("Belém", 2026, 6, 1).category(now: now) == .past)
+        #expect(dest("Lisboa", 2026, 9, 18).category(now: now) == .upcoming)
+        #expect(wish("Bali").category(now: now) == .wishlist)
     }
 }
 

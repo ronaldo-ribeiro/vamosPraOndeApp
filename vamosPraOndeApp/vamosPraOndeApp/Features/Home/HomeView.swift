@@ -112,10 +112,13 @@ struct HomeView: View {
     private func syncWidget(with destinations: [Destination]) {
         let today = Calendar.current.startOfDay(for: Date())
         let next = destinations
-            .filter { Calendar.current.startOfDay(for: $0.date) >= today }
-            .min { $0.date < $1.date }
-        NextTripSnapshot.save(next.map {
-            NextTripSnapshot(cityName: $0.cityName, subtitle: $0.subtitle, date: $0.date)
+            .compactMap { d -> (Destination, Date)? in
+                guard let date = d.date, Calendar.current.startOfDay(for: date) >= today else { return nil }
+                return (d, date)
+            }
+            .min { $0.1 < $1.1 }
+        NextTripSnapshot.save(next.map { (d, date) in
+            NextTripSnapshot(cityName: d.cityName, subtitle: d.subtitle, date: date)
         })
     }
 
@@ -198,7 +201,7 @@ struct HomeView: View {
             Image(systemName: "line.3.horizontal.decrease.circle")
                 .font(.system(size: 36))
                 .foregroundStyle(Color.vpoInkSoft)
-            Text("Nenhuma viagem \(filter.rawValue.lowercased()) por aqui.")
+            Text("Nada por aqui em “\(filter.rawValue)”.")
                 .font(AppFont.medium(16))
                 .foregroundStyle(Color.vpoInkSoft)
                 .multilineTextAlignment(.center)

@@ -17,6 +17,7 @@ struct NewDestinationView: View {
     @State private var suggestions: [CitySuggestion] = []
     @State private var selected: CitySuggestion?
     @State private var date: Date
+    @State private var noDate: Bool
     @State private var notes: String
     @State private var isSearching = false
     @State private var isSaving = false
@@ -31,6 +32,7 @@ struct NewDestinationView: View {
         })
         _date = State(initialValue: editing?.date
             ?? Calendar.current.date(byAdding: .day, value: 30, to: Date()) ?? Date())
+        _noDate = State(initialValue: editing != nil && editing?.date == nil)
         _notes = State(initialValue: editing?.notes ?? "")
     }
 
@@ -146,17 +148,33 @@ struct NewDestinationView: View {
                 .textCase(.uppercase)
                 .foregroundStyle(Color.vpoInkSoft)
 
-            DatePicker(
-                "Data da viagem",
-                selection: $date,
-                in: Date()...,
-                displayedComponents: .date
-            )
-            .datePickerStyle(.graphical)
+            Toggle(isOn: $noDate.animation(.easeInOut(duration: 0.2))) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Ainda não sei a data")
+                        .font(AppFont.medium(15))
+                        .foregroundStyle(Color.vpoInk)
+                    Text("guardar como “quero visitar”")
+                        .font(AppFont.medium(12))
+                        .foregroundStyle(Color.vpoInkSoft)
+                }
+            }
             .tint(.vpoTerracotta)
-            .padding(Spacing.sm)
+            .padding(Spacing.md)
             .background(Color.vpoCream)
-            .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
+
+            if !noDate {
+                DatePicker(
+                    "Data da viagem",
+                    selection: $date,
+                    displayedComponents: .date
+                )
+                .datePickerStyle(.graphical)
+                .tint(.vpoTerracotta)
+                .padding(Spacing.sm)
+                .background(Color.vpoCream)
+                .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+            }
         }
     }
 
@@ -214,14 +232,17 @@ struct NewDestinationView: View {
         guard let selected else { return }
         isSaving = true
         errorMessage = nil
+        let finalDate: Date? = noDate ? nil : date
         Task {
             do {
-                await NotificationService.requestAuthorization()
+                if finalDate != nil {
+                    await NotificationService.requestAuthorization()
+                }
                 if var existing = editing {
                     existing.title = selected.title
                     existing.latitude = selected.coordinate.latitude
                     existing.longitude = selected.coordinate.longitude
-                    existing.date = date
+                    existing.date = finalDate
                     existing.notes = trimmedNotes
                     try await repository.update(existing)
                     await NotificationService.reschedule(for: existing)
@@ -229,7 +250,7 @@ struct NewDestinationView: View {
                     let saved = try await repository.add(
                         title: selected.title,
                         coordinate: selected.coordinate,
-                        date: date,
+                        date: finalDate,
                         notes: trimmedNotes
                     )
                     await NotificationService.reschedule(for: saved)

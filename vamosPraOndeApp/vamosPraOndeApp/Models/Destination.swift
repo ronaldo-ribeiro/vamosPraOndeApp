@@ -9,12 +9,22 @@ import Foundation
 import CoreLocation
 import FirebaseFirestore
 
+/// Em que "prateleira" o destino está.
+enum TripCategory: String {
+    case upcoming   // tem data no futuro (ou hoje)
+    case past       // tem data no passado
+    case wishlist   // sem data — "quero visitar"
+}
+
 struct Destination: Identifiable, Codable, Hashable {
     @DocumentID var id: String?
     var title: String
     var latitude: Double
     var longitude: Double
-    var date: Date
+    /// Data da viagem. `nil` = lista de desejos ("quero visitar", sem data marcada).
+    /// `@ExplicitNull` grava `nil` como `null` (em vez de omitir o campo), para que
+    /// editar de "com data" para "quero visitar" realmente limpe a data no Firestore.
+    @ExplicitNull var date: Date?
     var createdAt: Date
     /// Anotações da viagem (opcional — destinos antigos podem não ter).
     var notes: String? = nil
@@ -23,6 +33,16 @@ struct Destination: Identifiable, Codable, Hashable {
 
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+
+    /// Sem data marcada → lista de desejos.
+    var isWishlist: Bool { date == nil }
+
+    /// Classifica o destino em próxima / passada / quero visitar.
+    func category(now: Date = Date(), calendar: Calendar = .current) -> TripCategory {
+        guard let date else { return .wishlist }
+        let today = calendar.startOfDay(for: now)
+        return calendar.startOfDay(for: date) < today ? .past : .upcoming
     }
 
     /// Nome curto da cidade (primeiro trecho de "Cidade, Estado, País").

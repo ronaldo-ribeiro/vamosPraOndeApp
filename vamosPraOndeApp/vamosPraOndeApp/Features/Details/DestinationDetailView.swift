@@ -34,7 +34,7 @@ struct DestinationDetailView: View {
         repository.destinations.first { $0.id == initial.id } ?? initial
     }
 
-    private var countdown: Countdown { Countdown(to: destination.date) }
+    private var countdown: Countdown? { destination.date.map { Countdown(to: $0) } }
 
     var body: some View {
         ZStack {
@@ -176,26 +176,45 @@ struct DestinationDetailView: View {
         .padding(.horizontal, Spacing.lg)
     }
 
+    @ViewBuilder
     private var countdownBlock: some View {
         VStack(spacing: 2) {
-            Text(countdown.isPast ? "essa viagem já rolou" : "faltam")
-                .font(AppFont.overline())
-                .kerning(1.5)
-                .textCase(.uppercase)
-                .foregroundStyle(Color.vpoInkSoft)
-            HStack(alignment: .firstTextBaseline, spacing: 10) {
-                Text(countdown.value)
-                    .font(AppFont.countdown(60))
-                    .foregroundStyle(Color.vpoTerracotta)
-                if !countdown.unit.isEmpty {
-                    Text(countdown.unit)
-                        .font(AppFont.semibold(20))
-                        .foregroundStyle(Color.vpoInk)
+            if let countdown, let date = destination.date {
+                Text(countdown.isPast ? "essa viagem já rolou" : "faltam")
+                    .font(AppFont.overline())
+                    .kerning(1.5)
+                    .textCase(.uppercase)
+                    .foregroundStyle(Color.vpoInkSoft)
+                HStack(alignment: .firstTextBaseline, spacing: 10) {
+                    Text(countdown.value)
+                        .font(AppFont.countdown(60))
+                        .foregroundStyle(Color.vpoTerracotta)
+                    if !countdown.unit.isEmpty {
+                        Text(countdown.unit)
+                            .font(AppFont.semibold(20))
+                            .foregroundStyle(Color.vpoInk)
+                    }
                 }
+                Text(DateStyle.long.string(from: date))
+                    .font(AppFont.medium(14))
+                    .foregroundStyle(Color.vpoInkSoft)
+            } else {
+                Text("na sua lista")
+                    .font(AppFont.overline())
+                    .kerning(1.5)
+                    .textCase(.uppercase)
+                    .foregroundStyle(Color.vpoInkSoft)
+                HStack(spacing: 10) {
+                    Image(systemName: "heart.fill")
+                        .font(.system(size: 34))
+                    Text("quero visitar")
+                        .font(AppFont.display(34))
+                }
+                .foregroundStyle(Color.vpoTerracotta)
+                Text("marque uma data quando decidir embarcar")
+                    .font(AppFont.medium(14))
+                    .foregroundStyle(Color.vpoInkSoft)
             }
-            Text(DateStyle.long.string(from: destination.date))
-                .font(AppFont.medium(14))
-                .foregroundStyle(Color.vpoInkSoft)
 
             if let meters = userLocation.distance(to: destination.coordinate) {
                 Label("a \(DistanceFormat.string(meters: meters)) de você", systemImage: "location.fill")
@@ -210,7 +229,12 @@ struct DestinationDetailView: View {
     }
 
     private var countdownAccessibilityLabel: String {
-        var label = "\(countdown.phrase), em \(DateStyle.long.string(from: destination.date))."
+        var label: String
+        if let countdown, let date = destination.date {
+            label = "\(countdown.phrase), em \(DateStyle.long.string(from: date))."
+        } else {
+            label = "Quero visitar \(destination.cityName)."
+        }
         if let meters = userLocation.distance(to: destination.coordinate) {
             label += " A \(DistanceFormat.string(meters: meters)) de você."
         }
@@ -386,10 +410,9 @@ struct DestinationDetailView: View {
         do {
             weather = try await WeatherProvider.current(for: destination.coordinate)
             // Previsão para o dia da viagem (janela de ~10 dias do WeatherKit).
-            let days = countdown.days
-            if days >= 0 && days <= 9 {
+            if let date = destination.date, let days = countdown?.days, days >= 0, days <= 9 {
                 tripForecast = try? await WeatherProvider.forecast(
-                    for: destination.coordinate, on: destination.date
+                    for: destination.coordinate, on: date
                 )
             }
         } catch {

@@ -2,8 +2,8 @@
 //  TravelMapView.swift
 //  vamosPraOndeApp
 //
-//  Mapa-múndi com todos os destinos do usuário (futuros e passados)
-//  e a distância de você até cada um.
+//  Mapa-múndi com os destinos do usuário (próximas, passadas e desejos)
+//  e a distância de você até cada um. Dá para filtrar o que aparece.
 //
 
 import SwiftUI
@@ -15,12 +15,17 @@ struct TravelMapView: View {
     @EnvironmentObject private var userLocation: UserLocationProvider
     @Environment(\.dismiss) private var dismiss
     @State private var position: MapCameraPosition = .automatic
+    @State private var visible: Set<TripCategory> = [.upcoming, .past, .wishlist]
+
+    private var shown: [Destination] {
+        destinations.filter { visible.contains($0.category()) }
+    }
 
     var body: some View {
         NavigationStack {
             Map(position: $position) {
                 if let user = userLocation.coordinate {
-                    ForEach(destinations) { destination in
+                    ForEach(shown) { destination in
                         MapPolyline(MKGeodesicPolyline(
                             coordinates: [user, destination.coordinate], count: 2
                         ))
@@ -36,7 +41,7 @@ struct TravelMapView: View {
                     }
                 }
 
-                ForEach(destinations) { destination in
+                ForEach(shown) { destination in
                     Marker(destination.cityName, coordinate: destination.coordinate)
                         .tint(color(for: destination))
                 }
@@ -52,33 +57,57 @@ struct TravelMapView: View {
                         .bold()
                 }
             }
-            .safeAreaInset(edge: .bottom) { legend }
+            .safeAreaInset(edge: .bottom) { filterBar }
         }
         .tint(.vpoTerracotta)
         .task { userLocation.request() }
     }
 
     private func color(for destination: Destination) -> Color {
-        Countdown(to: destination.date).isPast ? .vpoTeal : .vpoTerracotta
+        color(for: destination.category())
     }
 
-    private var legend: some View {
-        HStack(spacing: Spacing.lg) {
-            legendItem(color: .vpoTerracotta, label: "próximas")
-            legendItem(color: .vpoTeal, label: "já foram")
+    private func color(for category: TripCategory) -> Color {
+        switch category {
+        case .upcoming: return .vpoTerracotta
+        case .past: return .vpoTeal
+        case .wishlist: return .vpoGold
+        }
+    }
+
+    private var filterBar: some View {
+        HStack(spacing: Spacing.sm) {
+            filterChip(.upcoming, label: "próximas")
+            filterChip(.past, label: "já fui")
+            filterChip(.wishlist, label: "quero ir")
         }
         .padding(.vertical, Spacing.sm)
-        .padding(.horizontal, Spacing.lg)
+        .padding(.horizontal, Spacing.md)
         .background(.ultraThinMaterial, in: Capsule())
         .padding(.bottom, Spacing.sm)
     }
 
-    private func legendItem(color: Color, label: String) -> some View {
-        HStack(spacing: 6) {
-            Circle().fill(color).frame(width: 10, height: 10)
-            Text(label)
-                .font(AppFont.semibold(13))
-                .foregroundStyle(Color.vpoInk)
+    private func filterChip(_ category: TripCategory, label: String) -> some View {
+        let isOn = visible.contains(category)
+        let count = destinations.filter { $0.category() == category }.count
+        return Button {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                if isOn { visible.remove(category) } else { visible.insert(category) }
+            }
+        } label: {
+            HStack(spacing: 6) {
+                Circle().fill(color(for: category)).frame(width: 10, height: 10)
+                Text(label)
+                    .font(AppFont.semibold(13))
+                    .foregroundStyle(Color.vpoInk)
+            }
+            .padding(.vertical, 7)
+            .padding(.horizontal, Spacing.sm)
+            .background(isOn ? color(for: category).opacity(0.18) : Color.clear, in: Capsule())
+            .opacity(count == 0 ? 0.4 : (isOn ? 1 : 0.55))
         }
+        .buttonStyle(.plain)
+        .disabled(count == 0)
+        .accessibilityLabel("\(label), \(count) \(count == 1 ? "destino" : "destinos"), \(isOn ? "mostrando" : "oculto")")
     }
 }

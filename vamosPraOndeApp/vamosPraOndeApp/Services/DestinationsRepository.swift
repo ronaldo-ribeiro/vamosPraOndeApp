@@ -24,13 +24,14 @@ final class DestinationsRepository: ObservableObject {
         return db.collection("users").document(uid).collection("destinations")
     }
 
-    /// Começa a ouvir os destinos do usuário em tempo real (ordenados por data).
+    /// Começa a ouvir os destinos do usuário em tempo real.
+    /// Não ordenamos no servidor porque destinos "quero visitar" não têm data
+    /// (o Firestore excluiria documentos sem o campo). A ordenação é no cliente.
     func start() {
         stop()
         guard let collection else { return }
         isLoading = true
         listener = collection
-            .order(by: "date")
             .addSnapshotListener { [weak self] snapshot, error in
                 Task { @MainActor in
                     guard let self else { return }
@@ -52,7 +53,7 @@ final class DestinationsRepository: ObservableObject {
     }
 
     @discardableResult
-    func add(title: String, coordinate: CLLocationCoordinate2D, date: Date, notes: String?) async throws -> Destination {
+    func add(title: String, coordinate: CLLocationCoordinate2D, date: Date?, notes: String?) async throws -> Destination {
         guard let collection else {
             throw NSError(domain: "vpo", code: 0)
         }
