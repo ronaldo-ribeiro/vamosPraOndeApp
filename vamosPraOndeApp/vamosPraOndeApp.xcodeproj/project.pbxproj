@@ -12,6 +12,7 @@
 		181399A40625F8A5443A1AE0 /* DestinationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A2719934CFBBDAD3740235 /* DestinationCards.swift */; };
 		18249C8778EC9831FFA1C73B /* Appear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA303ED50DFD784E0DA6FD /* Appear.swift */; };
 		19A98A04E593BCE739B3FF7A /* DestinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */; };
+		20FE5F85AD868F5549D7BF51 /* TimeZoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */; };
 		441C3C4C0D4AB5F43B8C04E5 /* Pods_vamosPraOndeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */; };
 		4CEE741F83281B677D5917AB /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D78C807CB5AE97714742A01 /* CountdownTests.swift */; };
 		50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25693AA1C51D6E11D17BBD3 /* RootView.swift */; };
@@ -110,6 +111,7 @@
 		8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeatureLogicTests.swift; sourceTree = "<group>"; };
 		85EFE2BA27D6463F18CFED81 /* LocationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunsetCover.swift; sourceTree = "<group>"; };
+		8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimeZoneService.swift; sourceTree = "<group>"; };
 		97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vamosPraOndeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A741242B7F72183F80E1FCE6 /* AppTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				85EFE2BA27D6463F18CFED81 /* LocationService.swift */,
 				23AF5E5BEBEEE0DED5CAFDFE /* NotificationService.swift */,
 				EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */,
+				8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				FC59D41C4AD488FFD91C783C /* NotificationService.swift in Sources */,
 				A32F34C1681389662AF11E9C /* DestinationSorting.swift in Sources */,
 				6C221049FF08F63F3B09FDA2 /* WeatherProvider.swift in Sources */,
+				20FE5F85AD868F5549D7BF51 /* TimeZoneService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

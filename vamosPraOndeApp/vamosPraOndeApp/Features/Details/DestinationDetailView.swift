@@ -17,7 +17,9 @@ struct DestinationDetailView: View {
     @State private var showingEdit = false
     @State private var isDeleting = false
     @State private var weather: DestinationWeather?
+    @State private var tripForecast: TripDayForecast?
     @State private var weatherFailed = false
+    @State private var destinationTimeZone: TimeZone?
 
     init(destination: Destination, repository: DestinationsRepository) {
         self.initial = destination
@@ -44,6 +46,9 @@ struct DestinationDetailView: View {
                         notesCard(notes)
                     }
                     weatherCard
+                    if destinationTimeZone != nil {
+                        timeZoneCard
+                    }
                     deleteButton
                 }
                 .padding(.bottom, Spacing.xl)
@@ -176,41 +181,61 @@ struct DestinationDetailView: View {
     }
 
     private var weatherCard: some View {
-        HStack(spacing: Spacing.md) {
-            Image(systemName: weather?.symbolName ?? "cloud.sun.fill")
-                .font(.system(size: 26))
-                .foregroundStyle(Color.vpoOnColor)
-                .frame(width: 52, height: 52)
-                .background(Color.vpoTeal)
-                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        VStack(spacing: 0) {
+            HStack(spacing: Spacing.md) {
+                Image(systemName: weather?.symbolName ?? "cloud.sun.fill")
+                    .font(.system(size: 26))
+                    .foregroundStyle(Color.vpoOnColor)
+                    .frame(width: 52, height: 52)
+                    .background(Color.vpoTeal)
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
 
-            VStack(alignment: .leading, spacing: 2) {
-                Text("Clima agora")
-                    .font(AppFont.title(16))
-                    .foregroundStyle(Color.vpoInk)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Clima agora")
+                        .font(AppFont.title(16))
+                        .foregroundStyle(Color.vpoInk)
+                    if let weather {
+                        Text(weather.description)
+                            .font(AppFont.medium(13))
+                            .foregroundStyle(Color.vpoInkSoft)
+                    } else if weatherFailed {
+                        Text("indisponível no momento")
+                            .font(AppFont.medium(13))
+                            .foregroundStyle(Color.vpoInkSoft)
+                    } else {
+                        Text("carregando…")
+                            .font(AppFont.medium(13))
+                            .foregroundStyle(Color.vpoInkSoft)
+                    }
+                }
+
+                Spacer()
+
                 if let weather {
-                    Text(weather.description)
-                        .font(AppFont.medium(13))
-                        .foregroundStyle(Color.vpoInkSoft)
-                } else if weatherFailed {
-                    Text("indisponível no momento")
-                        .font(AppFont.medium(13))
-                        .foregroundStyle(Color.vpoInkSoft)
-                } else {
-                    Text("carregando…")
-                        .font(AppFont.medium(13))
-                        .foregroundStyle(Color.vpoInkSoft)
+                    Text(weather.temperature)
+                        .font(AppFont.countdown(30))
+                        .foregroundStyle(Color.vpoTeal)
+                } else if !weatherFailed {
+                    ProgressView().tint(.vpoTeal)
                 }
             }
 
-            Spacer()
-
-            if let weather {
-                Text(weather.temperature)
-                    .font(AppFont.countdown(30))
-                    .foregroundStyle(Color.vpoTeal)
-            } else if !weatherFailed {
-                ProgressView().tint(.vpoTeal)
+            if let tripForecast {
+                Divider()
+                    .padding(.vertical, Spacing.sm)
+                HStack(spacing: Spacing.sm) {
+                    Image(systemName: tripForecast.symbolName)
+                        .font(.system(size: 16))
+                        .foregroundStyle(Color.vpoTeal)
+                        .frame(width: 22)
+                    Text("No dia da viagem")
+                        .font(AppFont.semibold(14))
+                        .foregroundStyle(Color.vpoInk)
+                    Spacer()
+                    Text("\(tripForecast.high) / \(tripForecast.low) · \(tripForecast.description.lowercased())")
+                        .font(AppFont.medium(13))
+                        .foregroundStyle(Color.vpoInkSoft)
+                }
             }
         }
         .padding(Spacing.md)
@@ -219,6 +244,62 @@ struct DestinationDetailView: View {
         .padding(.horizontal, Spacing.lg)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(weatherAccessibilityLabel)
+    }
+
+    private var timeZoneCard: some View {
+        HStack(spacing: Spacing.md) {
+            Image(systemName: "clock.fill")
+                .font(.system(size: 24))
+                .foregroundStyle(Color.vpoOnColor)
+                .frame(width: 52, height: 52)
+                .background(Color.vpoGold)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Hora local em \(destination.cityName)")
+                    .font(AppFont.title(16))
+                    .foregroundStyle(Color.vpoInk)
+                if let tz = destinationTimeZone {
+                    Text(TimeZoneService.differencePhrase(tz))
+                        .font(AppFont.medium(13))
+                        .foregroundStyle(Color.vpoInkSoft)
+                }
+            }
+
+            Spacer()
+
+            if let tz = destinationTimeZone {
+                TimelineView(.everyMinute) { context in
+                    Text(timeString(context.date, in: tz))
+                        .font(AppFont.countdown(26))
+                        .foregroundStyle(Color.vpoGold)
+                }
+            }
+        }
+        .padding(Spacing.md)
+        .background(Color.vpoCream)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+        .padding(.horizontal, Spacing.lg)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(timeZoneAccessibilityLabel)
+    }
+
+    private static let localTime: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "pt_BR")
+        f.dateFormat = "HH:mm"
+        return f
+    }()
+
+    private func timeString(_ date: Date, in timeZone: TimeZone) -> String {
+        let formatter = Self.localTime
+        formatter.timeZone = timeZone
+        return formatter.string(from: date)
+    }
+
+    private var timeZoneAccessibilityLabel: String {
+        guard let tz = destinationTimeZone else { return "" }
+        return "Hora local em \(destination.cityName): \(timeString(Date(), in: tz)), \(TimeZoneService.differencePhrase(tz))."
     }
 
     private var weatherAccessibilityLabel: String {
@@ -230,13 +311,23 @@ struct DestinationDetailView: View {
 
     private func loadWeather() async {
         weather = nil
+        tripForecast = nil
         weatherFailed = false
+        async let timeZoneTask = TimeZoneService.timeZone(for: destination.coordinate)
         do {
             weather = try await WeatherProvider.current(for: destination.coordinate)
+            // Previsão para o dia da viagem (janela de ~10 dias do WeatherKit).
+            let days = countdown.days
+            if days >= 0 && days <= 9 {
+                tripForecast = try? await WeatherProvider.forecast(
+                    for: destination.coordinate, on: destination.date
+                )
+            }
         } catch {
             print("⚠️ WeatherKit falhou: \(error.localizedDescription) — \(error)")
             weatherFailed = true
         }
+        destinationTimeZone = await timeZoneTask
     }
 
     private var deleteButton: some View {

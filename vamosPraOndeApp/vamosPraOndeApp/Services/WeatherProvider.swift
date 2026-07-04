@@ -16,6 +16,13 @@ struct DestinationWeather {
     let symbolName: String     // SF Symbol do WeatherKit
 }
 
+struct TripDayForecast {
+    let high: String           // ex.: "24°"
+    let low: String            // ex.: "16°"
+    let description: String    // ex.: "Céu limpo"
+    let symbolName: String
+}
+
 enum WeatherProvider {
     static func current(for coordinate: CLLocationCoordinate2D) async throws -> DestinationWeather {
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
@@ -26,6 +33,22 @@ enum WeatherProvider {
             temperature: "\(Int(celsius.rounded()))°",
             description: description(for: current.condition),
             symbolName: current.symbolName
+        )
+    }
+
+    /// Previsão para o dia da viagem, se estiver dentro da janela de ~10 dias
+    /// coberta pelo WeatherKit. Retorna nil fora da janela.
+    static func forecast(for coordinate: CLLocationCoordinate2D, on date: Date) async throws -> TripDayForecast? {
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        let daily = try await WeatherService.shared.weather(for: location, including: .daily)
+        guard let day = daily.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) else {
+            return nil
+        }
+        return TripDayForecast(
+            high: "\(Int(day.highTemperature.converted(to: .celsius).value.rounded()))°",
+            low: "\(Int(day.lowTemperature.converted(to: .celsius).value.rounded()))°",
+            description: description(for: day.condition),
+            symbolName: day.symbolName
         )
     }
 
