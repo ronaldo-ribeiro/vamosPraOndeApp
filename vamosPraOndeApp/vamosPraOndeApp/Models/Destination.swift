@@ -7,7 +7,7 @@
 
 import Foundation
 import CoreLocation
-import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 struct Destination: Identifiable, Codable, Hashable {
     @DocumentID var id: String?

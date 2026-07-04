@@ -26,11 +26,18 @@ NSString *const kGTMSessionFetcherServiceSessionBecameInvalidNotification =
     @"kGTMSessionFetcherServiceSessionBecameInvalidNotification";
 NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServiceSessionKey";
 
+static id<GTMUserAgentProvider> SharedStandardUserAgentProvider(void) {
+  static dispatch_once_t onceToken;
+  static id<GTMUserAgentProvider> standardUserAgentProvider;
+  dispatch_once(&onceToken, ^{
+    standardUserAgentProvider = [[GTMStandardUserAgentProvider alloc] initWithBundle:nil];
+  });
+  return standardUserAgentProvider;
+}
+
 #if !GTMSESSION_BUILD_COMBINED_SOURCES
 @interface GTMSessionFetcher (ServiceMethods)
-- (BOOL)beginFetchMayDelay:(BOOL)mayDelay
-              mayAuthorize:(BOOL)mayAuthorize
-               mayDecorate:(BOOL)mayDecorate;
+- (void)serviceRestartingFetcher;
 @end
 #endif  // !GTMSESSION_BUILD_COMBINED_SOURCES
 
@@ -90,7 +97,7 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
   dispatch_queue_t _callbackQueue;
   NSOperationQueue *_delegateQueue;
   NSHTTPCookieStorage *_cookieStorage;
-  NSString *_userAgent;
+  id<GTMUserAgentProvider> _userAgentProvider;
   NSTimeInterval _timeout;
 
   NSURLCredential *_credential;       // Username & password.
@@ -117,7 +124,6 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
             configuration = _configuration,
             configurationBlock = _configurationBlock,
             cookieStorage = _cookieStorage,
-            userAgent = _userAgent,
             challengeBlock = _challengeBlock,
             credential = _credential,
             proxyCredential = _proxyCredential,
@@ -131,8 +137,10 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
             metricsCollectionBlock = _metricsCollectionBlock,
             properties = _properties,
             unusedSessionTimeout = _unusedSessionTimeout,
+            userAgentProvider = _userAgentProvider,
             decoratorsPointerArray = _decoratorsPointerArray,
-            testBlock = _testBlock;
+            testBlock = _testBlock,
+            stopFetchingTriggersCompletionHandler = _stopFetchingTriggersCompletionHandler;
 // clang-format on
 
 #if GTM_BACKGROUND_TASK_FETCHING
@@ -159,8 +167,11 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
 
     // Starting with the SDKs for OS X 10.11/iOS 9, the service has a default useragent.
     // Apps can remove this and get the default system "CFNetwork" useragent by setting the
-    // fetcher service's userAgent property to nil.
-    _userAgent = GTMFetcherStandardUserAgentString(nil);
+    // fetcher service's userAgent or userAgentProvider properties to nil.
+    //
+    // Formatting the User-Agent string can be expensive, so create a shared cache
+    // which asynchronously calculates and caches the standard User-Agent.
+    _userAgentProvider = SharedStandardUserAgentProvider();
   }
   return self;
 }
@@ -206,9 +217,8 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
   fetcher.retryBlock = self.retryBlock;
   fetcher.maxRetryInterval = self.maxRetryInterval;
   fetcher.minRetryInterval = self.minRetryInterval;
-  if (@available(iOS 10.0, *)) {
-    fetcher.metricsCollectionBlock = self.metricsCollectionBlock;
-  }
+  fetcher.metricsCollectionBlock = self.metricsCollectionBlock;
+  fetcher.stopFetchingTriggersCompletionHandler = self.stopFetchingTriggersCompletionHandler;
   fetcher.properties = self.properties;
   fetcher.service = self;
 
@@ -216,10 +226,7 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
   fetcher.skipBackgroundTask = self.skipBackgroundTask;
 #endif
 
-  NSString *userAgent = self.userAgent;
-  if (userAgent.length > 0 && [request valueForHTTPHeaderField:@"User-Agent"] == nil) {
-    [fetcher setRequestValue:userAgent forHTTPHeaderField:@"User-Agent"];
-  }
+  fetcher.userAgentProvider = self.userAgentProvider;
   fetcher.testBlock = self.testBlock;
 
   return fetcher;
@@ -329,6 +336,7 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
 #pragma mark Queue Management
 
 - (void)addRunningFetcher:(GTMSessionFetcher *)fetcher forHost:(NSString *)host {
+  GTMSessionCheckSynchronized(self);
   // Add to the array of running fetchers for this host, creating the array if needed.
   NSMutableArray *runningForHost = [_runningFetchersByHost objectForKey:host];
   if (runningForHost == nil) {
@@ -340,6 +348,7 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
 }
 
 - (void)addDelayedFetcher:(GTMSessionFetcher *)fetcher forHost:(NSString *)host {
+  GTMSessionCheckSynchronized(self);
   // Add to the array of delayed fetchers for this host, creating the array if needed.
   NSMutableArray *delayedForHost = [_delayedFetchersByHost objectForKey:host];
   if (delayedForHost == nil) {
@@ -412,10 +421,6 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
   return shouldBeginResult;
 }
 
-- (void)startFetcher:(GTMSessionFetcher *)fetcher {
-  [fetcher beginFetchMayDelay:NO mayAuthorize:YES mayDecorate:YES];
-}
-
 // Internal utility. Returns a fetcher's delegate if it's a dispatcher, or nil if the fetcher
 // is its own delegate (possibly via proxy) and has no dispatcher.
 - (GTMSessionFetcherSessionDelegateDispatcher *)delegateDispatcherForFetcher:
@@ -474,6 +479,10 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
 }
 
 - (void)fetcherDidStop:(GTMSessionFetcher *)fetcher {
+  [self fetcherDidStop:fetcher callbacksPending:false];
+}
+
+- (void)fetcherDidStop:(GTMSessionFetcher *)fetcher callbacksPending:(BOOL)callbacksPending {
   // Entry point from the fetcher
   NSString *host = fetcher.serviceHost;
   if (!host) {
@@ -483,9 +492,11 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
 
   // This removeFetcher: invocation is a fallback; typically, fetchers are removed from the task
   // map when the task completes.
-  GTMSessionFetcherSessionDelegateDispatcher *delegateDispatcher =
-      [self delegateDispatcherForFetcher:fetcher];
-  [delegateDispatcher removeFetcher:fetcher];
+  if (!callbacksPending) {
+    GTMSessionFetcherSessionDelegateDispatcher *delegateDispatcher =
+        [self delegateDispatcherForFetcher:fetcher];
+    [delegateDispatcher removeFetcher:fetcher];
+  }
 
   NSMutableArray *fetchersToStart;
 
@@ -539,7 +550,7 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
 
   // Start fetchers outside of the synchronized block to avoid a deadlock.
   for (GTMSessionFetcher *nextFetcher in fetchersToStart) {
-    [self startFetcher:nextFetcher];
+    [nextFetcher serviceRestartingFetcher];
   }
 
   // The fetcher is no longer in the running or the delayed array,
@@ -642,6 +653,8 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
     [_runningFetchersByHost removeAllObjects];
   }
 
+  // Stop the delayed fetchers first so a delayed one doesn't get started when canceling
+  // a running one.
   for (NSArray *delayedForHost in delayedFetchersByHost) {
     for (GTMSessionFetcher *fetcher in delayedForHost) {
       [self stopFetcher:fetcher];
@@ -890,6 +903,36 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
 
     _delegateQueue = queue ?: [NSOperationQueue mainQueue];
   }  // @synchronized(self)
+}
+
+- (nullable NSString *)userAgent {
+  @synchronized(self) {
+    return _userAgentProvider.userAgent;
+  }
+}
+
+- (void)setUserAgent:(nullable NSString *)userAgent {
+  @synchronized(self) {
+    if (userAgent) {
+      _userAgentProvider = [[GTMUserAgentStringProvider alloc]
+          initWithUserAgentString:(NSString *_Nonnull)userAgent];
+    } else {
+      // Support setUserAgent:nil to disable `GTMStandardUserAgentProvider`.
+      _userAgentProvider = nil;
+    }
+  }
+}
+
+- (nullable id<GTMUserAgentProvider>)userAgentProvider {
+  @synchronized(self) {
+    return _userAgentProvider;
+  }
+}
+
+- (void)setUserAgentProvider:(nullable id<GTMUserAgentProvider>)userAgentProvider {
+  @synchronized(self) {
+    _userAgentProvider = userAgentProvider;
+  }
 }
 
 - (NSOperationQueue *)delegateQueue {
@@ -1286,8 +1329,7 @@ NSString *const kGTMSessionFetcherServiceSessionKey = @"kGTMSessionFetcherServic
 
 - (void)URLSession:(NSURLSession *)session
                           task:(NSURLSessionTask *)task
-    didFinishCollectingMetrics:(NSURLSessionTaskMetrics *)metrics
-    API_AVAILABLE(ios(10.0), macosx(10.12), tvos(10.0), watchos(6.0)) {
+    didFinishCollectingMetrics:(NSURLSessionTaskMetrics *)metrics {
   id<NSURLSessionTaskDelegate> fetcher = [self fetcherForTask:task];
   [fetcher URLSession:session task:task didFinishCollectingMetrics:metrics];
 }

@@ -52,7 +52,7 @@ NS_SWIFT_NAME(FirebaseOptions)
 /**
  * Unused.
  */
-@property(nonatomic, copy, nullable) NSString *trackingID;
+@property(nonatomic, copy, nullable) NSString *trackingID DEPRECATED_ATTRIBUTE;
 
 /**
  * The Project Number from the Google Developer's console, for example @"012345678901", used to
@@ -68,7 +68,7 @@ NS_SWIFT_NAME(FirebaseOptions)
 /**
  * Unused.
  */
-@property(nonatomic, copy, nullable) NSString *androidClientID;
+@property(nonatomic, copy, nullable) NSString *androidClientID DEPRECATED_ATTRIBUTE;
 
 /**
  * The Google App ID that is used to uniquely identify an instance of an app.
@@ -83,7 +83,7 @@ NS_SWIFT_NAME(FirebaseOptions)
 /**
  * The URL scheme used to set up Durable Deep Link service.
  */
-@property(nonatomic, copy, nullable) NSString *deepLinkURLScheme;
+@property(nonatomic, copy, nullable) NSString *deepLinkURLScheme DEPRECATED_ATTRIBUTE;
 
 /**
  * The Google Cloud Storage bucket name, e.g. @"abc-xyz-123.storage.firebase.com".
@@ -102,12 +102,12 @@ NS_SWIFT_NAME(FirebaseOptions)
  * This will read the file synchronously from disk.
  * For example:
  * ```swift
- *   if let path = Bundle.main.path(forResource:"GoogleServices-Info", ofType:"plist") {
+ *   if let path = Bundle.main.path(forResource:"GoogleService-Info", ofType:"plist") {
  *       let options = FirebaseOptions(contentsOfFile: path)
  *   }
  * ```
  * Note that it is not possible to customize `FirebaseOptions` for Firebase Analytics which expects
- * a static file named `GoogleServices-Info.plist` -
+ * a static file named `GoogleService-Info.plist` -
  * https://github.com/firebase/firebase-ios-sdk/issues/230.
  * Returns `nil` if the plist file does not exist or is invalid.
  */

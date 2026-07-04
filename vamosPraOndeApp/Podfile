@@ -5,9 +5,10 @@ target 'vamosPraOndeApp' do
   use_frameworks!
 
   # Pods for vamosPraOndeApp
-  pod 'FirebaseAuth'
-  pod 'FirebaseFirestore'
-  pod 'FirebaseFirestoreSwift', '10.3.0'
+  # Firebase 11.x inclui os privacy manifests exigidos pela Apple (ITMS-91061).
+  # No 11.x o FirebaseFirestoreSwift foi incorporado ao FirebaseFirestore.
+  pod 'FirebaseAuth', '~> 11.0'
+  pod 'FirebaseFirestore', '~> 11.0'
 
   target 'vamosPraOndeAppTests' do
     inherit! :search_paths

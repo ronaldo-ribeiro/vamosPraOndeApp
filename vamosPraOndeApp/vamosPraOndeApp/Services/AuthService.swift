@@ -59,7 +59,7 @@ final class AuthService: ObservableObject {
 enum AuthErrorMessage {
     /// Traduz os erros mais comuns do Firebase Auth para mensagens em pt-BR.
     static func of(_ error: Error) -> String {
-        let code = AuthErrorCode.Code(rawValue: (error as NSError).code)
+        let code = AuthErrorCode(rawValue: (error as NSError).code)
         switch code {
         case .invalidEmail:
             return "E-mail inválido."
