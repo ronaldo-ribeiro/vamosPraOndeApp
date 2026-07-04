@@ -6,6 +6,8 @@
 	<string>Vamos pra Onde?</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Usamos a sua localização apenas para mostrar a distância até os seus destinos.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

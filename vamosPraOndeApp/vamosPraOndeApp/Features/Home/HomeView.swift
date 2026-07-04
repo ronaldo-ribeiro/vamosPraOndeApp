@@ -11,6 +11,7 @@ struct HomeView: View {
     @EnvironmentObject private var auth: AuthService
     @StateObject private var repo = DestinationsRepository()
     @State private var showingNew = false
+    @State private var showingMap = false
     @State private var sort: DestinationSort = .dateAsc
     @State private var filter: DestinationFilter = .all
     @State private var showingDeleteAccount = false
@@ -87,6 +88,9 @@ struct HomeView: View {
         .sheet(isPresented: $showingNew) {
             NewDestinationView(repository: repo)
         }
+        .sheet(isPresented: $showingMap) {
+            TravelMapView(destinations: repo.destinations)
+        }
         .confirmationDialog(
             "Excluir a sua conta?",
             isPresented: $showingDeleteAccount,
@@ -143,6 +147,12 @@ struct HomeView: View {
             }
             Spacer()
             if !repo.destinations.isEmpty {
+                Button { showingMap = true } label: {
+                    Image(systemName: "map")
+                        .font(.system(size: 22))
+                        .foregroundStyle(Color.vpoTerracotta)
+                }
+                .accessibilityLabel("Mapa das viagens")
                 sortFilterMenu
             }
             profileMenu

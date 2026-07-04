@@ -6,7 +6,19 @@
 //
 
 import Testing
+import CoreLocation
 @testable import vamosPraOndeApp
+
+struct DistanceFormatTests {
+    @Test func formataComSeparador() {
+        #expect(DistanceFormat.string(meters: 8_320_000) == "8.320 km")
+    }
+
+    @Test func arredondaParaKm() {
+        #expect(DistanceFormat.string(meters: 1_499) == "1 km")
+        #expect(DistanceFormat.string(meters: 1_500) == "2 km")
+    }
+}
 
 struct ChecklistTests {
     @Test func mergeAdicionaSemDuplicar() {

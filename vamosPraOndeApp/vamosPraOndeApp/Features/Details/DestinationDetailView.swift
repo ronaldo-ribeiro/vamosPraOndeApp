@@ -12,6 +12,7 @@ struct DestinationDetailView: View {
     private let initial: Destination
     @ObservedObject var repository: DestinationsRepository
 
+    @EnvironmentObject private var userLocation: UserLocationProvider
     @Environment(\.dismiss) private var dismiss
     @State private var showingDeleteConfirm = false
     @State private var showingEdit = false
@@ -58,6 +59,7 @@ struct DestinationDetailView: View {
             .ignoresSafeArea(edges: .top)
         }
         .task(id: destination.id) { await loadWeather() }
+        .task { userLocation.request() }
         .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showingEdit) {
             NewDestinationView(repository: repository, editing: destination)
@@ -160,10 +162,25 @@ struct DestinationDetailView: View {
             Text(DateStyle.long.string(from: destination.date))
                 .font(AppFont.medium(14))
                 .foregroundStyle(Color.vpoInkSoft)
+
+            if let meters = userLocation.distance(to: destination.coordinate) {
+                Label("a \(DistanceFormat.string(meters: meters)) de você", systemImage: "location.fill")
+                    .font(AppFont.semibold(13))
+                    .foregroundStyle(Color.vpoTeal)
+                    .padding(.top, 2)
+            }
         }
         .padding(.horizontal, Spacing.lg)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(countdown.phrase), em \(DateStyle.long.string(from: destination.date)).")
+        .accessibilityLabel(countdownAccessibilityLabel)
+    }
+
+    private var countdownAccessibilityLabel: String {
+        var label = "\(countdown.phrase), em \(DateStyle.long.string(from: destination.date))."
+        if let meters = userLocation.distance(to: destination.coordinate) {
+            label += " A \(DistanceFormat.string(meters: meters)) de você."
+        }
+        return label
     }
 
     private var mapCard: some View {

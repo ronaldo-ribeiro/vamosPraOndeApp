@@ -31,6 +31,7 @@
 		832FCE1CEB653FD99FFEC49E /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6717499BB05FED71D3E7044 /* Countdown.swift */; };
 		86C5A52894E3A21E8124549D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799EFFED51CAB6C06E8D343D /* WelcomeView.swift */; };
 		8A68B0E71084E468DCA6F9D1 /* VamosPraOndeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */; };
+		904D7C2AC8FDB8E4E354E912 /* UserLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9550528BF5AD8FE37F6279 /* UserLocationProvider.swift */; };
 		90D7DE02C6D77B5BC364A986 /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34A419395F409009F3EB25 /* AuthFlowView.swift */; };
 		911408229101F35B5F2906C0 /* VamosWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BAB7582C2AD66EB703389C83 /* VamosWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		932282BFD16CE7A8C307F407 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475203DA568856EF307222B /* AuthHeader.swift */; };
@@ -74,6 +75,7 @@
 		DFB81499DC458A12C4BB748D /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */; };
 		E0293645CAF40591CB82BB27 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409CD1E05CA693E1110F0D03 /* AuthService.swift */; };
 		E401AFA31328E58A58C8D884 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */; };
+		F8841C8CCE49AF19D1496F32 /* TravelMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171687DDE285E2EE2D70436E /* TravelMapView.swift */; };
 		FA59BE03C901B0F703E9B3FC /* DestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */; };
 		FB26205A97EF1E8EE8232158 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */; };
 		FC59D41C4AD488FFD91C783C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF5E5BEBEEE0DED5CAFDFE /* NotificationService.swift */; };
@@ -118,6 +120,7 @@
 		08A2719934CFBBDAD3740235 /* DestinationCards.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationCards.swift; sourceTree = "<group>"; };
 		0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NextTripSnapshot.swift; sourceTree = "<group>"; };
 		0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationDetailView.swift; sourceTree = "<group>"; };
+		171687DDE285E2EE2D70436E /* TravelMapView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TravelMapView.swift; sourceTree = "<group>"; };
 		1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationSorting.swift; sourceTree = "<group>"; };
 		1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 		97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vamosPraOndeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A741242B7F72183F80E1FCE6 /* AppTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
+		AE9550528BF5AD8FE37F6279 /* UserLocationProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserLocationProvider.swift; sourceTree = "<group>"; };
 		B1ED369D3F6960C39E95093C /* VamosWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosWidget.swift; sourceTree = "<group>"; };
 		B24C0C6D065810A6D844E0E8 /* VamosWidget.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = VamosWidget.entitlements; sourceTree = "<group>"; };
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -294,6 +298,15 @@
 			path = VamosWidget;
 			sourceTree = "<group>";
 		};
+		51C69AD44D8F9ED4EC413B19 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				171687DDE285E2EE2D70436E /* TravelMapView.swift */,
+			);
+			name = Map;
+			path = Map;
+			sourceTree = "<group>";
+		};
 		522F8F43118F066E151C3C57 /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +352,7 @@
 				23AF5E5BEBEEE0DED5CAFDFE /* NotificationService.swift */,
 				EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */,
 				8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */,
+				AE9550528BF5AD8FE37F6279 /* UserLocationProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -478,6 +492,7 @@
 				52FB553B2E7CA2FB4389F51F /* NewDestination */,
 				522F8F43118F066E151C3C57 /* Details */,
 				039CD19441B172D501418DDF /* Checklist */,
+				51C69AD44D8F9ED4EC413B19 /* Map */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -749,6 +764,8 @@
 				FB26205A97EF1E8EE8232158 /* ChecklistItem.swift in Sources */,
 				DAE3560C7EDFFC781A10D7F9 /* ChecklistTemplates.swift in Sources */,
 				08B7BD520B3F825AA51616FD /* ChecklistView.swift in Sources */,
+				904D7C2AC8FDB8E4E354E912 /* UserLocationProvider.swift in Sources */,
+				F8841C8CCE49AF19D1496F32 /* TravelMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
