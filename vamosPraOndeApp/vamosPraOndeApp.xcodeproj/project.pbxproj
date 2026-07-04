@@ -21,6 +21,7 @@
 		4CEE741F83281B677D5917AB /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D78C807CB5AE97714742A01 /* CountdownTests.swift */; };
 		50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25693AA1C51D6E11D17BBD3 /* RootView.swift */; };
 		54B63E9EC853986AB8DC62A2 /* VamosWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED369D3F6960C39E95093C /* VamosWidget.swift */; };
+		5D419F4B3BD498FD1BB27863 /* DestinationPhotoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BA3454976B07F02479A5FC /* DestinationPhotoProvider.swift */; };
 		5EFA5C9F2425D9743A6BC430 /* NewDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */; };
 		64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0262E62ED903E239FE87B306 /* SignUpView.swift */; };
 		68AD0517171D23305ED97348 /* FeatureLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */; };
@@ -162,6 +163,7 @@
 		B825DB56D6E1DB92C43C9A90 /* ChecklistView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		BAB7582C2AD66EB703389C83 /* VamosWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VamosWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25693AA1C51D6E11D17BBD3 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		C6BA3454976B07F02479A5FC /* DestinationPhotoProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationPhotoProvider.swift; sourceTree = "<group>"; };
 		CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewDestinationView.swift; sourceTree = "<group>"; };
 		D14C4AF429675A8200065186 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1BAFB50291D3FBD007194C5 /* vamosPraOndeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vamosPraOndeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -353,6 +355,7 @@
 				EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */,
 				8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */,
 				AE9550528BF5AD8FE37F6279 /* UserLocationProvider.swift */,
+				C6BA3454976B07F02479A5FC /* DestinationPhotoProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				08B7BD520B3F825AA51616FD /* ChecklistView.swift in Sources */,
 				904D7C2AC8FDB8E4E354E912 /* UserLocationProvider.swift in Sources */,
 				F8841C8CCE49AF19D1496F32 /* TravelMapView.swift in Sources */,
+				5D419F4B3BD498FD1BB27863 /* DestinationPhotoProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

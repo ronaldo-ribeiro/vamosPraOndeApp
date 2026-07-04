@@ -22,6 +22,7 @@ struct DestinationDetailView: View {
     @State private var tripForecast: TripDayForecast?
     @State private var weatherFailed = false
     @State private var destinationTimeZone: TimeZone?
+    @State private var photoURL: URL?
 
     init(destination: Destination, repository: DestinationsRepository) {
         self.initial = destination
@@ -43,7 +44,6 @@ struct DestinationDetailView: View {
                 VStack(spacing: Spacing.lg) {
                     cover
                     countdownBlock
-                    mapCard
                     checklistCard
                     if let notes = destination.notes, !notes.isEmpty {
                         notesCard(notes)
@@ -59,6 +59,11 @@ struct DestinationDetailView: View {
             .ignoresSafeArea(edges: .top)
         }
         .task(id: destination.id) { await loadWeather() }
+        .task(id: destination.id) {
+            photoURL = await DestinationPhotoProvider.imageURL(
+                city: destination.cityName, subtitle: destination.subtitle
+            )
+        }
         .task { userLocation.request() }
         .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showingEdit) {
@@ -79,9 +84,38 @@ struct DestinationDetailView: View {
         }
     }
 
+    @ViewBuilder
+    private var coverBackground: some View {
+        if let photoURL {
+            AsyncImage(url: photoURL, transaction: Transaction(animation: .easeIn(duration: 0.4))) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .overlay(
+                            LinearGradient(
+                                colors: [.black.opacity(0.05), .black.opacity(0.55)],
+                                startPoint: .center,
+                                endPoint: .bottom
+                            )
+                        )
+                case .empty:
+                    SunsetCover().overlay(ProgressView().tint(.vpoOnColor))
+                default:
+                    SunsetCover()
+                }
+            }
+        } else {
+            SunsetCover()
+        }
+    }
+
     private var cover: some View {
-        SunsetCover()
+        coverBackground
             .frame(height: 300)
+            .frame(maxWidth: .infinity)
+            .clipped()
             .overlay(alignment: .bottomLeading) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("o seu destino")
@@ -181,25 +215,6 @@ struct DestinationDetailView: View {
             label += " A \(DistanceFormat.string(meters: meters)) de você."
         }
         return label
-    }
-
-    private var mapCard: some View {
-        Map(initialPosition: .region(
-            MKCoordinateRegion(
-                center: destination.coordinate,
-                latitudinalMeters: 4000,
-                longitudinalMeters: 4000
-            )
-        )) {
-            Marker(destination.cityName, coordinate: destination.coordinate)
-                .tint(Color.vpoTerracotta)
-        }
-        .frame(height: 220)
-        .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
-        .allowsHitTesting(false)
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Mapa de \(destination.cityName)")
-        .padding(.horizontal, Spacing.lg)
     }
 
     private var checklistCard: some View {
