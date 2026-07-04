@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08B7BD520B3F825AA51616FD /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825DB56D6E1DB92C43C9A90 /* ChecklistView.swift */; };
 		0D61739A14D23989A1ED1E89 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */; };
 		0DFA3B1CE31E388262FD7EE9 /* Pods_vamosPraOndeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4839A72F988E52DBEA7FF9C4 /* Pods_vamosPraOndeAppTests.framework */; };
 		0E2EC4E68DAE2A88C50B4C6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5801109F556166FCE44A0C84 /* Foundation.framework */; };
@@ -24,6 +25,7 @@
 		64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0262E62ED903E239FE87B306 /* SignUpView.swift */; };
 		68AD0517171D23305ED97348 /* FeatureLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */; };
 		6C221049FF08F63F3B09FDA2 /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */; };
+		7464D45E3C6B735A2D0A00D2 /* ChecklistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBD4659496E3AA768CC5C4 /* ChecklistTests.swift */; };
 		7FA281D8D93748D51DA416CE /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715796514FBEA826675FB981 /* ErrorBanner.swift */; };
 		8191779992B81C209FFFFF78 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759693CF363A15BF3D16B2D1 /* LoginView.swift */; };
 		832FCE1CEB653FD99FFEC49E /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6717499BB05FED71D3E7044 /* Countdown.swift */; };
@@ -67,11 +69,13 @@
 		D1BAFB96291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */; };
 		D1E2735E296CED5B00ED5441 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E2735D296CED5B00ED5441 /* LocationManager.swift */; };
 		D9FC06C4CD5D98EEE4FFFD63 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */; };
+		DAE3560C7EDFFC781A10D7F9 /* ChecklistTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DC68679043A01C61BFA269 /* ChecklistTemplates.swift */; };
 		DC7DF7DB1D314DFD291EEEF7 /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A741242B7F72183F80E1FCE6 /* AppTextField.swift */; };
 		DFB81499DC458A12C4BB748D /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */; };
 		E0293645CAF40591CB82BB27 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409CD1E05CA693E1110F0D03 /* AuthService.swift */; };
 		E401AFA31328E58A58C8D884 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */; };
 		FA59BE03C901B0F703E9B3FC /* DestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */; };
+		FB26205A97EF1E8EE8232158 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */; };
 		FC59D41C4AD488FFD91C783C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF5E5BEBEEE0DED5CAFDFE /* NotificationService.swift */; };
 		FE28F4D864B00E68FCE1237A /* SunsetCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */; };
 /* End PBXBuildFile section */
@@ -109,6 +113,7 @@
 
 /* Begin PBXFileReference section */
 		0262E62ED903E239FE87B306 /* SignUpView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		03EBD4659496E3AA768CC5C4 /* ChecklistTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistTests.swift; sourceTree = "<group>"; };
 		080FE931DBB31B7C15258CA1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08A2719934CFBBDAD3740235 /* DestinationCards.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationCards.swift; sourceTree = "<group>"; };
 		0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NextTripSnapshot.swift; sourceTree = "<group>"; };
@@ -120,6 +125,7 @@
 		2EDE28040F39CCD5CCD172DF /* Destination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		3A34A419395F409009F3EB25 /* AuthFlowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
 		409CD1E05CA693E1110F0D03 /* AuthService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		451BCC5913B450ADADCE7182 /* DestinationTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationTests.swift; sourceTree = "<group>"; };
 		46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationsRepository.swift; sourceTree = "<group>"; };
 		4839A72F988E52DBEA7FF9C4 /* Pods_vamosPraOndeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +135,7 @@
 		53EA303ED50DFD784E0DA6FD /* Appear.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Appear.swift; sourceTree = "<group>"; };
 		55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosPraOndeApp.swift; sourceTree = "<group>"; };
 		5588CBDB4A32B6D786569BFB /* vamosPraOndeApp.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = vamosPraOndeApp.entitlements; sourceTree = "<group>"; };
+		56DC68679043A01C61BFA269 /* ChecklistTemplates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistTemplates.swift; sourceTree = "<group>"; };
 		5801109F556166FCE44A0C84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B36ED71B036CE1129056B2F /* AppColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
@@ -148,6 +155,7 @@
 		B24C0C6D065810A6D844E0E8 /* VamosWidget.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = VamosWidget.entitlements; sourceTree = "<group>"; };
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
 		B6717499BB05FED71D3E7044 /* Countdown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		B825DB56D6E1DB92C43C9A90 /* ChecklistView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		BAB7582C2AD66EB703389C83 /* VamosWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VamosWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25693AA1C51D6E11D17BBD3 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewDestinationView.swift; sourceTree = "<group>"; };
@@ -221,6 +229,15 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		039CD19441B172D501418DDF /* Checklist */ = {
+			isa = PBXGroup;
+			children = (
+				B825DB56D6E1DB92C43C9A90 /* ChecklistView.swift */,
+			);
+			name = Checklist;
+			path = Checklist;
+			sourceTree = "<group>";
+		};
 		13D57E05D2506696CC43A8DA /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +258,7 @@
 			children = (
 				B6717499BB05FED71D3E7044 /* Countdown.swift */,
 				1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */,
+				56DC68679043A01C61BFA269 /* ChecklistTemplates.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -251,6 +269,7 @@
 				7D78C807CB5AE97714742A01 /* CountdownTests.swift */,
 				451BCC5913B450ADADCE7182 /* DestinationTests.swift */,
 				8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */,
+				03EBD4659496E3AA768CC5C4 /* ChecklistTests.swift */,
 			);
 			path = vamosPraOndeAppTests;
 			sourceTree = "<group>";
@@ -259,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				2EDE28040F39CCD5CCD172DF /* Destination.swift */,
+				422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -457,6 +477,7 @@
 				86411F9A8D4F9BAD23DCDD76 /* Home */,
 				52FB553B2E7CA2FB4389F51F /* NewDestination */,
 				522F8F43118F066E151C3C57 /* Details */,
+				039CD19441B172D501418DDF /* Checklist */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -725,6 +746,9 @@
 				6C221049FF08F63F3B09FDA2 /* WeatherProvider.swift in Sources */,
 				20FE5F85AD868F5549D7BF51 /* TimeZoneService.swift in Sources */,
 				0F9D896ED069A374FA206C79 /* NextTripSnapshot.swift in Sources */,
+				FB26205A97EF1E8EE8232158 /* ChecklistItem.swift in Sources */,
+				DAE3560C7EDFFC781A10D7F9 /* ChecklistTemplates.swift in Sources */,
+				08B7BD520B3F825AA51616FD /* ChecklistView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +759,7 @@
 				4CEE741F83281B677D5917AB /* CountdownTests.swift in Sources */,
 				B7D7480FD5B256D9538F70FC /* DestinationTests.swift in Sources */,
 				68AD0517171D23305ED97348 /* FeatureLogicTests.swift in Sources */,
+				7464D45E3C6B735A2D0A00D2 /* ChecklistTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

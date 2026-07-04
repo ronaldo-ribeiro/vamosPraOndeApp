@@ -18,6 +18,8 @@ struct Destination: Identifiable, Codable, Hashable {
     var createdAt: Date
     /// Anotações da viagem (opcional — destinos antigos podem não ter).
     var notes: String? = nil
+    /// Checklist de mala/preparativos (opcional).
+    var checklist: [ChecklistItem]? = nil
 
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)

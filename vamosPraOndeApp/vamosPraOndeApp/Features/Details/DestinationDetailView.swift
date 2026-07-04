@@ -15,6 +15,7 @@ struct DestinationDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showingDeleteConfirm = false
     @State private var showingEdit = false
+    @State private var showingChecklist = false
     @State private var isDeleting = false
     @State private var weather: DestinationWeather?
     @State private var tripForecast: TripDayForecast?
@@ -42,6 +43,7 @@ struct DestinationDetailView: View {
                     cover
                     countdownBlock
                     mapCard
+                    checklistCard
                     if let notes = destination.notes, !notes.isEmpty {
                         notesCard(notes)
                     }
@@ -59,6 +61,9 @@ struct DestinationDetailView: View {
         .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showingEdit) {
             NewDestinationView(repository: repository, editing: destination)
+        }
+        .sheet(isPresented: $showingChecklist) {
+            ChecklistView(destination: destination, repository: repository)
         }
         .confirmationDialog(
             "Excluir este destino?",
@@ -178,6 +183,38 @@ struct DestinationDetailView: View {
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Mapa de \(destination.cityName)")
         .padding(.horizontal, Spacing.lg)
+    }
+
+    private var checklistCard: some View {
+        Button { showingChecklist = true } label: {
+            HStack(spacing: Spacing.md) {
+                Image(systemName: "suitcase.rolling.fill")
+                    .font(.system(size: 24))
+                    .foregroundStyle(Color.vpoOnColor)
+                    .frame(width: 52, height: 52)
+                    .background(Color.vpoTerracotta)
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Mala e preparativos")
+                        .font(AppFont.title(16))
+                        .foregroundStyle(Color.vpoInk)
+                    Text((destination.checklist ?? []).progressPhrase)
+                        .font(AppFont.medium(13))
+                        .foregroundStyle(Color.vpoInkSoft)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(Color.vpoInkSoft)
+            }
+            .padding(Spacing.md)
+            .background(Color.vpoCream)
+            .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+            .padding(.horizontal, Spacing.lg)
+        }
+        .buttonStyle(.plain)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Mala e preparativos: \((destination.checklist ?? []).progressPhrase)")
     }
 
     private var weatherCard: some View {
