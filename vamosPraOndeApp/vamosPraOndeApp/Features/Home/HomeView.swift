@@ -81,6 +81,9 @@ struct HomeView: View {
             }
         }
         .task { repo.start() }
+        .onChange(of: repo.destinations) { _, destinations in
+            syncWidget(with: destinations)
+        }
         .sheet(isPresented: $showingNew) {
             NewDestinationView(repository: repo)
         }
@@ -99,6 +102,17 @@ struct HomeView: View {
         } message: {
             Text(accountError ?? "")
         }
+    }
+
+    /// Mantém o widget em dia com a próxima viagem futura.
+    private func syncWidget(with destinations: [Destination]) {
+        let today = Calendar.current.startOfDay(for: Date())
+        let next = destinations
+            .filter { Calendar.current.startOfDay(for: $0.date) >= today }
+            .min { $0.date < $1.date }
+        NextTripSnapshot.save(next.map {
+            NextTripSnapshot(cityName: $0.cityName, subtitle: $0.subtitle, date: $0.date)
+        })
     }
 
     private func deleteAccount() {

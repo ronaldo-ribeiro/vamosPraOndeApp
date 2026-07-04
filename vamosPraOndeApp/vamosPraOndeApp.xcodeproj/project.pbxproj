@@ -9,13 +9,17 @@
 /* Begin PBXBuildFile section */
 		0D61739A14D23989A1ED1E89 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */; };
 		0DFA3B1CE31E388262FD7EE9 /* Pods_vamosPraOndeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4839A72F988E52DBEA7FF9C4 /* Pods_vamosPraOndeAppTests.framework */; };
+		0E2EC4E68DAE2A88C50B4C6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5801109F556166FCE44A0C84 /* Foundation.framework */; };
+		0F9D896ED069A374FA206C79 /* NextTripSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */; };
 		181399A40625F8A5443A1AE0 /* DestinationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A2719934CFBBDAD3740235 /* DestinationCards.swift */; };
 		18249C8778EC9831FFA1C73B /* Appear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA303ED50DFD784E0DA6FD /* Appear.swift */; };
 		19A98A04E593BCE739B3FF7A /* DestinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */; };
 		20FE5F85AD868F5549D7BF51 /* TimeZoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */; };
+		32499C6DAD7390D3B04471CF /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6717499BB05FED71D3E7044 /* Countdown.swift */; };
 		441C3C4C0D4AB5F43B8C04E5 /* Pods_vamosPraOndeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */; };
 		4CEE741F83281B677D5917AB /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D78C807CB5AE97714742A01 /* CountdownTests.swift */; };
 		50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25693AA1C51D6E11D17BBD3 /* RootView.swift */; };
+		54B63E9EC853986AB8DC62A2 /* VamosWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED369D3F6960C39E95093C /* VamosWidget.swift */; };
 		5EFA5C9F2425D9743A6BC430 /* NewDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */; };
 		64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0262E62ED903E239FE87B306 /* SignUpView.swift */; };
 		68AD0517171D23305ED97348 /* FeatureLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */; };
@@ -26,8 +30,10 @@
 		86C5A52894E3A21E8124549D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799EFFED51CAB6C06E8D343D /* WelcomeView.swift */; };
 		8A68B0E71084E468DCA6F9D1 /* VamosPraOndeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */; };
 		90D7DE02C6D77B5BC364A986 /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34A419395F409009F3EB25 /* AuthFlowView.swift */; };
+		911408229101F35B5F2906C0 /* VamosWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BAB7582C2AD66EB703389C83 /* VamosWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		932282BFD16CE7A8C307F407 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475203DA568856EF307222B /* AuthHeader.swift */; };
 		95C2BCFB8EBAE03995BFC72A /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDE28040F39CCD5CCD172DF /* Destination.swift */; };
+		9820F58E4379C527CF450A94 /* NextTripSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */; };
 		9BF0FDB686C01157913FBA2D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFE2BA27D6463F18CFED81 /* LocationService.swift */; };
 		A1CDFCEACA11332F58FA93C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5801109F556166FCE44A0C84 /* Foundation.framework */; };
 		A32F34C1681389662AF11E9C /* DestinationSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */; };
@@ -71,6 +77,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		03B9C59B033DE3C210008435 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1BAFB48291D3FBD007194C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0B11B99C6CC5B58EF17CE18;
+			remoteInfo = VamosWidget;
+		};
 		3494EA2C8681FFF24FD68CAD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1BAFB48291D3FBD007194C5 /* Project object */;
@@ -80,9 +93,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		25555CA1B753407D6C0DA724 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				911408229101F35B5F2906C0 /* VamosWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0262E62ED903E239FE87B306 /* SignUpView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		080FE931DBB31B7C15258CA1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08A2719934CFBBDAD3740235 /* DestinationCards.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationCards.swift; sourceTree = "<group>"; };
+		0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NextTripSnapshot.swift; sourceTree = "<group>"; };
 		0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationDetailView.swift; sourceTree = "<group>"; };
 		1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationSorting.swift; sourceTree = "<group>"; };
 		1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
@@ -115,8 +144,11 @@
 		97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vamosPraOndeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A741242B7F72183F80E1FCE6 /* AppTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
+		B1ED369D3F6960C39E95093C /* VamosWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosWidget.swift; sourceTree = "<group>"; };
+		B24C0C6D065810A6D844E0E8 /* VamosWidget.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = VamosWidget.entitlements; sourceTree = "<group>"; };
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
 		B6717499BB05FED71D3E7044 /* Countdown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		BAB7582C2AD66EB703389C83 /* VamosWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VamosWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25693AA1C51D6E11D17BBD3 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewDestinationView.swift; sourceTree = "<group>"; };
 		D14C4AF429675A8200065186 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -153,6 +185,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		157FA2C215201CD9DEA4413B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E2EC4E68DAE2A88C50B4C6D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1BAFB4D291D3FBD007194C5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -223,6 +263,17 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		362E522823DE84B0A0062B23 /* VamosWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B1ED369D3F6960C39E95093C /* VamosWidget.swift */,
+				080FE931DBB31B7C15258CA1 /* Info.plist */,
+				B24C0C6D065810A6D844E0E8 /* VamosWidget.entitlements */,
+			);
+			name = VamosWidget;
+			path = VamosWidget;
+			sourceTree = "<group>";
+		};
 		522F8F43118F066E151C3C57 /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +323,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		6CC1694C4F6FB2B9BEBCB139 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */,
+			);
+			name = Shared;
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		86411F9A8D4F9BAD23DCDD76 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +377,7 @@
 				A133D876E5ABD72581A5F674 /* Pods */,
 				F96F868701B46C1EF84ECA3E /* Frameworks */,
 				2D465C378E421E505E0C7725 /* vamosPraOndeAppTests */,
+				362E522823DE84B0A0062B23 /* VamosWidget */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,6 +386,7 @@
 			children = (
 				D1BAFB50291D3FBD007194C5 /* vamosPraOndeApp.app */,
 				9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */,
+				BAB7582C2AD66EB703389C83 /* VamosWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -347,6 +409,7 @@
 				2F248B36616962A7CFBFC394 /* Models */,
 				17D537F0394F28E31C48D2A1 /* Utilities */,
 				97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */,
+				6CC1694C4F6FB2B9BEBCB139 /* Shared */,
 			);
 			path = vamosPraOndeApp;
 			sourceTree = "<group>";
@@ -430,6 +493,23 @@
 			productReference = 9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		B0B11B99C6CC5B58EF17CE18 /* VamosWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 329AF6FC0E217C59F7B7BF41 /* Build configuration list for PBXNativeTarget "VamosWidget" */;
+			buildPhases = (
+				25828FC2B6958B03180BC0C5 /* Sources */,
+				157FA2C215201CD9DEA4413B /* Frameworks */,
+				5FD2E3BEE67594D55255AED2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VamosWidget;
+			productName = VamosWidget;
+			productReference = BAB7582C2AD66EB703389C83 /* VamosWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D1BAFB4F291D3FBD007194C5 /* vamosPraOndeApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1BAFB64291D3FBF007194C5 /* Build configuration list for PBXNativeTarget "vamosPraOndeApp" */;
@@ -439,10 +519,12 @@
 				D1BAFB4D291D3FBD007194C5 /* Frameworks */,
 				D1BAFB4E291D3FBD007194C5 /* Resources */,
 				6394FCCF8B87F811DE44DE4D /* [CP] Embed Pods Frameworks */,
+				25555CA1B753407D6C0DA724 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8C29507EB854E8E6212F1265 /* PBXTargetDependency */,
 			);
 			name = vamosPraOndeApp;
 			productName = vamosPraOndeApp;
@@ -479,12 +561,20 @@
 			targets = (
 				D1BAFB4F291D3FBD007194C5 /* vamosPraOndeApp */,
 				A196202C8F2A77858F2CB830 /* vamosPraOndeAppTests */,
+				B0B11B99C6CC5B58EF17CE18 /* VamosWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		02EA3235B93FB29387F50DB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FD2E3BEE67594D55255AED2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -589,6 +679,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		25828FC2B6958B03180BC0C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54B63E9EC853986AB8DC62A2 /* VamosWidget.swift in Sources */,
+				9820F58E4379C527CF450A94 /* NextTripSnapshot.swift in Sources */,
+				32499C6DAD7390D3B04471CF /* Countdown.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1BAFB4C291D3FBD007194C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -624,6 +724,7 @@
 				A32F34C1681389662AF11E9C /* DestinationSorting.swift in Sources */,
 				6C221049FF08F63F3B09FDA2 /* WeatherProvider.swift in Sources */,
 				20FE5F85AD868F5549D7BF51 /* TimeZoneService.swift in Sources */,
+				0F9D896ED069A374FA206C79 /* NextTripSnapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +741,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8C29507EB854E8E6212F1265 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VamosWidget;
+			target = B0B11B99C6CC5B58EF17CE18 /* VamosWidget */;
+			targetProxy = 03B9C59B033DE3C210008435 /* PBXContainerItemProxy */;
+		};
 		A6F1E61A97A2A220FA2A104B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = vamosPraOndeApp;
@@ -660,6 +767,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		31DD634BEF1422FC351A5740 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = VamosWidget/VamosWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = YUJ28KYKT3;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VamosWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ronaldoribeiro.vamosPraOndeApp.VamosWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
 		6E3BE41FEC088F3DC54522EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53D75C8C213204040912F463 /* Pods-vamosPraOndeAppTests.release.xcconfig */;
@@ -675,6 +808,33 @@
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vamosPraOndeApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/vamosPraOndeApp";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7B363475DE3AB447FDC09F24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = VamosWidget/VamosWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = YUJ28KYKT3;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VamosWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ronaldoribeiro.vamosPraOndeApp.VamosWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -878,6 +1038,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		329AF6FC0E217C59F7B7BF41 /* Build configuration list for PBXNativeTarget "VamosWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B363475DE3AB447FDC09F24 /* Release */,
+				31DD634BEF1422FC351A5740 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D1BAFB4B291D3FBD007194C5 /* Build configuration list for PBXProject "vamosPraOndeApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
