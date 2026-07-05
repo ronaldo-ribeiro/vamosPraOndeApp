@@ -1,3 +1,6 @@
 
 # Local build output
 vamosPraOndeApp/build/
+
+# Chave do Unsplash (fora do Git)
+vamosPraOndeApp/vamosPraOndeApp/Secrets.plist

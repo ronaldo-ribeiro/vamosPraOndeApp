@@ -48,6 +48,7 @@
 		B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72593CC4AC6BB5144E159D9C /* AppFont.swift */; };
 		BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36ED71B036CE1129056B2F /* AppColor.swift */; };
 		CBBE7460309BFA630AF41684 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */; };
+		CF465CE100590B5C38EE9A40 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = FED78FC0757BCC0FC8527BBF /* Secrets.plist */; };
 		D14C4AF529675A8200065186 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D14C4AF429675A8200065186 /* GoogleService-Info.plist */; };
 		D1BAFB54291D3FBD007194C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */; };
 		D1BAFB5D291D3FBF007194C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1BAFB5C291D3FBF007194C5 /* Assets.xcassets */; };
@@ -158,7 +159,7 @@
 		89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunsetCover.swift; sourceTree = "<group>"; };
 		8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimeZoneService.swift; sourceTree = "<group>"; };
 		9578FF8E0BAF23A94D662608 /* AppleAuth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppleAuth.swift; sourceTree = "<group>"; };
-		97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vamosPraOndeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A116D53720216B156AEDB022 /* MainTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A741242B7F72183F80E1FCE6 /* AppTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
@@ -204,6 +205,7 @@
 		E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
 		F475203DA568856EF307222B /* AuthHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthHeader.swift; sourceTree = "<group>"; };
+		FED78FC0757BCC0FC8527BBF /* Secrets.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,7 +250,6 @@
 			children = (
 				B825DB56D6E1DB92C43C9A90 /* ChecklistView.swift */,
 			);
-			name = Checklist;
 			path = Checklist;
 			sourceTree = "<group>";
 		};
@@ -283,7 +284,6 @@
 			children = (
 				40C91FAE89B00AF2B5D82750 /* ProfileView.swift */,
 			);
-			name = Profile;
 			path = Profile;
 			sourceTree = "<group>";
 		};
@@ -314,7 +314,6 @@
 				080FE931DBB31B7C15258CA1 /* Info.plist */,
 				B24C0C6D065810A6D844E0E8 /* VamosWidget.entitlements */,
 			);
-			name = VamosWidget;
 			path = VamosWidget;
 			sourceTree = "<group>";
 		};
@@ -323,7 +322,6 @@
 			children = (
 				171687DDE285E2EE2D70436E /* TravelMapView.swift */,
 			);
-			name = Map;
 			path = Map;
 			sourceTree = "<group>";
 		};
@@ -384,7 +382,6 @@
 			children = (
 				0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */,
 			);
-			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -422,7 +419,6 @@
 			children = (
 				A116D53720216B156AEDB022 /* MainTabView.swift */,
 			);
-			name = Root;
 			path = Root;
 			sourceTree = "<group>";
 		};
@@ -475,6 +471,7 @@
 				17D537F0394F28E31C48D2A1 /* Utilities */,
 				97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */,
 				6CC1694C4F6FB2B9BEBCB139 /* Shared */,
+				FED78FC0757BCC0FC8527BBF /* Secrets.plist */,
 			);
 			path = vamosPraOndeApp;
 			sourceTree = "<group>";
@@ -678,6 +675,7 @@
 				D1BAFB83291D48A0007194C5 /* Urbanist-Regular.ttf in Resources */,
 				D1BAFB87291D48A0007194C5 /* Urbanist-Thin.ttf in Resources */,
 				CBBE7460309BFA630AF41684 /* PrivacyInfo.xcprivacy in Resources */,
+				CF465CE100590B5C38EE9A40 /* Secrets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,9 +690,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -882,6 +884,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YUJ28KYKT3;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ronaldoribeiro.vamosPraOndeAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -928,6 +931,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YUJ28KYKT3;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ronaldoribeiro.vamosPraOndeAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

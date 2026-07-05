@@ -25,6 +25,13 @@ enum DestinationPhotoProvider {
     private static var cache: [String: DestinationPhoto?] = [:]
 
     private static var unsplashKey: String {
+        // Chave fora do Git: Secrets.plist (não versionado). Fallback: Info.plist.
+        if let url = Bundle.main.url(forResource: "Secrets", withExtension: "plist"),
+           let dict = NSDictionary(contentsOf: url),
+           let key = (dict["UnsplashAccessKey"] as? String)?.trimmingCharacters(in: .whitespaces),
+           !key.isEmpty {
+            return key
+        }
         let key = Bundle.main.object(forInfoDictionaryKey: "UnsplashAccessKey") as? String
         return (key ?? "").trimmingCharacters(in: .whitespaces)
     }
