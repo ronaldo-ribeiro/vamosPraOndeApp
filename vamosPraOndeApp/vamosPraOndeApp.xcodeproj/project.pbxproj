@@ -26,6 +26,7 @@
 		64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0262E62ED903E239FE87B306 /* SignUpView.swift */; };
 		68AD0517171D23305ED97348 /* FeatureLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */; };
 		6C221049FF08F63F3B09FDA2 /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */; };
+		6F96B45EDA0667602143CB20 /* SocialSignInButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B20DE226C69E153761B90C /* SocialSignInButtons.swift */; };
 		7464D45E3C6B735A2D0A00D2 /* ChecklistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBD4659496E3AA768CC5C4 /* ChecklistTests.swift */; };
 		7FA281D8D93748D51DA416CE /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715796514FBEA826675FB981 /* ErrorBanner.swift */; };
 		8191779992B81C209FFFFF78 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759693CF363A15BF3D16B2D1 /* LoginView.swift */; };
@@ -38,6 +39,7 @@
 		932282BFD16CE7A8C307F407 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475203DA568856EF307222B /* AuthHeader.swift */; };
 		95C2BCFB8EBAE03995BFC72A /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDE28040F39CCD5CCD172DF /* Destination.swift */; };
 		9820F58E4379C527CF450A94 /* NextTripSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */; };
+		9919E16E5B6F5D05FBF5EF3B /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578FF8E0BAF23A94D662608 /* AppleAuth.swift */; };
 		9BF0FDB686C01157913FBA2D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFE2BA27D6463F18CFED81 /* LocationService.swift */; };
 		A1CDFCEACA11332F58FA93C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5801109F556166FCE44A0C84 /* Foundation.framework */; };
 		A32F34C1681389662AF11E9C /* DestinationSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */; };
@@ -152,6 +154,7 @@
 		85EFE2BA27D6463F18CFED81 /* LocationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunsetCover.swift; sourceTree = "<group>"; };
 		8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimeZoneService.swift; sourceTree = "<group>"; };
+		9578FF8E0BAF23A94D662608 /* AppleAuth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppleAuth.swift; sourceTree = "<group>"; };
 		97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vamosPraOndeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A741242B7F72183F80E1FCE6 /* AppTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
@@ -192,6 +195,7 @@
 		D1BAFB7D291D48A0007194C5 /* Urbanist-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ThinItalic.ttf"; sourceTree = "<group>"; };
 		D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		D1E2735D296CED5B00ED5441 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D7B20DE226C69E153761B90C /* SocialSignInButtons.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SocialSignInButtons.swift; sourceTree = "<group>"; };
 		E06674E2EB2E93DBD31F36A3 /* Pods-vamosPraOndeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeAppTests.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeAppTests/Pods-vamosPraOndeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 				B6717499BB05FED71D3E7044 /* Countdown.swift */,
 				1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */,
 				56DC68679043A01C61BFA269 /* ChecklistTemplates.swift */,
+				9578FF8E0BAF23A94D662608 /* AppleAuth.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 				759693CF363A15BF3D16B2D1 /* LoginView.swift */,
 				0262E62ED903E239FE87B306 /* SignUpView.swift */,
 				1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */,
+				D7B20DE226C69E153761B90C /* SocialSignInButtons.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -770,6 +776,8 @@
 				904D7C2AC8FDB8E4E354E912 /* UserLocationProvider.swift in Sources */,
 				F8841C8CCE49AF19D1496F32 /* TravelMapView.swift in Sources */,
 				5D419F4B3BD498FD1BB27863 /* DestinationPhotoProvider.swift in Sources */,
+				9919E16E5B6F5D05FBF5EF3B /* AppleAuth.swift in Sources */,
+				6F96B45EDA0667602143CB20 /* SocialSignInButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

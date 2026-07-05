@@ -65,6 +65,8 @@ struct LoginView: View {
                 .disabled(!isValid || isLoading)
                 .opacity(isValid ? 1 : 0.6)
 
+                SocialSignInButtons(onError: { errorMessage = $0 })
+
                 HStack(spacing: 4) {
                     Text("Não tem uma conta?")
                         .foregroundStyle(Color.vpoInkSoft)

@@ -4,8 +4,24 @@
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>Vamos pra Onde?</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>pt-BR</string>
+		<string>en</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>pt-BR</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.16434399186-3p5a1vbecmrinp3a9qgialscnguq81qk</string>
+			</array>
+		</dict>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Usamos a sua localização apenas para mostrar a distância até os seus destinos.</string>
 	<key>UIApplicationSceneManifest</key>

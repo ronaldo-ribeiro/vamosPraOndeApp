@@ -1,4 +1,4 @@
-platform :ios, '13.0'
+platform :ios, '16.0'
 
 target 'vamosPraOndeApp' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -9,6 +9,10 @@ target 'vamosPraOndeApp' do
   # No 11.x o FirebaseFirestoreSwift foi incorporado ao FirebaseFirestore.
   pod 'FirebaseAuth', '~> 11.0'
   pod 'FirebaseFirestore', '~> 11.0'
+  # Login com a conta Google (Sign in with Apple é nativo, sem pod).
+  # GoogleSignIn 8.x usa GTMSessionFetcher ~> 3.3; o Firebase 11.15 aceita >= 3.4,
+  # então ambos convivem no GTMSessionFetcher 3.4.x.
+  pod 'GoogleSignIn', '~> 8.0'
 
   target 'vamosPraOndeAppTests' do
     inherit! :search_paths
@@ -23,7 +27,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '16.0'
     end
 
     target.build_phases.each do |phase|

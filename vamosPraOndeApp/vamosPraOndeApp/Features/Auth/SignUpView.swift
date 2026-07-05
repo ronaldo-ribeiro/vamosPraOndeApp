@@ -73,6 +73,8 @@ struct SignUpView: View {
                 .disabled(!isValid || isLoading)
                 .opacity(isValid ? 1 : 0.6)
 
+                SocialSignInButtons(onError: { errorMessage = $0 })
+
                 Text("Ao criar a conta você concorda em embarcar em novas aventuras. ✈️")
                     .font(AppFont.body(13))
                     .foregroundStyle(Color.vpoInkSoft)

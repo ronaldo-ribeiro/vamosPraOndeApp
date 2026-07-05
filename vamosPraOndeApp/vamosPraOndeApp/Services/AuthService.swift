@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import UIKit
+import FirebaseCore
 import FirebaseAuth
+import GoogleSignIn
 
 @MainActor
 final class AuthService: ObservableObject {
@@ -45,7 +48,40 @@ final class AuthService: ObservableObject {
     }
 
     func signOut() throws {
+        GIDSignIn.sharedInstance.signOut()
         try Auth.auth().signOut()
+    }
+
+    // MARK: - Entrar com a Apple
+
+    /// Autentica no Firebase com o token da Apple já obtido pela UI.
+    func signInWithApple(idTokenString: String, rawNonce: String, fullName: PersonNameComponents?) async throws {
+        let credential = OAuthProvider.appleCredential(
+            withIDToken: idTokenString,
+            rawNonce: rawNonce,
+            fullName: fullName
+        )
+        try await Auth.auth().signIn(with: credential)
+    }
+
+    // MARK: - Entrar com o Google
+
+    /// Abre o fluxo do Google a partir de `presenting` e autentica no Firebase.
+    func signInWithGoogle(presenting: UIViewController) async throws {
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            throw NSError(domain: "vpo.google", code: -1)
+        }
+        GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
+
+        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: presenting)
+        guard let idToken = result.user.idToken?.tokenString else {
+            throw NSError(domain: "vpo.google", code: -2)
+        }
+        let credential = GoogleAuthProvider.credential(
+            withIDToken: idToken,
+            accessToken: result.user.accessToken.tokenString
+        )
+        try await Auth.auth().signIn(with: credential)
     }
 
     /// Exclui a conta do usuário autenticado no Firebase Auth.

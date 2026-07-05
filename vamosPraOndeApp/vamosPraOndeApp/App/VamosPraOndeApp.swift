@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 @main
 struct VamosPraOndeApp: App {
@@ -19,6 +20,9 @@ struct VamosPraOndeApp: App {
             RootView()
                 .environmentObject(auth)
                 .environmentObject(userLocation)
+                .onOpenURL { url in
+                    GIDSignIn.sharedInstance.handle(url)
+                }
         }
     }
 }
