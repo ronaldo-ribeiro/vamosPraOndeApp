@@ -13,7 +13,6 @@ struct TravelMapView: View {
     let destinations: [Destination]
 
     @EnvironmentObject private var userLocation: UserLocationProvider
-    @Environment(\.dismiss) private var dismiss
     @State private var position: MapCameraPosition = .automatic
     @State private var visible: Set<TripCategory> = [.upcoming, .past, .wishlist]
 
@@ -50,14 +49,12 @@ struct TravelMapView: View {
             .ignoresSafeArea(edges: .bottom)
             .navigationTitle("Mapa das viagens")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("OK") { dismiss() }
-                        .foregroundStyle(Color.vpoTerracotta)
-                        .bold()
-                }
+            .overlay {
+                if destinations.isEmpty { emptyHint }
             }
-            .safeAreaInset(edge: .bottom) { filterBar }
+            .safeAreaInset(edge: .bottom) {
+                if !destinations.isEmpty { filterBar }
+            }
         }
         .tint(.vpoTerracotta)
         .task { userLocation.request() }
@@ -73,6 +70,25 @@ struct TravelMapView: View {
         case .past: return .vpoTeal
         case .wishlist: return .vpoGold
         }
+    }
+
+    private var emptyHint: some View {
+        VStack(spacing: Spacing.sm) {
+            Image(systemName: "map")
+                .font(.system(size: 40))
+                .foregroundStyle(Color.vpoTerracotta)
+            Text("Seu mapa começa aqui")
+                .font(AppFont.title(18))
+                .foregroundStyle(Color.vpoInk)
+            Text("Adicione destinos na aba Viagens e eles aparecem fixados por aqui.")
+                .font(AppFont.medium(14))
+                .foregroundStyle(Color.vpoInkSoft)
+                .multilineTextAlignment(.center)
+        }
+        .padding(Spacing.lg)
+        .frame(maxWidth: 320)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+        .padding(Spacing.lg)
     }
 
     private var filterBar: some View {

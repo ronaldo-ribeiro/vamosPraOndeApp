@@ -2,21 +2,17 @@
 //  HomeView.swift
 //  vamosPraOndeApp
 //
-//  Lista os destinos do usuário com a contagem regressiva de cada viagem.
+//  Aba "Viagens": lista os destinos do usuário com a contagem
+//  regressiva de cada viagem.
 //
 
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var auth: AuthService
-    @StateObject private var repo = DestinationsRepository()
+    @ObservedObject var repo: DestinationsRepository
     @State private var showingNew = false
-    @State private var showingMap = false
     @State private var sort: DestinationSort = .dateAsc
     @State private var filter: DestinationFilter = .all
-    @State private var showingDeleteAccount = false
-    @State private var accountError: String?
-    @State private var showingAccountError = false
 
     private var displayed: [Destination] {
         DestinationSorting.apply(repo.destinations, sort: sort, filter: filter)
@@ -81,58 +77,8 @@ struct HomeView: View {
                 DestinationDetailView(destination: destination, repository: repo)
             }
         }
-        .task { repo.start() }
-        .onChange(of: repo.destinations) { _, destinations in
-            syncWidget(with: destinations)
-        }
         .sheet(isPresented: $showingNew) {
             NewDestinationView(repository: repo)
-        }
-        .sheet(isPresented: $showingMap) {
-            TravelMapView(destinations: repo.destinations)
-        }
-        .confirmationDialog(
-            "Excluir a sua conta?",
-            isPresented: $showingDeleteAccount,
-            titleVisibility: .visible
-        ) {
-            Button("Excluir conta", role: .destructive) { deleteAccount() }
-            Button("Cancelar", role: .cancel) {}
-        } message: {
-            Text("Isso apaga todos os seus destinos e a sua conta permanentemente. Não dá para desfazer.")
-        }
-        .alert("Não foi possível excluir", isPresented: $showingAccountError) {
-            Button("OK") {}
-        } message: {
-            Text(accountError ?? "")
-        }
-    }
-
-    /// Mantém o widget em dia com a próxima viagem futura.
-    private func syncWidget(with destinations: [Destination]) {
-        let today = Calendar.current.startOfDay(for: Date())
-        let next = destinations
-            .compactMap { d -> (Destination, Date)? in
-                guard let date = d.date, Calendar.current.startOfDay(for: date) >= today else { return nil }
-                return (d, date)
-            }
-            .min { $0.1 < $1.1 }
-        NextTripSnapshot.save(next.map { (d, date) in
-            NextTripSnapshot(cityName: d.cityName, subtitle: d.subtitle, date: date)
-        })
-    }
-
-    private func deleteAccount() {
-        Task {
-            do {
-                try await repo.deleteAll()
-                NotificationService.cancelAll()
-                try await auth.deleteAccount()
-                // Sucesso: o listener de auth zera o usuário e o RootView volta ao login.
-            } catch {
-                accountError = AuthErrorMessage.of(error)
-                showingAccountError = true
-            }
         }
     }
 
@@ -150,15 +96,8 @@ struct HomeView: View {
             }
             Spacer()
             if !repo.destinations.isEmpty {
-                Button { showingMap = true } label: {
-                    Image(systemName: "map")
-                        .font(.system(size: 22))
-                        .foregroundStyle(Color.vpoTerracotta)
-                }
-                .accessibilityLabel("Mapa das viagens")
                 sortFilterMenu
             }
-            profileMenu
         }
     }
 
@@ -176,24 +115,6 @@ struct HomeView: View {
                 .foregroundStyle(Color.vpoTerracotta)
         }
         .accessibilityLabel("Ordenar e filtrar")
-    }
-
-    private var profileMenu: some View {
-        Menu {
-            Text(auth.displayEmail)
-            Button { try? auth.signOut() } label: {
-                Label("Sair", systemImage: "rectangle.portrait.and.arrow.right")
-            }
-            Divider()
-            Button(role: .destructive) { showingDeleteAccount = true } label: {
-                Label("Excluir conta", systemImage: "trash")
-            }
-        } label: {
-            Image(systemName: "person.circle.fill")
-                .font(.system(size: 30))
-                .foregroundStyle(Color.vpoTeal)
-        }
-        .accessibilityLabel("Conta e perfil")
     }
 
     private var filteredEmpty: some View {
