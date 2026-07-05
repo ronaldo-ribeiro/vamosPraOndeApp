@@ -10,15 +10,26 @@ import SwiftUI
 
 struct RootView: View {
     @EnvironmentObject private var auth: AuthService
+    @State private var showSplash = true
 
     var body: some View {
-        Group {
-            if auth.isSignedIn {
-                MainTabView()
-            } else {
-                AuthFlowView()
+        ZStack {
+            Group {
+                if auth.isSignedIn {
+                    MainTabView()
+                } else {
+                    AuthFlowView()
+                }
+            }
+            .animation(.easeInOut, value: auth.isSignedIn)
+
+            if showSplash {
+                SplashScreen {
+                    withAnimation(.easeInOut(duration: 0.5)) { showSplash = false }
+                }
+                .transition(.opacity)
+                .zIndex(1)
             }
         }
-        .animation(.easeInOut, value: auth.isSignedIn)
     }
 }

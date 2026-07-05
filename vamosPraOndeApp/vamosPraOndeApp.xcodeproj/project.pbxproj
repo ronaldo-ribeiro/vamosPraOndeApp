@@ -47,6 +47,7 @@
 		B7D7480FD5B256D9538F70FC /* DestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BCC5913B450ADADCE7182 /* DestinationTests.swift */; };
 		B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72593CC4AC6BB5144E159D9C /* AppFont.swift */; };
 		BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36ED71B036CE1129056B2F /* AppColor.swift */; };
+		C456D31880156C513A61EAC5 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B908F493AFD9AA09E1CBBE6D /* SplashScreen.swift */; };
 		CBBE7460309BFA630AF41684 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */; };
 		CF465CE100590B5C38EE9A40 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = FED78FC0757BCC0FC8527BBF /* Secrets.plist */; };
 		D14C4AF529675A8200065186 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D14C4AF429675A8200065186 /* GoogleService-Info.plist */; };
@@ -169,6 +170,7 @@
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
 		B6717499BB05FED71D3E7044 /* Countdown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		B825DB56D6E1DB92C43C9A90 /* ChecklistView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
+		B908F493AFD9AA09E1CBBE6D /* SplashScreen.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		BAB7582C2AD66EB703389C83 /* VamosWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VamosWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25693AA1C51D6E11D17BBD3 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		C6BA3454976B07F02479A5FC /* DestinationPhotoProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationPhotoProvider.swift; sourceTree = "<group>"; };
@@ -315,6 +317,15 @@
 				B24C0C6D065810A6D844E0E8 /* VamosWidget.entitlements */,
 			);
 			path = VamosWidget;
+			sourceTree = "<group>";
+		};
+		47F0EE999F40310894777328 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				B908F493AFD9AA09E1CBBE6D /* SplashScreen.swift */,
+			);
+			name = Splash;
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		51C69AD44D8F9ED4EC413B19 /* Map */ = {
@@ -523,6 +534,7 @@
 				51C69AD44D8F9ED4EC413B19 /* Map */,
 				B6EA7B39A09B9196A370BC80 /* Root */,
 				1F5A377F24B8B0B701B5A5D6 /* Profile */,
+				47F0EE999F40310894777328 /* Splash */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -806,6 +818,7 @@
 				6F96B45EDA0667602143CB20 /* SocialSignInButtons.swift in Sources */,
 				D6D3F46A5969F51C3C1B3716 /* MainTabView.swift in Sources */,
 				975703D0576611F431A67DA8 /* ProfileView.swift in Sources */,
+				C456D31880156C513A61EAC5 /* SplashScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

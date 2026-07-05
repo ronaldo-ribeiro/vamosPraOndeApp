@@ -22,6 +22,20 @@ struct ProfileView: View {
 
     private var tripCount: Int { repo.destinations.count }
 
+    /// Países distintos entre os destinos (usa o subtítulo = país).
+    private var countryCount: Int {
+        Set(repo.destinations.map { $0.subtitle.lowercased() }.filter { !$0.isEmpty }).count
+    }
+
+    private var upcomingCount: Int {
+        repo.destinations.filter { $0.category() == .upcoming }.count
+    }
+
+    private var appVersion: String {
+        let v = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
+        return "v\(v)"
+    }
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -30,9 +44,10 @@ struct ProfileView: View {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
                         avatarHeader
-                        statsRow
+                        statsGrid
                         optionsCard
                         deleteButton
+                        versionFooter
                     }
                     .padding(Spacing.lg)
                 }
@@ -77,19 +92,38 @@ struct ProfileView: View {
         .padding(.top, Spacing.md)
     }
 
-    private var statsRow: some View {
-        HStack(spacing: 6) {
-            Image(systemName: "suitcase.rolling.fill")
-                .font(.system(size: 15))
+    private var statsGrid: some View {
+        HStack(spacing: Spacing.sm) {
+            statTile("\(tripCount)", tripCount == 1 ? "destino" : "destinos")
+            statTile("\(countryCount)", countryCount == 1 ? "país" : "países")
+            statTile("\(upcomingCount)", "próximas")
+        }
+    }
+
+    private func statTile(_ value: String, _ label: String) -> some View {
+        VStack(spacing: 2) {
+            Text(value)
+                .font(AppFont.countdown(28))
                 .foregroundStyle(Color.vpoTerracotta)
-            Text(tripCount == 1 ? "1 destino guardado" : "\(tripCount) destinos guardados")
-                .font(AppFont.semibold(14))
+            Text(label)
+                .font(AppFont.medium(11))
+                .kerning(0.5)
+                .textCase(.uppercase)
                 .foregroundStyle(Color.vpoInkSoft)
         }
-        .padding(.vertical, Spacing.sm)
-        .padding(.horizontal, Spacing.md)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, Spacing.md)
         .background(Color.vpoCream)
-        .clipShape(Capsule())
+        .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(value) \(label)")
+    }
+
+    private var versionFooter: some View {
+        Text("Vamos pra Onde? \(appVersion)")
+            .font(AppFont.medium(12))
+            .foregroundStyle(Color.vpoInkSoft)
+            .padding(.top, Spacing.sm)
     }
 
     private var optionsCard: some View {

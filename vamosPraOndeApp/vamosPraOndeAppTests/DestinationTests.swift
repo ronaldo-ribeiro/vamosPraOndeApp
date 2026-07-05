@@ -14,13 +14,13 @@ struct DestinationTests {
         Destination(id: "x", title: title, latitude: 0, longitude: 0, date: Date(), createdAt: Date())
     }
 
-    @Test func cidadeComSubtitulo() {
+    @Test func cidadeComPais() {
         let d = make("Lisboa, Lisboa, Portugal")
         #expect(d.cityName == "Lisboa")
-        #expect(d.subtitle == "Lisboa, Portugal")
+        #expect(d.subtitle == "Portugal")
     }
 
-    @Test func cidadeSemSubtitulo() {
+    @Test func cidadeSemPais() {
         let d = make("Tóquio")
         #expect(d.cityName == "Tóquio")
         #expect(d.subtitle == "")
@@ -29,7 +29,7 @@ struct DestinationTests {
     @Test func aparaEspacos() {
         let d = make("São Paulo,  SP,  Brasil")
         #expect(d.cityName == "São Paulo")
-        #expect(d.subtitle == "SP, Brasil")
+        #expect(d.subtitle == "Brasil")
     }
 }
 

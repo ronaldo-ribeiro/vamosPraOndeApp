@@ -51,11 +51,15 @@ struct Destination: Identifiable, Codable, Hashable {
             .trimmingCharacters(in: .whitespaces) ?? title
     }
 
-    /// Restante ("Estado, País") após a cidade.
+    /// País do destino (último trecho de "Cidade, Estado, País"), usado como
+    /// subtítulo enxuto. Vazio quando não há país (ou é igual à cidade).
     var subtitle: String {
-        let parts = title.split(separator: ",").dropFirst()
+        let parts = title.split(separator: ",")
             .map { $0.trimmingCharacters(in: .whitespaces) }
-        return parts.joined(separator: ", ")
+            .filter { !$0.isEmpty }
+        guard parts.count > 1, let country = parts.last,
+              country.caseInsensitiveCompare(cityName) != .orderedSame else { return "" }
+        return country
     }
 
     static func == (lhs: Destination, rhs: Destination) -> Bool {
