@@ -22,7 +22,8 @@ struct DestinationDetailView: View {
     @State private var tripForecast: TripDayForecast?
     @State private var weatherFailed = false
     @State private var destinationTimeZone: TimeZone?
-    @State private var photoURL: URL?
+    @State private var photo: DestinationPhoto?
+    @Environment(\.openURL) private var openURL
 
     init(destination: Destination, repository: DestinationsRepository) {
         self.initial = destination
@@ -60,9 +61,11 @@ struct DestinationDetailView: View {
         }
         .task(id: destination.id) { await loadWeather() }
         .task(id: destination.id) {
-            photoURL = await DestinationPhotoProvider.imageURL(
+            let found = await DestinationPhotoProvider.photo(
                 city: destination.cityName, subtitle: destination.subtitle
             )
+            photo = found
+            if let found { DestinationPhotoProvider.trackUsage(found) }
         }
         .task { userLocation.request() }
         .toolbar(.hidden, for: .navigationBar)
@@ -86,8 +89,8 @@ struct DestinationDetailView: View {
 
     @ViewBuilder
     private var coverBackground: some View {
-        if let photoURL {
-            AsyncImage(url: photoURL, transaction: Transaction(animation: .easeIn(duration: 0.4))) { phase in
+        if let photo {
+            AsyncImage(url: photo.url, transaction: Transaction(animation: .easeIn(duration: 0.4))) { phase in
                 switch phase {
                 case .success(let image):
                     image
@@ -112,9 +115,12 @@ struct DestinationDetailView: View {
     }
 
     private var cover: some View {
-        coverBackground
-            .frame(height: 300)
+        // Container de tamanho fixo: a imagem (scaledToFill) fica num overlay e
+        // é recortada, sem esticar o frame da capa para a largura da foto.
+        Color.clear
             .frame(maxWidth: .infinity)
+            .frame(height: 300)
+            .overlay { coverBackground }
             .clipped()
             .overlay(alignment: .bottomLeading) {
                 VStack(alignment: .leading, spacing: 4) {
@@ -158,6 +164,29 @@ struct DestinationDetailView: View {
                 .padding(.trailing, Spacing.lg)
                 .padding(.top, 56)
             }
+            .overlay(alignment: .bottomTrailing) { photoCredit }
+    }
+
+    /// Crédito do autor da foto (obrigatório para o Unsplash).
+    @ViewBuilder
+    private var photoCredit: some View {
+        if let photo {
+            let label = photo.creditName.map { "\($0) · \(photo.sourceLabel)" } ?? photo.sourceLabel
+            Button {
+                if let url = photo.creditURL { openURL(url) }
+            } label: {
+                Text(label)
+                    .font(AppFont.medium(10))
+                    .foregroundStyle(Color.vpoOnColor.opacity(0.9))
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 3)
+                    .background(.black.opacity(0.28), in: Capsule())
+            }
+            .disabled(photo.creditURL == nil)
+            .padding(.trailing, Spacing.sm)
+            .padding(.bottom, Spacing.sm)
+            .accessibilityLabel("Foto de \(label)")
+        }
     }
 
     private func notesCard(_ notes: String) -> some View {

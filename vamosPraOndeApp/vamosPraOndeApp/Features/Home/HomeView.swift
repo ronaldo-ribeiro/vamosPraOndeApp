@@ -137,13 +137,26 @@ struct HomeView: View {
                 .font(.system(size: 24, weight: .semibold))
                 .foregroundStyle(Color.vpoOnColor)
                 .frame(width: 60, height: 60)
-                .background(Color.vpoTerracotta)
+                .fabBackground()
+        }
+        .accessibilityLabel("Adicionar destino")
+        .padding(Spacing.lg)
+    }
+}
+
+private extension View {
+    /// Fundo do botão flutuante: vidro (Liquid Glass) tingido no iOS 26,
+    /// círculo sólido nas versões anteriores.
+    @ViewBuilder
+    func fabBackground() -> some View {
+        if #available(iOS 26.0, *) {
+            self.glassEffect(.regular.tint(Color.vpoTerracotta).interactive(), in: .circle)
+        } else {
+            self.background(Color.vpoTerracotta)
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color.vpoSand, lineWidth: 4))
                 .shadow(color: Color.vpoInk.opacity(0.2), radius: 8, y: 4)
         }
-        .accessibilityLabel("Adicionar destino")
-        .padding(Spacing.lg)
     }
 }
 
