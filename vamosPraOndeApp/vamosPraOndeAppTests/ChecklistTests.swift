@@ -18,6 +18,12 @@ struct DistanceFormatTests {
         #expect(DistanceFormat.string(meters: 1_499) == "1 km")
         #expect(DistanceFormat.string(meters: 1_500) == "2 km")
     }
+
+    @Test func distanciaCurta() {
+        #expect(DistanceFormat.short(meters: 350) == "350 m")
+        #expect(DistanceFormat.short(meters: 999) == "999 m")
+        #expect(DistanceFormat.short(meters: 1_500) == "1,5 km")
+    }
 }
 
 struct ChecklistTests {

@@ -23,6 +23,9 @@ struct DestinationDetailView: View {
     @State private var weatherFailed = false
     @State private var destinationTimeZone: TimeZone?
     @State private var photo: DestinationPhoto?
+    @State private var nearbyCategory: NearbyCategory = .attractions
+    @State private var nearbyPlaces: [NearbyPlace] = []
+    @State private var nearbyLoading = false
     @Environment(\.openURL) private var openURL
 
     init(destination: Destination, repository: DestinationsRepository) {
@@ -53,6 +56,7 @@ struct DestinationDetailView: View {
                     if destinationTimeZone != nil {
                         timeZoneCard
                     }
+                    nearbyCard
                     deleteButton
                 }
                 .padding(.bottom, Spacing.xl)
@@ -68,6 +72,7 @@ struct DestinationDetailView: View {
             if let found { DestinationPhotoProvider.trackUsage(found) }
         }
         .task { userLocation.request() }
+        .task(id: nearbyLoadKey) { await loadNearby() }
         .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showingEdit) {
             NewDestinationView(repository: repository, editing: destination)
@@ -404,6 +409,109 @@ struct DestinationDetailView: View {
         .padding(.horizontal, Spacing.lg)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(timeZoneAccessibilityLabel)
+    }
+
+    // MARK: - Por perto (MKLocalSearch)
+
+    /// Recarrega quando muda o destino ou a categoria escolhida.
+    private var nearbyLoadKey: String {
+        "\(destination.id ?? "")-\(nearbyCategory.rawValue)"
+    }
+
+    private func loadNearby() async {
+        nearbyLoading = true
+        nearbyPlaces = await NearbyPlacesService.search(
+            near: destination.coordinate, category: nearbyCategory
+        )
+        nearbyLoading = false
+    }
+
+    private var nearbyCard: some View {
+        VStack(alignment: .leading, spacing: Spacing.md) {
+            Label("Por perto", systemImage: "binoculars.fill")
+                .font(AppFont.title(16))
+                .foregroundStyle(Color.vpoInk)
+
+            HStack(spacing: Spacing.sm) {
+                ForEach(NearbyCategory.allCases) { category in
+                    nearbyChip(category)
+                }
+            }
+
+            if nearbyLoading {
+                ProgressView()
+                    .tint(.vpoTeal)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, Spacing.md)
+            } else if nearbyPlaces.isEmpty {
+                Text("Nada encontrado por aqui.")
+                    .font(AppFont.medium(14))
+                    .foregroundStyle(Color.vpoInkSoft)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.vertical, Spacing.sm)
+            } else {
+                VStack(spacing: 0) {
+                    ForEach(nearbyPlaces) { place in
+                        nearbyRow(place)
+                        if place.id != nearbyPlaces.last?.id {
+                            Divider().padding(.leading, 40)
+                        }
+                    }
+                }
+            }
+        }
+        .padding(Spacing.md)
+        .background(Color.vpoCream)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+        .padding(.horizontal, Spacing.lg)
+        .animation(.easeInOut(duration: 0.25), value: nearbyPlaces.map(\.id))
+    }
+
+    private func nearbyChip(_ category: NearbyCategory) -> some View {
+        let selected = nearbyCategory == category
+        return Button {
+            nearbyCategory = category
+        } label: {
+            Label(category.rawValue, systemImage: category.symbol)
+                .font(AppFont.semibold(13))
+                .foregroundStyle(selected ? Color.vpoOnColor : Color.vpoInkSoft)
+                .padding(.vertical, 7)
+                .padding(.horizontal, Spacing.sm)
+                .background(selected ? Color.vpoTeal : Color.vpoSand, in: Capsule())
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func nearbyRow(_ place: NearbyPlace) -> some View {
+        Button {
+            place.openInMaps()
+        } label: {
+            HStack(spacing: Spacing.md) {
+                Image(systemName: NearbyPlacesService.symbol(for: place.category))
+                    .font(.system(size: 16))
+                    .foregroundStyle(Color.vpoTeal)
+                    .frame(width: 24)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(place.name)
+                        .font(AppFont.medium(15))
+                        .foregroundStyle(Color.vpoInk)
+                        .lineLimit(1)
+                    if let distance = place.distance {
+                        Text("a \(DistanceFormat.short(meters: distance))")
+                            .font(AppFont.medium(12))
+                            .foregroundStyle(Color.vpoInkSoft)
+                    }
+                }
+                Spacer()
+                Image(systemName: "arrow.up.forward.app")
+                    .font(.system(size: 15))
+                    .foregroundStyle(Color.vpoInkSoft)
+            }
+            .padding(.vertical, Spacing.sm)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("\(place.name), a \(place.distance.map { DistanceFormat.short(meters: $0) } ?? ""). Abrir no Mapas.")
     }
 
     private static let localTime: DateFormatter = {

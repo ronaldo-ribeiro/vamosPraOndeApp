@@ -47,6 +47,7 @@
 		B7D7480FD5B256D9538F70FC /* DestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BCC5913B450ADADCE7182 /* DestinationTests.swift */; };
 		B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72593CC4AC6BB5144E159D9C /* AppFont.swift */; };
 		BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36ED71B036CE1129056B2F /* AppColor.swift */; };
+		C160B823E318F6C16D0C1417 /* NearbyPlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDDF45CD0859471994BB316 /* NearbyPlacesService.swift */; };
 		C456D31880156C513A61EAC5 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B908F493AFD9AA09E1CBBE6D /* SplashScreen.swift */; };
 		CBBE7460309BFA630AF41684 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */; };
 		CF465CE100590B5C38EE9A40 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = FED78FC0757BCC0FC8527BBF /* Secrets.plist */; };
@@ -134,6 +135,7 @@
 		23AF5E5BEBEEE0DED5CAFDFE /* NotificationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		2EDE28040F39CCD5CCD172DF /* Destination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		3A34A419395F409009F3EB25 /* AuthFlowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
+		3FDDF45CD0859471994BB316 /* NearbyPlacesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NearbyPlacesService.swift; sourceTree = "<group>"; };
 		409CD1E05CA693E1110F0D03 /* AuthService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		40C91FAE89B00AF2B5D82750 /* ProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */,
 				AE9550528BF5AD8FE37F6279 /* UserLocationProvider.swift */,
 				C6BA3454976B07F02479A5FC /* DestinationPhotoProvider.swift */,
+				3FDDF45CD0859471994BB316 /* NearbyPlacesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -819,6 +822,7 @@
 				D6D3F46A5969F51C3C1B3716 /* MainTabView.swift in Sources */,
 				975703D0576611F431A67DA8 /* ProfileView.swift in Sources */,
 				C456D31880156C513A61EAC5 /* SplashScreen.swift in Sources */,
+				C160B823E318F6C16D0C1417 /* NearbyPlacesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -75,4 +75,19 @@ enum DistanceFormat {
         let number = formatter.string(from: NSNumber(value: km)) ?? "\(Int(km))"
         return "\(number) km"
     }
+
+    /// Distância curta: "350 m" abaixo de 1 km, "1,2 km" acima (pt-BR).
+    static func short(meters: CLLocationDistance) -> String {
+        if meters < 1000 {
+            return "\(Int(meters.rounded())) m"
+        }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale(identifier: "pt_BR")
+        formatter.minimumFractionDigits = 1
+        formatter.maximumFractionDigits = 1
+        let km = meters / 1000
+        let number = formatter.string(from: NSNumber(value: km)) ?? "\(km)"
+        return "\(number) km"
+    }
 }
