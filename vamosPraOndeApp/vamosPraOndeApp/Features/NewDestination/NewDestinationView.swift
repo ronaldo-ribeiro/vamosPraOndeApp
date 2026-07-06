@@ -255,6 +255,7 @@ struct NewDestinationView: View {
                     )
                     await NotificationService.reschedule(for: saved)
                 }
+                Haptics.success()
                 dismiss()
             } catch {
                 errorMessage = "Não foi possível salvar. Tente novamente."

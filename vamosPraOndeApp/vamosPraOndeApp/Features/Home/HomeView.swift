@@ -132,7 +132,10 @@ struct HomeView: View {
     }
 
     private var addButton: some View {
-        Button { showingNew = true } label: {
+        Button {
+            Haptics.tap()
+            showingNew = true
+        } label: {
             Image(systemName: "plus")
                 .font(.system(size: 24, weight: .semibold))
                 .foregroundStyle(Color.vpoOnColor)

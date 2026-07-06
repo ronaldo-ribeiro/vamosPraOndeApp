@@ -450,6 +450,7 @@ struct DestinationDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical, Spacing.sm)
             } else {
+                nearbyMap
                 VStack(spacing: 0) {
                     ForEach(nearbyPlaces) { place in
                         nearbyRow(place)
@@ -467,9 +468,33 @@ struct DestinationDetailView: View {
         .animation(.easeInOut(duration: 0.25), value: nearbyPlaces.map(\.id))
     }
 
+    /// Mini-mapa com os lugares encontrados + o pino do destino.
+    /// `.id` força recriação quando a lista muda, re-enquadrando a câmera.
+    private var nearbyMap: some View {
+        Map(initialPosition: .automatic) {
+            Marker(destination.cityName, coordinate: destination.coordinate)
+                .tint(Color.vpoTerracotta)
+            ForEach(nearbyPlaces) { place in
+                Marker(
+                    place.name,
+                    systemImage: NearbyPlacesService.symbol(for: place.category),
+                    coordinate: place.coordinate
+                )
+                .tint(Color.vpoTeal)
+            }
+        }
+        .frame(height: 190)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
+        .allowsHitTesting(false)
+        .id(nearbyLoadKey + "-\(nearbyPlaces.count)")
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Mapa com \(nearbyPlaces.count) lugares perto de \(destination.cityName)")
+    }
+
     private func nearbyChip(_ category: NearbyCategory) -> some View {
         let selected = nearbyCategory == category
         return Button {
+            Haptics.tap()
             nearbyCategory = category
         } label: {
             Label(category.rawValue, systemImage: category.symbol)
@@ -575,6 +600,7 @@ struct DestinationDetailView: View {
     }
 
     private func delete() {
+        Haptics.warning()
         isDeleting = true
         let id = destination.id
         Task {

@@ -107,6 +107,7 @@ struct TravelMapView: View {
         let isOn = visible.contains(category)
         let count = destinations.filter { $0.category() == category }.count
         return Button {
+            Haptics.tap()
             withAnimation(.easeInOut(duration: 0.2)) {
                 if isOn { visible.remove(category) } else { visible.insert(category) }
             }

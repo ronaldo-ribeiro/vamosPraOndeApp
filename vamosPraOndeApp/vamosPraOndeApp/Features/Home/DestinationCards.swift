@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DestinationHeroCard: View {
     let destination: Destination
+    @State private var photo: DestinationPhoto?
 
     private var eyebrow: String {
         switch destination.category() {
@@ -18,9 +19,40 @@ struct DestinationHeroCard: View {
         }
     }
 
+    /// Foto do destino com fallback para o gradiente. Container de tamanho
+    /// fixo para a imagem não esticar o layout.
+    @ViewBuilder
+    private var coverBackground: some View {
+        if let photo {
+            AsyncImage(url: photo.url, transaction: Transaction(animation: .easeIn(duration: 0.35))) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .overlay(
+                            LinearGradient(
+                                colors: [.black.opacity(0.05), .black.opacity(0.62)],
+                                startPoint: .center,
+                                endPoint: .bottom
+                            )
+                        )
+                default:
+                    SunsetCover()
+                }
+            }
+        } else {
+            SunsetCover()
+        }
+    }
+
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            SunsetCover()
+            Color.clear
+                .frame(maxWidth: .infinity)
+                .frame(height: 250)
+                .overlay { coverBackground }
+                .clipped()
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(eyebrow)
@@ -69,6 +101,11 @@ struct DestinationHeroCard: View {
         }
         .frame(height: 250)
         .clipShape(RoundedRectangle(cornerRadius: Radius.cover, style: .continuous))
+        .task(id: destination.id) {
+            photo = await DestinationPhotoProvider.photo(
+                city: destination.cityName, subtitle: destination.subtitle
+            )
+        }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(accessibilityText)
     }

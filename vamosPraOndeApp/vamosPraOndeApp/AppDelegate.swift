@@ -18,6 +18,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         FirebaseApp.configure()
+        // Cache generoso para as fotos dos destinos (Unsplash/Wikipedia):
+        // 50 MB em memória + 200 MB em disco. AsyncImage usa a URLSession
+        // compartilhada, então se beneficia automaticamente.
+        URLCache.shared = URLCache(
+            memoryCapacity: 50 * 1024 * 1024,
+            diskCapacity: 200 * 1024 * 1024
+        )
         return true
     }
 }

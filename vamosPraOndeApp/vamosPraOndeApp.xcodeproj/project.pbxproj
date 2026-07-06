@@ -30,6 +30,7 @@
 		7464D45E3C6B735A2D0A00D2 /* ChecklistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBD4659496E3AA768CC5C4 /* ChecklistTests.swift */; };
 		7FA281D8D93748D51DA416CE /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715796514FBEA826675FB981 /* ErrorBanner.swift */; };
 		8191779992B81C209FFFFF78 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759693CF363A15BF3D16B2D1 /* LoginView.swift */; };
+		81F2F01F8353792FF1257AD2 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F31DAEEF0F63FE46C3E2E5 /* Haptics.swift */; };
 		832FCE1CEB653FD99FFEC49E /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6717499BB05FED71D3E7044 /* Countdown.swift */; };
 		86C5A52894E3A21E8124549D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799EFFED51CAB6C06E8D343D /* WelcomeView.swift */; };
 		8A68B0E71084E468DCA6F9D1 /* VamosPraOndeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */; };
@@ -153,6 +154,7 @@
 		5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B36ED71B036CE1129056B2F /* AppColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		715796514FBEA826675FB981 /* ErrorBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
+		71F31DAEEF0F63FE46C3E2E5 /* Haptics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		72593CC4AC6BB5144E159D9C /* AppFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		759693CF363A15BF3D16B2D1 /* LoginView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		799EFFED51CAB6C06E8D343D /* WelcomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */,
 				56DC68679043A01C61BFA269 /* ChecklistTemplates.swift */,
 				9578FF8E0BAF23A94D662608 /* AppleAuth.swift */,
+				71F31DAEEF0F63FE46C3E2E5 /* Haptics.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				975703D0576611F431A67DA8 /* ProfileView.swift in Sources */,
 				C456D31880156C513A61EAC5 /* SplashScreen.swift in Sources */,
 				C160B823E318F6C16D0C1417 /* NearbyPlacesService.swift in Sources */,
+				81F2F01F8353792FF1257AD2 /* Haptics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
