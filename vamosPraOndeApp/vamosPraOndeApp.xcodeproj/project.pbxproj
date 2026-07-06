@@ -17,6 +17,7 @@
 		19A98A04E593BCE739B3FF7A /* DestinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */; };
 		20FE5F85AD868F5549D7BF51 /* TimeZoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */; };
 		32499C6DAD7390D3B04471CF /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6717499BB05FED71D3E7044 /* Countdown.swift */; };
+		350662C408F2ACA87ECD18F8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 65BE014A7FC7B9C67C11AA7A /* InfoPlist.xcstrings */; };
 		441C3C4C0D4AB5F43B8C04E5 /* Pods_vamosPraOndeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */; };
 		4CEE741F83281B677D5917AB /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D78C807CB5AE97714742A01 /* CountdownTests.swift */; };
 		50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25693AA1C51D6E11D17BBD3 /* RootView.swift */; };
@@ -158,6 +159,7 @@
 		56DC68679043A01C61BFA269 /* ChecklistTemplates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistTemplates.swift; sourceTree = "<group>"; };
 		5801109F556166FCE44A0C84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65BE014A7FC7B9C67C11AA7A /* InfoPlist.xcstrings */ = {isa = PBXFileReference; includeInIndex = 1; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		6B36ED71B036CE1129056B2F /* AppColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		715796514FBEA826675FB981 /* ErrorBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
 		71F31DAEEF0F63FE46C3E2E5 /* Haptics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				6CC1694C4F6FB2B9BEBCB139 /* Shared */,
 				FED78FC0757BCC0FC8527BBF /* Secrets.plist */,
 				AB01782A64F847E71A553CD5 /* Localizable.xcstrings */,
+				65BE014A7FC7B9C67C11AA7A /* InfoPlist.xcstrings */,
 			);
 			path = vamosPraOndeApp;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				CBBE7460309BFA630AF41684 /* PrivacyInfo.xcprivacy in Resources */,
 				CF465CE100590B5C38EE9A40 /* Secrets.plist in Resources */,
 				B678C008443E84763E9B7419 /* Localizable.xcstrings in Resources */,
+				350662C408F2ACA87ECD18F8 /* InfoPlist.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
