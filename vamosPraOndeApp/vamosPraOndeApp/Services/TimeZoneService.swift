@@ -24,11 +24,13 @@ enum TimeZoneService {
     /// Texto amigável da diferença: "mesmo horário que o seu", "4h à frente", "3h atrás".
     static func differencePhrase(_ destination: TimeZone, from local: TimeZone = .current, at date: Date = Date()) -> String {
         let hours = hoursAhead(destination, from: local, at: date)
-        if hours == 0 { return "mesmo horário que o seu" }
+        if hours == 0 { return String(localized: "mesmo horário que o seu") }
         let absHours = abs(hours)
         let formatted = absHours == absHours.rounded()
             ? "\(Int(absHours))h"
             : String(format: "%.1fh", absHours).replacingOccurrences(of: ".", with: ",")
-        return hours > 0 ? "\(formatted) à frente" : "\(formatted) atrás"
+        return hours > 0
+            ? String(localized: "\(formatted) à frente")
+            : String(localized: "\(formatted) atrás")
     }
 }

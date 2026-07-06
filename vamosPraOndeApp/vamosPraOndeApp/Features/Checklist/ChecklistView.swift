@@ -89,7 +89,7 @@ struct ChecklistView: View {
                                 items = ChecklistTemplate.merge(items, adding: template)
                                 save()
                             } label: {
-                                Label(template.rawValue, systemImage: template.icon)
+                                Label(template.label, systemImage: template.icon)
                             }
                         }
                     } label: {

@@ -18,8 +18,8 @@ extension Array where Element == ChecklistItem {
 
     /// "3 de 10 prontos" (ou "tudo pronto! 🎉" quando completo).
     var progressPhrase: String {
-        guard !isEmpty else { return "toque para montar a checklist" }
-        if doneCount == count { return "tudo pronto! 🎉" }
-        return "\(doneCount) de \(count) prontos"
+        guard !isEmpty else { return String(localized: "toque para montar a checklist") }
+        if doneCount == count { return String(localized: "tudo pronto! 🎉") }
+        return String(localized: "\(doneCount) de \(count) prontos")
     }
 }

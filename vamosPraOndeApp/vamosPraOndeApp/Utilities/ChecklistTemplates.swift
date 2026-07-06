@@ -15,6 +15,16 @@ enum ChecklistTemplate: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
+    /// Nome localizado do modelo, para a UI.
+    var label: String {
+        switch self {
+        case .essenciais: return String(localized: "Essenciais")
+        case .praia: return String(localized: "Praia")
+        case .frio: return String(localized: "Frio")
+        case .internacional: return String(localized: "Internacional")
+        }
+    }
+
     var icon: String {
         switch self {
         case .essenciais: return "checklist"
@@ -28,39 +38,39 @@ enum ChecklistTemplate: String, CaseIterable, Identifiable {
         switch self {
         case .essenciais:
             return [
-                "Documento de identidade",
-                "Carregador do celular",
-                "Roupas para os dias de viagem",
-                "Escova e pasta de dentes",
-                "Desodorante",
-                "Remédios de uso pessoal",
-                "Fones de ouvido",
+                String(localized: "Documento de identidade"),
+                String(localized: "Carregador do celular"),
+                String(localized: "Roupas para os dias de viagem"),
+                String(localized: "Escova e pasta de dentes"),
+                String(localized: "Desodorante"),
+                String(localized: "Remédios de uso pessoal"),
+                String(localized: "Fones de ouvido"),
             ]
         case .praia:
             return [
-                "Protetor solar",
-                "Roupa de banho",
-                "Chinelo",
-                "Óculos de sol",
-                "Chapéu ou boné",
-                "Toalha de praia",
+                String(localized: "Protetor solar"),
+                String(localized: "Roupa de banho"),
+                String(localized: "Chinelo"),
+                String(localized: "Óculos de sol"),
+                String(localized: "Chapéu ou boné"),
+                String(localized: "Toalha de praia"),
             ]
         case .frio:
             return [
-                "Casaco pesado",
-                "Luvas e gorro",
-                "Cachecol",
-                "Meias quentes",
-                "Hidratante e protetor labial",
+                String(localized: "Casaco pesado"),
+                String(localized: "Luvas e gorro"),
+                String(localized: "Cachecol"),
+                String(localized: "Meias quentes"),
+                String(localized: "Hidratante e protetor labial"),
             ]
         case .internacional:
             return [
-                "Passaporte",
-                "Seguro viagem",
-                "Adaptador de tomada",
-                "Moeda estrangeira / cartão internacional",
-                "Chip internacional ou eSIM",
-                "Cópia dos documentos",
+                String(localized: "Passaporte"),
+                String(localized: "Seguro viagem"),
+                String(localized: "Adaptador de tomada"),
+                String(localized: "Moeda estrangeira / cartão internacional"),
+                String(localized: "Chip internacional ou eSIM"),
+                String(localized: "Cópia dos documentos"),
             ]
         }
     }

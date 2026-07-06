@@ -49,10 +49,10 @@ enum NotificationService {
         for days in reminders {
             guard let fire = fireDate(tripDate: tripDate, daysBefore: days) else { continue }
             let content = UNMutableNotificationContent()
-            content.title = "Vamos pra onde? ✈️"
+            content.title = String(localized: "Vamos pra onde? ✈️")
             content.body = days == 1
-                ? "É amanhã: \(destination.cityName)! Bora arrumar as malas. 🧳"
-                : "Faltam \(days) dias para \(destination.cityName)! 🌅"
+                ? String(localized: "É amanhã: \(destination.cityName)! Bora arrumar as malas. 🧳")
+                : String(localized: "Faltam \(days) dias para \(destination.cityName)! 🌅")
             content.sound = .default
 
             let comps = Calendar.current.dateComponents(
