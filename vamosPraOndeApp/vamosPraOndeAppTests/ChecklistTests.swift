@@ -7,7 +7,35 @@
 
 import Testing
 import CoreLocation
+import SwiftUI
 @testable import vamosPraOndeApp
+
+@MainActor
+struct ShareCardTests {
+    @Test func cartaoDeCompartilhamentoRenderiza() {
+        let d = Destination(
+            id: "x", title: "Lisboa, Lisboa, Portugal",
+            latitude: 38.7, longitude: -9.1,
+            date: Date().addingTimeInterval(86_400 * 30), createdAt: Date()
+        )
+        let renderer = ImageRenderer(content: CountdownShareCard(destination: d))
+        renderer.scale = 3
+        let image = renderer.uiImage
+        #expect(image != nil)
+        #expect(image?.size.width == 360)
+        #expect(image?.size.height == 450)
+    }
+
+    @Test func cartaoDeDesejoRenderiza() {
+        let d = Destination(
+            id: "y", title: "Bali, Indonésia",
+            latitude: -8.4, longitude: 115.1,
+            date: nil, createdAt: Date()
+        )
+        let renderer = ImageRenderer(content: CountdownShareCard(destination: d))
+        #expect(renderer.uiImage != nil)
+    }
+}
 
 struct DistanceFormatTests {
     @Test func formataComSeparador() {

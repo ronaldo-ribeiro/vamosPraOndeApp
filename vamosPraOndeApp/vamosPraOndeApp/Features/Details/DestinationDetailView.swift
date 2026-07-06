@@ -26,6 +26,7 @@ struct DestinationDetailView: View {
     @State private var nearbyCategory: NearbyCategory = .attractions
     @State private var nearbyPlaces: [NearbyPlace] = []
     @State private var nearbyLoading = false
+    @State private var shareImage: UIImage?
     @Environment(\.openURL) private var openURL
 
     init(destination: Destination, repository: DestinationsRepository) {
@@ -73,6 +74,12 @@ struct DestinationDetailView: View {
         }
         .task { userLocation.request() }
         .task(id: nearbyLoadKey) { await loadNearby() }
+        .task(id: destination.id) {
+            // Cartão de compartilhamento (renderizado uma vez por destino).
+            let renderer = ImageRenderer(content: CountdownShareCard(destination: destination))
+            renderer.scale = 3
+            shareImage = renderer.uiImage
+        }
         .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showingEdit) {
             NewDestinationView(repository: repository, editing: destination)
@@ -158,14 +165,33 @@ struct DestinationDetailView: View {
                 .padding(.top, 56)
             }
             .overlay(alignment: .topTrailing) {
-                Button { showingEdit = true } label: {
-                    Image(systemName: "pencil")
-                        .font(.system(size: 17, weight: .semibold))
-                        .foregroundStyle(Color.vpoOnColor)
-                        .frame(width: 40, height: 40)
-                        .background(.ultraThinMaterial, in: Circle())
+                HStack(spacing: Spacing.sm) {
+                    if let shareImage {
+                        ShareLink(
+                            item: Image(uiImage: shareImage),
+                            preview: SharePreview(
+                                "Contagem para \(destination.cityName)",
+                                image: Image(uiImage: shareImage)
+                            )
+                        ) {
+                            Image(systemName: "square.and.arrow.up")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundStyle(Color.vpoOnColor)
+                                .frame(width: 40, height: 40)
+                                .background(.ultraThinMaterial, in: Circle())
+                        }
+                        .simultaneousGesture(TapGesture().onEnded { Haptics.tap() })
+                        .accessibilityLabel("Compartilhar contagem")
+                    }
+                    Button { showingEdit = true } label: {
+                        Image(systemName: "pencil")
+                            .font(.system(size: 17, weight: .semibold))
+                            .foregroundStyle(Color.vpoOnColor)
+                            .frame(width: 40, height: 40)
+                            .background(.ultraThinMaterial, in: Circle())
+                    }
+                    .accessibilityLabel("Editar destino")
                 }
-                .accessibilityLabel("Editar destino")
                 .padding(.trailing, Spacing.lg)
                 .padding(.top, 56)
             }

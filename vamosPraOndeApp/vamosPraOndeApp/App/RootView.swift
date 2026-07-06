@@ -11,12 +11,18 @@ import SwiftUI
 struct RootView: View {
     @EnvironmentObject private var auth: AuthService
     @State private var showSplash = true
+    /// Apresentação inicial: mostrada uma única vez, antes do primeiro login.
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
 
     var body: some View {
         ZStack {
             Group {
                 if auth.isSignedIn {
                     MainTabView()
+                } else if !hasSeenOnboarding {
+                    OnboardingView {
+                        withAnimation(.easeInOut) { hasSeenOnboarding = true }
+                    }
                 } else {
                     AuthFlowView()
                 }

@@ -28,6 +28,7 @@
 		6C221049FF08F63F3B09FDA2 /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */; };
 		6F96B45EDA0667602143CB20 /* SocialSignInButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B20DE226C69E153761B90C /* SocialSignInButtons.swift */; };
 		7464D45E3C6B735A2D0A00D2 /* ChecklistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBD4659496E3AA768CC5C4 /* ChecklistTests.swift */; };
+		7AA2B4347F96E145D65CA42D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DB5B773232E1F694881267 /* OnboardingView.swift */; };
 		7FA281D8D93748D51DA416CE /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715796514FBEA826675FB981 /* ErrorBanner.swift */; };
 		8191779992B81C209FFFFF78 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759693CF363A15BF3D16B2D1 /* LoginView.swift */; };
 		81F2F01F8353792FF1257AD2 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F31DAEEF0F63FE46C3E2E5 /* Haptics.swift */; };
@@ -43,6 +44,7 @@
 		9820F58E4379C527CF450A94 /* NextTripSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */; };
 		9919E16E5B6F5D05FBF5EF3B /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578FF8E0BAF23A94D662608 /* AppleAuth.swift */; };
 		9BF0FDB686C01157913FBA2D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFE2BA27D6463F18CFED81 /* LocationService.swift */; };
+		9C43FC2E5D29FF9E8680D0E4 /* CountdownShareCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C74994CD79D2E7CE5AED9 /* CountdownShareCard.swift */; };
 		A1CDFCEACA11332F58FA93C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5801109F556166FCE44A0C84 /* Foundation.framework */; };
 		A32F34C1681389662AF11E9C /* DestinationSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */; };
 		B7D7480FD5B256D9538F70FC /* DestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BCC5913B450ADADCE7182 /* DestinationTests.swift */; };
@@ -129,6 +131,7 @@
 		08A2719934CFBBDAD3740235 /* DestinationCards.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationCards.swift; sourceTree = "<group>"; };
 		0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NextTripSnapshot.swift; sourceTree = "<group>"; };
 		0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationDetailView.swift; sourceTree = "<group>"; };
+		11DB5B773232E1F694881267 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		171687DDE285E2EE2D70436E /* TravelMapView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TravelMapView.swift; sourceTree = "<group>"; };
 		1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationSorting.swift; sourceTree = "<group>"; };
 		1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
@@ -166,6 +169,7 @@
 		9578FF8E0BAF23A94D662608 /* AppleAuth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppleAuth.swift; sourceTree = "<group>"; };
 		97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vamosPraOndeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E7C74994CD79D2E7CE5AED9 /* CountdownShareCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountdownShareCard.swift; sourceTree = "<group>"; };
 		A116D53720216B156AEDB022 /* MainTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A741242B7F72183F80E1FCE6 /* AppTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		AE9550528BF5AD8FE37F6279 /* UserLocationProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserLocationProvider.swift; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */,
+				9E7C74994CD79D2E7CE5AED9 /* CountdownShareCard.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -368,6 +373,15 @@
 				D7B20DE226C69E153761B90C /* SocialSignInButtons.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		53EE824460769E6DFE34A68E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				11DB5B773232E1F694881267 /* OnboardingView.swift */,
+			);
+			name = Onboarding;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		5E0F1E0CABD56728232D0400 /* Welcome */ = {
@@ -541,6 +555,7 @@
 				B6EA7B39A09B9196A370BC80 /* Root */,
 				1F5A377F24B8B0B701B5A5D6 /* Profile */,
 				47F0EE999F40310894777328 /* Splash */,
+				53EE824460769E6DFE34A68E /* Onboarding */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -827,6 +842,8 @@
 				C456D31880156C513A61EAC5 /* SplashScreen.swift in Sources */,
 				C160B823E318F6C16D0C1417 /* NearbyPlacesService.swift in Sources */,
 				81F2F01F8353792FF1257AD2 /* Haptics.swift in Sources */,
+				7AA2B4347F96E145D65CA42D /* OnboardingView.swift in Sources */,
+				9C43FC2E5D29FF9E8680D0E4 /* CountdownShareCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
