@@ -13,6 +13,9 @@ target 'vamosPraOndeApp' do
   # GoogleSignIn 8.x usa GTMSessionFetcher ~> 3.3; o Firebase 11.15 aceita >= 3.4,
   # então ambos convivem no GTMSessionFetcher 3.4.x.
   pod 'GoogleSignIn', '~> 8.0'
+  # Pós-lançamento: relatório de crashes + uso do app.
+  pod 'FirebaseCrashlytics', '~> 11.0'
+  pod 'FirebaseAnalytics', '~> 11.0'
 
   target 'vamosPraOndeAppTests' do
     inherit! :search_paths

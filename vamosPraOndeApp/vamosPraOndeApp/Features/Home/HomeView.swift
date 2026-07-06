@@ -65,6 +65,9 @@ struct HomeView: View {
                     }
                     .padding(Spacing.lg)
                     .padding(.bottom, 90)
+                    // iPad: limita a largura da coluna de conteúdo para leitura confortável.
+                    .frame(maxWidth: 700)
+                    .frame(maxWidth: .infinity)
                     .animation(.spring(response: 0.5, dampingFraction: 0.85), value: displayed)
                 }
 
@@ -104,10 +107,10 @@ struct HomeView: View {
     private var sortFilterMenu: some View {
         Menu {
             Picker("Filtrar", selection: $filter) {
-                ForEach(DestinationFilter.allCases) { Text($0.rawValue).tag($0) }
+                ForEach(DestinationFilter.allCases) { Text($0.label).tag($0) }
             }
             Picker("Ordenar", selection: $sort) {
-                ForEach(DestinationSort.allCases) { Text($0.rawValue).tag($0) }
+                ForEach(DestinationSort.allCases) { Text($0.label).tag($0) }
             }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle\(filter == .all ? "" : ".fill")")
@@ -122,7 +125,7 @@ struct HomeView: View {
             Image(systemName: "line.3.horizontal.decrease.circle")
                 .font(.system(size: 36))
                 .foregroundStyle(Color.vpoInkSoft)
-            Text("Nada por aqui em “\(filter.rawValue)”.")
+            Text("Nada por aqui em “\(filter.label)”.")
                 .font(AppFont.medium(16))
                 .foregroundStyle(Color.vpoInkSoft)
                 .multilineTextAlignment(.center)

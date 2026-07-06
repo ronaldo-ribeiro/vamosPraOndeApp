@@ -62,7 +62,8 @@ struct OnboardingView: View {
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .animation(.easeInOut(duration: 0.3), value: page)
 
-                Button(page == lastPage ? "Começar" : "Avançar") {
+                Button(page == lastPage
+                    ? String(localized: "Começar") : String(localized: "Avançar")) {
                     Haptics.tap()
                     if page < lastPage {
                         withAnimation { page += 1 }
@@ -82,8 +83,9 @@ struct OnboardingView: View {
 private struct OnboardPage: View {
     let icon: String
     let tint: Color
-    let title: String
-    let text: String
+    // LocalizedStringKey: os literais das páginas entram no catálogo.
+    let title: LocalizedStringKey
+    let text: LocalizedStringKey
 
     var body: some View {
         VStack(spacing: Spacing.lg) {

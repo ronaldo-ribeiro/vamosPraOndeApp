@@ -13,9 +13,9 @@ struct DestinationHeroCard: View {
 
     private var eyebrow: String {
         switch destination.category() {
-        case .upcoming: return "próxima viagem"
-        case .past: return "essa você já fez"
-        case .wishlist: return "quero visitar"
+        case .upcoming: return String(localized: "próxima viagem")
+        case .past: return String(localized: "essa você já fez")
+        case .wishlist: return String(localized: "quero visitar")
         }
     }
 
@@ -123,7 +123,7 @@ struct DestinationRow: View {
 
     private var subtitleText: String {
         if let date = destination.date { return Countdown(to: date).phrase }
-        return "quero visitar"
+        return String(localized: "quero visitar")
     }
 
     private var iconName: String {

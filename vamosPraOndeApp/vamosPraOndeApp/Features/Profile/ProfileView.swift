@@ -94,9 +94,11 @@ struct ProfileView: View {
 
     private var statsGrid: some View {
         HStack(spacing: Spacing.sm) {
-            statTile("\(tripCount)", tripCount == 1 ? "destino" : "destinos")
-            statTile("\(countryCount)", countryCount == 1 ? "país" : "países")
-            statTile("\(upcomingCount)", "próximas")
+            statTile("\(tripCount)", tripCount == 1
+                ? String(localized: "destino") : String(localized: "destinos"))
+            statTile("\(countryCount)", countryCount == 1
+                ? String(localized: "país") : String(localized: "países"))
+            statTile("\(upcomingCount)", String(localized: "próximas"))
         }
     }
 
@@ -129,7 +131,11 @@ struct ProfileView: View {
     private var optionsCard: some View {
         VStack(spacing: 0) {
             Button { try? auth.signOut() } label: {
-                optionRow(icon: "rectangle.portrait.and.arrow.right", title: "Sair", tint: .vpoInk)
+                optionRow(
+                    icon: "rectangle.portrait.and.arrow.right",
+                    title: String(localized: "Sair"),
+                    tint: .vpoInk
+                )
             }
             .buttonStyle(.plain)
         }

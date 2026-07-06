@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: Build + testes (iOS Simulator)
+    runs-on: macos-26
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Selecionar o Xcode mais novo instalado
+        run: |
+          XCODE=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          echo "Usando $XCODE"
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+
+      - name: Secrets.plist placeholder (a chave real fica fora do Git)
+        run: |
+          FILE="vamosPraOndeApp/vamosPraOndeApp/Secrets.plist"
+          if [ ! -f "$FILE" ]; then
+            cat > "$FILE" <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+          	<key>UnsplashAccessKey</key>
+          	<string></string>
+          </dict>
+          </plist>
+          PLIST
+            echo "Placeholder criado."
+          fi
+
+      - name: Escolher um simulador de iPhone disponível
+        id: sim
+        run: |
+          DEVICE=$(xcrun simctl list devices available | grep -E "iPhone" | head -1 | sed -E 's/^ *([^(]+) \(.*/\1/' | xargs)
+          echo "Simulador: $DEVICE"
+          echo "device=$DEVICE" >> "$GITHUB_OUTPUT"
+
+      - name: Build e testes
+        run: |
+          cd vamosPraOndeApp
+          xcodebuild \
+            -workspace vamosPraOndeApp.xcworkspace \
+            -scheme vamosPraOndeApp \
+            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,name=${{ steps.sim.outputs.device }}" \
+            CODE_SIGNING_ALLOWED=NO \
+            test

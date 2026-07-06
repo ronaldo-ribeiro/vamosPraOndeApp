@@ -93,9 +93,9 @@ struct TravelMapView: View {
 
     private var filterBar: some View {
         HStack(spacing: Spacing.sm) {
-            filterChip(.upcoming, label: "próximas")
-            filterChip(.past, label: "já fui")
-            filterChip(.wishlist, label: "quero ir")
+            filterChip(.upcoming, label: String(localized: "próximas"))
+            filterChip(.past, label: String(localized: "já fui"))
+            filterChip(.wishlist, label: String(localized: "quero ir"))
         }
         .padding(.vertical, Spacing.sm)
         .padding(.horizontal, Spacing.md)

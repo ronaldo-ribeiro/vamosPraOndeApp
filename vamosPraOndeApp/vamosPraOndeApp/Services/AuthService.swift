@@ -98,25 +98,25 @@ enum AuthErrorMessage {
         let code = AuthErrorCode(rawValue: (error as NSError).code)
         switch code {
         case .invalidEmail:
-            return "E-mail inválido."
+            return String(localized: "E-mail inválido.")
         case .emailAlreadyInUse:
-            return "Este e-mail já está cadastrado."
+            return String(localized: "Este e-mail já está cadastrado.")
         case .weakPassword:
-            return "A senha precisa ter ao menos 6 caracteres."
+            return String(localized: "A senha precisa ter ao menos 6 caracteres.")
         case .wrongPassword, .invalidCredential:
-            return "E-mail ou senha incorretos."
+            return String(localized: "E-mail ou senha incorretos.")
         case .userNotFound:
-            return "Não encontramos uma conta com este e-mail."
+            return String(localized: "Não encontramos uma conta com este e-mail.")
         case .userDisabled:
-            return "Esta conta foi desativada."
+            return String(localized: "Esta conta foi desativada.")
         case .networkError:
-            return "Sem conexão. Tente novamente."
+            return String(localized: "Sem conexão. Tente novamente.")
         case .tooManyRequests:
-            return "Muitas tentativas. Aguarde um momento."
+            return String(localized: "Muitas tentativas. Aguarde um momento.")
         case .requiresRecentLogin:
-            return "Por segurança, saia e entre novamente antes de excluir a conta."
+            return String(localized: "Por segurança, saia e entre novamente antes de excluir a conta.")
         default:
-            return "Algo deu errado. Tente novamente."
+            return String(localized: "Algo deu errado. Tente novamente.")
         }
     }
 }

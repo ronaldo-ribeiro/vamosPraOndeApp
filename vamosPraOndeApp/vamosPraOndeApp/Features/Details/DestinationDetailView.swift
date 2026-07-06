@@ -41,6 +41,21 @@ struct DestinationDetailView: View {
 
     private var countdown: Countdown? { destination.date.map { Countdown(to: $0) } }
 
+    /// Cards abaixo da contagem (checklist, notas, clima, fuso, por perto, excluir).
+    @ViewBuilder
+    private var cardsColumn: some View {
+        checklistCard
+        if let notes = destination.notes, !notes.isEmpty {
+            notesCard(notes)
+        }
+        weatherCard
+        if destinationTimeZone != nil {
+            timeZoneCard
+        }
+        nearbyCard
+        deleteButton
+    }
+
     var body: some View {
         ZStack {
             Color.vpoSand.ignoresSafeArea()
@@ -48,17 +63,13 @@ struct DestinationDetailView: View {
             ScrollView {
                 VStack(spacing: Spacing.lg) {
                     cover
-                    countdownBlock
-                    checklistCard
-                    if let notes = destination.notes, !notes.isEmpty {
-                        notesCard(notes)
+                    Group {
+                        countdownBlock
+                        cardsColumn
                     }
-                    weatherCard
-                    if destinationTimeZone != nil {
-                        timeZoneCard
-                    }
-                    nearbyCard
-                    deleteButton
+                    // iPad: limita a largura da coluna de conteúdo.
+                    .frame(maxWidth: 700)
+                    .frame(maxWidth: .infinity)
                 }
                 .padding(.bottom, Spacing.xl)
             }
@@ -180,7 +191,10 @@ struct DestinationDetailView: View {
                                 .frame(width: 40, height: 40)
                                 .background(.ultraThinMaterial, in: Circle())
                         }
-                        .simultaneousGesture(TapGesture().onEnded { Haptics.tap() })
+                        .simultaneousGesture(TapGesture().onEnded {
+                            Haptics.tap()
+                            Track.countdownShared()
+                        })
                         .accessibilityLabel("Compartilhar contagem")
                     }
                     Button { showingEdit = true } label: {
@@ -523,7 +537,7 @@ struct DestinationDetailView: View {
             Haptics.tap()
             nearbyCategory = category
         } label: {
-            Label(category.rawValue, systemImage: category.symbol)
+            Label(category.label, systemImage: category.symbol)
                 .font(AppFont.semibold(13))
                 .foregroundStyle(selected ? Color.vpoOnColor : Color.vpoInkSoft)
                 .padding(.vertical, 7)
@@ -626,6 +640,7 @@ struct DestinationDetailView: View {
     }
 
     private func delete() {
+        Track.destinationDeleted()
         Haptics.warning()
         isDeleting = true
         let id = destination.id

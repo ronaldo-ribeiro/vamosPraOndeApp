@@ -255,6 +255,7 @@ struct NewDestinationView: View {
                     )
                     await NotificationService.reschedule(for: saved)
                 }
+                Track.destinationSaved(isWishlist: finalDate == nil, isEditing: isEditing)
                 Haptics.success()
                 dismiss()
             } catch {

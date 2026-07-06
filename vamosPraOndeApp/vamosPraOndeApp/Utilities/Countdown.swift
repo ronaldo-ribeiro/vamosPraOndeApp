@@ -29,8 +29,8 @@ struct Countdown {
     /// Número grande para o herói e mini-cards (ex.: "58", "2", "Hoje").
     var value: String {
         if days < 0 { return "—" }
-        if days == 0 { return "Hoje" }
-        if days == 1 { return "Amanhã" }
+        if days == 0 { return String(localized: "Hoje") }
+        if days == 1 { return String(localized: "Amanhã") }
         if days < 45 { return "\(days)" }
         return "\(months)"
     }
@@ -38,37 +38,37 @@ struct Countdown {
     /// Unidade que acompanha o `value` (vazia para Hoje/Amanhã).
     var unit: String {
         if days <= 1 { return "" }
-        if days < 45 { return "dias" }
-        return months == 1 ? "mês" : "meses"
+        if days < 45 { return String(localized: "dias") }
+        return months == 1 ? String(localized: "mês") : String(localized: "meses")
     }
 
     /// Frase amigável para subtítulos (ex.: "faltam 58 dias", "é hoje!").
     var phrase: String {
-        if isPast { return "viagem já passou" }
-        if isToday { return "é hoje! 🎉" }
-        if isTomorrow { return "é amanhã!" }
-        if days < 45 { return "faltam \(days) dias" }
-        let mês = "\(months) " + (months == 1 ? "mês" : "meses")
-        if remainderDays == 0 { return "faltam \(mês)" }
-        let dia = "\(remainderDays) " + (remainderDays == 1 ? "dia" : "dias")
-        return "faltam \(mês) e \(dia)"
+        if isPast { return String(localized: "viagem já passou") }
+        if isToday { return String(localized: "é hoje! 🎉") }
+        if isTomorrow { return String(localized: "é amanhã!") }
+        if days < 45 { return String(localized: "faltam \(days) dias") }
+        let mês = "\(months) " + (months == 1 ? String(localized: "mês") : String(localized: "meses"))
+        if remainderDays == 0 { return String(localized: "faltam \(mês)") }
+        let dia = "\(remainderDays) " + (remainderDays == 1 ? String(localized: "dia") : String(localized: "dias"))
+        return String(localized: "faltam \(mês) e \(dia)")
     }
 }
 
 enum DateStyle {
-    /// "quinta, 18 de setembro de 2026"
+    /// "quinta, 18 de setembro de 2026" (no idioma do aparelho).
     static let long: DateFormatter = {
         let f = DateFormatter()
-        f.locale = Locale(identifier: "pt_BR")
-        f.dateFormat = "EEEE, d 'de' MMMM 'de' yyyy"
+        f.locale = .autoupdatingCurrent
+        f.setLocalizedDateFormatFromTemplate("EEEEdMMMMyyyy")
         return f
     }()
 
-    /// "18 set"
+    /// "18 set" (no idioma do aparelho).
     static let short: DateFormatter = {
         let f = DateFormatter()
-        f.locale = Locale(identifier: "pt_BR")
-        f.dateFormat = "d MMM"
+        f.locale = .autoupdatingCurrent
+        f.setLocalizedDateFormatFromTemplate("dMMM")
         return f
     }()
 }

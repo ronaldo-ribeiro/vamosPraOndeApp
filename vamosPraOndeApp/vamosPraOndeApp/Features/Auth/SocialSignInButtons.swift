@@ -82,7 +82,7 @@ struct SocialSignInButtons: View {
                 let tokenData = credential.identityToken,
                 let idToken = String(data: tokenData, encoding: .utf8)
             else {
-                onError("Não foi possível validar o login da Apple.")
+                onError(String(localized: "Não foi possível validar o login da Apple."))
                 return
             }
             Task {
@@ -97,7 +97,7 @@ struct SocialSignInButtons: View {
         case .failure(let error):
             // Cancelamento pelo usuário não é erro.
             if (error as NSError).code != ASAuthorizationError.canceled.rawValue {
-                onError("Login da Apple falhou. Tente novamente.")
+                onError(String(localized: "Login da Apple falhou. Tente novamente."))
             }
         }
     }
@@ -106,7 +106,7 @@ struct SocialSignInButtons: View {
 
     private func googleSignIn() {
         guard let presenting = UIApplication.shared.topViewController else {
-            onError("Não foi possível abrir o login do Google.")
+            onError(String(localized: "Não foi possível abrir o login do Google."))
             return
         }
         Task {
@@ -115,7 +115,7 @@ struct SocialSignInButtons: View {
             } catch {
                 // -5 = cancelado pelo usuário (GIDSignInError.canceled).
                 if (error as NSError).code != -5 {
-                    onError("Login do Google falhou. Tente novamente.")
+                    onError(String(localized: "Login do Google falhou. Tente novamente."))
                 }
             }
         }

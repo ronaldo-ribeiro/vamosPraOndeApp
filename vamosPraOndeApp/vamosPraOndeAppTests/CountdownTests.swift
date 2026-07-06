@@ -2,12 +2,19 @@
 //  CountdownTests.swift
 //  vamosPraOndeAppTests
 //
-//  Testes da contagem regressiva e seus textos em pt-BR.
+//  Testes da contagem regressiva. Como os textos agora são localizados
+//  (pt-BR/en), as expectativas usam o mesmo catálogo — os testes validam a
+//  LÓGICA (dias, ramo escolhido, composição), em qualquer idioma.
 //
 
 import Testing
 import Foundation
 @testable import vamosPraOndeApp
+
+/// Atalho: resolve a chave no catálogo, no idioma em que o teste roda.
+private func L(_ key: String.LocalizationValue) -> String {
+    String(localized: key)
+}
 
 struct CountdownTests {
     /// "Agora" fixo para tornar os testes determinísticos: 02/07/2026 12:00.
@@ -23,46 +30,50 @@ struct CountdownTests {
         let c = Countdown(to: date(2026, 7, 2), from: now)
         #expect(c.days == 0)
         #expect(c.isToday)
-        #expect(c.value == "Hoje")
+        #expect(c.value == L("Hoje"))
         #expect(c.unit == "")
-        #expect(c.phrase == "é hoje! 🎉")
+        #expect(c.phrase == L("é hoje! 🎉"))
     }
 
     @Test func amanha() {
         let c = Countdown(to: date(2026, 7, 3), from: now)
         #expect(c.days == 1)
         #expect(c.isTomorrow)
-        #expect(c.value == "Amanhã")
-        #expect(c.phrase == "é amanhã!")
+        #expect(c.value == L("Amanhã"))
+        #expect(c.phrase == L("é amanhã!"))
     }
 
     @Test func poucosDias() {
         let c = Countdown(to: date(2026, 7, 20), from: now) // 18 dias
         #expect(c.days == 18)
         #expect(c.value == "18")
-        #expect(c.unit == "dias")
-        #expect(c.phrase == "faltam 18 dias")
+        #expect(c.unit == L("dias"))
+        #expect(c.phrase == String(localized: "faltam \(18) dias"))
     }
 
     @Test func emMeses() {
         let c = Countdown(to: date(2026, 9, 18), from: now) // 2 meses e 16 dias
         #expect(c.value == "2")
-        #expect(c.unit == "meses")
-        #expect(c.phrase == "faltam 2 meses e 16 dias")
+        #expect(c.unit == L("meses"))
+        let meses = "2 " + L("meses")
+        let dias = "16 " + L("dias")
+        #expect(c.phrase == String(localized: "faltam \(meses) e \(dias)"))
     }
 
     @Test func umMesSingular() {
         // 49 dias (> 45) => passa a contar em meses; 1 mês e 18 dias.
         let c = Countdown(to: date(2026, 8, 20), from: now)
         #expect(c.value == "1")
-        #expect(c.unit == "mês")
-        #expect(c.phrase == "faltam 1 mês e 18 dias")
+        #expect(c.unit == L("mês"))
+        let mes = "1 " + L("mês")
+        let dias = "18 " + L("dias")
+        #expect(c.phrase == String(localized: "faltam \(mes) e \(dias)"))
     }
 
     @Test func passado() {
         let c = Countdown(to: date(2026, 6, 30), from: now)
         #expect(c.isPast)
         #expect(c.value == "—")
-        #expect(c.phrase == "viagem já passou")
+        #expect(c.phrase == L("viagem já passou"))
     }
 }

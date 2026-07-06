@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AppTextField: View {
-    let placeholder: String
+    // LocalizedStringKey: os placeholders literais entram no catálogo.
+    let placeholder: LocalizedStringKey
     @Binding var text: String
     var icon: String? = nil
     var isSecure: Bool = false

@@ -36,6 +36,7 @@ struct DestinationTests {
 struct AuthErrorTests {
     @Test func codigoDesconhecidoUsaMensagemGenerica() {
         let erro = NSError(domain: "FIRAuthErrorDomain", code: 999_999)
-        #expect(AuthErrorMessage.of(erro) == "Algo deu errado. Tente novamente.")
+        // Independente de idioma: compara com a mesma chave do catálogo.
+        #expect(AuthErrorMessage.of(erro) == String(localized: "Algo deu errado. Tente novamente."))
     }
 }

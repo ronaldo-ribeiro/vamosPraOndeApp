@@ -32,6 +32,15 @@ enum NearbyCategory: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
+    /// Rótulo localizado para a UI.
+    var label: String {
+        switch self {
+        case .attractions: return String(localized: "Atrações")
+        case .food: return String(localized: "Comida")
+        case .stay: return String(localized: "Hospedagem")
+        }
+    }
+
     var symbol: String {
         switch self {
         case .attractions: return "camera.fill"

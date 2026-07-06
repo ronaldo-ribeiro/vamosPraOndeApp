@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct AuthHeader: View {
-    let overline: String
-    let title: String
-    let subtitle: String
+    // LocalizedStringKey: os literais passados pelas telas entram no catálogo.
+    let overline: LocalizedStringKey
+    let title: LocalizedStringKey
+    let subtitle: LocalizedStringKey
 
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.xs) {
