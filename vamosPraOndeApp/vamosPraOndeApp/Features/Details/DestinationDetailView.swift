@@ -404,13 +404,39 @@ struct DestinationDetailView: View {
                         .foregroundStyle(Color.vpoInkSoft)
                 }
             }
+
+            // Atribuição obrigatória do WeatherKit (Apple — App Store 5.2.5):
+            // marca "Apple Weather" + link para as fontes de dados legais.
+            Divider().padding(.vertical, Spacing.sm)
+            weatherAttribution
         }
         .padding(Spacing.md)
         .background(Color.vpoCream)
         .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
         .padding(.horizontal, Spacing.lg)
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel(weatherAccessibilityLabel)
+        .accessibilityElement(children: .contain)
+    }
+
+    private var weatherAttribution: some View {
+        Link(destination: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!) {
+            HStack(spacing: 5) {
+                //  = logo da Apple (U+F8FF, renderiza nas plataformas Apple).
+                Text("\u{F8FF} Weather")
+                    .font(AppFont.medium(12))
+                    .foregroundStyle(Color.vpoInkSoft)
+                Text("·")
+                    .font(AppFont.medium(12))
+                    .foregroundStyle(Color.vpoInkSoft)
+                Text("Outras fontes de dados")
+                    .font(AppFont.medium(12))
+                    .foregroundStyle(Color.vpoTeal)
+                Image(systemName: "arrow.up.right")
+                    .font(.system(size: 9, weight: .semibold))
+                    .foregroundStyle(Color.vpoTeal)
+                Spacer()
+            }
+        }
+        .accessibilityLabel("Fonte do clima: Apple Weather. Toque para ver as outras fontes de dados.")
     }
 
     private var timeZoneCard: some View {

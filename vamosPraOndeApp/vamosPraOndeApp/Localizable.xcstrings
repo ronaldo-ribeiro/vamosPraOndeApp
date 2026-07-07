@@ -3146,6 +3146,38 @@
           }
         }
       }
+    },
+    "Outras fontes de dados": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Outras fontes de dados"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other data sources"
+          }
+        }
+      }
+    },
+    "Fonte do clima: Apple Weather. Toque para ver as outras fontes de dados.": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fonte do clima: Apple Weather. Toque para ver as outras fontes de dados."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weather source: Apple Weather. Tap to see other data sources."
+          }
+        }
+      }
     }
   },
   "version": "1.1"
