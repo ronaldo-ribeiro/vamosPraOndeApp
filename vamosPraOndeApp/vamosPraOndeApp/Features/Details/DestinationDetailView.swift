@@ -388,6 +388,24 @@ struct DestinationDetailView: View {
             .accessibilityLabel("Remover \(stop.cityName)")
         }
         .padding(.vertical, 6)
+        .contextMenu {
+            Button { moveStop(stop, by: -1) } label: { Label("Mover para cima", systemImage: "arrow.up") }
+                .disabled(index == 0)
+            Button { moveStop(stop, by: 1) } label: { Label("Mover para baixo", systemImage: "arrow.down") }
+                .disabled(index == stops.count - 1)
+            Button(role: .destructive) { removeStop(stop) } label: { Label("Remover trecho", systemImage: "trash") }
+        }
+    }
+
+    private func moveStop(_ stop: TripStop, by offset: Int) {
+        guard let current = repository.destinations.first(where: { $0.id == destination.id }) else { return }
+        var newStops = current.resolvedStops
+        guard let i = newStops.firstIndex(where: { $0.id == stop.id }) else { return }
+        let j = i + offset
+        guard newStops.indices.contains(j) else { return }
+        newStops.swapAt(i, j)
+        Haptics.tap()
+        Task { try? await repository.update(current.settingStops(newStops)) }
     }
 
     private func addStop(_ stop: TripStop) {

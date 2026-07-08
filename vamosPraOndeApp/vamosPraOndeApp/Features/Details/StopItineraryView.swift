@@ -15,6 +15,7 @@ struct StopItineraryView: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var newTitle = ""
+    @State private var showingEdit = false
 
     private var destination: Destination? {
         repository.destinations.first { $0.id == destinationID }
@@ -77,14 +78,35 @@ struct StopItineraryView: View {
             .navigationTitle(stop.map { "Passeios · \($0.cityName)" } ?? "Passeios")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showingEdit = true
+                    } label: {
+                        Label("Editar trecho", systemImage: "pencil")
+                            .foregroundStyle(Color.vpoTerracotta)
+                    }
+                }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("OK") { dismiss() }
                         .foregroundStyle(Color.vpoTerracotta)
                         .bold()
                 }
             }
+            .sheet(isPresented: $showingEdit) {
+                if let stop {
+                    AddStopView(editing: stop) { updated in replaceStop(updated) }
+                }
+            }
         }
         .tint(.vpoTerracotta)
+    }
+
+    /// Substitui o trecho (cidade/data editadas), preservando ordem e passeios.
+    private func replaceStop(_ updated: TripStop) {
+        guard let destination, var stops = destination.stops,
+              let idx = stops.firstIndex(where: { $0.id == updated.id }) else { return }
+        stops[idx] = updated
+        Task { try? await repository.update(destination.settingStops(stops)) }
     }
 
     private func add() {

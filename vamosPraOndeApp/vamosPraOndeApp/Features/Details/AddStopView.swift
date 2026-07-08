@@ -10,6 +10,8 @@
 import SwiftUI
 
 struct AddStopView: View {
+    /// Trecho sendo editado (nil = adicionando um novo).
+    var editing: TripStop? = nil
     /// Chamado com o trecho pronto quando o usuário confirma.
     let onAdd: (TripStop) -> Void
 
@@ -22,6 +24,18 @@ struct AddStopView: View {
     @State private var date = Calendar.current.date(byAdding: .day, value: 30, to: Date()) ?? Date()
     @State private var isSearching = false
     @State private var errorMessage: String?
+
+    init(editing: TripStop? = nil, onAdd: @escaping (TripStop) -> Void) {
+        self.editing = editing
+        self.onAdd = onAdd
+        _query = State(initialValue: editing?.name ?? "")
+        _selected = State(initialValue: editing.map {
+            CitySuggestion(title: $0.name, latitude: $0.latitude, longitude: $0.longitude)
+        })
+        _noDate = State(initialValue: editing != nil && editing?.startDate == nil)
+        _date = State(initialValue: editing?.startDate
+            ?? Calendar.current.date(byAdding: .day, value: 30, to: Date()) ?? Date())
+    }
 
     var body: some View {
         NavigationStack {
@@ -36,7 +50,7 @@ struct AddStopView: View {
                     .padding(Spacing.lg)
                 }
             }
-            .navigationTitle("Adicionar trecho")
+            .navigationTitle(editing == nil ? "Adicionar trecho" : "Editar trecho")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -44,7 +58,7 @@ struct AddStopView: View {
                         .foregroundStyle(Color.vpoInkSoft)
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Adicionar", action: confirm)
+                    Button(editing == nil ? "Adicionar" : "Salvar", action: confirm)
                         .bold()
                         .foregroundStyle(selected == nil ? Color.vpoInkSoft : Color.vpoTerracotta)
                         .disabled(selected == nil)
@@ -167,11 +181,15 @@ struct AddStopView: View {
 
     private func confirm() {
         guard let selected else { return }
+        // Ao editar, preserva id, passeios e data-fim do trecho existente.
         let stop = TripStop(
+            id: editing?.id ?? UUID().uuidString,
             name: selected.title,
             latitude: selected.coordinate.latitude,
             longitude: selected.coordinate.longitude,
-            startDate: noDate ? nil : date
+            startDate: noDate ? nil : date,
+            endDate: editing?.endDate,
+            activities: editing?.activities
         )
         Haptics.success()
         onAdd(stop)
