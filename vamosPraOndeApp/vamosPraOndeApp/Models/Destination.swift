@@ -31,15 +31,16 @@ struct Destination: Identifiable, Codable, Hashable {
     /// Checklist de mala/preparativos (opcional).
     var checklist: [ChecklistItem]? = nil
     /// Estilo de capa escolhido no banco de imagens (paleta + cena).
-    /// `nil` = capa padrão derivada da seed do destino. `@ExplicitNull` grava
-    /// `nil` como `null` (em vez de omitir), para "Padrão" realmente limpar a
-    /// escolha no Firestore, que é escrito com `merge: true`.
-    @ExplicitNull var coverStyle: CoverStyle? = nil
+    /// `nil` = capa padrão derivada da seed do destino. Opcional SIMPLES (não
+    /// `@ExplicitNull`) para tolerar docs antigos sem o campo; a limpeza (voltar
+    /// ao Padrão) é feita com `FieldValue.delete()` no repositório.
+    var coverStyle: CoverStyle? = nil
     /// Trechos de uma viagem multi-destino. `nil`/≤1 = viagem de destino único
     /// (legado): os campos de topo (title/coord/date) são a única parada.
     /// Quando há 2+ trechos, os campos de topo espelham o 1º (para clientes
     /// antigos degradarem bem e o countdown seguir usando o 1º trecho).
-    @ExplicitNull var stops: [TripStop]? = nil
+    /// Opcional simples pelo mesmo motivo (compat. com docs sem o campo).
+    var stops: [TripStop]? = nil
 
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)

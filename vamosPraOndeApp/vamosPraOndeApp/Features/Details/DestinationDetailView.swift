@@ -18,6 +18,7 @@ struct DestinationDetailView: View {
     @State private var showingEdit = false
     @State private var showingChecklist = false
     @State private var showingCoverPicker = false
+    @State private var showingAddStop = false
     @State private var isDeleting = false
     @State private var weather: DestinationWeather?
     @State private var tripForecast: TripDayForecast?
@@ -43,6 +44,7 @@ struct DestinationDetailView: View {
     /// Cards abaixo da contagem (checklist, notas, clima, fuso, por perto, excluir).
     @ViewBuilder
     private var cardsColumn: some View {
+        tripStopsCard
         checklistCard
         if let notes = destination.notes, !notes.isEmpty {
             notesCard(notes)
@@ -92,6 +94,9 @@ struct DestinationDetailView: View {
         }
         .sheet(isPresented: $showingCoverPicker) {
             CoverPickerView(destination: destination, repository: repository)
+        }
+        .sheet(isPresented: $showingAddStop) {
+            AddStopView { stop in addStop(stop) }
         }
         .confirmationDialog(
             "Excluir este destino?",
@@ -277,6 +282,106 @@ struct DestinationDetailView: View {
             label += " A \(DistanceFormat.string(meters: meters)) de você."
         }
         return label
+    }
+
+    // MARK: - Roteiro (trechos)
+
+    private var stops: [TripStop] { destination.resolvedStops }
+
+    @ViewBuilder
+    private var tripStopsCard: some View {
+        if destination.isMultiStop {
+            VStack(alignment: .leading, spacing: Spacing.sm) {
+                Label("Roteiro", systemImage: "map.fill")
+                    .font(AppFont.title(16))
+                    .foregroundStyle(Color.vpoInk)
+                ForEach(Array(stops.enumerated()), id: \.element.id) { index, stop in
+                    stopRow(index: index, stop: stop)
+                }
+                Button { showingAddStop = true } label: {
+                    Label("Adicionar trecho", systemImage: "plus.circle.fill")
+                        .font(AppFont.semibold(14))
+                        .foregroundStyle(Color.vpoTerracotta)
+                }
+                .padding(.top, 4)
+            }
+            .padding(Spacing.md)
+            .background(Color.vpoCream)
+            .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+            .padding(.horizontal, Spacing.lg)
+        } else {
+            Button { showingAddStop = true } label: {
+                HStack(spacing: Spacing.md) {
+                    Image(systemName: "signpost.right.fill")
+                        .font(.system(size: 22))
+                        .foregroundStyle(Color.vpoOnColor)
+                        .frame(width: 52, height: 52)
+                        .background(Color.vpoTeal)
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Adicionar trecho")
+                            .font(AppFont.title(16))
+                            .foregroundStyle(Color.vpoInk)
+                        Text("uma viagem com mais de uma parada?")
+                            .font(AppFont.medium(13))
+                            .foregroundStyle(Color.vpoInkSoft)
+                    }
+                    Spacer()
+                    Image(systemName: "plus.circle")
+                        .font(.system(size: 20))
+                        .foregroundStyle(Color.vpoInkSoft)
+                }
+                .padding(Spacing.md)
+                .background(Color.vpoCream)
+                .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+                .padding(.horizontal, Spacing.lg)
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    private func stopRow(index: Int, stop: TripStop) -> some View {
+        HStack(spacing: Spacing.sm) {
+            ZStack {
+                Circle().fill(Color.vpoTerracotta).frame(width: 24, height: 24)
+                Text("\(index + 1)")
+                    .font(AppFont.semibold(12))
+                    .foregroundStyle(Color.vpoOnColor)
+            }
+            VStack(alignment: .leading, spacing: 1) {
+                Text(stop.cityName)
+                    .font(AppFont.title(15))
+                    .foregroundStyle(Color.vpoInk)
+                Text(stop.startDate.map { DateStyle.short.string(from: $0) } ?? String(localized: "quero visitar"))
+                    .font(AppFont.medium(12))
+                    .foregroundStyle(Color.vpoInkSoft)
+            }
+            Spacer()
+            Button { removeStop(stop) } label: {
+                Image(systemName: "minus.circle.fill")
+                    .font(.system(size: 20))
+                    .foregroundStyle(Color.vpoInkSoft)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Remover \(stop.cityName)")
+        }
+        .padding(.vertical, 6)
+    }
+
+    private func addStop(_ stop: TripStop) {
+        guard let current = repository.destinations.first(where: { $0.id == destination.id }) else { return }
+        let updated = current.settingStops(current.resolvedStops + [stop])
+        Track.destinationSaved(isWishlist: stop.startDate == nil, isEditing: true)
+        Task { try? await repository.update(updated) }
+    }
+
+    private func removeStop(_ stop: TripStop) {
+        guard let current = repository.destinations.first(where: { $0.id == destination.id }) else { return }
+        var newStops = current.resolvedStops
+        newStops.removeAll { $0.id == stop.id }
+        guard !newStops.isEmpty else { return }
+        Haptics.warning()
+        Task { try? await repository.update(current.settingStops(newStops)) }
     }
 
     private var checklistCard: some View {

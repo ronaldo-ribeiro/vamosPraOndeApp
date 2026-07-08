@@ -74,6 +74,15 @@ final class DestinationsRepository: ObservableObject {
     func update(_ destination: Destination) async throws {
         guard let collection, let id = destination.id else { return }
         try collection.document(id).setData(from: destination, merge: true)
+        // Campos opcionais simples são OMITIDOS quando nil no merge; para
+        // realmente limpá-los (voltar capa ao Padrão / desfazer multi-trecho),
+        // removemos explicitamente.
+        var clears: [String: Any] = [:]
+        if destination.coverStyle == nil { clears["coverStyle"] = FieldValue.delete() }
+        if destination.stops == nil { clears["stops"] = FieldValue.delete() }
+        if !clears.isEmpty {
+            try await collection.document(id).updateData(clears)
+        }
     }
 
     func delete(_ destination: Destination) async throws {
