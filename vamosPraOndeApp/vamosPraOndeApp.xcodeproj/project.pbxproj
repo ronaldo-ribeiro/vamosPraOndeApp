@@ -32,6 +32,7 @@
 		7464D45E3C6B735A2D0A00D2 /* ChecklistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBD4659496E3AA768CC5C4 /* ChecklistTests.swift */; };
 		7AA2B4347F96E145D65CA42D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DB5B773232E1F694881267 /* OnboardingView.swift */; };
 		7FA281D8D93748D51DA416CE /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715796514FBEA826675FB981 /* ErrorBanner.swift */; };
+		8041AC41AC506828A3100761 /* ProceduralCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A97CB002593454ABC157BBA /* ProceduralCover.swift */; };
 		8191779992B81C209FFFFF78 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759693CF363A15BF3D16B2D1 /* LoginView.swift */; };
 		81F2F01F8353792FF1257AD2 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F31DAEEF0F63FE46C3E2E5 /* Haptics.swift */; };
 		832FCE1CEB653FD99FFEC49E /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6717499BB05FED71D3E7044 /* Countdown.swift */; };
@@ -160,6 +161,7 @@
 		5801109F556166FCE44A0C84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BE014A7FC7B9C67C11AA7A /* InfoPlist.xcstrings */ = {isa = PBXFileReference; includeInIndex = 1; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		6A97CB002593454ABC157BBA /* ProceduralCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProceduralCover.swift; sourceTree = "<group>"; };
 		6B36ED71B036CE1129056B2F /* AppColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		715796514FBEA826675FB981 /* ErrorBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
 		71F31DAEEF0F63FE46C3E2E5 /* Haptics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				A741242B7F72183F80E1FCE6 /* AppTextField.swift */,
 				715796514FBEA826675FB981 /* ErrorBanner.swift */,
 				53EA303ED50DFD784E0DA6FD /* Appear.swift */,
+				6A97CB002593454ABC157BBA /* ProceduralCover.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -874,6 +877,7 @@
 				7AA2B4347F96E145D65CA42D /* OnboardingView.swift in Sources */,
 				9C43FC2E5D29FF9E8680D0E4 /* CountdownShareCard.swift in Sources */,
 				5A7586A322934E45A8241147 /* AnalyticsService.swift in Sources */,
+				8041AC41AC506828A3100761 /* ProceduralCover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

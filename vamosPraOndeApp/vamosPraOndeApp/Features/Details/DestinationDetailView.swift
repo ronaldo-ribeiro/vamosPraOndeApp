@@ -22,12 +22,10 @@ struct DestinationDetailView: View {
     @State private var tripForecast: TripDayForecast?
     @State private var weatherFailed = false
     @State private var destinationTimeZone: TimeZone?
-    @State private var photo: DestinationPhoto?
     @State private var nearbyCategory: NearbyCategory = .attractions
     @State private var nearbyPlaces: [NearbyPlace] = []
     @State private var nearbyLoading = false
     @State private var shareImage: UIImage?
-    @Environment(\.openURL) private var openURL
 
     init(destination: Destination, repository: DestinationsRepository) {
         self.initial = destination
@@ -76,13 +74,6 @@ struct DestinationDetailView: View {
             .ignoresSafeArea(edges: .top)
         }
         .task(id: destination.id) { await loadWeather() }
-        .task(id: destination.id) {
-            let found = await DestinationPhotoProvider.photo(
-                city: destination.cityName, subtitle: destination.subtitle
-            )
-            photo = found
-            if let found { DestinationPhotoProvider.trackUsage(found) }
-        }
         .task { userLocation.request() }
         .task(id: nearbyLoadKey) { await loadNearby() }
         .task(id: destination.id) {
@@ -110,31 +101,15 @@ struct DestinationDetailView: View {
         }
     }
 
-    @ViewBuilder
     private var coverBackground: some View {
-        if let photo {
-            AsyncImage(url: photo.url, transaction: Transaction(animation: .easeIn(duration: 0.4))) { phase in
-                switch phase {
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .overlay(
-                            LinearGradient(
-                                colors: [.black.opacity(0.05), .black.opacity(0.55)],
-                                startPoint: .center,
-                                endPoint: .bottom
-                            )
-                        )
-                case .empty:
-                    SunsetCover().overlay(ProgressView().tint(.vpoOnColor))
-                default:
-                    SunsetCover()
-                }
-            }
-        } else {
-            SunsetCover()
-        }
+        destination.cover
+            .overlay(
+                LinearGradient(
+                    colors: [.black.opacity(0.05), .black.opacity(0.55)],
+                    startPoint: .center,
+                    endPoint: .bottom
+                )
+            )
     }
 
     private var cover: some View {
@@ -209,29 +184,6 @@ struct DestinationDetailView: View {
                 .padding(.trailing, Spacing.lg)
                 .padding(.top, 56)
             }
-            .overlay(alignment: .bottomTrailing) { photoCredit }
-    }
-
-    /// Crédito do autor da foto (obrigatório para o Unsplash).
-    @ViewBuilder
-    private var photoCredit: some View {
-        if let photo {
-            let label = photo.creditName.map { "\($0) · \(photo.sourceLabel)" } ?? photo.sourceLabel
-            Button {
-                if let url = photo.creditURL { openURL(url) }
-            } label: {
-                Text(label)
-                    .font(AppFont.medium(10))
-                    .foregroundStyle(Color.vpoOnColor.opacity(0.9))
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 3)
-                    .background(.black.opacity(0.28), in: Capsule())
-            }
-            .disabled(photo.creditURL == nil)
-            .padding(.trailing, Spacing.sm)
-            .padding(.bottom, Spacing.sm)
-            .accessibilityLabel("Foto de \(label)")
-        }
     }
 
     private func notesCard(_ notes: String) -> some View {

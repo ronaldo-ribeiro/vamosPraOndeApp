@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DestinationHeroCard: View {
     let destination: Destination
-    @State private var photo: DestinationPhoto?
 
     private var eyebrow: String {
         switch destination.category() {
@@ -19,31 +18,17 @@ struct DestinationHeroCard: View {
         }
     }
 
-    /// Foto do destino com fallback para o gradiente. Container de tamanho
-    /// fixo para a imagem não esticar o layout.
-    @ViewBuilder
+    /// Capa de arte gerada por código (determinística pelo destino), com um
+    /// leve escurecimento na base para o texto continuar legível.
     private var coverBackground: some View {
-        if let photo {
-            AsyncImage(url: photo.url, transaction: Transaction(animation: .easeIn(duration: 0.35))) { phase in
-                switch phase {
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .overlay(
-                            LinearGradient(
-                                colors: [.black.opacity(0.05), .black.opacity(0.62)],
-                                startPoint: .center,
-                                endPoint: .bottom
-                            )
-                        )
-                default:
-                    SunsetCover()
-                }
-            }
-        } else {
-            SunsetCover()
-        }
+        destination.cover
+            .overlay(
+                LinearGradient(
+                    colors: [.black.opacity(0.05), .black.opacity(0.55)],
+                    startPoint: .center,
+                    endPoint: .bottom
+                )
+            )
     }
 
     var body: some View {
@@ -101,11 +86,6 @@ struct DestinationHeroCard: View {
         }
         .frame(height: 250)
         .clipShape(RoundedRectangle(cornerRadius: Radius.cover, style: .continuous))
-        .task(id: destination.id) {
-            photo = await DestinationPhotoProvider.photo(
-                city: destination.cityName, subtitle: destination.subtitle
-            )
-        }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(accessibilityText)
     }

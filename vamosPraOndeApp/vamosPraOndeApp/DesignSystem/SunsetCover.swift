@@ -30,24 +30,4 @@ struct SunsetCover: View {
     }
 }
 
-/// Silhueta de montanhas paramétrica. Cada valor em `peaks` é a altura
-/// relativa (0 = topo, 1 = base) de um vértice ao longo da largura.
-struct MountainSilhouette: Shape {
-    var peaks: [CGFloat]
-
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        guard peaks.count > 1 else { return path }
-        let step = rect.width / CGFloat(peaks.count - 1)
-
-        path.move(to: CGPoint(x: 0, y: rect.height))
-        for (index, peak) in peaks.enumerated() {
-            let x = step * CGFloat(index)
-            let y = rect.height * peak
-            path.addLine(to: CGPoint(x: x, y: y))
-        }
-        path.addLine(to: CGPoint(x: rect.width, y: rect.height))
-        path.closeSubpath()
-        return path
-    }
-}
+// `MountainSilhouette` mora em ProceduralCover.swift (reutilizada aqui).

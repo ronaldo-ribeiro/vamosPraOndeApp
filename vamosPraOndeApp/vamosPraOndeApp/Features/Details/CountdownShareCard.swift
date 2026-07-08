@@ -15,7 +15,13 @@ struct CountdownShareCard: View {
 
     var body: some View {
         ZStack {
-            SunsetCover()
+            destination.cover
+                .overlay(
+                    LinearGradient(
+                        colors: [.black.opacity(0.35), .black.opacity(0.12), .black.opacity(0.45)],
+                        startPoint: .top, endPoint: .bottom
+                    )
+                )
 
             VStack(spacing: 6) {
                 Text("VAMOS PRA ONDE?")
