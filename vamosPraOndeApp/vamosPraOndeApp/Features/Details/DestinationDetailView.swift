@@ -593,9 +593,14 @@ struct DestinationDetailView: View {
         "\(destination.id ?? "")-\(nearbyCategory.rawValue)"
     }
 
+    /// Nº de avaliações compacto (1.234 → "1,2 mil").
+    private func compactCount(_ count: Int) -> String {
+        count >= 1000 ? String(format: "%.1f mil", Double(count) / 1000) : "\(count)"
+    }
+
     private func loadNearby() async {
         nearbyLoading = true
-        nearbyPlaces = await NearbyPlacesService.search(
+        nearbyPlaces = await NearbyPlacesService.ranked(
             near: destination.coordinate, category: nearbyCategory
         )
         nearbyLoading = false
@@ -696,11 +701,24 @@ struct DestinationDetailView: View {
                         .font(AppFont.medium(15))
                         .foregroundStyle(Color.vpoInk)
                         .lineLimit(1)
-                    if let distance = place.distance {
-                        Text("a \(DistanceFormat.short(meters: distance))")
-                            .font(AppFont.medium(12))
-                            .foregroundStyle(Color.vpoInkSoft)
+                    HStack(spacing: 5) {
+                        if let rating = place.rating {
+                            Label(String(format: "%.1f", rating), systemImage: "star.fill")
+                                .labelStyle(.titleAndIcon)
+                                .foregroundStyle(Color.vpoGold)
+                            if let count = place.ratingCount {
+                                Text("(\(compactCount(count)))").foregroundStyle(Color.vpoInkSoft)
+                            }
+                            if place.distance != nil {
+                                Text("·").foregroundStyle(Color.vpoInkSoft)
+                            }
+                        }
+                        if let distance = place.distance {
+                            Text("a \(DistanceFormat.short(meters: distance))")
+                                .foregroundStyle(Color.vpoInkSoft)
+                        }
                     }
+                    .font(AppFont.medium(12))
                 }
                 Spacer()
                 Image(systemName: "arrow.up.forward.app")

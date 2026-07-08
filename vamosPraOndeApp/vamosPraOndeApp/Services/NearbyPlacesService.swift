@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+import FirebaseFunctions
 
 struct NearbyPlace: Identifiable {
     let id = UUID()
@@ -15,6 +16,9 @@ struct NearbyPlace: Identifiable {
     let category: MKPointOfInterestCategory?
     let coordinate: CLLocationCoordinate2D
     let distance: CLLocationDistance?
+    /// Nota (0–5) e nº de avaliações — só existem quando vêm do Google Places.
+    var rating: Double? = nil
+    var ratingCount: Int? = nil
 
     /// Abre o lugar no app Mapas da Apple.
     func openInMaps() {
@@ -49,6 +53,15 @@ enum NearbyCategory: String, CaseIterable, Identifiable {
         }
     }
 
+    /// Chave enviada à Cloud Function (mapeia p/ os tipos do Google Places).
+    var functionKey: String {
+        switch self {
+        case .attractions: return "attractions"
+        case .food: return "food"
+        case .stay: return "lodging"
+        }
+    }
+
     var poiCategories: [MKPointOfInterestCategory] {
         switch self {
         case .attractions:
@@ -63,6 +76,48 @@ enum NearbyCategory: String, CaseIterable, Identifiable {
 }
 
 enum NearbyPlacesService {
+    /// Recomendações da cidade rankeadas por popularidade (Google Places, via
+    /// Cloud Function `nearbyPlaces` com cache no Firestore). Se a função
+    /// falhar por qualquer motivo (cota/billing/rede), CAI NO MapKit (grátis) —
+    /// o recurso nunca quebra e o custo fica limitado por natureza.
+    static func ranked(
+        near coordinate: CLLocationCoordinate2D,
+        category: NearbyCategory
+    ) async -> [NearbyPlace] {
+        let functions = Functions.functions(region: "southamerica-east1")
+        let payload: [String: Any] = [
+            "latitude": coordinate.latitude,
+            "longitude": coordinate.longitude,
+            "category": category.functionKey
+        ]
+        do {
+            let result = try await functions.httpsCallable("nearbyPlaces").call(payload)
+            guard let dict = result.data as? [String: Any],
+                  let raw = dict["places"] as? [[String: Any]] else {
+                return await search(near: coordinate, category: category)
+            }
+            let origin = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            let places: [NearbyPlace] = raw.compactMap { p in
+                guard let name = p["name"] as? String, !name.isEmpty else { return nil }
+                let lat = p["latitude"] as? Double ?? 0
+                let lng = p["longitude"] as? Double ?? 0
+                let dist = CLLocation(latitude: lat, longitude: lng).distance(from: origin)
+                return NearbyPlace(
+                    name: name,
+                    category: nil,
+                    coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lng),
+                    distance: dist,
+                    rating: p["rating"] as? Double,
+                    ratingCount: p["ratingCount"] as? Int
+                )
+            }
+            // Sem resultados úteis → fallback grátis.
+            return places.isEmpty ? await search(near: coordinate, category: category) : places
+        } catch {
+            return await search(near: coordinate, category: category)
+        }
+    }
+
     /// Busca até `limit` lugares da categoria num raio ao redor da coordenada.
     static func search(
         near coordinate: CLLocationCoordinate2D,
