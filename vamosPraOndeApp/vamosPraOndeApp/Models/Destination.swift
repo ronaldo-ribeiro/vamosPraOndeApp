@@ -35,6 +35,11 @@ struct Destination: Identifiable, Codable, Hashable {
     /// `nil` como `null` (em vez de omitir), para "Padrão" realmente limpar a
     /// escolha no Firestore, que é escrito com `merge: true`.
     @ExplicitNull var coverStyle: CoverStyle? = nil
+    /// Trechos de uma viagem multi-destino. `nil`/≤1 = viagem de destino único
+    /// (legado): os campos de topo (title/coord/date) são a única parada.
+    /// Quando há 2+ trechos, os campos de topo espelham o 1º (para clientes
+    /// antigos degradarem bem e o countdown seguir usando o 1º trecho).
+    @ExplicitNull var stops: [TripStop]? = nil
 
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -65,6 +70,32 @@ struct Destination: Identifiable, Codable, Hashable {
         guard parts.count > 1, let country = parts.last,
               country.caseInsensitiveCompare(cityName) != .orderedSame else { return "" }
         return country
+    }
+
+    // MARK: - Trechos (viagem multi-destino)
+
+    /// `true` quando a viagem tem 2+ trechos.
+    var isMultiStop: Bool { (stops?.count ?? 0) > 1 }
+
+    /// Trechos "resolvidos": os salvos (2+) ou um único derivado dos campos de
+    /// topo (destino único legado). A UI/mapa sempre trabalham com esta lista.
+    var resolvedStops: [TripStop] {
+        if let stops, stops.count > 1 { return stops }
+        return [TripStop(name: title, latitude: latitude, longitude: longitude, startDate: date)]
+    }
+
+    /// Cópia com os trechos definidos, mantendo os campos de topo espelhando o
+    /// 1º trecho (countdown/ordenar/clientes antigos seguem funcionando). Com
+    /// ≤1 trecho, volta ao modo destino único (`stops = nil`).
+    func settingStops(_ newStops: [TripStop]) -> Destination {
+        var copy = self
+        guard let first = newStops.first else { return copy }
+        copy.title = first.name
+        copy.latitude = first.latitude
+        copy.longitude = first.longitude
+        copy.date = first.startDate
+        copy.stops = newStops.count > 1 ? newStops : nil
+        return copy
     }
 
     static func == (lhs: Destination, rhs: Destination) -> Bool {

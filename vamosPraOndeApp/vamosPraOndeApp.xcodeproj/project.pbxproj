@@ -20,6 +20,7 @@
 		350662C408F2ACA87ECD18F8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 65BE014A7FC7B9C67C11AA7A /* InfoPlist.xcstrings */; };
 		441C3C4C0D4AB5F43B8C04E5 /* Pods_vamosPraOndeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */; };
 		4CEE741F83281B677D5917AB /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D78C807CB5AE97714742A01 /* CountdownTests.swift */; };
+		4DE9AA568E50EF651BECE632 /* TripStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681785E5ADE4ACE8EDD597B2 /* TripStop.swift */; };
 		50D20D3DD15A9ED7F348BFE8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25693AA1C51D6E11D17BBD3 /* RootView.swift */; };
 		54B63E9EC853986AB8DC62A2 /* VamosWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED369D3F6960C39E95093C /* VamosWidget.swift */; };
 		5A7586A322934E45A8241147 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AF3D62F640E0477C60CE9B /* AnalyticsService.swift */; };
@@ -162,6 +163,7 @@
 		5801109F556166FCE44A0C84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BE014A7FC7B9C67C11AA7A /* InfoPlist.xcstrings */ = {isa = PBXFileReference; includeInIndex = 1; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		681785E5ADE4ACE8EDD597B2 /* TripStop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TripStop.swift; sourceTree = "<group>"; };
 		6A97CB002593454ABC157BBA /* ProceduralCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProceduralCover.swift; sourceTree = "<group>"; };
 		6B36ED71B036CE1129056B2F /* AppColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		715796514FBEA826675FB981 /* ErrorBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			children = (
 				2EDE28040F39CCD5CCD172DF /* Destination.swift */,
 				422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */,
+				681785E5ADE4ACE8EDD597B2 /* TripStop.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				5A7586A322934E45A8241147 /* AnalyticsService.swift in Sources */,
 				8041AC41AC506828A3100761 /* ProceduralCover.swift in Sources */,
 				ED6943C57244D61E90992C84 /* CoverPickerView.swift in Sources */,
+				4DE9AA568E50EF651BECE632 /* TripStop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
