@@ -19,6 +19,7 @@ struct DestinationDetailView: View {
     @State private var showingChecklist = false
     @State private var showingCoverPicker = false
     @State private var showingAddStop = false
+    @State private var itineraryStop: TripStop?
     @State private var isDeleting = false
     @State private var weather: DestinationWeather?
     @State private var tripForecast: TripDayForecast?
@@ -97,6 +98,11 @@ struct DestinationDetailView: View {
         }
         .sheet(isPresented: $showingAddStop) {
             AddStopView { stop in addStop(stop) }
+        }
+        .sheet(item: $itineraryStop) { stop in
+            if let id = destination.id {
+                StopItineraryView(destinationID: id, stopID: stop.id, repository: repository)
+            }
         }
         .confirmationDialog(
             "Excluir este destino?",
@@ -341,22 +347,38 @@ struct DestinationDetailView: View {
     }
 
     private func stopRow(index: Int, stop: TripStop) -> some View {
-        HStack(spacing: Spacing.sm) {
+        let activityCount = stop.activities?.count ?? 0
+        return HStack(spacing: Spacing.sm) {
             ZStack {
                 Circle().fill(Color.vpoTerracotta).frame(width: 24, height: 24)
                 Text("\(index + 1)")
                     .font(AppFont.semibold(12))
                     .foregroundStyle(Color.vpoOnColor)
             }
-            VStack(alignment: .leading, spacing: 1) {
-                Text(stop.cityName)
-                    .font(AppFont.title(15))
-                    .foregroundStyle(Color.vpoInk)
-                Text(stop.startDate.map { DateStyle.short.string(from: $0) } ?? String(localized: "quero visitar"))
+            Button { itineraryStop = stop } label: {
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(stop.cityName)
+                        .font(AppFont.title(15))
+                        .foregroundStyle(Color.vpoInk)
+                    HStack(spacing: 6) {
+                        Text(stop.startDate.map { DateStyle.short.string(from: $0) } ?? String(localized: "quero visitar"))
+                        if activityCount > 0 {
+                            Text("·")
+                            Label("\(activityCount)", systemImage: "map")
+                                .labelStyle(.titleAndIcon)
+                        }
+                    }
                     .font(AppFont.medium(12))
                     .foregroundStyle(Color.vpoInkSoft)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(Rectangle())
             }
-            Spacer()
+            .buttonStyle(.plain)
+            .accessibilityHint("Toque para ver os passeios")
+            Image(systemName: "chevron.right")
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundStyle(Color.vpoInkSoft)
             Button { removeStop(stop) } label: {
                 Image(systemName: "minus.circle.fill")
                     .font(.system(size: 20))

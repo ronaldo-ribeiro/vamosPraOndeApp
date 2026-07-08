@@ -40,9 +40,21 @@ struct TravelMapView: View {
                     }
                 }
 
+                // Rota de viagens multi-trecho: liga os trechos em ordem.
                 ForEach(shown) { destination in
-                    Marker(destination.cityName, coordinate: destination.coordinate)
-                        .tint(color(for: destination))
+                    if destination.isMultiStop {
+                        let coords = destination.resolvedStops.map(\.coordinate)
+                        MapPolyline(MKGeodesicPolyline(coordinates: coords, count: coords.count))
+                            .stroke(color(for: destination), style: StrokeStyle(lineWidth: 3))
+                    }
+                }
+
+                // Um marcador por trecho (destino único = 1 trecho).
+                ForEach(shown) { destination in
+                    ForEach(destination.resolvedStops) { stop in
+                        Marker(stop.cityName, coordinate: stop.coordinate)
+                            .tint(color(for: destination))
+                    }
                 }
             }
             .mapStyle(.standard(elevation: .flat))
