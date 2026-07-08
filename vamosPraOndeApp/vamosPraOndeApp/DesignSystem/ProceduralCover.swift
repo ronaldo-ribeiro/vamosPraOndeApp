@@ -74,7 +74,7 @@ struct CoverPalette {
 }
 
 /// Arquétipos de cena (a "arte gráfica" propriamente dita).
-enum CoverScene: CaseIterable {
+enum CoverScene: String, CaseIterable, Codable {
     case mountains  // picos angulares
     case dunes      // colinas suaves
     case sea        // ondas do mar
@@ -82,7 +82,8 @@ enum CoverScene: CaseIterable {
 }
 
 /// Estilo escolhível no banco de imagens: paleta + cena.
-struct CoverStyle: Hashable {
+/// `Codable` para ser salvo no Firestore como a escolha do usuário.
+struct CoverStyle: Hashable, Codable {
     var palette: Int
     var scene: CoverScene
 
@@ -106,7 +107,8 @@ private struct CoverRecipe {
 
     init(seed: String, forcedStyle: CoverStyle?) {
         var rng = SeededGenerator(seed: seed)
-        let paletteIndex = forcedStyle?.palette ?? Int.random(in: CoverPalette.all.indices, using: &rng)
+        let rawIndex = forcedStyle?.palette ?? Int.random(in: CoverPalette.all.indices, using: &rng)
+        let paletteIndex = min(max(rawIndex, 0), CoverPalette.all.count - 1)
         palette = CoverPalette.all[paletteIndex]
         scene = forcedStyle?.scene ?? CoverScene.allCases.randomElement(using: &rng)!
 
@@ -290,8 +292,9 @@ extension Destination {
     /// Seed estável da capa: usa o id do Firestore quando existe, senão o nome.
     var coverSeed: String { id ?? title }
 
-    /// Capa procedural determinística deste destino.
-    var cover: ProceduralCover { ProceduralCover(seed: coverSeed) }
+    /// Capa procedural do destino: usa o estilo escolhido pelo usuário
+    /// (banco de imagens) ou, quando `nil`, deriva um estilo da seed.
+    var cover: ProceduralCover { ProceduralCover(seed: coverSeed, style: coverStyle) }
 }
 
 #Preview {

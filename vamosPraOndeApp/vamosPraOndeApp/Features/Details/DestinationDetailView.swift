@@ -17,6 +17,7 @@ struct DestinationDetailView: View {
     @State private var showingDeleteConfirm = false
     @State private var showingEdit = false
     @State private var showingChecklist = false
+    @State private var showingCoverPicker = false
     @State private var isDeleting = false
     @State private var weather: DestinationWeather?
     @State private var tripForecast: TripDayForecast?
@@ -88,6 +89,9 @@ struct DestinationDetailView: View {
         }
         .sheet(isPresented: $showingChecklist) {
             ChecklistView(destination: destination, repository: repository)
+        }
+        .sheet(isPresented: $showingCoverPicker) {
+            CoverPickerView(destination: destination, repository: repository)
         }
         .confirmationDialog(
             "Excluir este destino?",
@@ -172,6 +176,14 @@ struct DestinationDetailView: View {
                         })
                         .accessibilityLabel("Compartilhar contagem")
                     }
+                    Button { showingCoverPicker = true } label: {
+                        Image(systemName: "photo.on.rectangle.angled")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundStyle(Color.vpoOnColor)
+                            .frame(width: 40, height: 40)
+                            .background(.ultraThinMaterial, in: Circle())
+                    }
+                    .accessibilityLabel("Trocar capa")
                     Button { showingEdit = true } label: {
                         Image(systemName: "pencil")
                             .font(.system(size: 17, weight: .semibold))

@@ -30,6 +30,11 @@ struct Destination: Identifiable, Codable, Hashable {
     var notes: String? = nil
     /// Checklist de mala/preparativos (opcional).
     var checklist: [ChecklistItem]? = nil
+    /// Estilo de capa escolhido no banco de imagens (paleta + cena).
+    /// `nil` = capa padrão derivada da seed do destino. `@ExplicitNull` grava
+    /// `nil` como `null` (em vez de omitir), para "Padrão" realmente limpar a
+    /// escolha no Firestore, que é escrito com `merge: true`.
+    @ExplicitNull var coverStyle: CoverStyle? = nil
 
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)

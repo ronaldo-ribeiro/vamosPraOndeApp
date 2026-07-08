@@ -90,6 +90,7 @@
 		DFB81499DC458A12C4BB748D /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */; };
 		E0293645CAF40591CB82BB27 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409CD1E05CA693E1110F0D03 /* AuthService.swift */; };
 		E401AFA31328E58A58C8D884 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */; };
+		ED6943C57244D61E90992C84 /* CoverPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21EB1BEF4F3CA4B4A8384C5 /* CoverPickerView.swift */; };
 		F8841C8CCE49AF19D1496F32 /* TravelMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171687DDE285E2EE2D70436E /* TravelMapView.swift */; };
 		FA59BE03C901B0F703E9B3FC /* DestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */; };
 		FB26205A97EF1E8EE8232158 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */; };
@@ -182,6 +183,7 @@
 		AB01782A64F847E71A553CD5 /* Localizable.xcstrings */ = {isa = PBXFileReference; includeInIndex = 1; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AE9550528BF5AD8FE37F6279 /* UserLocationProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserLocationProvider.swift; sourceTree = "<group>"; };
 		B1ED369D3F6960C39E95093C /* VamosWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosWidget.swift; sourceTree = "<group>"; };
+		B21EB1BEF4F3CA4B4A8384C5 /* CoverPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoverPickerView.swift; sourceTree = "<group>"; };
 		B24C0C6D065810A6D844E0E8 /* VamosWidget.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = VamosWidget.entitlements; sourceTree = "<group>"; };
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
 		B6717499BB05FED71D3E7044 /* Countdown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			children = (
 				0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */,
 				9E7C74994CD79D2E7CE5AED9 /* CountdownShareCard.swift */,
+				B21EB1BEF4F3CA4B4A8384C5 /* CoverPickerView.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 				9C43FC2E5D29FF9E8680D0E4 /* CountdownShareCard.swift in Sources */,
 				5A7586A322934E45A8241147 /* AnalyticsService.swift in Sources */,
 				8041AC41AC506828A3100761 /* ProceduralCover.swift in Sources */,
+				ED6943C57244D61E90992C84 /* CoverPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,7 +931,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = VamosWidget/VamosWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = YUJ28KYKT3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = VamosWidget/Info.plist;
@@ -973,7 +977,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = VamosWidget/VamosWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = YUJ28KYKT3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = VamosWidget/Info.plist;
@@ -1135,7 +1139,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = vamosPraOndeApp/vamosPraOndeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = YUJ28KYKT3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vamosPraOndeApp/Info.plist;
@@ -1167,7 +1171,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = vamosPraOndeApp/vamosPraOndeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = YUJ28KYKT3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vamosPraOndeApp/Info.plist;

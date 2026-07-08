@@ -41,6 +41,9 @@ struct HomeView: View {
                                     DestinationHeroCard(destination: hero)
                                 }
                                 .buttonStyle(.plain)
+                                // `Destination` é Equatable só por id, então uma troca de
+                                // capa (mesmo id) não redesenha o card sozinha — o id força.
+                                .id(hero.coverStyle)
                                 .appear(delay: 0.05)
                             }
                             if !rest.isEmpty {
