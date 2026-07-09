@@ -1489,6 +1489,22 @@
         }
       }
     },
+    "Mais opções": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More options"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mais opções"
+          }
+        }
+      }
+    },
     "Mala e preparativos": {
       "localizations": {
         "en": {
@@ -2988,6 +3004,22 @@
         }
       }
     },
+    "mostrar menos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "show less"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mostrar menos"
+          }
+        }
+      }
+    },
     "na sequência": {
       "localizations": {
         "en": {
@@ -3288,6 +3320,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "um sonho na lista"
+          }
+        }
+      }
+    },
+    "ver todos (%lld)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "see all (%lld)"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ver todos (%lld)"
           }
         }
       }

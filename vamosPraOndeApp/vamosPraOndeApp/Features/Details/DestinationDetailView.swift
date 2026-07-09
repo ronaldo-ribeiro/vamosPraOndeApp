@@ -28,6 +28,8 @@ struct DestinationDetailView: View {
     @State private var nearbyCategory: NearbyCategory = .attractions
     @State private var nearbyPlaces: [NearbyPlace] = []
     @State private var nearbyLoading = false
+    /// "Por perto": mostra 6 e expande sob demanda (a tela fica mais curta).
+    @State private var nearbyExpanded = false
     @State private var shareImage: UIImage?
 
     init(destination: Destination, repository: DestinationsRepository) {
@@ -45,7 +47,11 @@ struct DestinationDetailView: View {
     /// Cards abaixo da contagem (checklist, notas, clima, fuso, por perto, excluir).
     @ViewBuilder
     private var cardsColumn: some View {
-        tripStopsCard
+        // Roteiro com 2+ trechos é conteúdo principal → topo. A DICA de
+        // adicionar trecho (viagem simples) fica mais abaixo, sem ruído.
+        if destination.isMultiStop {
+            tripStopsCard
+        }
         checklistCard
         if let notes = destination.notes, !notes.isEmpty {
             notesCard(notes)
@@ -54,8 +60,10 @@ struct DestinationDetailView: View {
         if destinationTimeZone != nil {
             timeZoneCard
         }
+        if !destination.isMultiStop {
+            tripStopsCard
+        }
         nearbyCard
-        deleteButton
     }
 
     var body: some View {
@@ -195,22 +203,25 @@ struct DestinationDetailView: View {
                         })
                         .accessibilityLabel("Compartilhar contagem")
                     }
-                    Button { showingCoverPicker = true } label: {
-                        Image(systemName: "photo.on.rectangle.angled")
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundStyle(Color.vpoOnColor)
-                            .frame(width: 40, height: 40)
-                            .background(.ultraThinMaterial, in: Circle())
-                    }
-                    .accessibilityLabel("Trocar capa")
-                    Button { showingEdit = true } label: {
-                        Image(systemName: "pencil")
+                    Menu {
+                        Button { showingEdit = true } label: {
+                            Label("Editar destino", systemImage: "pencil")
+                        }
+                        Button { showingCoverPicker = true } label: {
+                            Label("Trocar capa", systemImage: "photo.on.rectangle.angled")
+                        }
+                        Divider()
+                        Button(role: .destructive) { showingDeleteConfirm = true } label: {
+                            Label("Excluir destino", systemImage: "trash")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
                             .font(.system(size: 17, weight: .semibold))
                             .foregroundStyle(Color.vpoOnColor)
                             .frame(width: 40, height: 40)
                             .background(.ultraThinMaterial, in: Circle())
                     }
-                    .accessibilityLabel("Editar destino")
+                    .accessibilityLabel("Mais opções")
                 }
                 .padding(.trailing, Spacing.lg)
                 .padding(.top, 56)
@@ -619,6 +630,7 @@ struct DestinationDetailView: View {
 
     private func loadNearby() async {
         nearbyLoading = true
+        nearbyExpanded = false
         nearbyPlaces = await NearbyPlacesService.ranked(
             near: destination.coordinate, category: nearbyCategory
         )
@@ -650,13 +662,29 @@ struct DestinationDetailView: View {
                     .padding(.vertical, Spacing.sm)
             } else {
                 nearbyMap
+                let shown = nearbyExpanded ? nearbyPlaces : Array(nearbyPlaces.prefix(6))
                 VStack(spacing: 0) {
-                    ForEach(nearbyPlaces) { place in
+                    ForEach(shown) { place in
                         nearbyRow(place)
-                        if place.id != nearbyPlaces.last?.id {
+                        if place.id != shown.last?.id {
                             Divider().padding(.leading, 40)
                         }
                     }
+                }
+                if nearbyPlaces.count > 6 {
+                    Button {
+                        Haptics.tap()
+                        withAnimation(.easeInOut(duration: 0.25)) { nearbyExpanded.toggle() }
+                    } label: {
+                        Text(nearbyExpanded
+                            ? String(localized: "mostrar menos")
+                            : String(localized: "ver todos (\(nearbyPlaces.count))"))
+                            .font(AppFont.semibold(14))
+                            .foregroundStyle(Color.vpoTerracotta)
+                            .frame(maxWidth: .infinity)
+                            .padding(.top, 6)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }
@@ -794,21 +822,6 @@ struct DestinationDetailView: View {
             weatherFailed = true
         }
         destinationTimeZone = await timeZoneTask
-    }
-
-    private var deleteButton: some View {
-        Button {
-            showingDeleteConfirm = true
-        } label: {
-            if isDeleting {
-                ProgressView().tint(.vpoTerracotta)
-            } else {
-                Label("Excluir destino", systemImage: "trash")
-            }
-        }
-        .buttonStyle(OutlineButtonStyle())
-        .padding(.horizontal, Spacing.lg)
-        .padding(.top, Spacing.sm)
     }
 
     private func delete() {
