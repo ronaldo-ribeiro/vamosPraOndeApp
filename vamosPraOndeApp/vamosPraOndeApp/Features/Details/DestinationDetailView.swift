@@ -125,6 +125,14 @@ struct DestinationDetailView: View {
                     endPoint: .bottom
                 )
             )
+            // Topo: garante leitura dos botões e do eyebrow sobre céus claros.
+            .overlay(
+                LinearGradient(
+                    colors: [.black.opacity(0.28), .clear],
+                    startPoint: .top,
+                    endPoint: .center
+                )
+            )
     }
 
     private var cover: some View {

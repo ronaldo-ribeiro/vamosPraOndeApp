@@ -19,7 +19,7 @@ struct DestinationHeroCard: View {
     }
 
     /// Capa de arte gerada por código (determinística pelo destino), com um
-    /// leve escurecimento na base para o texto continuar legível.
+    /// leve escurecimento na base (texto) e no topo (eyebrow sobre o sol).
     private var coverBackground: some View {
         destination.cover
             .overlay(
@@ -27,6 +27,13 @@ struct DestinationHeroCard: View {
                     colors: [.black.opacity(0.05), .black.opacity(0.55)],
                     startPoint: .center,
                     endPoint: .bottom
+                )
+            )
+            .overlay(
+                LinearGradient(
+                    colors: [.black.opacity(0.28), .clear],
+                    startPoint: .top,
+                    endPoint: .center
                 )
             )
     }
@@ -153,20 +160,21 @@ struct DestinationRow: View {
         return String(localized: "quero visitar")
     }
 
-    private var iconName: String {
-        destination.isWishlist ? "heart.fill" : "mappin.and.ellipse"
-    }
-
     var body: some View {
         HStack(spacing: Spacing.md) {
-            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .fill(LinearGradient.vpoSunset)
+            // Miniatura da capa do próprio destino — cada linha ganha a
+            // identidade da viagem (mesma arte do herói e dos Detalhes).
+            destination.cover
                 .frame(width: 52, height: 52)
-                .overlay(
-                    Image(systemName: iconName)
-                        .font(.system(size: 18))
-                        .foregroundStyle(Color.vpoOnColor)
-                )
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay(alignment: .bottomTrailing) {
+                    if destination.isWishlist {
+                        Image(systemName: "heart.circle.fill")
+                            .font(.system(size: 15))
+                            .foregroundStyle(Color.vpoGold, Color.vpoCream)
+                            .offset(x: 5, y: 5)
+                    }
+                }
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(destination.cityName)
