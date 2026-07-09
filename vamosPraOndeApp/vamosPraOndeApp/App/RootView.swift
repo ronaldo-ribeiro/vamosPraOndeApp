@@ -13,6 +13,8 @@ struct RootView: View {
     @State private var showSplash = true
     /// Apresentação inicial: mostrada uma única vez, antes do primeiro login.
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
+    /// Tema escolhido no Perfil (sistema/claro/escuro).
+    @AppStorage("appAppearance") private var appearance = AppAppearance.system.rawValue
 
     var body: some View {
         ZStack {
@@ -37,5 +39,7 @@ struct RootView: View {
                 .zIndex(1)
             }
         }
+        // Tema do Perfil: claro/escuro sempre, ou nil para seguir o aparelho.
+        .preferredColorScheme(AppAppearance(rawValue: appearance)?.colorScheme)
     }
 }

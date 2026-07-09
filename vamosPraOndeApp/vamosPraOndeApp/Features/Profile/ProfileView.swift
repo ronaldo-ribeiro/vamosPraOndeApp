@@ -14,6 +14,8 @@ struct ProfileView: View {
     @State private var showingDeleteAccount = false
     @State private var accountError: String?
     @State private var showingAccountError = false
+    /// Tema do app (sistema/claro/escuro) — aplicado no RootView.
+    @AppStorage("appAppearance") private var appearance = AppAppearance.system.rawValue
 
     private var initials: String {
         let email = auth.displayEmail
@@ -45,6 +47,7 @@ struct ProfileView: View {
                     VStack(spacing: Spacing.lg) {
                         avatarHeader
                         statsGrid
+                        themeCard
                         optionsCard
                         deleteButton
                         versionFooter
@@ -126,6 +129,33 @@ struct ProfileView: View {
             .font(AppFont.medium(12))
             .foregroundStyle(Color.vpoInkSoft)
             .padding(.top, Spacing.sm)
+    }
+
+    /// Escolha do tema: seguir o aparelho, claro sempre ou escuro sempre.
+    private var themeCard: some View {
+        VStack(alignment: .leading, spacing: Spacing.sm) {
+            Label {
+                Text("Tema")
+                    .font(AppFont.title(16))
+                    .foregroundStyle(Color.vpoInk)
+            } icon: {
+                Image(systemName: "circle.lefthalf.filled")
+                    .foregroundStyle(Color.vpoTerracotta)
+            }
+
+            Picker("Tema", selection: $appearance) {
+                ForEach(AppAppearance.allCases) { option in
+                    Text(option.label).tag(option.rawValue)
+                }
+            }
+            .pickerStyle(.segmented)
+            .onChange(of: appearance) { _, _ in Haptics.tap() }
+        }
+        .padding(Spacing.md)
+        .background(Color.vpoCream)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Tema do app")
     }
 
     private var optionsCard: some View {

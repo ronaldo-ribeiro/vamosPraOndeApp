@@ -55,6 +55,39 @@ extension UIColor {
     }
 }
 
+/// Preferência de tema do app (Perfil → Tema): seguir o aparelho,
+/// claro sempre ou escuro sempre. Persistida em @AppStorage("appAppearance").
+enum AppAppearance: String, CaseIterable, Identifiable {
+    case system, light, dark
+
+    var id: String { rawValue }
+
+    var label: String {
+        switch self {
+        case .system: return String(localized: "Sistema")
+        case .light: return String(localized: "Claro")
+        case .dark: return String(localized: "Escuro")
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .system: return "circle.lefthalf.filled"
+        case .light: return "sun.max.fill"
+        case .dark: return "moon.fill"
+        }
+    }
+
+    /// `nil` = segue o aparelho.
+    var colorScheme: ColorScheme? {
+        switch self {
+        case .system: return nil
+        case .light: return .light
+        case .dark: return .dark
+        }
+    }
+}
+
 extension LinearGradient {
     /// Gradiente de pôr do sol usado como capa/fallback dos destinos (sempre quente).
     static let vpoSunset = LinearGradient(
