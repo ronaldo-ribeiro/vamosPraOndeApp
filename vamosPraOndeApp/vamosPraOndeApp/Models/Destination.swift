@@ -25,6 +25,9 @@ struct Destination: Identifiable, Codable, Hashable {
     /// `@ExplicitNull` grava `nil` como `null` (em vez de omitir o campo), para que
     /// editar de "com data" para "quero visitar" realmente limpe a data no Firestore.
     @ExplicitNull var date: Date?
+    /// Data da volta (ou da partida para o próximo destino). Opcional simples
+    /// (tolera docs antigos sem o campo); limpar = FieldValue.delete no update.
+    var endDate: Date? = nil
     var createdAt: Date
     /// Anotações da viagem (opcional — destinos antigos podem não ter).
     var notes: String? = nil
@@ -50,10 +53,12 @@ struct Destination: Identifiable, Codable, Hashable {
     var isWishlist: Bool { date == nil }
 
     /// Classifica o destino em próxima / passada / quero visitar.
+    /// Com data de volta marcada, a viagem só vira "passada" depois da volta.
     func category(now: Date = Date(), calendar: Calendar = .current) -> TripCategory {
         guard let date else { return .wishlist }
         let today = calendar.startOfDay(for: now)
-        return calendar.startOfDay(for: date) < today ? .past : .upcoming
+        let reference = endDate.map { max($0, date) } ?? date
+        return calendar.startOfDay(for: reference) < today ? .past : .upcoming
     }
 
     /// Nome curto da cidade (primeiro trecho de "Cidade, Estado, País").
@@ -95,6 +100,7 @@ struct Destination: Identifiable, Codable, Hashable {
         copy.latitude = first.latitude
         copy.longitude = first.longitude
         copy.date = first.startDate
+        copy.endDate = first.endDate
         copy.stops = newStops.count > 1 ? newStops : nil
         return copy
     }

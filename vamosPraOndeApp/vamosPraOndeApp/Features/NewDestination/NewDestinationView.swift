@@ -18,6 +18,8 @@ struct NewDestinationView: View {
     @State private var selected: CitySuggestion?
     @State private var date: Date
     @State private var noDate: Bool
+    @State private var hasReturn: Bool
+    @State private var returnDate: Date
     @State private var notes: String
     @State private var isSearching = false
     @State private var isSaving = false
@@ -30,9 +32,13 @@ struct NewDestinationView: View {
         _selected = State(initialValue: editing.map {
             CitySuggestion(title: $0.title, latitude: $0.latitude, longitude: $0.longitude)
         })
-        _date = State(initialValue: editing?.date
-            ?? Calendar.current.date(byAdding: .day, value: 30, to: Date()) ?? Date())
+        let start = editing?.date
+            ?? Calendar.current.date(byAdding: .day, value: 30, to: Date()) ?? Date()
+        _date = State(initialValue: start)
         _noDate = State(initialValue: editing != nil && editing?.date == nil)
+        _hasReturn = State(initialValue: editing?.endDate != nil)
+        _returnDate = State(initialValue: editing?.endDate
+            ?? Calendar.current.date(byAdding: .day, value: 7, to: start) ?? start)
         _notes = State(initialValue: editing?.notes ?? "")
     }
 
@@ -55,6 +61,13 @@ struct NewDestinationView: View {
                         }
                     }
                     .padding(Spacing.lg)
+                }
+            }
+            // A volta padrão acompanha a ida (ida + 7 dias) enquanto o usuário
+            // não ligou o toggle; se a ida passar da volta, corrige também.
+            .onChange(of: date) { _, newDate in
+                if !hasReturn || returnDate < newDate {
+                    returnDate = Calendar.current.date(byAdding: .day, value: 7, to: newDate) ?? newDate
                 }
             }
             .navigationTitle(isEditing ? "Editar destino" : "Novo destino")
@@ -98,6 +111,16 @@ struct NewDestinationView: View {
             .padding(.vertical, 14)
             .background(Color.vpoCream)
             .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
+            // Sugestões enquanto digita: espera uma pausa curta e busca sozinho.
+            .task(id: query) {
+                let text = query.trimmingCharacters(in: .whitespaces)
+                guard text.count >= 3, text != selected?.title else { return }
+                try? await Task.sleep(for: .milliseconds(350))
+                guard !Task.isCancelled else { return }
+                isSearching = true
+                suggestions = await LocationService.search(text)
+                isSearching = false
+            }
 
             if let selected {
                 selectedChip(selected)
@@ -174,6 +197,36 @@ struct NewDestinationView: View {
                 .padding(Spacing.sm)
                 .background(Color.vpoCream)
                 .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+
+                Toggle(isOn: $hasReturn.animation(.easeInOut(duration: 0.2))) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Marcar a volta")
+                            .font(AppFont.medium(15))
+                            .foregroundStyle(Color.vpoInk)
+                        Text("quando você volta pra casa ou segue viagem")
+                            .font(AppFont.medium(12))
+                            .foregroundStyle(Color.vpoInkSoft)
+                    }
+                }
+                .tint(.vpoTerracotta)
+                .padding(Spacing.md)
+                .background(Color.vpoCream)
+                .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
+
+                if hasReturn {
+                    DatePicker(
+                        "Data da volta",
+                        selection: $returnDate,
+                        in: date...,
+                        displayedComponents: .date
+                    )
+                    .font(AppFont.medium(15))
+                    .foregroundStyle(Color.vpoInk)
+                    .tint(.vpoTerracotta)
+                    .padding(Spacing.md)
+                    .background(Color.vpoCream)
+                    .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
+                }
             }
         }
     }
@@ -233,6 +286,7 @@ struct NewDestinationView: View {
         isSaving = true
         errorMessage = nil
         let finalDate: Date? = noDate ? nil : date
+        let finalEnd: Date? = (noDate || !hasReturn) ? nil : max(returnDate, date)
         Task {
             do {
                 if finalDate != nil {
@@ -243,6 +297,7 @@ struct NewDestinationView: View {
                     existing.latitude = selected.coordinate.latitude
                     existing.longitude = selected.coordinate.longitude
                     existing.date = finalDate
+                    existing.endDate = finalEnd
                     existing.notes = trimmedNotes
                     try await repository.update(existing)
                     await NotificationService.reschedule(for: existing)
@@ -251,6 +306,7 @@ struct NewDestinationView: View {
                         title: selected.title,
                         coordinate: selected.coordinate,
                         date: finalDate,
+                        endDate: finalEnd,
                         notes: trimmedNotes
                     )
                     await NotificationService.reschedule(for: saved)

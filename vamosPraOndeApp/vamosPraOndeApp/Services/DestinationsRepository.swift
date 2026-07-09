@@ -53,7 +53,7 @@ final class DestinationsRepository: ObservableObject {
     }
 
     @discardableResult
-    func add(title: String, coordinate: CLLocationCoordinate2D, date: Date?, notes: String?) async throws -> Destination {
+    func add(title: String, coordinate: CLLocationCoordinate2D, date: Date?, endDate: Date? = nil, notes: String?) async throws -> Destination {
         guard let collection else {
             throw NSError(domain: "vpo", code: 0)
         }
@@ -63,6 +63,7 @@ final class DestinationsRepository: ObservableObject {
             latitude: coordinate.latitude,
             longitude: coordinate.longitude,
             date: date,
+            endDate: endDate,
             createdAt: Date(),
             notes: notes
         )
@@ -80,6 +81,7 @@ final class DestinationsRepository: ObservableObject {
         var clears: [String: Any] = [:]
         if destination.coverStyle == nil { clears["coverStyle"] = FieldValue.delete() }
         if destination.stops == nil { clears["stops"] = FieldValue.delete() }
+        if destination.endDate == nil { clears["endDate"] = FieldValue.delete() }
         if !clears.isEmpty {
             try await collection.document(id).updateData(clears)
         }

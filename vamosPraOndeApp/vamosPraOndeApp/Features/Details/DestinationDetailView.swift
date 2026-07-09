@@ -247,6 +247,17 @@ struct DestinationDetailView: View {
                 Text(DateStyle.long.string(from: date))
                     .font(AppFont.medium(14))
                     .foregroundStyle(Color.vpoInkSoft)
+                if let end = destination.endDate, end > date {
+                    let nights = Calendar.current.dateComponents(
+                        [.day],
+                        from: Calendar.current.startOfDay(for: date),
+                        to: Calendar.current.startOfDay(for: end)
+                    ).day ?? 0
+                    Text("volta em \(DateStyle.short.string(from: end)) · \(nights + 1) dias de viagem")
+                        .font(AppFont.medium(13))
+                        .foregroundStyle(Color.vpoTeal)
+                        .padding(.top, 1)
+                }
             } else {
                 Text("na sua lista")
                     .font(AppFont.overline())

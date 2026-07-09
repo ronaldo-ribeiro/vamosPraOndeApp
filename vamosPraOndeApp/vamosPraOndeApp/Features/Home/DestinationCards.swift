@@ -98,6 +98,53 @@ struct DestinationHeroCard: View {
     }
 }
 
+/// Linha das viagens passadas ("lembranças"): a capa aparece desbotada,
+/// como uma foto antiga, com o selo de "já fui" e o mês/ano da viagem.
+struct MemoryRow: View {
+    let destination: Destination
+
+    private var whenText: String {
+        guard let date = destination.date else { return "" }
+        return String(localized: "você esteve aqui em \(DateStyle.monthYear.string(from: date))")
+    }
+
+    var body: some View {
+        HStack(spacing: Spacing.md) {
+            destination.cover
+                .frame(width: 52, height: 52)
+                .saturation(0.35)
+                .overlay(Color.vpoSand.opacity(0.18))
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay(alignment: .bottomTrailing) {
+                    Image(systemName: "checkmark.seal.fill")
+                        .font(.system(size: 15))
+                        .foregroundStyle(Color.vpoTeal, Color.vpoCream)
+                        .offset(x: 5, y: 5)
+                }
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(destination.cityName)
+                    .font(AppFont.title(17))
+                    .foregroundStyle(Color.vpoInk.opacity(0.85))
+                Text(whenText)
+                    .font(AppFont.medium(13))
+                    .foregroundStyle(Color.vpoInkSoft)
+            }
+
+            Spacer()
+
+            Image(systemName: "chevron.right")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(Color.vpoInkSoft)
+        }
+        .padding(Spacing.md)
+        .background(Color.vpoCream.opacity(0.7))
+        .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(destination.cityName). \(whenText).")
+    }
+}
+
 struct DestinationRow: View {
     let destination: Destination
 

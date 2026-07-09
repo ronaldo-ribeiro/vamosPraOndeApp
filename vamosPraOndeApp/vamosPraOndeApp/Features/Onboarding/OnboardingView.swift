@@ -38,7 +38,7 @@ struct OnboardingView: View {
                         icon: "calendar.badge.clock",
                         tint: .vpoTerracotta,
                         title: "Conte os dias",
-                        text: "Guarde os destinos dos seus sonhos e acompanhe uma contagem regressiva linda até cada embarque."
+                        text: "Escolha o destino, marque a data e veja quantos dias faltam para o embarque."
                     )
                     .tag(0)
 
@@ -46,7 +46,7 @@ struct OnboardingView: View {
                         icon: "sparkles",
                         tint: .vpoTeal,
                         title: "Tudo sobre a viagem",
-                        text: "Clima, fuso horário, checklist de mala e o que fazer perto do destino — num só lugar."
+                        text: "Clima, fuso horário, checklist de mala e o que fazer por lá. Tudo num só lugar."
                     )
                     .tag(1)
 
@@ -54,7 +54,7 @@ struct OnboardingView: View {
                         icon: "map.fill",
                         tint: .vpoGold,
                         title: "Seu mapa do mundo",
-                        text: "Veja num mapa-múndi onde você já foi, para onde vai e os lugares que ainda sonha visitar."
+                        text: "Veja no mapa onde você já foi, para onde vai e os lugares que ainda quer conhecer."
                     )
                     .tag(2)
                 }

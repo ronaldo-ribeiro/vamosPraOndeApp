@@ -51,23 +51,20 @@ struct CountdownTests {
         #expect(c.phrase == String(localized: "faltam \(18) dias"))
     }
 
-    @Test func emMeses() {
-        let c = Countdown(to: date(2026, 9, 18), from: now) // 2 meses e 16 dias
-        #expect(c.value == "2")
-        #expect(c.unit == L("meses"))
-        let meses = "2 " + L("meses")
-        let dias = "16 " + L("dias")
-        #expect(c.phrase == String(localized: "faltam \(meses) e \(dias)"))
+    @Test func longePermaneceEmDias() {
+        // A contagem é sempre em dias — nada de "2 meses".
+        let c = Countdown(to: date(2026, 9, 18), from: now) // 78 dias
+        #expect(c.days == 78)
+        #expect(c.value == "78")
+        #expect(c.unit == L("dias"))
+        #expect(c.phrase == String(localized: "faltam \(78) dias"))
     }
 
-    @Test func umMesSingular() {
-        // 49 dias (> 45) => passa a contar em meses; 1 mês e 18 dias.
-        let c = Countdown(to: date(2026, 8, 20), from: now)
-        #expect(c.value == "1")
-        #expect(c.unit == L("mês"))
-        let mes = "1 " + L("mês")
-        let dias = "18 " + L("dias")
-        #expect(c.phrase == String(localized: "faltam \(mes) e \(dias)"))
+    @Test func muitoLongeTambemEmDias() {
+        let c = Countdown(to: date(2027, 5, 2), from: now) // 304 dias
+        #expect(c.days == 304)
+        #expect(c.value == "304")
+        #expect(c.unit == L("dias"))
     }
 
     @Test func passado() {

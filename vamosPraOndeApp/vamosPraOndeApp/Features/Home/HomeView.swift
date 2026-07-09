@@ -18,8 +18,27 @@ struct HomeView: View {
         DestinationSorting.apply(repo.destinations, sort: sort, filter: filter)
     }
 
-    private var hero: Destination? { displayed.first }
-    private var rest: [Destination] { Array(displayed.dropFirst()) }
+    /// Próximas e desejos seguem no fluxo principal (herói + lista).
+    private var active: [Destination] { displayed.filter { $0.category() != .past } }
+    /// Passadas viram "lembranças" — histórico no fim, da mais recente pra trás.
+    private var memories: [Destination] {
+        displayed.filter { $0.category() == .past }
+            .sorted { ($0.date ?? .distantPast) > ($1.date ?? .distantPast) }
+    }
+
+    private var hero: Destination? { active.first }
+    private var rest: [Destination] { Array(active.dropFirst()) }
+
+    /// "3 viagens · 2 países" do histórico.
+    private var memoriesSummary: String {
+        let countries = Set(memories.map(\.subtitle).filter { !$0.isEmpty })
+        let viagens = memories.count == 1
+            ? String(localized: "1 viagem") : String(localized: "\(memories.count) viagens")
+        guard countries.count > 0 else { return viagens }
+        let paises = countries.count == 1
+            ? String(localized: "1 país") : String(localized: "\(countries.count) países")
+        return "\(viagens) · \(paises)"
+    }
 
     var body: some View {
         NavigationStack {
@@ -60,6 +79,31 @@ struct HomeView: View {
                                         }
                                         .buttonStyle(.plain)
                                         .appear(delay: 0.14 + Double(index) * 0.06)
+                                        .transition(.move(edge: .trailing).combined(with: .opacity))
+                                    }
+                                }
+                            }
+                            if !memories.isEmpty {
+                                HStack(alignment: .firstTextBaseline) {
+                                    Text("lembranças")
+                                        .font(AppFont.overline())
+                                        .kerning(1.5)
+                                        .textCase(.uppercase)
+                                        .foregroundStyle(Color.vpoTeal)
+                                    Spacer()
+                                    Text(memoriesSummary)
+                                        .font(AppFont.medium(12))
+                                        .foregroundStyle(Color.vpoInkSoft)
+                                }
+                                .padding(.top, rest.isEmpty && hero == nil ? 0 : Spacing.sm)
+                                .appear(delay: 0.18)
+                                VStack(spacing: Spacing.sm) {
+                                    ForEach(Array(memories.enumerated()), id: \.element.id) { index, destination in
+                                        NavigationLink(value: destination) {
+                                            MemoryRow(destination: destination)
+                                        }
+                                        .buttonStyle(.plain)
+                                        .appear(delay: 0.2 + Double(index) * 0.06)
                                         .transition(.move(edge: .trailing).combined(with: .opacity))
                                     }
                                 }
