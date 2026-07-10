@@ -11,6 +11,7 @@
 		0D61739A14D23989A1ED1E89 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */; };
 		0DFA3B1CE31E388262FD7EE9 /* Pods_vamosPraOndeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4839A72F988E52DBEA7FF9C4 /* Pods_vamosPraOndeAppTests.framework */; };
 		0E2EC4E68DAE2A88C50B4C6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5801109F556166FCE44A0C84 /* Foundation.framework */; };
+		0F589489A6ED93A91485CAE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCDA268442C87C81F796EF2 /* Foundation.framework */; };
 		0F9D896ED069A374FA206C79 /* NextTripSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */; };
 		123CD30DBADB259B8A377F88 /* LandmarkGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D43E55345E1AC825A95F /* LandmarkGalleryTests.swift */; };
 		181399A40625F8A5443A1AE0 /* DestinationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A2719934CFBBDAD3740235 /* DestinationCards.swift */; };
@@ -29,6 +30,7 @@
 		5D419F4B3BD498FD1BB27863 /* DestinationPhotoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BA3454976B07F02479A5FC /* DestinationPhotoProvider.swift */; };
 		5EFA5C9F2425D9743A6BC430 /* NewDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */; };
 		64937C3D6A1DA0F97BB4BD89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0262E62ED903E239FE87B306 /* SignUpView.swift */; };
+		68052B3F0A108F51A0A4846C /* WatchHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8758F95E8244D05E4DFCF /* WatchHomeView.swift */; };
 		68AD0517171D23305ED97348 /* FeatureLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */; };
 		6C221049FF08F63F3B09FDA2 /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */; };
 		6F96B45EDA0667602143CB20 /* SocialSignInButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B20DE226C69E153761B90C /* SocialSignInButtons.swift */; };
@@ -36,14 +38,18 @@
 		7AA2B4347F96E145D65CA42D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DB5B773232E1F694881267 /* OnboardingView.swift */; };
 		7FA281D8D93748D51DA416CE /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715796514FBEA826675FB981 /* ErrorBanner.swift */; };
 		8041AC41AC506828A3100761 /* ProceduralCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A97CB002593454ABC157BBA /* ProceduralCover.swift */; };
+		81488938042BB7936EDBFD54 /* VamosWatchWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2813482A546B9F1B17C6D859 /* VamosWatchWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8191779992B81C209FFFFF78 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759693CF363A15BF3D16B2D1 /* LoginView.swift */; };
 		81F2F01F8353792FF1257AD2 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F31DAEEF0F63FE46C3E2E5 /* Haptics.swift */; };
 		832FCE1CEB653FD99FFEC49E /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6717499BB05FED71D3E7044 /* Countdown.swift */; };
 		86C5A52894E3A21E8124549D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799EFFED51CAB6C06E8D343D /* WelcomeView.swift */; };
 		8A68B0E71084E468DCA6F9D1 /* VamosPraOndeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */; };
+		8D32F6794350E3CE038C21B0 /* VamosWatchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844040978B047663DDBB1213 /* VamosWatchWidget.swift */; };
 		904D7C2AC8FDB8E4E354E912 /* UserLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9550528BF5AD8FE37F6279 /* UserLocationProvider.swift */; };
+		90AF92C67322FE714A7B3120 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 715ECF71C0E0FBAAB0A900BA /* Assets.xcassets */; };
 		90D7DE02C6D77B5BC364A986 /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34A419395F409009F3EB25 /* AuthFlowView.swift */; };
 		911408229101F35B5F2906C0 /* VamosWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BAB7582C2AD66EB703389C83 /* VamosWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		91194DC1E207EF6DAE7D821F /* TripSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFB9DED3D4B9C7618BE8DB8 /* TripSync.swift */; };
 		932282BFD16CE7A8C307F407 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475203DA568856EF307222B /* AuthHeader.swift */; };
 		95C2BCFB8EBAE03995BFC72A /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDE28040F39CCD5CCD172DF /* Destination.swift */; };
 		975703D0576611F431A67DA8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C91FAE89B00AF2B5D82750 /* ProfileView.swift */; };
@@ -51,13 +57,17 @@
 		9919E16E5B6F5D05FBF5EF3B /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578FF8E0BAF23A94D662608 /* AppleAuth.swift */; };
 		9BF0FDB686C01157913FBA2D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFE2BA27D6463F18CFED81 /* LocationService.swift */; };
 		9C43FC2E5D29FF9E8680D0E4 /* CountdownShareCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C74994CD79D2E7CE5AED9 /* CountdownShareCard.swift */; };
+		A01D1B6098D5D5F3C94810EF /* VamosWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 88A3732BE5AA792EE093B919 /* VamosWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A1CDFCEACA11332F58FA93C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5801109F556166FCE44A0C84 /* Foundation.framework */; };
 		A32F34C1681389662AF11E9C /* DestinationSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */; };
+		AE66AD9B53582B4F4196186A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCDA268442C87C81F796EF2 /* Foundation.framework */; };
+		B3CB32D65D7E26E6F01591ED /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DA9A7ABB3F4D9A7443BBEF /* WatchSyncService.swift */; };
 		B678C008443E84763E9B7419 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AB01782A64F847E71A553CD5 /* Localizable.xcstrings */; };
 		B7D7480FD5B256D9538F70FC /* DestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BCC5913B450ADADCE7182 /* DestinationTests.swift */; };
 		B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72593CC4AC6BB5144E159D9C /* AppFont.swift */; };
 		BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36ED71B036CE1129056B2F /* AppColor.swift */; };
 		BD01B50EC315EE1E65F186CC /* Landmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE43C152F5EA89AB1E3C6AB5 /* Landmarks.swift */; };
+		BF932E7AAD94E58540D6C537 /* TripSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFB9DED3D4B9C7618BE8DB8 /* TripSync.swift */; };
 		C160B823E318F6C16D0C1417 /* NearbyPlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDDF45CD0859471994BB316 /* NearbyPlacesService.swift */; };
 		C456D31880156C513A61EAC5 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B908F493AFD9AA09E1CBBE6D /* SplashScreen.swift */; };
 		CBBE7460309BFA630AF41684 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */; };
@@ -92,9 +102,12 @@
 		D9FC06C4CD5D98EEE4FFFD63 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DD5C62A38F190DBD4DB8E /* ResetPasswordView.swift */; };
 		DAE3560C7EDFFC781A10D7F9 /* ChecklistTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DC68679043A01C61BFA269 /* ChecklistTemplates.swift */; };
 		DC7DF7DB1D314DFD291EEEF7 /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A741242B7F72183F80E1FCE6 /* AppTextField.swift */; };
+		DEBF7B4FB325C118A0D140CB /* VamosWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CD82A26EC8C6B7ABF2DBB8 /* VamosWatchApp.swift */; };
 		DFB81499DC458A12C4BB748D /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */; };
 		E0293645CAF40591CB82BB27 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409CD1E05CA693E1110F0D03 /* AuthService.swift */; };
+		E14A29105C15E98CF5C8A612 /* TripSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFB9DED3D4B9C7618BE8DB8 /* TripSync.swift */; };
 		E401AFA31328E58A58C8D884 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */; };
+		ECC31204B87DB620734EE173 /* WatchTripStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF0C49A4AE832AF49C571C /* WatchTripStore.swift */; };
 		ED6943C57244D61E90992C84 /* CoverPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21EB1BEF4F3CA4B4A8384C5 /* CoverPickerView.swift */; };
 		F8841C8CCE49AF19D1496F32 /* TravelMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171687DDE285E2EE2D70436E /* TravelMapView.swift */; };
 		FA59BE03C901B0F703E9B3FC /* DestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */; };
@@ -118,6 +131,20 @@
 			remoteGlobalIDString = D1BAFB4F291D3FBD007194C5;
 			remoteInfo = vamosPraOndeApp;
 		};
+		4DC8F04843D8D11B4D28626C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1BAFB48291D3FBD007194C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 714B31484033E17CEE7A32A9;
+			remoteInfo = VamosWatchWidget;
+		};
+		E37C4807886DEBE9AE3A2D22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1BAFB48291D3FBD007194C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2640A07123CDB9C9E7110EEC;
+			remoteInfo = VamosWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -130,6 +157,28 @@
 				911408229101F35B5F2906C0 /* VamosWidget.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44E4F299A303BF8100657D16 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				81488938042BB7936EDBFD54 /* VamosWatchWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75E6AD91E192B90F96035736 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A01D1B6098D5D5F3C94810EF /* VamosWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -149,7 +198,11 @@
 		210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		23AF5E5BEBEEE0DED5CAFDFE /* NotificationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		27D124DE37CF8AC7EBDA7D60 /* AddStopView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddStopView.swift; sourceTree = "<group>"; };
+		2813482A546B9F1B17C6D859 /* VamosWatchWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VamosWatchWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BFB9DED3D4B9C7618BE8DB8 /* TripSync.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TripSync.swift; sourceTree = "<group>"; };
 		2EDE28040F39CCD5CCD172DF /* Destination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		32B4982B145D15D7417CACE2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39DA9A7ABB3F4D9A7443BBEF /* WatchSyncService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchSyncService.swift; sourceTree = "<group>"; };
 		3A34A419395F409009F3EB25 /* AuthFlowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
 		3FDDF45CD0859471994BB316 /* NearbyPlacesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NearbyPlacesService.swift; sourceTree = "<group>"; };
 		409CD1E05CA693E1110F0D03 /* AuthService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -157,6 +210,7 @@
 		422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		451BCC5913B450ADADCE7182 /* DestinationTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationTests.swift; sourceTree = "<group>"; };
 		46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationsRepository.swift; sourceTree = "<group>"; };
+		46C28A168F6B339642A8577B /* VamosWatchWidget.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = VamosWatchWidget.entitlements; sourceTree = "<group>"; };
 		4839A72F988E52DBEA7FF9C4 /* Pods_vamosPraOndeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EFACD31BFE6198AE844676 /* Pods-vamosPraOndeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		53923FC28D728BE268C50AC5 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
@@ -168,18 +222,23 @@
 		56DC68679043A01C61BFA269 /* ChecklistTemplates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistTemplates.swift; sourceTree = "<group>"; };
 		5801109F556166FCE44A0C84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vamosPraOndeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60CD82A26EC8C6B7ABF2DBB8 /* VamosWatchApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosWatchApp.swift; sourceTree = "<group>"; };
 		65BE014A7FC7B9C67C11AA7A /* InfoPlist.xcstrings */ = {isa = PBXFileReference; includeInIndex = 1; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		681785E5ADE4ACE8EDD597B2 /* TripStop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TripStop.swift; sourceTree = "<group>"; };
 		6A97CB002593454ABC157BBA /* ProceduralCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProceduralCover.swift; sourceTree = "<group>"; };
 		6B36ED71B036CE1129056B2F /* AppColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		715796514FBEA826675FB981 /* ErrorBanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
+		715ECF71C0E0FBAAB0A900BA /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71F31DAEEF0F63FE46C3E2E5 /* Haptics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		72593CC4AC6BB5144E159D9C /* AppFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		759693CF363A15BF3D16B2D1 /* LoginView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		799EFFED51CAB6C06E8D343D /* WelcomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		7D78C807CB5AE97714742A01 /* CountdownTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountdownTests.swift; sourceTree = "<group>"; };
+		7F38463015D64C515920548E /* VamosWatch.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = VamosWatch.entitlements; sourceTree = "<group>"; };
+		844040978B047663DDBB1213 /* VamosWatchWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VamosWatchWidget.swift; sourceTree = "<group>"; };
 		8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeatureLogicTests.swift; sourceTree = "<group>"; };
 		85EFE2BA27D6463F18CFED81 /* LocationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		88A3732BE5AA792EE093B919 /* VamosWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VamosWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89AB746F5ECA445E9D3E1DEA /* SunsetCover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunsetCover.swift; sourceTree = "<group>"; };
 		8EC533E0219EC8F9A1773714 /* TimeZoneService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TimeZoneService.swift; sourceTree = "<group>"; };
 		9578FF8E0BAF23A94D662608 /* AppleAuth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppleAuth.swift; sourceTree = "<group>"; };
@@ -198,11 +257,13 @@
 		B6717499BB05FED71D3E7044 /* Countdown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		B825DB56D6E1DB92C43C9A90 /* ChecklistView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		B908F493AFD9AA09E1CBBE6D /* SplashScreen.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		BAAF0C49A4AE832AF49C571C /* WatchTripStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchTripStore.swift; sourceTree = "<group>"; };
 		BAB7582C2AD66EB703389C83 /* VamosWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VamosWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25693AA1C51D6E11D17BBD3 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		C6BA3454976B07F02479A5FC /* DestinationPhotoProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationPhotoProvider.swift; sourceTree = "<group>"; };
 		CC0ABAD5A36087780457D4FD /* NewDestinationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewDestinationView.swift; sourceTree = "<group>"; };
 		D14C4AF429675A8200065186 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1B8758F95E8244D05E4DFCF /* WatchHomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchHomeView.swift; sourceTree = "<group>"; };
 		D1BAFB50291D3FBD007194C5 /* vamosPraOndeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vamosPraOndeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BAFB53291D3FBD007194C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1BAFB5C291D3FBF007194C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -230,6 +291,7 @@
 		D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		D1E2735D296CED5B00ED5441 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D7B20DE226C69E153761B90C /* SocialSignInButtons.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SocialSignInButtons.swift; sourceTree = "<group>"; };
+		DCCDA268442C87C81F796EF2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DE43C152F5EA89AB1E3C6AB5 /* Landmarks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Landmarks.swift; sourceTree = "<group>"; };
 		E06674E2EB2E93DBD31F36A3 /* Pods-vamosPraOndeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeAppTests.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeAppTests/Pods-vamosPraOndeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
@@ -239,11 +301,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0A85CE89ACFAE78E366853E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F589489A6ED93A91485CAE7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		157FA2C215201CD9DEA4413B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0E2EC4E68DAE2A88C50B4C6D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		217EAB2C949008C7A0826F09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE66AD9B53582B4F4196186A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +439,25 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		4DA1AFCCCB797859FECD7BE7 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				DCCDA268442C87C81F796EF2 /* Foundation.framework */,
+			);
+			name = watchOS;
+			sourceTree = "<group>";
+		};
+		50AA8DB5094256EACF979DCF /* VamosWatchWidget */ = {
+			isa = PBXGroup;
+			children = (
+				844040978B047663DDBB1213 /* VamosWatchWidget.swift */,
+				32B4982B145D15D7417CACE2 /* Info.plist */,
+				46C28A168F6B339642A8577B /* VamosWatchWidget.entitlements */,
+			);
+			name = VamosWatchWidget;
+			path = VamosWatchWidget;
+			sourceTree = "<group>";
+		};
 		51C69AD44D8F9ED4EC413B19 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +529,7 @@
 				C6BA3454976B07F02479A5FC /* DestinationPhotoProvider.swift */,
 				3FDDF45CD0859471994BB316 /* NearbyPlacesService.swift */,
 				16AF3D62F640E0477C60CE9B /* AnalyticsService.swift */,
+				39DA9A7ABB3F4D9A7443BBEF /* WatchSyncService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -440,6 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */,
+				2BFB9DED3D4B9C7618BE8DB8 /* TripSync.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -451,6 +550,19 @@
 				08A2719934CFBBDAD3740235 /* DestinationCards.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		9A834CEDCFC3028DE2BA66F3 /* VamosWatch */ = {
+			isa = PBXGroup;
+			children = (
+				60CD82A26EC8C6B7ABF2DBB8 /* VamosWatchApp.swift */,
+				BAAF0C49A4AE832AF49C571C /* WatchTripStore.swift */,
+				D1B8758F95E8244D05E4DFCF /* WatchHomeView.swift */,
+				715ECF71C0E0FBAAB0A900BA /* Assets.xcassets */,
+				7F38463015D64C515920548E /* VamosWatch.entitlements */,
+			);
+			name = VamosWatch;
+			path = VamosWatch;
 			sourceTree = "<group>";
 		};
 		9F069D53D60CEB12EE8B1E7C /* App */ = {
@@ -498,6 +610,8 @@
 				F96F868701B46C1EF84ECA3E /* Frameworks */,
 				2D465C378E421E505E0C7725 /* vamosPraOndeAppTests */,
 				362E522823DE84B0A0062B23 /* VamosWidget */,
+				9A834CEDCFC3028DE2BA66F3 /* VamosWatch */,
+				50AA8DB5094256EACF979DCF /* VamosWatchWidget */,
 			);
 			sourceTree = "<group>";
 		};
@@ -507,6 +621,8 @@
 				D1BAFB50291D3FBD007194C5 /* vamosPraOndeApp.app */,
 				9A97553A02970F72370C77A1 /* vamosPraOndeAppTests.xctest */,
 				BAB7582C2AD66EB703389C83 /* VamosWidget.appex */,
+				88A3732BE5AA792EE093B919 /* VamosWatch.app */,
+				2813482A546B9F1B17C6D859 /* VamosWatchWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -596,6 +712,7 @@
 				5F2B4EBA720129FB7A8814AB /* Pods_vamosPraOndeApp.framework */,
 				01B40AA05028869F94E18736 /* iOS */,
 				4839A72F988E52DBEA7FF9C4 /* Pods_vamosPraOndeAppTests.framework */,
+				4DA1AFCCCB797859FECD7BE7 /* watchOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -603,6 +720,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2640A07123CDB9C9E7110EEC /* VamosWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A51A89846C149147C799DD3 /* Build configuration list for PBXNativeTarget "VamosWatch" */;
+			buildPhases = (
+				F35CAEAE290A44AB1DE19340 /* Sources */,
+				0A85CE89ACFAE78E366853E8 /* Frameworks */,
+				D8538575659D4EC80A86590C /* Resources */,
+				44E4F299A303BF8100657D16 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8FA42AAA3107F3EAE069DFEE /* PBXTargetDependency */,
+			);
+			name = VamosWatch;
+			productName = VamosWatch;
+			productReference = 88A3732BE5AA792EE093B919 /* VamosWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		714B31484033E17CEE7A32A9 /* VamosWatchWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15F6F38FF48C837047BE5F52 /* Build configuration list for PBXNativeTarget "VamosWatchWidget" */;
+			buildPhases = (
+				82B7C8FD76F17F627E864FC9 /* Sources */,
+				217EAB2C949008C7A0826F09 /* Frameworks */,
+				B5A1613F4A651A7D2C8F1274 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VamosWatchWidget;
+			productName = VamosWatchWidget;
+			productReference = 2813482A546B9F1B17C6D859 /* VamosWatchWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A196202C8F2A77858F2CB830 /* vamosPraOndeAppTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0D275BE9608C981744BA941 /* Build configuration list for PBXNativeTarget "vamosPraOndeAppTests" */;
@@ -650,11 +803,13 @@
 				6394FCCF8B87F811DE44DE4D /* [CP] Embed Pods Frameworks */,
 				25555CA1B753407D6C0DA724 /* Embed Foundation Extensions */,
 				FFF808DFEF2B00BFC6A20770 /* Crashlytics (upload dSYMs) */,
+				75E6AD91E192B90F96035736 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				8C29507EB854E8E6212F1265 /* PBXTargetDependency */,
+				C00B279C07D83120E1EEF048 /* PBXTargetDependency */,
 			);
 			name = vamosPraOndeApp;
 			productName = vamosPraOndeApp;
@@ -693,6 +848,8 @@
 				D1BAFB4F291D3FBD007194C5 /* vamosPraOndeApp */,
 				A196202C8F2A77858F2CB830 /* vamosPraOndeAppTests */,
 				B0B11B99C6CC5B58EF17CE18 /* VamosWidget */,
+				2640A07123CDB9C9E7110EEC /* VamosWatch */,
+				714B31484033E17CEE7A32A9 /* VamosWatchWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -706,6 +863,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5FD2E3BEE67594D55255AED2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5A1613F4A651A7D2C8F1274 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -743,6 +907,14 @@
 				CF465CE100590B5C38EE9A40 /* Secrets.plist in Resources */,
 				B678C008443E84763E9B7419 /* Localizable.xcstrings in Resources */,
 				350662C408F2ACA87ECD18F8 /* InfoPlist.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8538575659D4EC80A86590C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90AF92C67322FE714A7B3120 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,6 +1015,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		82B7C8FD76F17F627E864FC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D32F6794350E3CE038C21B0 /* VamosWatchWidget.swift in Sources */,
+				BF932E7AAD94E58540D6C537 /* TripSync.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1BAFB4C291D3FBD007194C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -901,6 +1082,19 @@
 				CE7C90ED1EF41DF5C138EB19 /* AddStopView.swift in Sources */,
 				5244C417E48085232E09882F /* StopItineraryView.swift in Sources */,
 				BD01B50EC315EE1E65F186CC /* Landmarks.swift in Sources */,
+				91194DC1E207EF6DAE7D821F /* TripSync.swift in Sources */,
+				B3CB32D65D7E26E6F01591ED /* WatchSyncService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F35CAEAE290A44AB1DE19340 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEBF7B4FB325C118A0D140CB /* VamosWatchApp.swift in Sources */,
+				ECC31204B87DB620734EE173 /* WatchTripStore.swift in Sources */,
+				68052B3F0A108F51A0A4846C /* WatchHomeView.swift in Sources */,
+				E14A29105C15E98CF5C8A612 /* TripSync.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,11 +1119,23 @@
 			target = B0B11B99C6CC5B58EF17CE18 /* VamosWidget */;
 			targetProxy = 03B9C59B033DE3C210008435 /* PBXContainerItemProxy */;
 		};
+		8FA42AAA3107F3EAE069DFEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VamosWatchWidget;
+			target = 714B31484033E17CEE7A32A9 /* VamosWatchWidget */;
+			targetProxy = 4DC8F04843D8D11B4D28626C /* PBXContainerItemProxy */;
+		};
 		A6F1E61A97A2A220FA2A104B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = vamosPraOndeApp;
 			target = D1BAFB4F291D3FBD007194C5 /* vamosPraOndeApp */;
 			targetProxy = 3494EA2C8681FFF24FD68CAD /* PBXContainerItemProxy */;
+		};
+		C00B279C07D83120E1EEF048 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VamosWatch;
+			target = 2640A07123CDB9C9E7110EEC /* VamosWatch */;
+			targetProxy = E37C4807886DEBE9AE3A2D22 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1034,6 +1240,34 @@
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vamosPraOndeApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/vamosPraOndeApp";
+			};
+			name = Debug;
+		};
+		AADE5C402A162EF01BBFFDA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				CODE_SIGN_ENTITLEMENTS = VamosWatch/VamosWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Vamos pra Onde?";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = ronaldoribeiro.vamosPraOndeApp;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = ronaldoribeiro.vamosPraOndeApp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -1215,14 +1449,110 @@
 			};
 			name = Release;
 		};
+		D25D013B20DC973CDDED9DB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = VamosWatchWidget/VamosWatchWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VamosWatchWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = ronaldoribeiro.vamosPraOndeApp.watchkitapp.VamosWatchWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		D68CA9544F50D823F1A1A491 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = VamosWatchWidget/VamosWatchWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VamosWatchWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = ronaldoribeiro.vamosPraOndeApp.watchkitapp.VamosWatchWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		EDC4BAA7F9A03630095BDE4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				CODE_SIGN_ENTITLEMENTS = VamosWatch/VamosWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Vamos pra Onde?";
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = ronaldoribeiro.vamosPraOndeApp;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = ronaldoribeiro.vamosPraOndeApp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		15F6F38FF48C837047BE5F52 /* Build configuration list for PBXNativeTarget "VamosWatchWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D25D013B20DC973CDDED9DB0 /* Release */,
+				D68CA9544F50D823F1A1A491 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		329AF6FC0E217C59F7B7BF41 /* Build configuration list for PBXNativeTarget "VamosWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B363475DE3AB447FDC09F24 /* Release */,
 				31DD634BEF1422FC351A5740 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A51A89846C149147C799DD3 /* Build configuration list for PBXNativeTarget "VamosWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC4BAA7F9A03630095BDE4A /* Release */,
+				AADE5C402A162EF01BBFFDA6 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

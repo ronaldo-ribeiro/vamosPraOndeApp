@@ -48,10 +48,11 @@ jobs:
       - name: Build e testes
         run: |
           cd vamosPraOndeApp
+          # Sem -sdk: o scheme agora inclui o app do Watch (watchOS), e o
+          # flag forçaria o SDK errado nos targets do relógio.
           xcodebuild \
             -workspace vamosPraOndeApp.xcworkspace \
             -scheme vamosPraOndeApp \
-            -sdk iphonesimulator \
             -destination "platform=iOS Simulator,name=${{ steps.sim.outputs.device }}" \
             CODE_SIGNING_ALLOWED=NO \
             test
