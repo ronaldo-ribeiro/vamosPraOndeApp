@@ -71,6 +71,31 @@ struct CoverPalette {
                      celestial: 0xFFF0CC, haze: 0x6FB3A2,
                      ridges: [0x15564C, 0x0F433B, 0x09302A]),
     ]
+
+    /// Variantes noturnas das MESMAS 5 paletas — mesma cena e identidade,
+    /// valores escuros. Usadas quando o app está no tema escuro.
+    static let allDark: [CoverPalette] = [
+        // Pôr do sol → anoitecer quente.
+        CoverPalette(sky: [0x8A4A2E, 0x5E2E1E, 0x3A1B14, 0x1F0F0B],
+                     celestial: 0xE8D6A0, haze: 0x6E3324,
+                     ridges: [0x471F16, 0x301410, 0x1D0C08]),
+        // Alvorada → madrugada rosada.
+        CoverPalette(sky: [0x9A5A40, 0x6E3A2A, 0x47241C, 0x2A1511],
+                     celestial: 0xF0DCC0, haze: 0x7E4630,
+                     ridges: [0x4A2418, 0x331812, 0x200E0A]),
+        // Crepúsculo teal → teal noturno.
+        CoverPalette(sky: [0x1C4A44, 0x16403C, 0x2E4438, 0x3A2E22],
+                     celestial: 0xE8D6A0, haze: 0x2E4E48,
+                     ridges: [0x12332E, 0x0C2420, 0x071812]),
+        // Noite → noite profunda.
+        CoverPalette(sky: [0x0A2026, 0x12333A, 0x22362E, 0x32281E],
+                     celestial: 0xE8D6A0, haze: 0x1D3A36,
+                     ridges: [0x0E211D, 0x081613, 0x040D0B]),
+        // Tropical → praia ao luar.
+        CoverPalette(sky: [0x8A6A3E, 0x6E4E2E, 0x2E5E52, 0x12463C],
+                     celestial: 0xF0E0B0, haze: 0x3E7264,
+                     ridges: [0x0E3B33, 0x092C26, 0x051D19]),
+    ]
 }
 
 /// Arquétipos de cena (a "arte gráfica" propriamente dita).
@@ -105,16 +130,22 @@ private struct CoverRecipe {
     let celestialR: CGFloat   // raio relativo a min(w,h)
     let layers: [[CGFloat]]   // parâmetros por camada de silhueta
 
-    init(seed: String, forcedStyle: CoverStyle?) {
+    init(seed: String, forcedStyle: CoverStyle?, dark: Bool = false, hasLandmark: Bool = false) {
         var rng = SeededGenerator(seed: seed)
         let rawIndex = forcedStyle?.palette ?? Int.random(in: CoverPalette.all.indices, using: &rng)
         let paletteIndex = min(max(rawIndex, 0), CoverPalette.all.count - 1)
-        palette = CoverPalette.all[paletteIndex]
+        // Tema escuro usa a variante noturna da MESMA paleta (mesma cena).
+        palette = (dark ? CoverPalette.allDark : CoverPalette.all)[paletteIndex]
         scene = forcedStyle?.scene ?? CoverScene.allCases.randomElement(using: &rng)!
 
         celestialX = CGFloat.random(in: 0.15...0.85, using: &rng)
         celestialY = CGFloat.random(in: 0.20...0.42, using: &rng)
         celestialR = CGFloat.random(in: 0.10...0.17, using: &rng)
+
+        // Com marco icônico, a paisagem baixa (horizonte mais raso) para a
+        // silhueta do marco se destacar contra o céu.
+        let drop: CGFloat = hasLandmark ? 0.30 : 0
+        let squash: CGFloat = hasLandmark ? 0.45 : 1
 
         let layerCount = 3
         var built: [[CGFloat]] = []
@@ -123,23 +154,23 @@ private struct CoverRecipe {
             case .mountains:
                 // Uma lista de alturas de pico por camada.
                 let count = Int.random(in: 5...8, using: &rng)
-                let base: CGFloat = 0.30 + CGFloat(i) * 0.16
+                let base: CGFloat = 0.30 + drop + CGFloat(i) * 0.16
                 built.append((0..<count).map { _ in
-                    min(0.95, base + CGFloat.random(in: -0.12...0.14, using: &rng))
+                    min(0.95, base + CGFloat.random(in: -0.12...0.14, using: &rng) * squash)
                 })
             case .dunes, .sea:
                 // [baseline, amplitude, frequência, fase]
-                let baseline: CGFloat = (scene == .sea ? 0.52 : 0.44) + CGFloat(i) * 0.15
-                let amp: CGFloat = (scene == .sea ? 0.05 : 0.07) + CGFloat.random(in: 0...0.04, using: &rng)
+                let baseline: CGFloat = (scene == .sea ? 0.52 : 0.44) + drop * 0.7 + CGFloat(i) * 0.15
+                let amp: CGFloat = ((scene == .sea ? 0.05 : 0.07) + CGFloat.random(in: 0...0.04, using: &rng)) * squash
                 let freq: CGFloat = (scene == .sea ? 2.4 : 1.1) + CGFloat.random(in: 0...1.2, using: &rng)
                 let phase = CGFloat.random(in: 0...1, using: &rng)
-                built.append([baseline, amp, freq, phase])
+                built.append([min(0.92, baseline), amp, freq, phase])
             case .skyline:
                 // [baseline] + alturas dos prédios.
-                let baseline: CGFloat = 0.55 + CGFloat(i) * 0.14
+                let baseline: CGFloat = min(0.92, 0.55 + drop * 0.8 + CGFloat(i) * 0.14)
                 let count = Int.random(in: 7...12, using: &rng)
                 var heights = [baseline]
-                heights += (0..<count).map { _ in CGFloat.random(in: 0.10...0.42, using: &rng) }
+                heights += (0..<count).map { _ in CGFloat.random(in: 0.10...0.42, using: &rng) * squash }
                 built.append(heights)
             }
         }
@@ -225,9 +256,17 @@ struct ProceduralCover: View {
     var seed: String = "vamos-pra-onde"
     /// Estilo fixo (do banco de imagens). Quando `nil`, deriva tudo da seed.
     var style: CoverStyle? = nil
+    /// Nome da cidade — usado para desenhar o marco icônico quando houver
+    /// (Torre Eiffel em Paris, Cristo + Pão de Açúcar no Rio…).
+    var city: String? = nil
+
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        let recipe = CoverRecipe(seed: seed, forcedStyle: style)
+        let landmark = city.flatMap(CityLandmark.match)
+        let recipe = CoverRecipe(seed: seed, forcedStyle: style,
+                                 dark: colorScheme == .dark,
+                                 hasLandmark: landmark != nil)
         let sky = recipe.palette.sky.map { Color(hex: $0) }
 
         GeometryReader { geo in
@@ -268,6 +307,18 @@ struct ProceduralCover: View {
                         .fill(Color(hex: recipe.palette.ridges[min(index, recipe.palette.ridges.count - 1)])
                             .opacity(index == 0 ? 0.55 : 1))
                 }
+
+                // Marco icônico da cidade (quando reconhecida), na cor da
+                // silhueta da frente — como se fizesse parte da paisagem.
+                if let landmark {
+                    let front = Color(hex: recipe.palette.ridges.last ?? 0x000000)
+                    let h = size.height * landmark.heightFactor
+                    let w = h * landmark.aspect
+                    LandmarkShape(landmark: landmark)
+                        .fill(front, style: FillStyle(eoFill: landmark.usesEvenOdd))
+                        .frame(width: w, height: h)
+                        .position(x: size.width * landmark.anchorX, y: size.height - h / 2)
+                }
             }
         }
         .clipped()
@@ -293,8 +344,11 @@ extension Destination {
     var coverSeed: String { id ?? title }
 
     /// Capa procedural do destino: usa o estilo escolhido pelo usuário
-    /// (banco de imagens) ou, quando `nil`, deriva um estilo da seed.
-    var cover: ProceduralCover { ProceduralCover(seed: coverSeed, style: coverStyle) }
+    /// (banco de imagens) ou, quando `nil`, deriva um estilo da seed. A
+    /// cidade entra para desenhar o marco icônico quando reconhecida.
+    var cover: ProceduralCover {
+        ProceduralCover(seed: coverSeed, style: coverStyle, city: cityName)
+    }
 }
 
 #Preview {

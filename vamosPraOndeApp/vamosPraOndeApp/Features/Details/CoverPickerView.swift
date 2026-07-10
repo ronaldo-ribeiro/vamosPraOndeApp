@@ -57,7 +57,7 @@ struct CoverPickerView: View {
         Button {
             apply(style)
         } label: {
-            ProceduralCover(seed: destination.coverSeed, style: style)
+            ProceduralCover(seed: destination.coverSeed, style: style, city: destination.cityName)
                 .frame(height: 96)
                 .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
                 .overlay(alignment: .bottomLeading) {

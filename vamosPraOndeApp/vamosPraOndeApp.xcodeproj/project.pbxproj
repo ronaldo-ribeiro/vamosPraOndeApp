@@ -56,6 +56,7 @@
 		B7D7480FD5B256D9538F70FC /* DestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BCC5913B450ADADCE7182 /* DestinationTests.swift */; };
 		B8DA8DE1FBF5364952207FAF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72593CC4AC6BB5144E159D9C /* AppFont.swift */; };
 		BBF64161BFB51E05B3E84A58 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36ED71B036CE1129056B2F /* AppColor.swift */; };
+		BD01B50EC315EE1E65F186CC /* Landmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE43C152F5EA89AB1E3C6AB5 /* Landmarks.swift */; };
 		C160B823E318F6C16D0C1417 /* NearbyPlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDDF45CD0859471994BB316 /* NearbyPlacesService.swift */; };
 		C456D31880156C513A61EAC5 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B908F493AFD9AA09E1CBBE6D /* SplashScreen.swift */; };
 		CBBE7460309BFA630AF41684 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 97AA1D491AE12D7FE50A5037 /* PrivacyInfo.xcprivacy */; };
@@ -227,6 +228,7 @@
 		D1BAFB80291D48A0007194C5 /* Urbanist-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		D1E2735D296CED5B00ED5441 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D7B20DE226C69E153761B90C /* SocialSignInButtons.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SocialSignInButtons.swift; sourceTree = "<group>"; };
+		DE43C152F5EA89AB1E3C6AB5 /* Landmarks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Landmarks.swift; sourceTree = "<group>"; };
 		E06674E2EB2E93DBD31F36A3 /* Pods-vamosPraOndeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeAppTests.debug.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeAppTests/Pods-vamosPraOndeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E54FCA19A3E6E3EA50B97F36 /* Spacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		EFBA7634B6CFB8C290C2952B /* WeatherProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				715796514FBEA826675FB981 /* ErrorBanner.swift */,
 				53EA303ED50DFD784E0DA6FD /* Appear.swift */,
 				6A97CB002593454ABC157BBA /* ProceduralCover.swift */,
+				DE43C152F5EA89AB1E3C6AB5 /* Landmarks.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 				4DE9AA568E50EF651BECE632 /* TripStop.swift in Sources */,
 				CE7C90ED1EF41DF5C138EB19 /* AddStopView.swift in Sources */,
 				5244C417E48085232E09882F /* StopItineraryView.swift in Sources */,
+				BD01B50EC315EE1E65F186CC /* Landmarks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
