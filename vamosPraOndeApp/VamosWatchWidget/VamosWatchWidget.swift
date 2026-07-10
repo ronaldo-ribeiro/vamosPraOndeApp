@@ -100,7 +100,11 @@ struct VamosWatchWidgetView: View {
             .font(.system(size: 20, weight: .semibold))
             .widgetLabel {
                 if let days = entry.days, let trip = entry.trip {
-                    Text("\(trip.cityName) · \(max(days, 0)) \(days == 1 ? "dia" : "dias")")
+                    if days == 1 {
+                        Text("\(trip.cityName) · 1 dia")
+                    } else {
+                        Text("\(trip.cityName) · \(max(days, 0)) dias")
+                    }
                 } else {
                     Text("Vamos pra onde?")
                 }
@@ -111,7 +115,11 @@ struct VamosWatchWidgetView: View {
     private var inline: some View {
         Group {
             if let days = entry.days, let trip = entry.trip {
-                Text("✈️ \(trip.cityName) · \(max(days, 0)) \(days == 1 ? "dia" : "dias")")
+                if days == 1 {
+                    Text("✈️ \(trip.cityName) · 1 dia")
+                } else {
+                    Text("✈️ \(trip.cityName) · \(max(days, 0)) dias")
+                }
             } else {
                 Text("✈️ Vamos pra onde?")
             }
@@ -126,8 +134,14 @@ struct VamosWatchWidgetView: View {
                     .font(.system(size: 15, weight: .bold, design: .rounded))
                     .lineLimit(1)
                     .widgetAccentable()
-                Text(days == 1 ? "falta 1 dia" : "faltam \(max(days, 0)) dias")
-                    .font(.system(size: 13, weight: .semibold))
+                Group {
+                    if days == 1 {
+                        Text("falta 1 dia")
+                    } else {
+                        Text("faltam \(max(days, 0)) dias")
+                    }
+                }
+                .font(.system(size: 13, weight: .semibold))
                 Text(date.formatted(.dateTime.day().month(.abbreviated)))
                     .font(.system(size: 12))
                     .foregroundStyle(.secondary)

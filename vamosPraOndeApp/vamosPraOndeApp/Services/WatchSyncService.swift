@@ -53,6 +53,7 @@ final class WatchSyncService: NSObject, WCSessionDelegate {
                     date: d.date,
                     endDate: d.endDate,
                     seed: d.coverSeed,
+                    coverStyle: d.coverStyle,
                     timeZoneID: d.id.flatMap { timeZoneCache[$0] },
                     checklist: d.checklist
                 )

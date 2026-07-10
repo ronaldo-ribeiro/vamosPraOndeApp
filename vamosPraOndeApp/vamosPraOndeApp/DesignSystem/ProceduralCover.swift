@@ -340,17 +340,19 @@ struct ProceduralCover: View {
     }
 }
 
-// MARK: - Capa por destino
+// MARK: - Cor por hex
+// (Vive aqui, e não no AppColor, porque este arquivo também compila no
+// Apple Watch — o AppColor usa UIColor dinâmico, indisponível no watchOS.)
 
-extension Destination {
-    /// Seed estável da capa: usa o id do Firestore quando existe, senão o nome.
-    var coverSeed: String { id ?? title }
-
-    /// Capa procedural do destino: usa o estilo escolhido pelo usuário
-    /// (banco de imagens) ou, quando `nil`, deriva um estilo da seed. A
-    /// cidade entra para desenhar o marco icônico quando reconhecida.
-    var cover: ProceduralCover {
-        ProceduralCover(seed: coverSeed, style: coverStyle, city: cityName)
+extension Color {
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xFF) / 255,
+            green: Double((hex >> 8) & 0xFF) / 255,
+            blue: Double(hex & 0xFF) / 255,
+            opacity: alpha
+        )
     }
 }
 
@@ -368,5 +370,5 @@ extension Destination {
         }
         .padding()
     }
-    .background(Color.vpoSand)
+    .background(Color(hex: 0xF3E9DB))
 }

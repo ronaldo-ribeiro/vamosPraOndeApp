@@ -2,8 +2,8 @@
 //  WatchTripDetailView.swift
 //  VamosWatch
 //
-//  Detalhes de uma viagem no pulso: countdown, datas, hora local do
-//  destino e checklist de mala marcável.
+//  Detalhes de uma viagem no pulso: countdown sobre a capa procedural,
+//  datas, hora local do destino e checklist de mala marcável.
 //
 
 import SwiftUI
@@ -20,7 +20,7 @@ struct WatchTripDetailView: View {
                 content(trip)
             } else {
                 Text("Essa viagem não está mais aqui.")
-                    .font(.system(size: 13))
+                    .font(WatchFont.medium(13))
                     .foregroundStyle(.secondary)
             }
         }
@@ -46,26 +46,35 @@ struct WatchTripDetailView: View {
         return VStack(alignment: .leading, spacing: 2) {
             HStack(alignment: .firstTextBaseline, spacing: 3) {
                 Text("\(max(days, 0))")
-                    .font(.system(size: 34, weight: .heavy, design: .rounded))
+                    .font(WatchFont.display(34))
                     .foregroundStyle(WatchTheme.cream)
                 Text(days == 1 ? "dia" : "dias")
-                    .font(.system(size: 14, weight: .semibold, design: .rounded))
-                    .foregroundStyle(WatchTheme.cream.opacity(0.85))
+                    .font(WatchFont.semibold(14))
+                    .foregroundStyle(WatchTheme.cream.opacity(0.9))
             }
             if let date = trip.date {
                 Text(WatchCountdown.shortDate(date))
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundStyle(WatchTheme.cream.opacity(0.85))
+                    .font(WatchFont.medium(12))
+                    .foregroundStyle(WatchTheme.cream.opacity(0.9))
             }
             if let endDate = trip.endDate {
                 Text("volta em \(WatchCountdown.shortDate(endDate))")
-                    .font(.system(size: 11))
-                    .foregroundStyle(WatchTheme.cream.opacity(0.7))
+                    .font(WatchFont.medium(11))
+                    .foregroundStyle(WatchTheme.cream.opacity(0.75))
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
-        .background(WatchTheme.sunset, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .background {
+            ProceduralCover(seed: trip.seed, style: trip.coverStyle, city: trip.cityName)
+                .overlay {
+                    LinearGradient(
+                        colors: [.black.opacity(0.3), .clear],
+                        startPoint: .bottom, endPoint: .top
+                    )
+                }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 
     /// Hora local do destino, viva (atualiza a cada minuto).
@@ -77,9 +86,9 @@ struct WatchTripDetailView: View {
                     .foregroundStyle(WatchTheme.teal)
                 VStack(alignment: .leading, spacing: 0) {
                     Text(localTime(context.date, in: zone))
-                        .font(.system(size: 17, weight: .bold, design: .rounded))
+                        .font(WatchFont.bold(17))
                     Text(differencePhrase(zone, at: context.date))
-                        .font(.system(size: 11))
+                        .font(WatchFont.medium(11))
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
@@ -88,20 +97,20 @@ struct WatchTripDetailView: View {
             .padding(.vertical, 8)
             .background(.fill.tertiary, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
-        .accessibilityLabel("Hora local em \(trip.cityName)")
+        .accessibilityLabel(Text("Hora local em \(trip.cityName)"))
     }
 
     private func checklistSection(_ trip: TripSync, checklist: [ChecklistItem]) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text("mala")
-                    .font(.system(size: 11, weight: .semibold))
+                    .font(WatchFont.semibold(10))
                     .textCase(.uppercase)
                     .kerning(1)
                     .foregroundStyle(WatchTheme.sky)
                 Spacer()
                 Text("\(checklist.doneCount)/\(checklist.count)")
-                    .font(.system(size: 11, weight: .semibold))
+                    .font(WatchFont.semibold(11))
                     .foregroundStyle(.secondary)
             }
             .padding(.horizontal, 2)
@@ -114,7 +123,7 @@ struct WatchTripDetailView: View {
                             .font(.system(size: 18))
                             .foregroundStyle(item.isDone ? WatchTheme.teal : .secondary)
                         Text(item.title)
-                            .font(.system(size: 14, weight: .medium))
+                            .font(WatchFont.medium(14))
                             .strikethrough(item.isDone, color: .secondary)
                             .foregroundStyle(item.isDone ? .secondary : .primary)
                             .lineLimit(2)
@@ -134,8 +143,6 @@ struct WatchTripDetailView: View {
     // MARK: - Fuso
 
     private func localTime(_ date: Date, in zone: TimeZone) -> String {
-        var calendar = Calendar.current
-        calendar.timeZone = zone
         let formatter = DateFormatter()
         formatter.timeZone = zone
         formatter.timeStyle = .short
@@ -143,14 +150,16 @@ struct WatchTripDetailView: View {
         return formatter.string(from: date)
     }
 
-    /// "mesmo horário", "4h à frente", "3h atrás" (versão compacta do app).
+    /// "mesmo horário", "4h à frente", "3h atrás" (mesmas chaves do app).
     private func differencePhrase(_ zone: TimeZone, at date: Date) -> String {
         let hours = Double(zone.secondsFromGMT(for: date) - TimeZone.current.secondsFromGMT(for: date)) / 3600
-        if hours == 0 { return "mesmo horário que o seu" }
+        if hours == 0 { return String(localized: "mesmo horário que o seu") }
         let absHours = abs(hours)
         let formatted = absHours == absHours.rounded()
             ? "\(Int(absHours))h"
             : String(format: "%.1fh", absHours).replacingOccurrences(of: ".", with: ",")
-        return hours > 0 ? "\(formatted) à frente" : "\(formatted) atrás"
+        return hours > 0
+            ? String(localized: "\(formatted) à frente")
+            : String(localized: "\(formatted) atrás")
     }
 }

@@ -42,6 +42,38 @@
         }
       }
     },
+    "%@ · %lld dias": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld days"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld dias"
+          }
+        }
+      }
+    },
+    "%@ · 1 dia": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 1 day"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 1 dia"
+          }
+        }
+      }
+    },
     "%@ à frente": {
       "localizations": {
         "en": {
@@ -340,6 +372,38 @@
         }
       }
     },
+    "Adicione uma viagem no iPhone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add a trip on your iPhone"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicione uma viagem no iPhone"
+          }
+        }
+      }
+    },
+    "Adicione uma viagem no iPhone e ela aparece aqui.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add a trip on your iPhone and it shows up here."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicione uma viagem no iPhone e ela aparece aqui."
+          }
+        }
+      }
+    },
     "Ainda não sei a data": {
       "localizations": {
         "en": {
@@ -464,6 +528,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Avançar"
+          }
+        }
+      }
+    },
+    "Buscando as suas viagens…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fetching your trips…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscando as suas viagens…"
           }
         }
       }
@@ -1118,6 +1198,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Esqueceu a senha?"
+          }
+        }
+      }
+    },
+    "Essa viagem não está mais aqui.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This trip is no longer here."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Essa viagem não está mais aqui."
           }
         }
       }
@@ -2231,6 +2327,22 @@
         }
       }
     },
+    "Próxima viagem": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next trip"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próxima viagem"
+          }
+        }
+      }
+    },
     "Próximas": {
       "localizations": {
         "en": {
@@ -2275,6 +2387,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pular apresentação"
+          }
+        }
+      }
+    },
+    "Quantos dias faltam para o embarque.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How many days until you depart."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quantos dias faltam para o embarque."
           }
         }
       }
@@ -3077,6 +3205,22 @@
         }
       }
     },
+    "falta 1 dia": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 day to go"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "falta 1 dia"
+          }
+        }
+      }
+    },
     "faltam": {
       "localizations": {
         "en": {
@@ -3169,6 +3313,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "lembranças"
+          }
+        }
+      }
+    },
+    "mala": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "packing"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mala"
           }
         }
       }
@@ -3581,6 +3741,22 @@
         }
       }
     },
+    "volta em %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "back on %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "volta em %@"
+          }
+        }
+      }
+    },
     "volta em %@ · %lld dias de viagem": {
       "localizations": {
         "en": {
@@ -3661,6 +3837,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "é hoje! 🎉"
+          }
+        }
+      }
+    },
+    "✈️ %@ · %lld dias": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✈️ %@ · %lld days"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✈️ %@ · %lld dias"
+          }
+        }
+      }
+    },
+    "✈️ %@ · 1 dia": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✈️ %@ · 1 day"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✈️ %@ · 1 dia"
+          }
+        }
+      }
+    },
+    "✈️ Vamos pra onde?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✈️ Where to?"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✈️ Vamos pra onde?"
           }
         }
       }

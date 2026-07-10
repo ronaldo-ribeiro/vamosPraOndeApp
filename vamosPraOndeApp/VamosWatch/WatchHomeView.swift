@@ -2,24 +2,26 @@
 //  WatchHomeView.swift
 //  VamosWatch
 //
-//  Tela única da Fase 1: a próxima viagem em destaque (countdown grande,
-//  tema pôr do sol) + as demais futuras na sequência.
+//  A próxima viagem em destaque (countdown sobre a capa procedural do
+//  destino) + as demais futuras na sequência. Tocar abre os detalhes.
 //
 
 import SwiftUI
 
-/// Paleta Wanderlust local do relógio (sem depender do Design System iOS).
-enum WatchTheme {
-    static let sky = Color(red: 0.95, green: 0.61, blue: 0.36)     // laranja pôr do sol
-    static let skyDeep = Color(red: 0.72, green: 0.32, blue: 0.22) // terracota profunda
-    static let ink = Color(red: 0.16, green: 0.10, blue: 0.08)     // tinta quente
-    static let cream = Color(red: 0.99, green: 0.95, blue: 0.89)   // papel/areia
-    static let teal = Color(red: 0.22, green: 0.42, blue: 0.43)    // teal-horizonte
+/// Tipografia Urbanist no pulso (mesma identidade editorial do app).
+enum WatchFont {
+    static func display(_ size: CGFloat) -> Font { .custom("Urbanist-BlackItalic", size: size) }
+    static func bold(_ size: CGFloat) -> Font { .custom("Urbanist-Bold", size: size) }
+    static func semibold(_ size: CGFloat) -> Font { .custom("Urbanist-SemiBold", size: size) }
+    static func medium(_ size: CGFloat) -> Font { .custom("Urbanist-Medium", size: size) }
+}
 
-    static var sunset: LinearGradient {
-        LinearGradient(colors: [sky, skyDeep],
-                       startPoint: .top, endPoint: .bottom)
-    }
+/// Cores fixas do relógio (o watch é sempre escuro; sem Design System iOS).
+enum WatchTheme {
+    static let sky = Color(hex: 0xE8935A)      // laranja pôr do sol
+    static let ink = Color(hex: 0x2A2622)      // tinta quente
+    static let cream = Color(hex: 0xFBF6EE)    // papel/areia
+    static let teal = Color(hex: 0x4FA093)     // teal-horizonte (tom escuro)
 }
 
 struct WatchHomeView: View {
@@ -58,56 +60,66 @@ struct WatchHomeView: View {
         }
     }
 
-    /// Destaque da próxima viagem: cidade + dias + data, sobre o pôr do sol.
+    /// Destaque da próxima viagem: countdown sobre a capa procedural
+    /// (a mesma arte do iPhone — marcos inclusive).
     private func heroCard(_ trip: TripSync) -> some View {
         let days = trip.date.map { WatchCountdown.days(to: $0) } ?? 0
         return VStack(alignment: .leading, spacing: 2) {
             Text("próxima viagem")
-                .font(.system(size: 11, weight: .semibold))
+                .font(WatchFont.semibold(10))
                 .textCase(.uppercase)
                 .kerning(1)
-                .foregroundStyle(WatchTheme.cream.opacity(0.8))
+                .foregroundStyle(WatchTheme.cream.opacity(0.85))
             Text(trip.cityName)
-                .font(.system(size: 20, weight: .bold, design: .rounded))
+                .font(WatchFont.display(20))
                 .foregroundStyle(WatchTheme.cream)
                 .lineLimit(2)
                 .minimumScaleFactor(0.7)
+            Spacer(minLength: 12)
             HStack(alignment: .firstTextBaseline, spacing: 3) {
                 Text("\(max(days, 0))")
-                    .font(.system(size: 40, weight: .heavy, design: .rounded))
+                    .font(WatchFont.display(38))
                     .foregroundStyle(WatchTheme.cream)
                 Text(days == 1 ? "dia" : "dias")
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
-                    .foregroundStyle(WatchTheme.cream.opacity(0.85))
-            }
-            if let date = trip.date {
-                Text(WatchCountdown.shortDate(date))
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundStyle(WatchTheme.cream.opacity(0.8))
+                    .font(WatchFont.semibold(14))
+                    .foregroundStyle(WatchTheme.cream.opacity(0.9))
+                Spacer()
+                if let date = trip.date {
+                    Text(WatchCountdown.shortDate(date))
+                        .font(WatchFont.medium(11))
+                        .foregroundStyle(WatchTheme.cream.opacity(0.85))
+                }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(12)
-        .background(WatchTheme.sunset, in: RoundedRectangleShape())
-        .overlay(alignment: .topTrailing) {
-            Circle()
-                .fill(WatchTheme.cream.opacity(0.9))
-                .frame(width: 18, height: 18)
-                .padding(10)
+        .background {
+            ProceduralCover(seed: trip.seed, style: trip.coverStyle, city: trip.cityName)
+                .overlay {
+                    // Scrim para o texto respirar sobre a arte.
+                    LinearGradient(
+                        colors: [.black.opacity(0.25), .clear, .black.opacity(0.35)],
+                        startPoint: .top, endPoint: .bottom
+                    )
+                }
         }
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .accessibilityElement(children: .combine)
     }
 
     private func upcomingRow(_ trip: TripSync) -> some View {
         let days = trip.date.map { WatchCountdown.days(to: $0) } ?? 0
-        return HStack {
+        return HStack(spacing: 8) {
+            ProceduralCover(seed: trip.seed, style: trip.coverStyle, city: trip.cityName)
+                .frame(width: 34, height: 34)
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             VStack(alignment: .leading, spacing: 0) {
                 Text(trip.cityName)
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .font(WatchFont.semibold(15))
                     .lineLimit(1)
                 if !trip.subtitle.isEmpty {
                     Text(trip.subtitle)
-                        .font(.system(size: 12))
+                        .font(WatchFont.medium(11))
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                 }
@@ -115,16 +127,16 @@ struct WatchHomeView: View {
             Spacer()
             VStack(alignment: .trailing, spacing: 0) {
                 Text("\(days)")
-                    .font(.system(size: 17, weight: .bold, design: .rounded))
+                    .font(WatchFont.bold(17))
                     .foregroundStyle(WatchTheme.sky)
                 Text(days == 1 ? "dia" : "dias")
-                    .font(.system(size: 10, weight: .medium))
+                    .font(WatchFont.medium(10))
                     .foregroundStyle(.secondary)
             }
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 8)
-        .background(.fill.tertiary, in: RoundedRectangleShape())
+        .padding(.horizontal, 10)
+        .padding(.vertical, 7)
+        .background(.fill.tertiary, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
         .accessibilityElement(children: .combine)
     }
 
@@ -134,20 +146,13 @@ struct WatchHomeView: View {
                 .font(.system(size: 28))
                 .foregroundStyle(WatchTheme.sky)
             Text(store.isReady
-                 ? "Adicione uma viagem no iPhone e ela aparece aqui."
-                 : "Buscando as suas viagens…")
-                .font(.system(size: 13))
+                 ? String(localized: "Adicione uma viagem no iPhone e ela aparece aqui.")
+                 : String(localized: "Buscando as suas viagens…"))
+                .font(WatchFont.medium(13))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
         }
         .padding()
-    }
-}
-
-/// Cantos contínuos padrão dos cards do relógio.
-private struct RoundedRectangleShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        RoundedRectangle(cornerRadius: 12, style: .continuous).path(in: rect)
     }
 }
 

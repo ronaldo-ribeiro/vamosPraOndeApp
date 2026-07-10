@@ -16,8 +16,10 @@ struct TripSync: Codable, Identifiable, Hashable {
     var subtitle: String
     var date: Date?
     var endDate: Date?
-    /// Semente da capa procedural (mesma arte no relógio, se quisermos).
+    /// Semente da capa procedural (mesma arte no relógio).
     var seed: String
+    /// Estilo de capa escolhido no banco de imagens (nil = derivado da seed).
+    var coverStyle: CoverStyle? = nil
     /// Fuso do destino (o iPhone resolve por geocodificação e manda pronto).
     var timeZoneID: String? = nil
     /// Checklist de mala — marcável no pulso.

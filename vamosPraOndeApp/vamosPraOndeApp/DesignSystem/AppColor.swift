@@ -31,17 +31,9 @@ extension Color {
 
     /// Sempre claro: texto/ícone sobre superfícies coloridas
     /// (terracota, teal, capa pôr do sol) — não muda no dark mode.
+    /// (O `Color(hex:)` vive no ProceduralCover.swift, que também
+    /// compila no Watch.)
     static let vpoOnColor = Color(hex: 0xFBF6EE)
-
-    init(hex: UInt, alpha: Double = 1) {
-        self.init(
-            .sRGB,
-            red: Double((hex >> 16) & 0xFF) / 255,
-            green: Double((hex >> 8) & 0xFF) / 255,
-            blue: Double(hex & 0xFF) / 255,
-            opacity: alpha
-        )
-    }
 }
 
 extension UIColor {
