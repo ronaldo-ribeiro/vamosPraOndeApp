@@ -214,18 +214,19 @@ struct NewDestinationView: View {
                 .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
 
                 if hasReturn {
+                    // Calendário embutido (.graphical), como o da ida: o estilo
+                    // compacto abre um popover que sobrepunha o calendário acima.
                     DatePicker(
                         "Data da volta",
                         selection: $returnDate,
                         in: date...,
                         displayedComponents: .date
                     )
-                    .font(AppFont.medium(15))
-                    .foregroundStyle(Color.vpoInk)
+                    .datePickerStyle(.graphical)
                     .tint(.vpoTerracotta)
-                    .padding(Spacing.md)
+                    .padding(Spacing.sm)
                     .background(Color.vpoCream)
-                    .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
                 }
             }
         }

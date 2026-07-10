@@ -30,6 +30,9 @@ struct DestinationDetailView: View {
     @State private var nearbyLoading = false
     /// "Por perto": mostra 6 e expande sob demanda (a tela fica mais curta).
     @State private var nearbyExpanded = false
+    @State private var showingNearbyMap = false
+    @State private var selectedNearby: UUID?
+    @State private var newVisitedPlace = ""
     @State private var shareImage: UIImage?
 
     init(destination: Destination, repository: DestinationsRepository) {
@@ -43,6 +46,10 @@ struct DestinationDetailView: View {
     }
 
     private var countdown: Countdown? { destination.date.map { Countdown(to: $0) } }
+
+    /// Viagem já aconteceu (lembrança): sem sugestões de "Por perto";
+    /// no lugar, a pessoa registra os lugares que visitou.
+    private var isPast: Bool { destination.category() == .past }
 
     /// Cards abaixo da contagem (checklist, notas, clima, fuso, por perto, excluir).
     @ViewBuilder
@@ -63,7 +70,11 @@ struct DestinationDetailView: View {
         if !destination.isMultiStop {
             tripStopsCard
         }
-        nearbyCard
+        if isPast {
+            visitedPlacesCard
+        } else {
+            nearbyCard
+        }
     }
 
     var body: some View {
@@ -106,6 +117,9 @@ struct DestinationDetailView: View {
         }
         .sheet(isPresented: $showingAddStop) {
             AddStopView { stop in addStop(stop) }
+        }
+        .sheet(isPresented: $showingNearbyMap) {
+            nearbyMapSheet
         }
         .sheet(item: $itineraryStop) { stop in
             if let id = destination.id {
@@ -616,6 +630,97 @@ struct DestinationDetailView: View {
         .accessibilityLabel(timeZoneAccessibilityLabel)
     }
 
+    // MARK: - Lugares que visitei (lembranças)
+
+    /// Nas viagens passadas, em vez de sugestões, a pessoa registra os
+    /// lugares que visitou naquele destino.
+    private var visitedPlacesCard: some View {
+        VStack(alignment: .leading, spacing: Spacing.md) {
+            Label("Lugares que visitei", systemImage: "checkmark.seal.fill")
+                .font(AppFont.title(16))
+                .foregroundStyle(Color.vpoInk)
+
+            let places = destination.visitedPlaces ?? []
+            if places.isEmpty {
+                Text("Guarde os lugares que fizeram parte dessa viagem — passeios, restaurantes, cantos favoritos.")
+                    .font(AppFont.medium(14))
+                    .foregroundStyle(Color.vpoInkSoft)
+            } else {
+                VStack(spacing: 0) {
+                    ForEach(places) { place in
+                        HStack(spacing: Spacing.md) {
+                            Image(systemName: "mappin.circle.fill")
+                                .font(.system(size: 16))
+                                .foregroundStyle(Color.vpoTeal)
+                                .frame(width: 24)
+                            Text(place.name)
+                                .font(AppFont.medium(15))
+                                .foregroundStyle(Color.vpoInk)
+                            Spacer()
+                            Button {
+                                Haptics.tap()
+                                saveVisitedPlaces(places.filter { $0.id != place.id })
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .font(.system(size: 15))
+                                    .foregroundStyle(Color.vpoInkSoft)
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel("Remover \(place.name)")
+                        }
+                        .padding(.vertical, Spacing.sm)
+                        if place.id != places.last?.id {
+                            Divider().padding(.leading, 40)
+                        }
+                    }
+                }
+            }
+
+            HStack(spacing: Spacing.sm) {
+                TextField(
+                    "",
+                    text: $newVisitedPlace,
+                    prompt: Text("Um lugar que você visitou…").foregroundColor(.vpoInkSoft)
+                )
+                .font(AppFont.medium(15))
+                .foregroundStyle(Color.vpoInk)
+                .submitLabel(.done)
+                .onSubmit(addVisitedPlace)
+                Button(action: addVisitedPlace) {
+                    Image(systemName: "plus.circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundStyle(newVisitedPlace.trimmingCharacters(in: .whitespaces).isEmpty
+                            ? Color.vpoInkSoft : Color.vpoTerracotta)
+                }
+                .buttonStyle(.plain)
+                .disabled(newVisitedPlace.trimmingCharacters(in: .whitespaces).isEmpty)
+                .accessibilityLabel("Adicionar lugar visitado")
+            }
+            .padding(.horizontal, Spacing.md)
+            .padding(.vertical, 10)
+            .background(Color.vpoSand)
+            .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
+        }
+        .padding(Spacing.md)
+        .background(Color.vpoCream)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+        .padding(.horizontal, Spacing.lg)
+    }
+
+    private func addVisitedPlace() {
+        let name = newVisitedPlace.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !name.isEmpty else { return }
+        Haptics.success()
+        newVisitedPlace = ""
+        saveVisitedPlaces((destination.visitedPlaces ?? []) + [VisitedPlace(name: name)])
+    }
+
+    private func saveVisitedPlaces(_ places: [VisitedPlace]) {
+        var updated = destination
+        updated.visitedPlaces = places.isEmpty ? nil : places
+        Task { try? await repository.update(updated) }
+    }
+
     // MARK: - Por perto (MKLocalSearch)
 
     /// Recarrega quando muda o destino ou a categoria escolhida.
@@ -629,11 +734,17 @@ struct DestinationDetailView: View {
     }
 
     private func loadNearby() async {
+        // Lembrança: a viagem já aconteceu, não buscamos sugestões.
+        guard !isPast else { return }
+        // Mantém o conteúdo atual na tela enquanto carrega (senão o card
+        // encolhe para um spinner e o scroll da tela pula para cima).
         nearbyLoading = true
-        nearbyExpanded = false
-        nearbyPlaces = await NearbyPlacesService.ranked(
+        let places = await NearbyPlacesService.ranked(
             near: destination.coordinate, category: nearbyCategory
         )
+        nearbyExpanded = false
+        selectedNearby = nil
+        nearbyPlaces = places
         nearbyLoading = false
     }
 
@@ -649,7 +760,7 @@ struct DestinationDetailView: View {
                 }
             }
 
-            if nearbyLoading {
+            if nearbyPlaces.isEmpty && nearbyLoading {
                 ProgressView()
                     .tint(.vpoTeal)
                     .frame(maxWidth: .infinity)
@@ -661,31 +772,40 @@ struct DestinationDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical, Spacing.sm)
             } else {
-                nearbyMap
-                let shown = nearbyExpanded ? nearbyPlaces : Array(nearbyPlaces.prefix(6))
-                VStack(spacing: 0) {
-                    ForEach(shown) { place in
-                        nearbyRow(place)
-                        if place.id != shown.last?.id {
-                            Divider().padding(.leading, 40)
+                // Enquanto recarrega (troca de categoria), o conteúdo anterior
+                // fica esmaecido no lugar — a altura não muda e o scroll não pula.
+                VStack(alignment: .leading, spacing: Spacing.md) {
+                    nearbyMap
+                    let shown = nearbyExpanded ? nearbyPlaces : Array(nearbyPlaces.prefix(6))
+                    VStack(spacing: 0) {
+                        ForEach(shown) { place in
+                            nearbyRow(place)
+                            if place.id != shown.last?.id {
+                                Divider().padding(.leading, 40)
+                            }
                         }
                     }
-                }
-                if nearbyPlaces.count > 6 {
-                    Button {
-                        Haptics.tap()
-                        withAnimation(.easeInOut(duration: 0.25)) { nearbyExpanded.toggle() }
-                    } label: {
-                        Text(nearbyExpanded
-                            ? String(localized: "mostrar menos")
-                            : String(localized: "ver todos (\(nearbyPlaces.count))"))
-                            .font(AppFont.semibold(14))
-                            .foregroundStyle(Color.vpoTerracotta)
-                            .frame(maxWidth: .infinity)
-                            .padding(.top, 6)
+                    if nearbyPlaces.count > 6 {
+                        Button {
+                            Haptics.tap()
+                            withAnimation(.easeInOut(duration: 0.25)) { nearbyExpanded.toggle() }
+                        } label: {
+                            Text(nearbyExpanded
+                                ? String(localized: "mostrar menos")
+                                : String(localized: "ver todos (\(nearbyPlaces.count))"))
+                                .font(AppFont.semibold(14))
+                                .foregroundStyle(Color.vpoTerracotta)
+                                .frame(maxWidth: .infinity)
+                                .padding(.top, 6)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
                 }
+                .opacity(nearbyLoading ? 0.45 : 1)
+                .overlay {
+                    if nearbyLoading { ProgressView().tint(.vpoTeal) }
+                }
+                .animation(.easeInOut(duration: 0.2), value: nearbyLoading)
             }
         }
         .padding(Spacing.md)
@@ -695,27 +815,142 @@ struct DestinationDetailView: View {
         .animation(.easeInOut(duration: 0.25), value: nearbyPlaces.map(\.id))
     }
 
-    /// Mini-mapa com os lugares encontrados + o pino do destino.
-    /// `.id` força recriação quando a lista muda, re-enquadrando a câmera.
+    /// Mini-mapa com os lugares encontrados + o pino do destino. Tocar abre o
+    /// mapa em tela cheia. `.id` força recriação quando a lista muda,
+    /// re-enquadrando a câmera.
     private var nearbyMap: some View {
-        Map(initialPosition: .automatic) {
-            Marker(destination.cityName, coordinate: destination.coordinate)
-                .tint(Color.vpoTerracotta)
-            ForEach(nearbyPlaces) { place in
-                Marker(
-                    place.name,
-                    systemImage: NearbyPlacesService.symbol(for: place.category),
-                    coordinate: place.coordinate
-                )
-                .tint(Color.vpoTeal)
+        Button {
+            Haptics.tap()
+            showingNearbyMap = true
+        } label: {
+            Map(initialPosition: .automatic) {
+                Marker(destination.cityName, coordinate: destination.coordinate)
+                    .tint(Color.vpoTerracotta)
+                ForEach(nearbyPlaces) { place in
+                    Marker(
+                        place.name,
+                        systemImage: NearbyPlacesService.symbol(for: place.category),
+                        coordinate: place.coordinate
+                    )
+                    .tint(Color.vpoTeal)
+                }
             }
+            .frame(height: 190)
+            .allowsHitTesting(false)
+            .id(nearbyLoadKey + "-\(nearbyPlaces.count)")
+            .overlay(alignment: .topTrailing) {
+                Image(systemName: "arrow.up.left.and.arrow.down.right")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(Color.vpoInk)
+                    .padding(8)
+                    .background(.thinMaterial, in: Circle())
+                    .padding(8)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
         }
-        .frame(height: 190)
-        .clipShape(RoundedRectangle(cornerRadius: Radius.control, style: .continuous))
-        .allowsHitTesting(false)
-        .id(nearbyLoadKey + "-\(nearbyPlaces.count)")
+        .buttonStyle(.plain)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Mapa com \(nearbyPlaces.count) lugares perto de \(destination.cityName)")
+        .accessibilityHint(Text("Toque para ampliar o mapa"))
+    }
+
+    /// Mapa "Por perto" em tela cheia: interativo, com as mesmas categorias;
+    /// tocar num marcador mostra o lugar e permite abrir no Mapas.
+    private var nearbyMapSheet: some View {
+        NavigationStack {
+            Map(initialPosition: .automatic, selection: $selectedNearby) {
+                Marker(destination.cityName, coordinate: destination.coordinate)
+                    .tint(Color.vpoTerracotta)
+                ForEach(nearbyPlaces) { place in
+                    Marker(
+                        place.name,
+                        systemImage: NearbyPlacesService.symbol(for: place.category),
+                        coordinate: place.coordinate
+                    )
+                    .tint(Color.vpoTeal)
+                    .tag(place.id)
+                }
+            }
+            .id(nearbyLoadKey + "-\(nearbyPlaces.count)")
+            .overlay {
+                if nearbyLoading {
+                    ProgressView()
+                        .tint(.vpoTeal)
+                        .padding(Spacing.md)
+                        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: Radius.control))
+                }
+            }
+            .safeAreaInset(edge: .top) {
+                HStack(spacing: Spacing.sm) {
+                    ForEach(NearbyCategory.allCases) { category in
+                        nearbyChip(category)
+                    }
+                }
+                .padding(.horizontal, Spacing.lg)
+                .padding(.vertical, Spacing.sm)
+                .frame(maxWidth: .infinity)
+                .background(.thinMaterial)
+            }
+            .safeAreaInset(edge: .bottom) {
+                if let place = nearbyPlaces.first(where: { $0.id == selectedNearby }) {
+                    nearbySelectedCard(place)
+                }
+            }
+            .navigationTitle(Text("Por perto"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Concluir") { showingNearbyMap = false }
+                        .foregroundStyle(Color.vpoTerracotta)
+                        .bold()
+                }
+            }
+        }
+        .tint(.vpoTerracotta)
+    }
+
+    /// Cartão do lugar selecionado no mapa em tela cheia.
+    private func nearbySelectedCard(_ place: NearbyPlace) -> some View {
+        HStack(spacing: Spacing.md) {
+            Image(systemName: NearbyPlacesService.symbol(for: place.category))
+                .font(.system(size: 18))
+                .foregroundStyle(Color.vpoTeal)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(place.name)
+                    .font(AppFont.semibold(15))
+                    .foregroundStyle(Color.vpoInk)
+                    .lineLimit(2)
+                HStack(spacing: 5) {
+                    if let rating = place.rating {
+                        Label(String(format: "%.1f", rating), systemImage: "star.fill")
+                            .foregroundStyle(Color.vpoGold)
+                    }
+                    if let distance = place.distance {
+                        Text("a \(DistanceFormat.short(meters: distance))")
+                            .foregroundStyle(Color.vpoInkSoft)
+                    }
+                }
+                .font(AppFont.medium(12))
+            }
+            Spacer()
+            Button {
+                place.openInMaps()
+            } label: {
+                Text("Abrir no Mapas")
+                    .font(AppFont.semibold(13))
+                    .foregroundStyle(Color.vpoOnColor)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, Spacing.md)
+                    .background(Color.vpoTerracotta, in: Capsule())
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(Spacing.md)
+        .background(Color.vpoCream)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.card, style: .continuous))
+        .shadow(color: Color.vpoInk.opacity(0.15), radius: 8, y: 2)
+        .padding(Spacing.md)
     }
 
     private func nearbyChip(_ category: NearbyCategory) -> some View {

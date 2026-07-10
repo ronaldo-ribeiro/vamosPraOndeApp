@@ -7,10 +7,12 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct HomeView: View {
     @ObservedObject var repo: DestinationsRepository
     @State private var showingNew = false
+    @State private var showingMemoriesMap = false
     @State private var sort: DestinationSort = .dateAsc
     @State private var filter: DestinationFilter = .all
 
@@ -94,6 +96,15 @@ struct HomeView: View {
                                     Text(memoriesSummary)
                                         .font(AppFont.medium(12))
                                         .foregroundStyle(Color.vpoInkSoft)
+                                    Button {
+                                        Haptics.tap()
+                                        showingMemoriesMap = true
+                                    } label: {
+                                        Image(systemName: "map.fill")
+                                            .font(.system(size: 15))
+                                            .foregroundStyle(Color.vpoTeal)
+                                    }
+                                    .accessibilityLabel("Ver lembranças no mapa")
                                 }
                                 .padding(.top, rest.isEmpty && hero == nil ? 0 : Spacing.sm)
                                 .appear(delay: 0.18)
@@ -129,6 +140,9 @@ struct HomeView: View {
         }
         .sheet(isPresented: $showingNew) {
             NewDestinationView(repository: repo)
+        }
+        .sheet(isPresented: $showingMemoriesMap) {
+            MemoriesMapView(memories: memories, summary: memoriesSummary)
         }
     }
 
@@ -210,6 +224,69 @@ private extension View {
                 .overlay(Circle().stroke(Color.vpoSand, lineWidth: 4))
                 .shadow(color: Color.vpoInk.opacity(0.2), radius: 8, y: 4)
         }
+    }
+}
+
+/// Mapa das lembranças: um pino em cada lugar por onde a pessoa já passou
+/// (inclui os trechos de viagens multi-destino).
+private struct MemoriesMapView: View {
+    let memories: [Destination]
+    let summary: String
+    @Environment(\.dismiss) private var dismiss
+
+    /// (id estável, nome, coordenada) de cada parada visitada.
+    private var visitedPins: [(id: String, name: String, coordinate: CLLocationCoordinate2D)] {
+        memories.flatMap { memory in
+            memory.resolvedStops.map { stop in
+                ("\(memory.id ?? memory.title)-\(stop.id)",
+                 stop.name.split(separator: ",").first.map(String.init) ?? stop.name,
+                 CLLocationCoordinate2D(latitude: stop.latitude, longitude: stop.longitude))
+            }
+        }
+    }
+
+    /// Enquadra todos os pinos com um zoom mínimo de "país" — com um pino só,
+    /// o `.automatic` mergulha no nível de rua.
+    private var initialPosition: MapCameraPosition {
+        let lats = visitedPins.map(\.coordinate.latitude)
+        let lons = visitedPins.map(\.coordinate.longitude)
+        guard let minLat = lats.min(), let maxLat = lats.max(),
+              let minLon = lons.min(), let maxLon = lons.max() else { return .automatic }
+        let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
+                                            longitude: (minLon + maxLon) / 2)
+        let span = MKCoordinateSpan(latitudeDelta: max((maxLat - minLat) * 1.6, 10),
+                                    longitudeDelta: max((maxLon - minLon) * 1.6, 10))
+        return .region(MKCoordinateRegion(center: center, span: span))
+    }
+
+    var body: some View {
+        NavigationStack {
+            Map(initialPosition: initialPosition) {
+                ForEach(visitedPins, id: \.id) { pin in
+                    Marker(pin.name, systemImage: "checkmark.seal.fill", coordinate: pin.coordinate)
+                        .tint(Color.vpoTeal)
+                }
+            }
+            .safeAreaInset(edge: .bottom) {
+                Text(summary)
+                    .font(AppFont.semibold(14))
+                    .foregroundStyle(Color.vpoInk)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, Spacing.lg)
+                    .background(.thinMaterial, in: Capsule())
+                    .padding(.bottom, Spacing.md)
+            }
+            .navigationTitle(Text("Por onde você já foi"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Concluir") { dismiss() }
+                        .foregroundStyle(Color.vpoTerracotta)
+                        .bold()
+                }
+            }
+        }
+        .tint(.vpoTerracotta)
     }
 }
 

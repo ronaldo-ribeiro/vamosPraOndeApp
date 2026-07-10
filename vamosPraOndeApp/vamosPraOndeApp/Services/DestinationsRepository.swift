@@ -82,6 +82,7 @@ final class DestinationsRepository: ObservableObject {
         if destination.coverStyle == nil { clears["coverStyle"] = FieldValue.delete() }
         if destination.stops == nil { clears["stops"] = FieldValue.delete() }
         if destination.endDate == nil { clears["endDate"] = FieldValue.delete() }
+        if destination.visitedPlaces == nil { clears["visitedPlaces"] = FieldValue.delete() }
         if !clears.isEmpty {
             try await collection.document(id).updateData(clears)
         }

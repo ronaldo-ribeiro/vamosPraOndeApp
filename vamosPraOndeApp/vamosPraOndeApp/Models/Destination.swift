@@ -16,6 +16,12 @@ enum TripCategory: String {
     case wishlist   // sem data — "quero visitar"
 }
 
+/// Um lugar que a pessoa visitou numa viagem passada (lembrança).
+struct VisitedPlace: Identifiable, Codable, Hashable {
+    var id: String = UUID().uuidString
+    var name: String
+}
+
 struct Destination: Identifiable, Codable, Hashable {
     @DocumentID var id: String?
     var title: String
@@ -44,6 +50,9 @@ struct Destination: Identifiable, Codable, Hashable {
     /// antigos degradarem bem e o countdown seguir usando o 1º trecho).
     /// Opcional simples pelo mesmo motivo (compat. com docs sem o campo).
     var stops: [TripStop]? = nil
+    /// Lugares visitados (só faz sentido em viagens passadas). Opcional simples
+    /// pelo mesmo motivo dos demais campos novos.
+    var visitedPlaces: [VisitedPlace]? = nil
 
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
