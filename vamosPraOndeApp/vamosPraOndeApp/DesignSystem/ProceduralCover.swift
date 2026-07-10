@@ -144,8 +144,8 @@ private struct CoverRecipe {
 
         // Com marco icônico, a paisagem baixa (horizonte mais raso) para a
         // silhueta do marco se destacar contra o céu.
-        let drop: CGFloat = hasLandmark ? 0.30 : 0
-        let squash: CGFloat = hasLandmark ? 0.45 : 1
+        let drop: CGFloat = hasLandmark ? 0.36 : 0
+        let squash: CGFloat = hasLandmark ? 0.35 : 1
 
         let layerCount = 3
         var built: [[CGFloat]] = []
@@ -314,10 +314,13 @@ struct ProceduralCover: View {
                     let front = Color(hex: recipe.palette.ridges.last ?? 0x000000)
                     let h = size.height * landmark.heightFactor
                     let w = h * landmark.aspect
+                    // Base ligeiramente erguida para a silhueta (arcos, pés)
+                    // não afogar na colina da frente.
                     LandmarkShape(landmark: landmark)
                         .fill(front, style: FillStyle(eoFill: landmark.usesEvenOdd))
                         .frame(width: w, height: h)
-                        .position(x: size.width * landmark.anchorX, y: size.height - h / 2)
+                        .position(x: size.width * landmark.anchorX,
+                                  y: size.height - h / 2 - size.height * 0.05)
                 }
             }
         }

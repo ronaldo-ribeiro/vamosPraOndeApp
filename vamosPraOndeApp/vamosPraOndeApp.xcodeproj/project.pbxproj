@@ -12,6 +12,7 @@
 		0DFA3B1CE31E388262FD7EE9 /* Pods_vamosPraOndeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4839A72F988E52DBEA7FF9C4 /* Pods_vamosPraOndeAppTests.framework */; };
 		0E2EC4E68DAE2A88C50B4C6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5801109F556166FCE44A0C84 /* Foundation.framework */; };
 		0F9D896ED069A374FA206C79 /* NextTripSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */; };
+		123CD30DBADB259B8A377F88 /* LandmarkGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507D43E55345E1AC825A95F /* LandmarkGalleryTests.swift */; };
 		181399A40625F8A5443A1AE0 /* DestinationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A2719934CFBBDAD3740235 /* DestinationCards.swift */; };
 		18249C8778EC9831FFA1C73B /* Appear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA303ED50DFD784E0DA6FD /* Appear.swift */; };
 		19A98A04E593BCE739B3FF7A /* DestinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */; };
@@ -193,6 +194,7 @@
 		B21EB1BEF4F3CA4B4A8384C5 /* CoverPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoverPickerView.swift; sourceTree = "<group>"; };
 		B24C0C6D065810A6D844E0E8 /* VamosWidget.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = VamosWidget.entitlements; sourceTree = "<group>"; };
 		B483464773C9CBA3A2498537 /* Pods-vamosPraOndeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vamosPraOndeApp.release.xcconfig"; path = "Target Support Files/Pods-vamosPraOndeApp/Pods-vamosPraOndeApp.release.xcconfig"; sourceTree = "<group>"; };
+		B507D43E55345E1AC825A95F /* LandmarkGalleryTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LandmarkGalleryTests.swift; sourceTree = "<group>"; };
 		B6717499BB05FED71D3E7044 /* Countdown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		B825DB56D6E1DB92C43C9A90 /* ChecklistView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		B908F493AFD9AA09E1CBBE6D /* SplashScreen.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				451BCC5913B450ADADCE7182 /* DestinationTests.swift */,
 				8458F5F2E5D185F64493E1FE /* FeatureLogicTests.swift */,
 				03EBD4659496E3AA768CC5C4 /* ChecklistTests.swift */,
+				B507D43E55345E1AC825A95F /* LandmarkGalleryTests.swift */,
 			);
 			path = vamosPraOndeAppTests;
 			sourceTree = "<group>";
@@ -909,6 +912,7 @@
 				B7D7480FD5B256D9538F70FC /* DestinationTests.swift in Sources */,
 				68AD0517171D23305ED97348 /* FeatureLogicTests.swift in Sources */,
 				7464D45E3C6B735A2D0A00D2 /* ChecklistTests.swift in Sources */,
+				123CD30DBADB259B8A377F88 /* LandmarkGalleryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

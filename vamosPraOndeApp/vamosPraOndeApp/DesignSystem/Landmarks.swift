@@ -60,8 +60,8 @@ enum CityLandmark {
         case .sagradaFamilia: return 0.55
         case .nycSkyline: return 0.52
         case .obelisk: return 0.52
-        case .pyramids: return 0.38
-        case .operaHouse: return 0.32
+        case .pyramids: return 0.46
+        case .operaHouse: return 0.40
         case .suspensionBridge: return 0.42
         case .burj: return 0.66
         case .palm: return 0.52
@@ -78,7 +78,7 @@ enum CityLandmark {
         case .tokyoTower: return 0.60
         case .sagradaFamilia: return 0.95
         case .nycSkyline: return 1.9
-        case .obelisk: return 0.26
+        case .obelisk: return 0.34
         case .pyramids: return 2.0
         case .operaHouse: return 1.8
         case .suspensionBridge: return 2.4
@@ -98,8 +98,8 @@ enum CityLandmark {
         }
     }
 
-    /// Marcos com "furos" (janelas/arcos) usam even-odd para recortar.
-    var usesEvenOdd: Bool { self == .colosseum }
+    /// Marcos com "furos" (janelas/arcos/relógio) usam even-odd para recortar.
+    var usesEvenOdd: Bool { self == .colosseum || self == .bigBen }
 }
 
 /// Desenha a silhueta do marco num retângulo (0,0 = topo; base = chão).
@@ -121,24 +121,29 @@ struct LandmarkShape: Shape {
 
         switch landmark {
         case .eiffel:
-            // Corpo com pernas curvas e arco central.
-            p.move(to: P(0.02, 1.0))
-            p.addQuadCurve(to: P(0.33, 0.52), control: P(0.16, 0.80))
-            p.addLine(to: P(0.37, 0.34))
-            p.addQuadCurve(to: P(0.46, 0.06), control: P(0.41, 0.15))
-            p.addLine(to: P(0.46, 0.0))
-            p.addLine(to: P(0.54, 0.0))
-            p.addLine(to: P(0.54, 0.06))
-            p.addQuadCurve(to: P(0.63, 0.34), control: P(0.59, 0.15))
-            p.addLine(to: P(0.67, 0.52))
-            p.addQuadCurve(to: P(0.98, 1.0), control: P(0.84, 0.80))
-            p.addLine(to: P(0.78, 1.0))
-            p.addQuadCurve(to: P(0.50, 0.70), control: P(0.64, 0.76))
-            p.addQuadCurve(to: P(0.22, 1.0), control: P(0.36, 0.76))
+            // Perfil "exponencial" real: dois terços superiores bem esguios,
+            // flare dramático só perto da base, arco alto e visível.
+            p.move(to: P(0.04, 1.0))
+            p.addQuadCurve(to: P(0.345, 0.635), control: P(0.17, 0.78))
+            p.addLine(to: P(0.395, 0.44))
+            p.addLine(to: P(0.437, 0.40))
+            p.addLine(to: P(0.468, 0.07))
+            p.addLine(to: P(0.468, 0.055))
+            p.addLine(to: P(0.532, 0.055))
+            p.addLine(to: P(0.532, 0.07))
+            p.addLine(to: P(0.563, 0.40))
+            p.addLine(to: P(0.605, 0.44))
+            p.addLine(to: P(0.655, 0.635))
+            p.addQuadCurve(to: P(0.96, 1.0), control: P(0.83, 0.78))
+            p.addLine(to: P(0.76, 1.0))
+            p.addQuadCurve(to: P(0.50, 0.795), control: P(0.645, 0.845))
+            p.addQuadCurve(to: P(0.24, 1.0), control: P(0.355, 0.845))
             p.closeSubpath()
-            // Plataformas.
-            rectN(0.24, 0.50, 0.52, 0.035)
-            rectN(0.34, 0.315, 0.32, 0.030)
+            // Antena fina.
+            rectN(0.488, 0.0, 0.024, 0.07)
+            // Decks salientes (1º a ~61%, 2º a ~40%).
+            rectN(0.30, 0.60, 0.40, 0.030)
+            rectN(0.40, 0.385, 0.20, 0.026)
 
         case .rio:
             // Corcovado (morro) com o Cristo no topo.
@@ -185,26 +190,34 @@ struct LandmarkShape: Shape {
             }
 
         case .bigBen:
-            rectN(0.34, 0.30, 0.32, 0.70)     // torre
-            rectN(0.28, 0.16, 0.44, 0.17)     // caixa do relógio
-            p.move(to: P(0.28, 0.16))         // coroa pontiaguda
-            p.addLine(to: P(0.50, 0.02))
-            p.addLine(to: P(0.72, 0.16))
+            rectN(0.36, 0.34, 0.28, 0.66)     // torre (esguia)
+            rectN(0.24, 0.16, 0.52, 0.20)     // caixa do relógio (bem saliente)
+            p.move(to: P(0.24, 0.16))         // coroa pontiaguda
+            p.addLine(to: P(0.50, 0.01))
+            p.addLine(to: P(0.76, 0.16))
             p.closeSubpath()
-            rectN(0.485, 0.0, 0.03, 0.05)     // agulha
+            rectN(0.487, 0.0, 0.026, 0.045)   // agulha
+            // Mostrador do relógio (furo, even-odd).
+            p.addEllipse(in: CGRect(x: rect.minX + 0.40 * rect.width,
+                                    y: rect.minY + 0.205 * rect.height,
+                                    width: 0.20 * rect.width,
+                                    height: 0.11 * rect.height))
 
         case .tokyoTower:
-            p.move(to: P(0.08, 1.0))          // corpo triangular
-            p.addLine(to: P(0.455, 0.12))
-            p.addLine(to: P(0.545, 0.12))
-            p.addLine(to: P(0.92, 1.0))
-            p.addLine(to: P(0.74, 1.0))
-            p.addQuadCurve(to: P(0.50, 0.74), control: P(0.62, 0.78))
-            p.addQuadCurve(to: P(0.26, 1.0), control: P(0.38, 0.78))
+            // Corpo esguio no alto, pernas abrindo no terço final, arco na base.
+            p.move(to: P(0.10, 1.0))
+            p.addQuadCurve(to: P(0.43, 0.56), control: P(0.27, 0.76))
+            p.addLine(to: P(0.478, 0.14))
+            p.addLine(to: P(0.522, 0.14))
+            p.addLine(to: P(0.57, 0.56))
+            p.addQuadCurve(to: P(0.90, 1.0), control: P(0.73, 0.76))
+            p.addLine(to: P(0.72, 1.0))
+            p.addQuadCurve(to: P(0.50, 0.76), control: P(0.60, 0.80))
+            p.addQuadCurve(to: P(0.28, 1.0), control: P(0.40, 0.80))
             p.closeSubpath()
-            rectN(0.47, 0.0, 0.06, 0.13)      // antena
-            rectN(0.20, 0.54, 0.60, 0.045)    // deck principal (bem saliente)
-            rectN(0.33, 0.29, 0.34, 0.035)    // deck superior
+            rectN(0.482, 0.0, 0.036, 0.15)    // antena comprida
+            rectN(0.235, 0.56, 0.53, 0.038)   // deck principal (bem saliente)
+            rectN(0.375, 0.325, 0.25, 0.030)  // deck superior
 
         case .sagradaFamilia:
             // Quatro torres afuniladas (as internas mais altas).
@@ -233,12 +246,14 @@ struct LandmarkShape: Shape {
             rectN(0.89, 0.64, 0.10, 0.36)
 
         case .obelisk:
-            p.move(to: P(0.34, 1.0))
-            p.addLine(to: P(0.42, 0.14))
-            p.addLine(to: P(0.50, 0.03))
-            p.addLine(to: P(0.58, 0.14))
-            p.addLine(to: P(0.66, 1.0))
+            // Obelisco robusto com base escalonada (como o da 9 de Julio).
+            p.move(to: P(0.30, 1.0))
+            p.addLine(to: P(0.38, 0.16))
+            p.addLine(to: P(0.50, 0.02))
+            p.addLine(to: P(0.62, 0.16))
+            p.addLine(to: P(0.70, 1.0))
             p.closeSubpath()
+            rectN(0.20, 0.92, 0.60, 0.08)     // base
 
         case .pyramids:
             p.move(to: P(0.03, 1.0))          // grande
@@ -251,19 +266,19 @@ struct LandmarkShape: Shape {
             p.closeSubpath()
 
         case .operaHouse:
-            rectN(0.0, 0.86, 1.0, 0.14)       // base
-            // Velas.
-            p.move(to: P(0.05, 0.88))
-            p.addQuadCurve(to: P(0.36, 0.28), control: P(0.13, 0.34))
-            p.addQuadCurve(to: P(0.40, 0.88), control: P(0.40, 0.55))
+            rectN(0.0, 0.84, 1.0, 0.16)       // plataforma
+            // Velas grandes com PONTAS agudas (frente convexa, costas retas).
+            p.move(to: P(0.02, 0.86))
+            p.addQuadCurve(to: P(0.34, 0.22), control: P(0.05, 0.30))
+            p.addLine(to: P(0.38, 0.86))
             p.closeSubpath()
-            p.move(to: P(0.30, 0.88))
-            p.addQuadCurve(to: P(0.64, 0.16), control: P(0.40, 0.22))
-            p.addQuadCurve(to: P(0.68, 0.88), control: P(0.68, 0.48))
+            p.move(to: P(0.26, 0.86))
+            p.addQuadCurve(to: P(0.63, 0.06), control: P(0.30, 0.14))
+            p.addLine(to: P(0.68, 0.86))
             p.closeSubpath()
-            p.move(to: P(0.62, 0.88))
-            p.addQuadCurve(to: P(0.90, 0.34), control: P(0.72, 0.38))
-            p.addQuadCurve(to: P(0.94, 0.88), control: P(0.94, 0.60))
+            p.move(to: P(0.58, 0.86))
+            p.addQuadCurve(to: P(0.89, 0.28), control: P(0.62, 0.34))
+            p.addLine(to: P(0.94, 0.86))
             p.closeSubpath()
 
         case .suspensionBridge:
@@ -308,7 +323,7 @@ struct LandmarkShape: Shape {
             // Folhas (a partir da copa).
             let crown = (x: CGFloat(0.585), y: CGFloat(0.30))
             let tips: [(CGFloat, CGFloat)] = [
-                (0.16, 0.40), (0.24, 0.10), (0.62, 0.02), (0.92, 0.12), (0.96, 0.42)
+                (0.16, 0.40), (0.24, 0.10), (0.52, 0.03), (0.88, 0.08), (0.96, 0.42)
             ]
             for tip in tips {
                 let midX = (crown.x + tip.0) / 2
