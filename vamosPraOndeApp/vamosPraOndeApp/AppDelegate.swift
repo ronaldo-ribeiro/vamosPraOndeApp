@@ -25,6 +25,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             memoryCapacity: 50 * 1024 * 1024,
             diskCapacity: 200 * 1024 * 1024
         )
+        // Ativar aqui (e não só na UI) garante que toggles de checklist
+        // vindos do relógio cheguem mesmo com o app relançado em background.
+        WatchSyncService.shared.activate()
         return true
     }
 }

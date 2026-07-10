@@ -43,6 +43,10 @@ final class DestinationsRepository: ObservableObject {
                     self.destinations = snapshot?.documents.compactMap {
                         try? $0.data(as: Destination.self)
                     } ?? []
+                    // Sincroniza o relógio AQUI (não num onChange da UI):
+                    // Destination é Equatable só por id, então mudanças de
+                    // conteúdo (checklist, datas) não disparam onChange.
+                    WatchSyncService.shared.sync(self.destinations)
                 }
             }
     }

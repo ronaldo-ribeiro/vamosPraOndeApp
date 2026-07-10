@@ -41,11 +41,20 @@ struct WatchHomeView: View {
     private func tripsList(next: TripSync) -> some View {
         ScrollView {
             VStack(spacing: 8) {
-                heroCard(next)
+                NavigationLink(value: next.id) {
+                    heroCard(next)
+                }
+                .buttonStyle(.plain)
                 ForEach(store.upcoming) { trip in
-                    upcomingRow(trip)
+                    NavigationLink(value: trip.id) {
+                        upcomingRow(trip)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
+        }
+        .navigationDestination(for: String.self) { tripID in
+            WatchTripDetailView(tripID: tripID)
         }
     }
 

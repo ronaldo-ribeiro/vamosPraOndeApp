@@ -18,12 +18,19 @@ struct TripSync: Codable, Identifiable, Hashable {
     var endDate: Date?
     /// Semente da capa procedural (mesma arte no relógio, se quisermos).
     var seed: String
+    /// Fuso do destino (o iPhone resolve por geocodificação e manda pronto).
+    var timeZoneID: String? = nil
+    /// Checklist de mala — marcável no pulso.
+    var checklist: [ChecklistItem]? = nil
 }
 
 /// Codifica/decodifica o pacote trocado no `applicationContext` e o cache
 /// local do relógio (App Group entre o app do Watch e a complicação).
 enum TripSyncPayload {
     static let contextKey = "trips"
+    /// userInfo do relógio → iPhone: marcar/desmarcar item da checklist.
+    /// Dict: destinationID (String), itemID (String), done (Bool).
+    static let toggleKey = "checklistToggle"
     static let appGroupID = "group.ronaldoribeiro.vamosPraOndeApp"
     private static let cacheKey = "watchTripsSnapshot"
 

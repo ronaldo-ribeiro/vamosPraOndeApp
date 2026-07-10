@@ -41,6 +41,7 @@
 		81488938042BB7936EDBFD54 /* VamosWatchWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2813482A546B9F1B17C6D859 /* VamosWatchWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8191779992B81C209FFFFF78 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759693CF363A15BF3D16B2D1 /* LoginView.swift */; };
 		81F2F01F8353792FF1257AD2 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F31DAEEF0F63FE46C3E2E5 /* Haptics.swift */; };
+		82ACFAAA10C2663332201807 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */; };
 		832FCE1CEB653FD99FFEC49E /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6717499BB05FED71D3E7044 /* Countdown.swift */; };
 		86C5A52894E3A21E8124549D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799EFFED51CAB6C06E8D343D /* WelcomeView.swift */; };
 		8A68B0E71084E468DCA6F9D1 /* VamosPraOndeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55194F69F87840C0747B7C1E /* VamosPraOndeApp.swift */; };
@@ -107,8 +108,10 @@
 		E0293645CAF40591CB82BB27 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409CD1E05CA693E1110F0D03 /* AuthService.swift */; };
 		E14A29105C15E98CF5C8A612 /* TripSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFB9DED3D4B9C7618BE8DB8 /* TripSync.swift */; };
 		E401AFA31328E58A58C8D884 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C8D7CB5A8BA3F1CD9CEF3 /* HomeView.swift */; };
+		E755936CBE1C55203783F513 /* WatchTripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139786F2A9624B6675A6AE21 /* WatchTripDetailView.swift */; };
 		ECC31204B87DB620734EE173 /* WatchTripStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF0C49A4AE832AF49C571C /* WatchTripStore.swift */; };
 		ED6943C57244D61E90992C84 /* CoverPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21EB1BEF4F3CA4B4A8384C5 /* CoverPickerView.swift */; };
+		EE82B83179D5097FB19CAB29 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */; };
 		F8841C8CCE49AF19D1496F32 /* TravelMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171687DDE285E2EE2D70436E /* TravelMapView.swift */; };
 		FA59BE03C901B0F703E9B3FC /* DestinationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46339FCAC58D42DA1050B703 /* DestinationsRepository.swift */; };
 		FB26205A97EF1E8EE8232158 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C7A5E9EE612A363051AF9 /* ChecklistItem.swift */; };
@@ -191,6 +194,7 @@
 		0C25B48F07AAB2CEA0D2F0A4 /* NextTripSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NextTripSnapshot.swift; sourceTree = "<group>"; };
 		0DCDB26C3ABB8740B4EE8704 /* DestinationDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationDetailView.swift; sourceTree = "<group>"; };
 		11DB5B773232E1F694881267 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		139786F2A9624B6675A6AE21 /* WatchTripDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchTripDetailView.swift; sourceTree = "<group>"; };
 		16AF3D62F640E0477C60CE9B /* AnalyticsService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		171687DDE285E2EE2D70436E /* TravelMapView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TravelMapView.swift; sourceTree = "<group>"; };
 		1869A1CFF98B575CCDB88571 /* DestinationSorting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DestinationSorting.swift; sourceTree = "<group>"; };
@@ -560,6 +564,7 @@
 				D1B8758F95E8244D05E4DFCF /* WatchHomeView.swift */,
 				715ECF71C0E0FBAAB0A900BA /* Assets.xcassets */,
 				7F38463015D64C515920548E /* VamosWatch.entitlements */,
+				139786F2A9624B6675A6AE21 /* WatchTripDetailView.swift */,
 			);
 			name = VamosWatch;
 			path = VamosWatch;
@@ -1021,6 +1026,7 @@
 			files = (
 				8D32F6794350E3CE038C21B0 /* VamosWatchWidget.swift in Sources */,
 				BF932E7AAD94E58540D6C537 /* TripSync.swift in Sources */,
+				82ACFAAA10C2663332201807 /* ChecklistItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1095,6 +1101,8 @@
 				ECC31204B87DB620734EE173 /* WatchTripStore.swift in Sources */,
 				68052B3F0A108F51A0A4846C /* WatchHomeView.swift in Sources */,
 				E14A29105C15E98CF5C8A612 /* TripSync.swift in Sources */,
+				E755936CBE1C55203783F513 /* WatchTripDetailView.swift in Sources */,
+				EE82B83179D5097FB19CAB29 /* ChecklistItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

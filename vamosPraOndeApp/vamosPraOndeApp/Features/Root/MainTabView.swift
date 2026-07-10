@@ -25,13 +25,9 @@ struct MainTabView: View {
         }
         .tint(.vpoTerracotta)
         .tabBarMinimizeOnScrollIfAvailable()
-        .task {
-            repo.start()
-            WatchSyncService.shared.activate()
-        }
+        .task { repo.start() }
         .onChange(of: repo.destinations) { _, destinations in
             syncWidget(with: destinations)
-            WatchSyncService.shared.sync(destinations)
         }
     }
 
