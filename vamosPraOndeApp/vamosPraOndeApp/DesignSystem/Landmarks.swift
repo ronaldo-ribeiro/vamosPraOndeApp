@@ -23,7 +23,18 @@ enum CityLandmark {
     case operaHouse        // Sydney
     case suspensionBridge  // Lisboa (25 de Abril) / San Francisco (Golden Gate)
     case burj              // Dubai
-    case palm              // Miami/Honolulu/Cancún (praia com palmeira)
+    case palm              // Praias (Miami, Natal, Maceió, Noronha…)
+    // Brasil + América do Sul
+    case congresso         // Brasília (Congresso Nacional)
+    case ponteEstaiada     // São Paulo (Ponte Octávio Frias)
+    case elevadorLacerda   // Salvador
+    case jangada           // Fortaleza
+    case frevo             // Recife/Olinda (sombrinha de frevo)
+    case teatroAmazonas    // Manaus
+    case pampulha          // Belo Horizonte (Igreja da Pampulha)
+    case tucano            // Foz do Iguaçu (Parque das Aves; cachoeira não funciona em silhueta)
+    case machuPicchu       // Cusco / Machu Picchu
+    case palacioSalvo      // Montevidéu
 
     /// Reconhece o marco pelo nome da cidade (sem acentos, minúsculas).
     static func match(_ city: String) -> CityLandmark? {
@@ -44,7 +55,23 @@ enum CityLandmark {
             ("lisboa", .suspensionBridge), ("lisbon", .suspensionBridge),
             ("san francisco", .suspensionBridge), ("sao francisco", .suspensionBridge),
             ("dubai", .burj),
+            // Brasil + América do Sul
+            ("brasilia", .congresso),
+            ("sao paulo", .ponteEstaiada),
+            ("salvador", .elevadorLacerda),
+            ("fortaleza", .jangada),
+            ("recife", .frevo), ("olinda", .frevo),
+            ("manaus", .teatroAmazonas),
+            ("belo horizonte", .pampulha),
+            ("foz do iguacu", .tucano), ("puerto iguazu", .tucano),
+            ("florianopolis", .suspensionBridge),
+            ("cusco", .machuPicchu), ("machu picchu", .machuPicchu),
+            ("montevideu", .palacioSalvo), ("montevideo", .palacioSalvo),
+            // Praias
             ("miami", .palm), ("honolulu", .palm), ("cancun", .palm),
+            ("natal", .palm), ("maceio", .palm), ("joao pessoa", .palm),
+            ("aracaju", .palm), ("jericoacoara", .palm), ("noronha", .palm),
+            ("buzios", .palm), ("porto de galinhas", .palm), ("porto seguro", .palm),
         ]
         return table.first { name.contains($0.0) }?.1
     }
@@ -65,6 +92,16 @@ enum CityLandmark {
         case .suspensionBridge: return 0.42
         case .burj: return 0.66
         case .palm: return 0.52
+        case .congresso: return 0.36
+        case .ponteEstaiada: return 0.44
+        case .elevadorLacerda: return 0.54
+        case .jangada: return 0.36
+        case .frevo: return 0.44
+        case .teatroAmazonas: return 0.42
+        case .pampulha: return 0.38
+        case .tucano: return 0.42
+        case .machuPicchu: return 0.52
+        case .palacioSalvo: return 0.58
         }
     }
 
@@ -84,6 +121,16 @@ enum CityLandmark {
         case .suspensionBridge: return 2.4
         case .burj: return 0.30
         case .palm: return 0.95
+        case .congresso: return 2.2
+        case .ponteEstaiada: return 2.0
+        case .elevadorLacerda: return 0.55
+        case .jangada: return 1.3
+        case .frevo: return 0.9
+        case .teatroAmazonas: return 1.5
+        case .pampulha: return 1.9
+        case .tucano: return 0.9
+        case .machuPicchu: return 1.25
+        case .palacioSalvo: return 0.45
         }
     }
 
@@ -91,15 +138,19 @@ enum CityLandmark {
     /// do centro para não brigar com o texto (canto inferior esquerdo).
     var anchorX: CGFloat {
         switch self {
-        case .rio, .nycSkyline, .pyramids, .colosseum, .operaHouse: return 0.62
+        case .rio, .nycSkyline, .pyramids, .colosseum, .operaHouse,
+             .congresso, .ponteEstaiada, .pampulha, .tucano: return 0.62
         case .suspensionBridge: return 0.55
         case .palm, .bigBen: return 0.72
+        case .jangada, .machuPicchu: return 0.66
         default: return 0.70
         }
     }
 
-    /// Marcos com "furos" (janelas/arcos/relógio) usam even-odd para recortar.
-    var usesEvenOdd: Bool { self == .colosseum || self == .bigBen }
+    /// Marcos com "furos" (janelas/arcos/relógio/quedas) usam even-odd.
+    var usesEvenOdd: Bool {
+        self == .colosseum || self == .bigBen || self == .elevadorLacerda
+    }
 }
 
 /// Desenha a silhueta do marco num retângulo (0,0 = topo; base = chão).
@@ -334,6 +385,163 @@ struct LandmarkShape: Shape {
                                control: P(midX, midY + 0.10))
                 p.closeSubpath()
             }
+
+        case .congresso:
+            // Plataforma + torres gêmeas + cúpula (Senado) + tigela (Câmara).
+            rectN(0.0, 0.80, 1.0, 0.10)
+            rectN(0.455, 0.06, 0.036, 0.74)
+            rectN(0.509, 0.06, 0.036, 0.74)
+            // Cúpula convexa (esquerda).
+            p.move(to: P(0.06, 0.80))
+            p.addQuadCurve(to: P(0.20, 0.52), control: P(0.08, 0.56))
+            p.addQuadCurve(to: P(0.34, 0.80), control: P(0.32, 0.56))
+            p.closeSubpath()
+            // Tigela côncava (direita) — crescente.
+            p.move(to: P(0.62, 0.58))
+            p.addQuadCurve(to: P(0.94, 0.58), control: P(0.78, 0.92))
+            p.addQuadCurve(to: P(0.62, 0.58), control: P(0.78, 0.72))
+            p.closeSubpath()
+
+        case .ponteEstaiada:
+            // Pilar em X + tabuleiro + estais em leque.
+            p.move(to: P(0.28, 1.0)); p.addLine(to: P(0.34, 1.0))
+            p.addLine(to: P(0.645, 0.05)); p.addLine(to: P(0.585, 0.05))
+            p.closeSubpath()
+            p.move(to: P(0.72, 1.0)); p.addLine(to: P(0.66, 1.0))
+            p.addLine(to: P(0.355, 0.05)); p.addLine(to: P(0.415, 0.05))
+            p.closeSubpath()
+            rectN(0.0, 0.58, 1.0, 0.045)
+            // Estais (triângulos finíssimos a partir do alto do X).
+            for tip in [0.10, 0.24, 0.76, 0.90] {
+                p.move(to: P(0.50, 0.10))
+                p.addLine(to: P(CGFloat(tip), 0.58))
+                p.addLine(to: P(CGFloat(tip) + 0.015, 0.58))
+                p.addLine(to: P(0.508, 0.10))
+                p.closeSubpath()
+            }
+
+        case .elevadorLacerda:
+            // Torre art déco alta + passarela no alto (furos = janelas).
+            rectN(0.28, 0.06, 0.30, 0.94)     // torre
+            rectN(0.24, 0.015, 0.38, 0.055)   // coroa
+            rectN(0.58, 0.10, 0.42, 0.05)     // passarela
+            rectN(0.92, 0.15, 0.06, 0.25)     // apoio da passarela
+            // Janelas verticais (furos, even-odd).
+            rectN(0.345, 0.14, 0.045, 0.56)
+            rectN(0.445, 0.14, 0.045, 0.56)
+
+        case .jangada:
+            // Casco curvo + mastro + vela latina.
+            p.move(to: P(0.04, 0.78))
+            p.addLine(to: P(0.96, 0.78))
+            p.addQuadCurve(to: P(0.80, 0.94), control: P(0.92, 0.92))
+            p.addLine(to: P(0.22, 0.94))
+            p.addQuadCurve(to: P(0.04, 0.78), control: P(0.08, 0.92))
+            p.closeSubpath()
+            rectN(0.475, 0.06, 0.022, 0.72)   // mastro
+            // Vela (triângulo de bordas curvas).
+            p.move(to: P(0.50, 0.06))
+            p.addQuadCurve(to: P(0.86, 0.72), control: P(0.70, 0.26))
+            p.addLine(to: P(0.52, 0.72))
+            p.closeSubpath()
+
+        case .frevo:
+            // Sombrinha de frevo: cúpula com babados + cabo.
+            p.move(to: P(0.08, 0.46))
+            p.addQuadCurve(to: P(0.92, 0.46), control: P(0.50, -0.14))
+            // Babados (voltando por arcos pequenos).
+            for i in stride(from: 0, to: 4, by: 1) {
+                let x1 = 0.92 - CGFloat(i) * 0.21
+                let x0 = x1 - 0.21
+                p.addQuadCurve(to: P(x0, 0.46), control: P((x0 + x1) / 2, 0.56))
+            }
+            p.closeSubpath()
+            rectN(0.489, 0.0, 0.022, 0.08)    // ponteira
+            rectN(0.492, 0.46, 0.016, 0.42)   // cabo
+            p.move(to: P(0.508, 0.88))        // gancho
+            p.addQuadCurve(to: P(0.44, 0.94), control: P(0.50, 0.98))
+            p.addLine(to: P(0.44, 0.91))
+            p.addQuadCurve(to: P(0.492, 0.88), control: P(0.48, 0.93))
+            p.closeSubpath()
+
+        case .teatroAmazonas:
+            // Corpo clássico + frontão + tambor e cúpula.
+            rectN(0.04, 0.62, 0.92, 0.38)
+            p.move(to: P(0.22, 0.62))         // frontão
+            p.addLine(to: P(0.50, 0.46))
+            p.addLine(to: P(0.78, 0.62))
+            p.closeSubpath()
+            rectN(0.30, 0.44, 0.40, 0.08)     // tambor
+            p.move(to: P(0.27, 0.46))         // cúpula (protagonista)
+            p.addQuadCurve(to: P(0.73, 0.46), control: P(0.50, 0.0))
+            p.closeSubpath()
+            rectN(0.485, 0.13, 0.03, 0.11)    // lanternim
+
+        case .pampulha:
+            // Igreja da Pampulha: parábolas de Niemeyer + campanário.
+            // Campanário (poste + travessa do sino).
+            rectN(0.028, 0.24, 0.024, 0.76)
+            rectN(0.0, 0.24, 0.08, 0.028)
+            // Parábolas: control em y negativo pois o ápice de uma quadrática
+            // fica na metade do caminho até o control (ápice = 2c - m).
+            p.move(to: P(0.10, 1.0))          // parábola principal (ápice ~0.08)
+            p.addQuadCurve(to: P(0.46, 1.0), control: P(0.28, -0.84))
+            p.closeSubpath()
+            p.move(to: P(0.43, 1.0))          // ápice ~0.30
+            p.addQuadCurve(to: P(0.70, 1.0), control: P(0.565, -0.40))
+            p.closeSubpath()
+            p.move(to: P(0.67, 1.0))          // ápice ~0.48
+            p.addQuadCurve(to: P(0.87, 1.0), control: P(0.77, -0.04))
+            p.closeSubpath()
+            p.move(to: P(0.84, 1.0))          // ápice ~0.62
+            p.addQuadCurve(to: P(0.98, 1.0), control: P(0.91, 0.24))
+            p.closeSubpath()
+
+        case .tucano:
+            // Tucano de perfil (bico para a esquerda), pousado num galho.
+            p.move(to: P(0.56, 0.10))                                   // alto da cabeça
+            p.addQuadCurve(to: P(0.46, 0.15), control: P(0.49, 0.09))   // testa
+            p.addQuadCurve(to: P(0.03, 0.42), control: P(0.14, 0.12))   // dorso do bico (caindo)
+            p.addLine(to: P(0.07, 0.49))                                // ponta
+            p.addQuadCurve(to: P(0.46, 0.29), control: P(0.24, 0.38))   // base do bico (fina)
+            p.addQuadCurve(to: P(0.48, 0.62), control: P(0.40, 0.46))   // peito
+            p.addQuadCurve(to: P(0.60, 0.76), control: P(0.50, 0.74))   // barriga
+            p.addLine(to: P(0.62, 0.97))                                // cauda
+            p.addLine(to: P(0.72, 0.95))
+            p.addLine(to: P(0.70, 0.72))
+            p.addQuadCurve(to: P(0.74, 0.28), control: P(0.78, 0.52))   // costas
+            p.addQuadCurve(to: P(0.56, 0.10), control: P(0.76, 0.04))   // nuca
+            p.closeSubpath()
+            rectN(0.54, 0.74, 0.035, 0.09)                              // pata
+            rectN(0.26, 0.82, 0.74, 0.04)                               // galho
+
+        case .machuPicchu:
+            // Huayna Picchu (pico icônico) + pico menor + terraços.
+            p.move(to: P(0.12, 1.0))
+            p.addQuadCurve(to: P(0.52, 0.05), control: P(0.30, 0.42))
+            p.addQuadCurve(to: P(0.82, 1.0), control: P(0.68, 0.42))
+            p.closeSubpath()
+            p.move(to: P(0.70, 1.0))          // pico menor
+            p.addQuadCurve(to: P(0.90, 0.52), control: P(0.80, 0.62))
+            p.addQuadCurve(to: P(1.0, 1.0), control: P(0.98, 0.66))
+            p.closeSubpath()
+            // Terraços escalonados à esquerda.
+            rectN(0.0, 0.90, 0.26, 0.10)
+            rectN(0.03, 0.82, 0.20, 0.08)
+            rectN(0.06, 0.75, 0.15, 0.07)
+
+        case .palacioSalvo:
+            // Corpo com ombros + torre + coroa bulbosa.
+            rectN(0.28, 0.36, 0.44, 0.64)     // corpo
+            rectN(0.16, 0.56, 0.14, 0.44)     // ombro esquerdo
+            rectN(0.70, 0.56, 0.14, 0.44)     // ombro direito
+            rectN(0.36, 0.20, 0.28, 0.18)     // torre
+            rectN(0.32, 0.30, 0.06, 0.10)     // torrinha esq.
+            rectN(0.62, 0.30, 0.06, 0.10)     // torrinha dir.
+            p.move(to: P(0.38, 0.20))         // coroa bulbosa
+            p.addQuadCurve(to: P(0.62, 0.20), control: P(0.50, 0.02))
+            p.closeSubpath()
+            rectN(0.488, 0.0, 0.024, 0.14)    // agulha (encosta na coroa)
         }
         return p
     }

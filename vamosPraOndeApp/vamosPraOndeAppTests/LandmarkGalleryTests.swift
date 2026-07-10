@@ -17,7 +17,10 @@ struct LandmarkGalleryTests {
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         let cities = ["Paris", "Rio de Janeiro", "Roma", "Londres", "Tóquio",
                       "Barcelona", "Nova York", "Buenos Aires", "Cairo",
-                      "Sydney", "Lisboa", "Dubai", "Miami"]
+                      "Sydney", "Lisboa", "Dubai", "Miami",
+                      "Brasília", "São Paulo", "Salvador", "Fortaleza",
+                      "Recife", "Manaus", "Belo Horizonte", "Foz do Iguaçu",
+                      "Cusco", "Montevidéu"]
         for city in cities {
             let view = ProceduralCover(
                 seed: city,
